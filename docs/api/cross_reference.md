@@ -1,14361 +1,6097 @@
-# Cross Reference
+# Geometry Nodes cross reference
+
+This lookup reflects the checked-in `generation2` output. Use public socket
+classes and `nd` inside the corresponding active tree. Inherited methods may
+also be available on specialized socket classes.
 
 ## 3D Cursor
 
-> `bl_idname` : GeometryNodeTool3DCursor
+Blender identifier: `GeometryNodeTool3DCursor`
 
 ### nd
 
-``` python
-nd._3d_cursor(cls)
-```
-
-## AOV Output
-
-> `bl_idname` : ShaderNodeOutputAOV
-
-### class Color
-
-```python
-Color.aov_output(self, value: Float = None, aov_name = '')
-```
-
-### snd
-
-``` python
-nd.aov_output(cls, color: Color = None, value: Float = None, aov_name = '')
-```
+- `nd._3d_cursor(cls)` — class method; returns `OUT`.
 
 ## Accumulate Field
 
-> `bl_idname` : GeometryNodeAccumulateField
-
-### class Point
-
-```python
-Mesh.points.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeAccumulateField`
 
 ### nd
 
-``` python
-nd.accumulate_field(cls,
-                    value: Float = None,
-                    group_id: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.accumulate_field(cls, value: Socket=None, group_id: Integer=None, data_type: T_DATA_TYPE_1='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.accumulate_field(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Active Camera
 
-> `bl_idname` : GeometryNodeInputActiveCamera
-
-### class Object
-
-```python
-Object.ActiveCamera(cls)
-```
+Blender identifier: `GeometryNodeInputActiveCamera`
 
 ### nd
 
-``` python
-nd.active_camera(self)
-```
+- `nd.active_camera(cls)` — property; returns `OUT`.
+
+### Object
+
+- `Object.ActiveCamera(cls)` — class method; returns `OUT`.
 
 ## Active Element
 
-> `bl_idname` : GeometryNodeToolActiveElement
-
-### class Point
-
-```python
-Mesh.points.active_element(cls)
-```
-
-### class Edge
-
-```python
-Mesh.edges.active_element(cls)
-```
-
-### class Face
-
-```python
-Mesh.faces.active_element(cls)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.active_element(cls)
-```
+Blender identifier: `GeometryNodeToolActiveElement`
 
 ### nd
 
-``` python
-nd.active_element(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT')
-```
-
-## Add Shader
-
-> `bl_idname` : ShaderNodeAddShader
-
-### class Shader
-
-```python
-Shader.add(self, shader: Shader = None)
-```
-
-### snd
-
-``` python
-nd.add_shader(cls, shader: Shader = None, shader_1: Shader = None)
-```
+- `nd.active_element(cls, domain: T_DOMAIN_2='POINT')` — class method; returns `OUT`.
 
 ## Advect Grid
 
-> `bl_idname` : GeometryNodeGridAdvect
-
-### class Float
-
-```python
-Float.advect_grid(self,
-                    velocity: Vector = None,
-                    time_step: Float = None,
-                    integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC'] = None,
-                    limiter: Literal['None', 'Clamp', 'Revert'] = None)
-```
-
-### class Integer
-
-```python
-Integer.advect_grid(self,
-                    velocity: Vector = None,
-                    time_step: Float = None,
-                    integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC'] = None,
-                    limiter: Literal['None', 'Clamp', 'Revert'] = None)
-```
-
-### class Vector
-
-```python
-Vector.advect_grid(self,
-                    velocity: Vector = None,
-                    time_step: Float = None,
-                    integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC'] = None,
-                    limiter: Literal['None', 'Clamp', 'Revert'] = None)
-```
+Blender identifier: `GeometryNodeGridAdvect`
 
 ### nd
 
-``` python
-nd.advect_grid(cls,
-                    grid: Float = None,
-                    velocity: Vector = None,
-                    time_step: Float = None,
-                    integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC'] = None,
-                    limiter: Literal['None', 'Clamp', 'Revert'] = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT')
-```
+- `nd.advect_grid(cls, grid: Socket=None, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None, data_type: T_DATA_TYPE_2='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None)` — method; returns `OUT`.
 
 ## Align Rotation to Vector
 
-> `bl_idname` : FunctionNodeAlignRotationToVector
-
-### class Rotation
-
-```python
-Rotation.AlignToVector(cls,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.AlignXToVector(cls,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.AlignYToVector(cls,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.AlignZToVector(cls,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.align_to_vector(self,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.align_x_to_vector(self,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.align_y_to_vector(self,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
-
-```python
-Rotation.align_z_to_vector(self,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
+Blender identifier: `FunctionNodeAlignRotationToVector`
 
 ### nd
 
-``` python
-nd.align_rotation_to_vector(cls,
-                    rotation: Rotation = None,
-                    vector: Vector = None,
-                    factor: Float = None,
-                    axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO')
-```
+- `nd.align_rotation_to_vector(cls, rotation: Rotation=None, vector: Vector=None, factor: Float=None, axis: T_AXIS_1='Z', pivot_axis: T_PIVOT_AXIS_1='AUTO')` — class method; returns `OUT`.
 
-## Ambient Occlusion
+### Vector
 
-> `bl_idname` : ShaderNodeAmbientOcclusion
+- `Vector.align_to_vector(cls, rotation: Rotation=None, vector: Vector=None, factor: Float=None, axis: T_AXIS_1='Z', pivot_axis: T_PIVOT_AXIS_1='AUTO')` — class method; returns `OUT`.
 
-### class Color
+### Rotation
 
-```python
-Color.ambient_occlusion(self,
-                    distance: Float = None,
-                    normal: Vector = None,
-                    inside = False,
-                    only_local = False,
-                    samples = 16)
-```
-
-### snd
-
-``` python
-nd.ambient_occlusion(cls,
-                    color: Color = None,
-                    distance: Float = None,
-                    normal: Vector = None,
-                    inside = False,
-                    only_local = False,
-                    samples = 16)
-```
+- `Rotation.align_to_vector(self, vector: Vector=None, factor: Float=None, axis: T_AXIS_1='Z', pivot_axis: T_PIVOT_AXIS_1='AUTO')` — method; returns `OUT`.
+- `Rotation.align_x_to_vector(self, vector: Vector=None, factor: Float=None, pivot_axis: T_PIVOT_AXIS_1='AUTO')` — method; returns `OUT`.
+- `Rotation.align_y_to_vector(self, vector: Vector=None, factor: Float=None, pivot_axis: T_PIVOT_AXIS_1='AUTO')` — method; returns `OUT`.
+- `Rotation.align_z_to_vector(self, vector: Vector=None, factor: Float=None, pivot_axis: T_PIVOT_AXIS_1='AUTO')` — method; returns `OUT`.
 
 ## Arc
 
-> `bl_idname` : GeometryNodeCurveArc
-
-### class Curve
-
-```python
-Curve.ArcPoints(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    middle: Vector = None,
-                    end: Vector = None,
-                    offset_angle: Float = None,
-                    connect_center: Boolean = None,
-                    invert_arc: Boolean = None)
-```
-
-```python
-Curve.ArcRadius(cls,
-                    resolution: Integer = None,
-                    radius: Float = None,
-                    start_angle: Float = None,
-                    sweep_angle: Float = None,
-                    connect_center: Boolean = None,
-                    invert_arc: Boolean = None)
-```
-
-```python
-Curve.Arc(cls,
-                    resolution: Integer = None,
-                    radius: Float = None,
-                    start_angle: Float = None,
-                    sweep_angle: Float = None,
-                    connect_center: Boolean = None,
-                    invert_arc: Boolean = None,
-                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS')
-```
+Blender identifier: `GeometryNodeCurveArc`
 
 ### nd
 
-``` python
-nd.arc(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    middle: Vector = None,
-                    end: Vector = None,
-                    radius: Float = None,
-                    start_angle: Float = None,
-                    sweep_angle: Float = None,
-                    offset_angle: Float = None,
-                    connect_center: Boolean = None,
-                    invert_arc: Boolean = None,
-                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS')
-```
+- `nd.arc(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None, radius: Float=None, start_angle: Float=None, sweep_angle: Float=None, offset_angle: Float=None, connect_center: Boolean=None, invert_arc: Boolean=None, mode: T_MODE_1='RADIUS')` — class method; returns `OUT`.
 
-## Attribute
+### Curve
 
-> `bl_idname` : ShaderNodeAttribute
-
-### snd
-
-``` python
-nd.attribute(cls,
-                    lightindex: Integer = None,
-                    attribute_name = '',
-                    attribute_type: Literal['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER', 'LIGHT'] = 'GEOMETRY')
-```
+- `Curve.Arc(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None, radius: Float=None, start_angle: Float=None, sweep_angle: Float=None, offset_angle: Float=None, connect_center: Boolean=None, invert_arc: Boolean=None, mode: T_MODE_1='RADIUS')` — class method; returns `OUT`.
 
 ## Attribute Statistic
 
-> `bl_idname` : GeometryNodeAttributeStatistic
-
-### class Point
-
-```python
-Mesh.points.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.attribute_statistic(self, attribute: Float | Vector = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.attribute_statistic(self, attribute: Float | Vector = None)
-```
+Blender identifier: `GeometryNodeAttributeStatistic`
 
 ### nd
 
-``` python
-nd.attribute_statistic(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    attribute: Float = None,
-                    data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.attribute_statistic(cls, geometry: Geometry=None, selection: Boolean=None, attribute: Socket=None, data_type: T_DATA_TYPE_3='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.attribute_statistic(self, attribute: Socket=None)` — method; returns `OUT`.
 
 ## Axes to Rotation
 
-> `bl_idname` : FunctionNodeAxesToRotation
-
-### class Rotation
-
-```python
-Rotation.FromAxes(cls,
-                    primary_axis_1: Vector = None,
-                    secondary_axis_1: Vector = None,
-                    primary_axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    secondary_axis: Literal['X', 'Y', 'Z'] = 'X')
-```
-
-```python
-Rotation.FromXYAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
-
-```python
-Rotation.FromYXAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
-
-```python
-Rotation.FromXZAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
-
-```python
-Rotation.FromZXAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
-
-```python
-Rotation.FromYZAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
-
-```python
-Rotation.FromZYAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None)
-```
+Blender identifier: `FunctionNodeAxesToRotation`
 
 ### nd
 
-``` python
-nd.axes_to_rotation(cls,
-                    primary_axis_1: Vector = None,
-                    secondary_axis_1: Vector = None,
-                    primary_axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    secondary_axis: Literal['X', 'Y', 'Z'] = 'X')
-```
+- `nd.axes_to_rotation(cls, primary_axis_1: Vector=None, secondary_axis_1: Vector=None, primary_axis: T_AXIS_1='Z', secondary_axis: T_AXIS_1='X')` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.FromAxes(cls, primary_axis_1: Vector=None, secondary_axis_1: Vector=None, primary_axis: T_AXIS_1='Z', secondary_axis: T_AXIS_1='X')` — class method; returns `OUT`.
 
 ## Axis Angle to Rotation
 
-> `bl_idname` : FunctionNodeAxisAngleToRotation
-
-### class Rotation
-
-```python
-Rotation.FromAxisAngle(cls, axis: Vector = None, angle: Float = None)
-```
+Blender identifier: `FunctionNodeAxisAngleToRotation`
 
 ### nd
 
-``` python
-nd.axis_angle_to_rotation(cls, axis: Vector = None, angle: Float = None)
-```
+- `nd.axis_angle_to_rotation(cls, axis: Vector=None, angle: Float=None)` — class method; returns `OUT`.
 
-## Background
+### Rotation
 
-> `bl_idname` : ShaderNodeBackground
-
-### class Color
-
-```python
-Color.background(self, strength: Float = None)
-```
-
-### snd
-
-``` python
-nd.background(cls, color: Color = None, strength: Float = None, weight: Float = None)
-```
+- `Rotation.FromAxisAngle(cls, axis: Vector=None, angle: Float=None)` — class method; returns `OUT`.
 
 ## Bake
 
-> `bl_idname` : GeometryNodeBake
+Blender identifier: `GeometryNodeBake`
 
 ### nd
 
-``` python
-nd.bake(cls, named_sockets: dict = {}, **sockets)
-```
-
-## Bevel
-
-> `bl_idname` : ShaderNodeBevel
-
-### class Float
-
-```python
-Float.bevel(self, normal: Vector = None, samples = 4)
-```
-
-### snd
-
-``` python
-nd.bevel(cls, radius: Float = None, normal: Vector = None, samples = 4)
-```
+- `nd.bake(cls, named_sockets: dict={}, **sockets)` — class method; returns `OUT`.
 
 ## Bit Math
 
-> `bl_idname` : FunctionNodeBitMath
-
-### class Integer
-
-```python
-Integer.bw_and(self, b: Integer = None)
-```
-
-```python
-Integer.bw_or(self, b: Integer = None)
-```
-
-```python
-Integer.bw_xor(self, b: Integer = None)
-```
-
-```python
-Integer.bw_not(self)
-```
-
-```python
-Integer.bw_shift(self, shift: Integer = None)
-```
-
-```python
-Integer.bw_rotate(self, shift: Integer = None)
-```
-
-### class gnmath
-
-```python
-gnmath.bw_and(a: Integer = None, b: Integer = None)
-```
-
-```python
-gnmath.bw_or(a: Integer = None, b: Integer = None)
-```
-
-```python
-gnmath.bw_xor(a: Integer = None, b: Integer = None)
-```
-
-```python
-gnmath.bw_not(a: Integer = None)
-```
-
-```python
-gnmath.bw_shift(a: Integer = None, shift: Integer = None)
-```
-
-```python
-gnmath.bw_rotate(a: Integer = None, shift: Integer = None)
-```
+Blender identifier: `FunctionNodeBitMath`
 
 ### nd
 
-``` python
-nd.bit_math(cls,
-                    a: Integer = None,
-                    b: Integer = None,
-                    shift: Integer = None,
-                    operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE'] = 'AND')
-```
+- `nd.bit_math(cls, a: Integer=None, b: Integer=None, shift: Integer=None, operation: T_OPERATION_1='AND')` — class method; returns `OUT`.
+
+### gnmath
+
+- `gnmath.bw_and(a: Integer=None, b: Integer=None)` — method; returns `OUT`.
+- `gnmath.bw_or(a: Integer=None, b: Integer=None)` — method; returns `OUT`.
+- `gnmath.bw_xor(a: Integer=None, b: Integer=None)` — method; returns `OUT`.
+- `gnmath.bw_shift(a: Integer=None, shift: Integer=None)` — method; returns `OUT`.
+- `gnmath.bw_not(a: Integer=None)` — method; returns `OUT`.
+- `gnmath.bw_rotate(a: Integer=None, shift: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.bw_and(self, b: Integer=None)` — method; returns `OUT`.
+- `Integer.__and__(self, other)` — method; returns `OUT`.
+- `Integer.__rand__(self, other)` — method; returns `OUT`.
+- `Integer.__iand__(self, other)` — method; returns `OUT`.
+- `Integer.bw_or(self, b: Integer=None)` — method; returns `OUT`.
+- `Integer.__or__(self, other)` — method; returns `OUT`.
+- `Integer.__ror__(self, other)` — method; returns `OUT`.
+- `Integer.__ior__(self, other)` — method; returns `OUT`.
+- `Integer.bw_xor(self, b: Integer=None)` — method; returns `OUT`.
+- `Integer.__xor__(self, other)` — method; returns `OUT`.
+- `Integer.__rxor__(self, other)` — method; returns `OUT`.
+- `Integer.__ixor__(self, other)` — method; returns `OUT`.
+- `Integer.bw_shift(self, shift: Integer=None)` — method; returns `OUT`.
+- `Integer.__lshift__(self, other)` — method; returns `OUT`.
+- `Integer.__rlshift__(self, other)` — method; returns `OUT`.
+- `Integer.__ilshift__(self, other)` — method; returns `OUT`.
+- `Integer.__rshift__(self, other)` — method; returns `OUT`.
+- `Integer.__rrshift__(self, other)` — method; returns `OUT`.
+- `Integer.__irshift__(self, other)` — method; returns `OUT`.
+- `Integer.bw_not(self)` — method; returns `OUT`.
+- `Integer.__invert__(self)` — method; returns `OUT`.
+- `Integer.bw_rotate(self, shift: Integer=None)` — method; returns `OUT`.
+- `Integer.bit_math(self, b: Integer=None, shift: Integer=None, operation: T_OPERATION_1='AND')` — method; returns `OUT`.
 
 ## Blackbody
 
-> `bl_idname` : ShaderNodeBlackbody
-
-### class Color
-
-```python
-Color.Blackbody(cls, temperature: Float = None)
-```
+Blender identifier: `ShaderNodeBlackbody`
 
 ### nd
 
-``` python
-nd.blackbody(cls, temperature: Float = None)
-```
+- `nd.blackbody(cls, temperature: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Color
 
-``` python
-nd.blackbody(cls, temperature: Float = None)
-```
+- `Color.Blackbody(cls, temperature: Float=None)` — class method; returns `OUT`.
 
 ## Blur Attribute
 
-> `bl_idname` : GeometryNodeBlurAttribute
-
-### class Float
-
-```python
-Float.blur(self, iterations: Integer = None, weight: Float = None)
-```
-
-### class Integer
-
-```python
-Integer.blur(self, iterations: Integer = None, weight: Float = None)
-```
-
-### class Vector
-
-```python
-Vector.blur(self, iterations: Integer = None, weight: Float = None)
-```
-
-### class Color
-
-```python
-Color.blur(self, iterations: Integer = None, weight: Float = None)
-```
+Blender identifier: `GeometryNodeBlurAttribute`
 
 ### nd
 
-``` python
-nd.blur_attribute(cls,
-                    value: Float = None,
-                    iterations: Integer = None,
-                    weight: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'] = 'FLOAT')
-```
+- `nd.blur_attribute(cls, value: Socket=None, iterations: Integer=None, weight: Float=None, data_type: T_DATA_TYPE_4='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.blur_attribute(self, iterations: Integer=None, weight: Float=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.blur_attribute(self, iterations: Integer=None, weight: Float=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.blur_attribute(self, iterations: Integer=None, weight: Float=None)` — method; returns `OUT`.
+
+### Color
+
+- `Color.blur_attribute(self, iterations: Integer=None, weight: Float=None)` — method; returns `OUT`.
 
 ## Bone Info
 
-> `bl_idname` : GeometryNodeBoneInfo
-
-### class Object
-
-```python
-Object.bone_info(self,
-                    bone_name: String = None,
-                    transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
-```
+Blender identifier: `GeometryNodeBoneInfo`
 
 ### nd
 
-``` python
-nd.bone_info(cls,
-                    armature: Object = None,
-                    bone_name: String = None,
-                    transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
-```
+- `nd.bone_info(cls, armature: Object=None, bone_name: String=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — class method; returns `OUT`.
+
+### Object
+
+- `Object.bone_info(self, bone_name: String=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — method; returns `OUT`.
 
 ## Boolean
 
-> `bl_idname` : FunctionNodeInputBool
+Blender identifier: `FunctionNodeInputBool`
 
 ### nd
 
-``` python
-nd.boolean(cls, boolean = False)
-```
-
-### snd
-
-``` python
-nd.boolean(cls, boolean = False)
-```
+- `nd.boolean(cls, boolean: bool=False)` — class method; returns `OUT`.
 
 ## Boolean Math
 
-> `bl_idname` : FunctionNodeBooleanMath
-
-### class Boolean
-
-```python
-Boolean.band(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.bor(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.bnot(self)
-```
-
-```python
-Boolean.not_and(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.nor(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.xnor(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.xor(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.imply(self, boolean: Boolean = None)
-```
-
-```python
-Boolean.nimply(self, boolean: Boolean = None)
-```
-
-### class gnmath
-
-```python
-gnmath.band(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.bor(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.bnot(boolean: Boolean = None)
-```
-
-```python
-gnmath.not_and(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.nor(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.xnor(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.xor(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.imply(boolean: Boolean = None, boolean_1: Boolean = None)
-```
-
-```python
-gnmath.nimply(boolean: Boolean = None, boolean_1: Boolean = None)
-```
+Blender identifier: `FunctionNodeBooleanMath`
 
 ### nd
 
-``` python
-nd.boolean_math(cls,
-                    boolean: Boolean = None,
-                    boolean_1: Boolean = None,
-                    operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'] = 'AND')
-```
+- `nd.boolean_math(cls, boolean: Boolean=None, boolean_1: Boolean=None, operation: T_OPERATION_2='AND')` — class method; returns `OUT`.
 
-### snd
+### gnmath
 
-``` python
-nd.boolean_math(cls,
-                    boolean: Boolean = None,
-                    boolean_1: Boolean = None,
-                    operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'] = 'AND')
-```
+- `gnmath.band(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.bor(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.xor(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.bnot(boolean: Boolean=None)` — method; returns `OUT`.
+- `gnmath.not_and(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.nor(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.xnor(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.imply(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+- `gnmath.nimply(boolean: Boolean=None, boolean_1: Boolean=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.band(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.__and__(self, other)` — method; returns `OUT`.
+- `Boolean.__rand__(self, other)` — method; returns `OUT`.
+- `Boolean.__iand__(self, other)` — method; returns `OUT`.
+- `Boolean.__mul__(self, other)` — method; returns `OUT`.
+- `Boolean.__rmul__(self, other)` — method; returns `OUT`.
+- `Boolean.__imul__(self, other)` — method; returns `OUT`.
+- `Boolean.bor(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.__or__(self, other)` — method; returns `OUT`.
+- `Boolean.__ror__(self, other)` — method; returns `OUT`.
+- `Boolean.__ior__(self, other)` — method; returns `OUT`.
+- `Boolean.__add__(self, other)` — method; returns `OUT`.
+- `Boolean.__radd__(self, other)` — method; returns `OUT`.
+- `Boolean.__iadd__(self, other)` — method; returns `OUT`.
+- `Boolean.xor(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.__xor__(self, other)` — method; returns `OUT`.
+- `Boolean.__rxor__(self, other)` — method; returns `OUT`.
+- `Boolean.__ixor__(self, other)` — method; returns `OUT`.
+- `Boolean.__sub__(self, other)` — method; returns `OUT`.
+- `Boolean.__rsub__(self, other)` — method; returns `OUT`.
+- `Boolean.__isub__(self, other)` — method; returns `OUT`.
+- `Boolean.bnot(self)` — method; returns `OUT`.
+- `Boolean.__neg__(self)` — method; returns `OUT`.
+- `Boolean.__invert__(self)` — method; returns `OUT`.
+- `Boolean.not_and(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.nor(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.xnor(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.imply(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.nimply(self, boolean: Boolean=None)` — method; returns `OUT`.
+- `Boolean.boolean_math(self, boolean: Boolean=None, operation: T_OPERATION_2='AND')` — method; returns `OUT`.
 
 ## Bounding Box
 
-> `bl_idname` : GeometryNodeBoundBox
-
-### class Geometry
-
-```python
-Geometry.bounding_box(self, use_radius: Boolean = None)
-```
+Blender identifier: `GeometryNodeBoundBox`
 
 ### nd
 
-``` python
-nd.bounding_box(cls, geometry: Geometry = None, use_radius: Boolean = None)
-```
+- `nd.bounding_box(cls, geometry: Geometry=None, use_radius: Boolean=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.bounding_box(self, use_radius: Boolean=None)` — method; returns `OUT`.
 
 ## Brick Texture
 
-> `bl_idname` : ShaderNodeTexBrick
-
-### class Color
-
-```python
-Color.Brick(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    mortar: Color = None,
-                    scale: Float = None,
-                    mortar_size: Float = None,
-                    mortar_smooth: Float = None,
-                    bias: Float = None,
-                    brick_width: Float = None,
-                    row_height: Float = None,
-                    offset = 0.5,
-                    offset_frequency = 2,
-                    squash = 1.0,
-                    squash_frequency = 2)
-```
-
-### class Texture
-
-```python
-Texture.Brick(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    mortar: Color = None,
-                    scale: Float = None,
-                    mortar_size: Float = None,
-                    mortar_smooth: Float = None,
-                    bias: Float = None,
-                    brick_width: Float = None,
-                    row_height: Float = None,
-                    offset = 0.5,
-                    offset_frequency = 2,
-                    squash = 1.0,
-                    squash_frequency = 2)
-```
+Blender identifier: `ShaderNodeTexBrick`
 
 ### nd
 
-``` python
-nd.brick_texture(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    mortar: Color = None,
-                    scale: Float = None,
-                    mortar_size: Float = None,
-                    mortar_smooth: Float = None,
-                    bias: Float = None,
-                    brick_width: Float = None,
-                    row_height: Float = None,
-                    offset = 0.5,
-                    offset_frequency = 2,
-                    squash = 1.0,
-                    squash_frequency = 2)
-```
+- `nd.brick_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency: int=2, squash_frequency: int=2, offset: float=0.5, squash: float=1.0)` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.brick_texture(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    mortar: Color = None,
-                    scale: Float = None,
-                    mortar_size: Float = None,
-                    mortar_smooth: Float = None,
-                    bias: Float = None,
-                    brick_width: Float = None,
-                    row_height: Float = None,
-                    offset = 0.5,
-                    offset_frequency = 2,
-                    squash = 1.0,
-                    squash_frequency = 2)
-```
-
-## Brightness/Contrast
-
-> `bl_idname` : ShaderNodeBrightContrast
-
-### class Color
-
-```python
-Color.brightness_contrast(self, brightness: Float = None, contrast: Float = None)
-```
-
-### snd
-
-``` python
-nd.brightness_contrast(cls, color: Color = None, brightness: Float = None, contrast: Float = None)
-```
-
-## Bump
-
-> `bl_idname` : ShaderNodeBump
-
-### class Float
-
-```python
-Float.bump(self,
-                    distance: Float = None,
-                    filter_width: Float = None,
-                    height: Float = None,
-                    normal: Vector = None,
-                    invert = False)
-```
-
-### snd
-
-``` python
-nd.bump(cls,
-                    strength: Float = None,
-                    distance: Float = None,
-                    filter_width: Float = None,
-                    height: Float = None,
-                    normal: Vector = None,
-                    invert = False)
-```
+- `Texture.Brick(cls, vector: Vector=None, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency: int=2, squash_frequency: int=2, offset: float=0.5, squash: float=1.0)` — class method; returns `OUT`.
 
 ## Bézier Segment
 
-> `bl_idname` : GeometryNodeCurvePrimitiveBezierSegment
-
-### class Curve
-
-```python
-Curve.BeziersegmentPosition(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    start_handle: Vector = None,
-                    end_handle: Vector = None,
-                    end: Vector = None)
-```
-
-```python
-Curve.BeziersegmentOffset(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    start_handle: Vector = None,
-                    end_handle: Vector = None,
-                    end: Vector = None)
-```
-
-```python
-Curve.BezierSegment(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    start_handle: Vector = None,
-                    end_handle: Vector = None,
-                    end: Vector = None,
-                    mode: Literal['POSITION', 'OFFSET'] = 'POSITION')
-```
+Blender identifier: `GeometryNodeCurvePrimitiveBezierSegment`
 
 ### nd
 
-``` python
-nd.bezier_segment(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    start_handle: Vector = None,
-                    end_handle: Vector = None,
-                    end: Vector = None,
-                    mode: Literal['POSITION', 'OFFSET'] = 'POSITION')
-```
+- `nd.bezier_segment(cls, resolution: Integer=None, start: Vector=None, start_handle: Vector=None, end_handle: Vector=None, end: Vector=None, mode: T_MODE_2='POSITION')` — class method; returns `OUT`.
 
-## Camera Data
+### Curve
 
-> `bl_idname` : ShaderNodeCameraData
-
-### snd
-
-``` python
-nd.camera_data(cls)
-```
+- `Curve.BezierSegment(cls, resolution: Integer=None, start: Vector=None, start_handle: Vector=None, end_handle: Vector=None, end: Vector=None, mode: T_MODE_2='POSITION')` — class method; returns `OUT`.
 
 ## Camera Info
 
-> `bl_idname` : GeometryNodeCameraInfo
-
-### class Object
-
-```python
-Object.camera_info(self)
-```
+Blender identifier: `GeometryNodeCameraInfo`
 
 ### nd
 
-``` python
-nd.camera_info(cls, camera: Object = None)
-```
+- `nd.camera_info(cls, camera: Object=None)` — class method; returns `OUT`.
+
+### Object
+
+- `Object.camera_info(self)` — method; returns `OUT`.
 
 ## Capture Attribute
 
-> `bl_idname` : GeometryNodeCaptureAttribute
+Blender identifier: `GeometryNodeCaptureAttribute`
 
-### class Domain
+### nd
 
-```python
-Domain.capture_attribute(attribute=None, **attributes)
-```
-
-```python
-Domain.capture(attribute=None, **attributes)
-```
+- `nd.capture_attribute(cls, geometry: Geometry=None, selection: Boolean=None, named_sockets: dict={}, domain: T_DOMAIN_1='POINT', **sockets)` — class method; returns `OUT`.
 
 ## Checker Texture
 
-> `bl_idname` : ShaderNodeTexChecker
-
-### class Color
-
-```python
-Color.Checker(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    scale: Float = None)
-```
-
-### class Texture
-
-```python
-Texture.Checker(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    scale: Float = None)
-```
+Blender identifier: `ShaderNodeTexChecker`
 
 ### nd
 
-``` python
-nd.checker_texture(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    scale: Float = None)
-```
+- `nd.checker_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, scale: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.checker_texture(cls,
-                    vector: Vector = None,
-                    color1: Color = None,
-                    color2: Color = None,
-                    scale: Float = None)
-```
+- `Texture.Checker(cls, vector: Vector=None, color1: Color=None, color2: Color=None, scale: Float=None)` — class method; returns `OUT`.
 
 ## Clamp
 
-> `bl_idname` : ShaderNodeClamp
-
-### class Float
-
-```python
-Float.clamp(self,
-                    min: Float = None,
-                    max: Float = None,
-                    clamp_type: Literal['MINMAX', 'RANGE'] = 'MINMAX')
-```
-
-```python
-Float.clamp_minmax(self, min: Float = None, max: Float = None)
-```
-
-```python
-Float.clamp_range(self, min: Float = None, max: Float = None)
-```
+Blender identifier: `ShaderNodeClamp`
 
 ### nd
 
-``` python
-nd.clamp(cls,
-                    value: Float = None,
-                    min: Float = None,
-                    max: Float = None,
-                    clamp_type: Literal['MINMAX', 'RANGE'] = 'MINMAX')
-```
+- `nd.clamp(cls, value: Float=None, min: Float=None, max: Float=None, clamp_type: T_CLAMP_TYPE_1='MINMAX')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.clamp(cls,
-                    value: Float = None,
-                    min: Float = None,
-                    max: Float = None,
-                    clamp_type: Literal['MINMAX', 'RANGE'] = 'MINMAX')
-```
+- `Float.clamp(self, min: Float=None, max: Float=None, clamp_type: T_CLAMP_TYPE_1='MINMAX')` — method; returns `OUT`.
 
 ## Clip Grid
 
-> `bl_idname` : GeometryNodeGridClip
-
-### class Float
-
-```python
-Float.clip_grid(self,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None,
-                    max_x: Integer = None,
-                    max_y: Integer = None,
-                    max_z: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.clip_grid(self,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None,
-                    max_x: Integer = None,
-                    max_y: Integer = None,
-                    max_z: Integer = None)
-```
-
-### class Boolean
-
-```python
-Boolean.clip_grid(self,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None,
-                    max_x: Integer = None,
-                    max_y: Integer = None,
-                    max_z: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.clip_grid(self,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None,
-                    max_x: Integer = None,
-                    max_y: Integer = None,
-                    max_z: Integer = None)
-```
+Blender identifier: `GeometryNodeGridClip`
 
 ### nd
 
-``` python
-nd.clip_grid(cls,
-                    grid: Float = None,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None,
-                    max_x: Integer = None,
-                    max_y: Integer = None,
-                    max_z: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.clip_grid(cls, grid: Socket=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None)` — method; returns `OUT`.
 
 ## Closure Input
 
-> `bl_idname` : NodeClosureInput
+Blender identifier: `NodeClosureInput`
 
 ### nd
 
-``` python
-nd.closure_input(self)
-```
-
-### snd
-
-``` python
-nd.closure_input(self)
-```
+- `nd.closure_input(cls)` — class method; returns `OUT`.
 
 ## Closure Output
 
-> `bl_idname` : NodeClosureOutput
+Blender identifier: `NodeClosureOutput`
 
 ### nd
 
-``` python
-nd.closure_output(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
-```
-
-### snd
-
-``` python
-nd.closure_output(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
-```
+- `nd.closure_output(cls, named_sockets: dict={}, define_signature: bool=False, **sockets)` — class method; returns `OUT`.
 
 ## Closure to List
 
-> `bl_idname` : GeometryNodeClosureToList
-
-### class Closure
-
-```python
-Closure.to_list(self, count=None, signature=None, **sockets)
-```
+Blender identifier: `GeometryNodeClosureToList`
 
 ### nd
 
-``` python
-nd.closure_to_list(cls,
-                    named_sockets: dict = {},
-                    count: Integer = None,
-                    closure: Closure = None,
-                    **sockets)
-```
+- `nd.closure_to_list(cls, count: Integer=None, closure: Closure=None)` — class method; returns `OUT`.
+
+### Integer
+
+- `Integer.closure_to_list(self, closure: Closure=None)` — method; returns `OUT`.
 
 ## Cluster by Connected
 
-> `bl_idname` : GeometryNodeClusterByConnected
-
-### class Geometry
-
-```python
-Geometry.cluster_by_connected(cls,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    distance: Float = None)
-```
+Blender identifier: `GeometryNodeClusterByConnected`
 
 ### nd
 
-``` python
-nd.cluster_by_connected(cls,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    distance: Float = None)
-```
+- `nd.cluster_by_connected(cls, selection: Boolean=None, position: Vector=None, distance: Float=None)` — class method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.cluster_by_connected(self, position: Vector=None, distance: Float=None)` — method; returns `OUT`.
 
 ## Cluster by Distance
 
-> `bl_idname` : GeometryNodeClusterByDistance
-
-### class Geometry
-
-```python
-Geometry.cluster_by_distance(cls,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    position: Vector = None,
-                    distance: Float = None)
-```
+Blender identifier: `GeometryNodeClusterByDistance`
 
 ### nd
 
-``` python
-nd.cluster_by_distance(cls,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    position: Vector = None,
-                    distance: Float = None)
-```
+- `nd.cluster_by_distance(cls, selection: Boolean=None, group_id: Integer=None, position: Vector=None, distance: Float=None)` — class method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.cluster_by_distance(self, group_id: Integer=None, position: Vector=None, distance: Float=None)` — method; returns `OUT`.
 
 ## Collection
 
-> `bl_idname` : GeometryNodeInputCollection
+Blender identifier: `GeometryNodeInputCollection`
 
 ### nd
 
-``` python
-nd.collection(cls, collection = None)
-```
+- `nd.collection(cls, collection=None)` — class method; returns `OUT`.
 
 ## Collection Children
 
-> `bl_idname` : GeometryNodeCollectionChildren
-
-### class Collection
-
-```python
-Collection.children(self, recursive: Boolean = None)
-```
+Blender identifier: `GeometryNodeCollectionChildren`
 
 ### nd
 
-``` python
-nd.collection_children(cls, collection: Collection = None, recursive: Boolean = None)
-```
+- `nd.collection_children(cls, collection: Collection=None, recursive: Boolean=None)` — class method; returns `OUT`.
+
+### Collection
+
+- `Collection.collection_children(self, recursive: Boolean=None)` — method; returns `OUT`.
 
 ## Collection Info
 
-> `bl_idname` : GeometryNodeCollectionInfo
-
-### class Collection
-
-```python
-Collection.info(self,
-                    separate_children: Boolean = None,
-                    reset_children: Boolean = None,
-                    transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
-```
+Blender identifier: `GeometryNodeCollectionInfo`
 
 ### nd
 
-``` python
-nd.collection_info(cls,
-                    collection: Collection = None,
-                    separate_children: Boolean = None,
-                    reset_children: Boolean = None,
-                    transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
-```
+- `nd.collection_info(cls, collection: Collection=None, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — class method; returns `OUT`.
+
+### Collection
+
+- `Collection.info(self, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — method; returns `OUT`.
 
 ## Color
 
-> `bl_idname` : ShaderNodeRGB
+Blender identifier: `FunctionNodeInputColor`
 
-### snd
+### nd
 
-``` python
-nd.color(self)
-```
-
-## Color Attribute
-
-> `bl_idname` : ShaderNodeVertexColor
-
-### class Color
-
-```python
-Color.ColorAttribute(cls, layer_name = '')
-```
-
-### snd
-
-``` python
-nd.color_attribute(cls, layer_name = '')
-```
+- `nd.color(cls, value: tuple[float, float, float, float]=(0.5, 0.5, 0.5, 1.0))` — class method; returns `OUT`.
 
 ## Color Ramp
 
-> `bl_idname` : ShaderNodeValToRGB
+Blender identifier: `ShaderNodeValToRGB`
 
 ### nd
 
-``` python
-nd.color_ramp(fac=None, stops=None, interpolation='LINEAR')
-```
+- `nd.color_ramp(cls, factor: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.color_ramp(fac=None, stops=None, interpolation='LINEAR')
-```
+- `Float.color_ramp(self)` — method; returns `OUT`.
 
 ## Combine Bundle
 
-> `bl_idname` : NodeCombineBundle
-
-### class Bundle
-
-```python
-Bundle.Combine(cls, named_sockets: dict = {}, define_signature = False, **sockets)
-```
+Blender identifier: `NodeCombineBundle`
 
 ### nd
 
-``` python
-nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **sockets)
-```
+- `nd.combine_bundle(cls, named_sockets: dict={}, define_signature: bool=False, **sockets)` — class method; returns `OUT`.
 
-### snd
+### Bundle
 
-``` python
-nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **sockets)
-```
+- `Bundle.Combine(cls, named_sockets: dict={}, define_signature: bool=False, **sockets)` — class method; returns `OUT`.
 
 ## Combine Color
 
-> `bl_idname` : ShaderNodeCombineColor
+Blender identifier: `FunctionNodeCombineColor`
 
-### class Float
+### nd
 
-```python
-Float.combine_color_RGB(self, green: Float = None, blue: Float = None)
-```
+- `nd.combine_color(cls, red: Float=None, green: Float=None, blue: Float=None, alpha: Float=None, *, hue: Float=None, saturation: Float=None, value: Float=None, lightness: Float=None, mode: T_MODE_3='RGB')` — class method; returns `OUT`.
 
-```python
-Float.combine_color_HSV(self, saturation: Float = None, value: Float = None)
-```
+### Color
 
-```python
-Float.combine_color_HSL(self, saturation: Float = None, lightness: Float = None)
-```
-
-```python
-Float.combine_color(self,
-                    green: Float = None,
-                    blue: Float = None,
-                    mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
-```
-
-### snd
-
-``` python
-nd.combine_color(cls,
-                    red: Float = None,
-                    green: Float = None,
-                    blue: Float = None,
-                    mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
-```
+- `Color.Combine(cls, red: Float=None, green: Float=None, blue: Float=None, alpha: Float=None, *, hue: Float=None, saturation: Float=None, value: Float=None, lightness: Float=None, mode: T_MODE_3='RGB')` — class method; returns `OUT`.
+- `Color.CombineRGB(cls, red: Float=None, green: Float=None, blue: Float=None, alpha: Float=None)` — class method; returns `OUT`.
+- `Color.CombineHSV(cls, hue: Float=None, saturation: Float=None, value: Float=None, alpha: Float=None)` — class method; returns `OUT`.
+- `Color.CombineHSL(cls, hue: Float=None, saturation: Float=None, lightness: Float=None, alpha: Float=None)` — class method; returns `OUT`.
 
 ## Combine List
 
-> `bl_idname` : GeometryNodeCombineList
-
-### class Float
-
-```python
-Float.CombineList(cls, *args)
-```
-
-### class Integer
-
-```python
-Integer.CombineList(cls, *args)
-```
-
-### class Boolean
-
-```python
-Boolean.CombineList(cls, *args)
-```
-
-### class Vector
-
-```python
-Vector.CombineList(cls, *args)
-```
-
-### class Color
-
-```python
-Color.CombineList(cls, *args)
-```
-
-### class Rotation
-
-```python
-Rotation.CombineList(cls, *args)
-```
-
-### class Matrix
-
-```python
-Matrix.CombineList(cls, *args)
-```
-
-### class String
-
-```python
-String.CombineList(cls, *args)
-```
-
-### class Menu
-
-```python
-Menu.CombineList(cls, *args)
-```
-
-### class Object
-
-```python
-Object.CombineList(cls, *args)
-```
-
-### class Image
-
-```python
-Image.CombineList(cls, *args)
-```
-
-### class Geometry
-
-```python
-Geometry.CombineList(cls, *args)
-```
-
-### class Collection
-
-```python
-Collection.CombineList(cls, *args)
-```
-
-### class Material
-
-```python
-Material.CombineList(cls, *args)
-```
-
-### class Bundle
-
-```python
-Bundle.CombineList(cls, *args)
-```
-
-### class Closure
-
-```python
-Closure.CombineList(cls, *args)
-```
-
-### class Font
-
-```python
-Font.CombineList(cls, *args)
-```
-
-### class Sound
-
-```python
-Sound.CombineList(cls, *args)
-```
+Blender identifier: `GeometryNodeCombineList`
 
 ### nd
 
-``` python
-nd.combine_list(cls,
-                    named_sockets: dict = {},
-                    _0: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
-                    **sockets)
-```
+- `nd.combine_list(cls, *items, data_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.combine_list(self, *items)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.combine_list(self, *items)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.combine_list(self, *items)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.combine_list(self, *items)` — method; returns `OUT`.
+
+### Color
+
+- `Color.combine_list(self, *items)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.combine_list(self, *items)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.combine_list(self, *items)` — method; returns `OUT`.
+
+### String
+
+- `String.combine_list(self, *items)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.combine_list(self, *items)` — method; returns `OUT`.
+
+### Object
+
+- `Object.combine_list(self, *items)` — method; returns `OUT`.
+
+### Image
+
+- `Image.combine_list(self, *items)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.combine_list(self, *items)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.combine_list(self, *items)` — method; returns `OUT`.
+
+### Material
+
+- `Material.combine_list(self, *items)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.combine_list(self, *items)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.combine_list(self, *items)` — method; returns `OUT`.
+
+### Font
+
+- `Font.combine_list(self, *items)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.combine_list(self, *items)` — method; returns `OUT`.
 
 ## Combine Matrix
 
-> `bl_idname` : FunctionNodeCombineMatrix
-
-### class Matrix
-
-```python
-Matrix.Combine(cls,
-                    column_1_row_1: Float = None,
-                    column_1_row_2: Float = None,
-                    column_1_row_3: Float = None,
-                    column_1_row_4: Float = None,
-                    column_2_row_1: Float = None,
-                    column_2_row_2: Float = None,
-                    column_2_row_3: Float = None,
-                    column_2_row_4: Float = None,
-                    column_3_row_1: Float = None,
-                    column_3_row_2: Float = None,
-                    column_3_row_3: Float = None,
-                    column_3_row_4: Float = None,
-                    column_4_row_1: Float = None,
-                    column_4_row_2: Float = None,
-                    column_4_row_3: Float = None,
-                    column_4_row_4: Float = None)
-```
-
-```python
-Matrix.FromList(cls, value)
-```
+Blender identifier: `FunctionNodeCombineMatrix`
 
 ### nd
 
-``` python
-nd.combine_matrix(cls,
-                    column_1_row_1: Float = None,
-                    column_1_row_2: Float = None,
-                    column_1_row_3: Float = None,
-                    column_1_row_4: Float = None,
-                    column_2_row_1: Float = None,
-                    column_2_row_2: Float = None,
-                    column_2_row_3: Float = None,
-                    column_2_row_4: Float = None,
-                    column_3_row_1: Float = None,
-                    column_3_row_2: Float = None,
-                    column_3_row_3: Float = None,
-                    column_3_row_4: Float = None,
-                    column_4_row_1: Float = None,
-                    column_4_row_2: Float = None,
-                    column_4_row_3: Float = None,
-                    column_4_row_4: Float = None)
-```
+- `nd.combine_matrix(cls, column_1_row_1: Float=None, column_1_row_2: Float=None, column_1_row_3: Float=None, column_1_row_4: Float=None, column_2_row_1: Float=None, column_2_row_2: Float=None, column_2_row_3: Float=None, column_2_row_4: Float=None, column_3_row_1: Float=None, column_3_row_2: Float=None, column_3_row_3: Float=None, column_3_row_4: Float=None, column_4_row_1: Float=None, column_4_row_2: Float=None, column_4_row_3: Float=None, column_4_row_4: Float=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.Combine(cls, column_1_row_1: Float=None, column_1_row_2: Float=None, column_1_row_3: Float=None, column_1_row_4: Float=None, column_2_row_1: Float=None, column_2_row_2: Float=None, column_2_row_3: Float=None, column_2_row_4: Float=None, column_3_row_1: Float=None, column_3_row_2: Float=None, column_3_row_3: Float=None, column_3_row_4: Float=None, column_4_row_1: Float=None, column_4_row_2: Float=None, column_4_row_3: Float=None, column_4_row_4: Float=None)` — class method; returns `OUT`.
 
 ## Combine Transform
 
-> `bl_idname` : FunctionNodeCombineTransform
-
-### class Matrix
-
-```python
-Matrix.CombineTransform(cls,
-                    translation: Vector = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
+Blender identifier: `FunctionNodeCombineTransform`
 
 ### nd
 
-``` python
-nd.combine_transform(cls,
-                    translation: Vector = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
+- `nd.combine_transform(cls, translation: Vector=None, rotation: Rotation=None, scale: Vector=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.CombineTransform(cls, translation: Vector=None, rotation: Rotation=None, scale: Vector=None)` — class method; returns `OUT`.
 
 ## Combine XYZ
 
-> `bl_idname` : ShaderNodeCombineXYZ
-
-### class Vector
-
-```python
-Vector.CombineXYZ(cls, x: Float = None, y: Float = None, z: Float = None)
-```
-
-```python
-Vector.FromList(cls, value)
-```
+Blender identifier: `ShaderNodeCombineXYZ`
 
 ### nd
 
-``` python
-nd.combine_xyz(cls, x: Float = None, y: Float = None, z: Float = None)
-```
+- `nd.combine_xyz(cls, x: Float=None, y: Float=None, z: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.combine_xyz(cls, x: Float = None, y: Float = None, z: Float = None)
-```
+- `Vector.CombineXYZ(cls, x: Float=None, y: Float=None, z: Float=None)` — class method; returns `OUT`.
 
 ## Comment
 
-> `bl_idname` : NodeComment
+Blender identifier: `NodeComment`
 
 ### nd
 
-``` python
-nd.comment(cls, text = '## Comment')
-```
-
-### snd
-
-``` python
-nd.comment(cls, text = '## Comment')
-```
+- `nd.comment(cls, text: str='## Comment')` — class method; returns `NODE`.
 
 ## Compare
 
-> `bl_idname` : FunctionNodeCompare
-
-### class Float
-
-```python
-Float.less_than(self, b: Float = None)
-```
-
-```python
-Float.less_equal(self, b: Float = None)
-```
-
-```python
-Float.greater_than(self, b: Float = None)
-```
-
-```python
-Float.greater_equal(self, b: Float = None)
-```
-
-```python
-Float.equal(self, b: Float = None, epsilon: Float = None)
-```
-
-```python
-Float.not_equal(self, b: Float = None, epsilon: Float = None)
-```
-
-### class Integer
-
-```python
-Integer.less_than(self, b: Integer = None)
-```
-
-```python
-Integer.less_equal(self, b: Integer = None)
-```
-
-```python
-Integer.greater_than(self, b: Integer = None)
-```
-
-```python
-Integer.greater_equal(self, b: Integer = None)
-```
-
-```python
-Integer.equal(self, b: Integer = None)
-```
-
-```python
-Integer.not_equal(self, b: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.less_than(self, b: Vector = None)
-```
-
-```python
-Vector.less_equal(self, b: Vector = None)
-```
-
-```python
-Vector.greater_than(self, b: Vector = None)
-```
-
-```python
-Vector.greater_equal(self, b: Vector = None)
-```
-
-```python
-Vector.equal(self, b: Vector = None, epsilon: Float = None)
-```
-
-```python
-Vector.not_equal(self, b: Vector = None, epsilon: Float = None)
-```
-
-### class String
-
-```python
-String.equal(self, b: String = None)
-```
-
-```python
-String.not_equal(self, b: String = None)
-```
-
-### class Color
-
-```python
-Color.equal(self, b: Color = None, epsilon: Float = None)
-```
-
-```python
-Color.not_equal(self, b: Color = None, epsilon: Float = None)
-```
-
-```python
-Color.brighter(self, b: Color = None)
-```
-
-```python
-Color.darker(self, b: Color = None)
-```
+Blender identifier: `FunctionNodeCompare`
 
 ### nd
 
-``` python
-nd.compare(cls,
-                    a: Float = None,
-                    b: Float = None,
-                    epsilon: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING', 'OBJECT', 'IMAGE', 'COLLECTION', 'MATERIAL', 'FONT', 'SOUND'] = 'FLOAT',
-                    mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'] = 'ELEMENT',
-                    operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'] = 'GREATER_THAN')
-```
+- `nd.compare(cls, a: Socket=None, b: Socket=None, epsilon: Float=None, c: Float=None, angle: Float=None, data_type: T_DATA_TYPE_7='FLOAT', operation: T_OPERATION_3='GREATER_THAN', mode: T_MODE_4='ELEMENT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.less_than(self, b: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__lt__(self, other)` — method; returns `OUT`.
+- `Float.less_equal(self, b: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__le__(self, other)` — method; returns `OUT`.
+- `Float.greater_than(self, b: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__gt__(self, other)` — method; returns `OUT`.
+- `Float.greater_equal(self, b: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__ge__(self, other)` — method; returns `OUT`.
+- `Float.equal(self, b: Float=None, epsilon: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__eq__(self, other)` — method; returns `OUT`.
+- `Float.not_equal(self, b: Float=None, epsilon: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Float.__ne__(self, other)` — method; returns `OUT`.
+- `Float.compare(self, b: Float=None, epsilon: Float=None, operation: T_OPERATION_3='GREATER_THAN', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.less_than(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__lt__(self, other)` — method; returns `OUT`.
+- `Integer.less_equal(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__le__(self, other)` — method; returns `OUT`.
+- `Integer.greater_than(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__gt__(self, other)` — method; returns `OUT`.
+- `Integer.greater_equal(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__ge__(self, other)` — method; returns `OUT`.
+- `Integer.equal(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__eq__(self, other)` — method; returns `OUT`.
+- `Integer.not_equal(self, b: Integer=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Integer.__ne__(self, other)` — method; returns `OUT`.
+- `Integer.compare(self, b: Integer=None, operation: T_OPERATION_3='GREATER_THAN', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.less_than(self, b: Vector=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__lt__(self, other)` — method; returns `OUT`.
+- `Vector.less_equal(self, b: Vector=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__le__(self, other)` — method; returns `OUT`.
+- `Vector.greater_than(self, b: Vector=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__gt__(self, other)` — method; returns `OUT`.
+- `Vector.greater_equal(self, b: Vector=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__ge__(self, other)` — method; returns `OUT`.
+- `Vector.equal(self, b: Vector=None, epsilon: Float=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__eq__(self, other)` — method; returns `OUT`.
+- `Vector.not_equal(self, b: Vector=None, epsilon: Float=None, c: Float=None, angle: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Vector.__ne__(self, other)` — method; returns `OUT`.
+- `Vector.compare(self, b: Vector=None, c: Float=None, angle: Float=None, epsilon: Float=None, operation: T_OPERATION_3='GREATER_THAN', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Color
+
+- `Color.equal(self, b: Color=None, epsilon: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Color.__eq__(self, other)` — method; returns `OUT`.
+- `Color.not_equal(self, b: Color=None, epsilon: Float=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Color.__ne__(self, other)` — method; returns `OUT`.
+- `Color.brighter(self, b: Color=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Color.__gt__(self, other)` — method; returns `OUT`.
+- `Color.darker(self, b: Color=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Color.__lt__(self, other)` — method; returns `OUT`.
+- `Color.compare(self, b: Color=None, epsilon: Float=None, operation: T_OPERATION_8='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### String
+
+- `String.equal(self, b: String=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `String.__eq__(self, other)` — method; returns `OUT`.
+- `String.not_equal(self, b: String=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `String.__ne__(self, other)` — method; returns `OUT`.
+- `String.compare(self, b: String=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Object
+
+- `Object.equal(self, b: Object=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Object.__eq__(self, other)` — method; returns `OUT`.
+- `Object.not_equal(self, b: Object=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Object.__ne__(self, other)` — method; returns `OUT`.
+- `Object.compare(self, b: Object=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Image
+
+- `Image.equal(self, b: Image=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Image.__eq__(self, other)` — method; returns `OUT`.
+- `Image.not_equal(self, b: Image=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Image.__ne__(self, other)` — method; returns `OUT`.
+- `Image.compare(self, b: Image=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.equal(self, b: Collection=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Collection.__eq__(self, other)` — method; returns `OUT`.
+- `Collection.not_equal(self, b: Collection=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Collection.__ne__(self, other)` — method; returns `OUT`.
+- `Collection.compare(self, b: Collection=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Material
+
+- `Material.equal(self, b: Material=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Material.__eq__(self, other)` — method; returns `OUT`.
+- `Material.not_equal(self, b: Material=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Material.__ne__(self, other)` — method; returns `OUT`.
+- `Material.compare(self, b: Material=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Font
+
+- `Font.equal(self, b: Font=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Font.__eq__(self, other)` — method; returns `OUT`.
+- `Font.not_equal(self, b: Font=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Font.__ne__(self, other)` — method; returns `OUT`.
+- `Font.compare(self, b: Font=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.equal(self, b: Sound=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Sound.__eq__(self, other)` — method; returns `OUT`.
+- `Sound.not_equal(self, b: Sound=None, mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
+- `Sound.__ne__(self, other)` — method; returns `OUT`.
+- `Sound.compare(self, b: Sound=None, operation: T_OPERATION_9='EQUAL', mode: T_MODE_4='ELEMENT')` — method; returns `OUT`.
 
 ## Cone
 
-> `bl_idname` : GeometryNodeMeshCone
-
-### class Mesh
-
-```python
-Mesh.Cone(cls,
-                    vertices: Integer = None,
-                    side_segments: Integer = None,
-                    fill_segments: Integer = None,
-                    radius_top: Float = None,
-                    radius_bottom: Float = None,
-                    depth: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON')
-```
+Blender identifier: `GeometryNodeMeshCone`
 
 ### nd
 
-``` python
-nd.cone(cls,
-                    vertices: Integer = None,
-                    side_segments: Integer = None,
-                    fill_segments: Integer = None,
-                    radius_top: Float = None,
-                    radius_bottom: Float = None,
-                    depth: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON')
-```
+- `nd.cone(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius_top: Float=None, radius_bottom: Float=None, depth: Float=None, fill_type: T_FILL_TYPE_1='NGON')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Cone(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius_top: Float=None, radius_bottom: Float=None, depth: Float=None, fill_type: T_FILL_TYPE_1='NGON')` — class method; returns `OUT`.
 
 ## Construct Curves
 
-> `bl_idname` : GeometryNodeConstructCurves
+Blender identifier: `GeometryNodeConstructCurves`
 
 ### nd
 
-``` python
-nd.construct_curves(cls, positions: Vector = None, curve_offsets: Integer = None)
-```
+- `nd.construct_curves(cls, positions: Vector=None, curve_offsets: Integer=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.ConstructCurves(cls, positions: Vector=None, curve_offsets: Integer=None)` — class method; returns `OUT`.
 
 ## Convex Hull
 
-> `bl_idname` : GeometryNodeConvexHull
-
-### class Geometry
-
-```python
-Geometry.convex_hull(self)
-```
+Blender identifier: `GeometryNodeConvexHull`
 
 ### nd
 
-``` python
-nd.convex_hull(cls, geometry: Geometry = None)
-```
+- `nd.convex_hull(cls, geometry: Geometry=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.convex_hull(self)` — method; returns `OUT`.
 
 ## Corners of Edge
 
-> `bl_idname` : GeometryNodeCornersOfEdge
-
-### class Mesh
-
-```python
-Mesh.corners_of_edge(cls,
-                    edge_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.corners(cls,
-                    edge_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.edges.corner_index(cls,
-                    edge_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.edges.corners_total(cls,
-                    edge_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+Blender identifier: `GeometryNodeCornersOfEdge`
 
 ### nd
 
-``` python
-nd.corners_of_edge(cls,
-                    edge_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+- `nd.corners_of_edge(cls, edge_index: Integer=None, weights: Float=None, sort_index: Integer=None)` — class method; returns `OUT`.
 
 ## Corners of Face
 
-> `bl_idname` : GeometryNodeCornersOfFace
-
-### class Mesh
-
-```python
-Mesh.corners_of_face(cls,
-                    face_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.corners(cls,
-                    face_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.faces.corner_index(cls,
-                    face_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.faces.corners_total(cls,
-                    face_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+Blender identifier: `GeometryNodeCornersOfFace`
 
 ### nd
 
-``` python
-nd.corners_of_face(cls,
-                    face_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+- `nd.corners_of_face(cls, face_index: Integer=None, weights: Float=None, sort_index: Integer=None)` — class method; returns `OUT`.
 
 ## Corners of Vertex
 
-> `bl_idname` : GeometryNodeCornersOfVertex
-
-### class Mesh
-
-```python
-Mesh.corners_of_vertex(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-### class Vertex
-
-```python
-Mesh.points.corners(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.points.corner_index(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.points.corners_total(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+Blender identifier: `GeometryNodeCornersOfVertex`
 
 ### nd
 
-``` python
-nd.corners_of_vertex(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+- `nd.corners_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None)` — class method; returns `OUT`.
 
 ## Cube
 
-> `bl_idname` : GeometryNodeMeshCube
-
-### class Mesh
-
-```python
-Mesh.Cube(cls,
-                    size: Vector = None,
-                    vertices_x: Integer = None,
-                    vertices_y: Integer = None,
-                    vertices_z: Integer = None)
-```
+Blender identifier: `GeometryNodeMeshCube`
 
 ### nd
 
-``` python
-nd.cube(cls,
-                    size: Vector = None,
-                    vertices_x: Integer = None,
-                    vertices_y: Integer = None,
-                    vertices_z: Integer = None)
-```
+- `nd.cube(cls, size: Vector=None, vertices_x: Integer=None, vertices_y: Integer=None, vertices_z: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Cube(cls, size: Vector=None, vertices_x: Integer=None, vertices_y: Integer=None, vertices_z: Integer=None)` — class method; returns `OUT`.
 
 ## Cube Grid Topology
 
-> `bl_idname` : GeometryNodeCubeGridTopology
-
-### class Boolean
-
-```python
-Boolean.CubeGridTopology(cls,
-                    bounds_min: Vector = None,
-                    bounds_max: Vector = None,
-                    resolution_x: Integer = None,
-                    resolution_y: Integer = None,
-                    resolution_z: Integer = None,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None)
-```
+Blender identifier: `GeometryNodeCubeGridTopology`
 
 ### nd
 
-``` python
-nd.cube_grid_topology(cls,
-                    bounds_min: Vector = None,
-                    bounds_max: Vector = None,
-                    resolution_x: Integer = None,
-                    resolution_y: Integer = None,
-                    resolution_z: Integer = None,
-                    min_x: Integer = None,
-                    min_y: Integer = None,
-                    min_z: Integer = None)
-```
+- `nd.cube_grid_topology(cls, bounds_min: Vector=None, bounds_max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None)` — class method; returns `OUT`.
 
 ## Curve Circle
 
-> `bl_idname` : GeometryNodeCurvePrimitiveCircle
-
-### class Curve
-
-```python
-Curve.CirclePoints(cls,
-                    resolution: Integer = None,
-                    point_1: Vector = None,
-                    point_2: Vector = None,
-                    point_3: Vector = None)
-```
-
-```python
-Curve.CircleRadius(cls, resolution: Integer = None, radius: Float = None)
-```
-
-```python
-Curve.Circle(cls,
-                    resolution: Integer = None,
-                    radius: Float = None,
-                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS')
-```
+Blender identifier: `GeometryNodeCurvePrimitiveCircle`
 
 ### nd
 
-``` python
-nd.curve_circle(cls,
-                    resolution: Integer = None,
-                    point_1: Vector = None,
-                    point_2: Vector = None,
-                    point_3: Vector = None,
-                    radius: Float = None,
-                    mode: Literal['POINTS', 'RADIUS'] = 'RADIUS')
-```
+- `nd.curve_circle(cls, resolution: Integer=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, radius: Float=None, mode: T_MODE_1='RADIUS')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.Circle(cls, resolution: Integer=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, radius: Float=None, mode: T_MODE_1='RADIUS')` — class method; returns `OUT`.
 
 ## Curve Handle Positions
 
-> `bl_idname` : GeometryNodeInputCurveHandlePositions
-
-### class Curve
-
-```python
-Curve.handle_positions(cls, relative: Boolean = None)
-```
-
-```python
-prop = Curve.left_handle_position
-```
-
-```python
-prop = Curve.right_handle_position
-```
-
-```python
-prop = Curve.left_handle_offset
-```
-
-```python
-prop = Curve.right_handle_offset
-```
+Blender identifier: `GeometryNodeInputCurveHandlePositions`
 
 ### nd
 
-``` python
-nd.curve_handle_positions(cls, relative: Boolean = None)
-```
+- `nd.curve_handle_positions(cls, relative: Boolean=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.left_handle_position(self)` — property; returns `Left`.
+- `Curve.left_handle_offset(self)` — property; returns `Left`.
+- `Curve.right_handle_position(self)` — property; returns `Right`.
+- `Curve.right_handle_offset(self)` — property; returns `Right`.
 
 ## Curve Length
 
-> `bl_idname` : GeometryNodeCurveLength
-
-### class Curve
-
-```python
-Curve.length(self)
-```
+Blender identifier: `GeometryNodeCurveLength`
 
 ### nd
 
-``` python
-nd.curve_length(cls, curve: Curve = None)
-```
+- `nd.curve_length(cls, curve: Curve=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.length(self)` — method; returns `OUT`.
 
 ## Curve Line
 
-> `bl_idname` : GeometryNodeCurvePrimitiveLine
-
-### class Curve
-
-```python
-Curve.LinePoints(cls, start: Vector = None, end: Vector = None)
-```
-
-```python
-Curve.LineDirection(cls, start: Vector = None, direction: Vector = None, length: Float = None)
-```
-
-```python
-Curve.Line(cls,
-                    start: Vector = None,
-                    end: Vector = None,
-                    mode: Literal['POINTS', 'DIRECTION'] = 'POINTS')
-```
+Blender identifier: `GeometryNodeCurvePrimitiveLine`
 
 ### nd
 
-``` python
-nd.curve_line(cls,
-                    start: Vector = None,
-                    end: Vector = None,
-                    direction: Vector = None,
-                    length: Float = None,
-                    mode: Literal['POINTS', 'DIRECTION'] = 'POINTS')
-```
+- `nd.curve_line(cls, start: Vector=None, end: Vector=None, direction: Vector=None, length: Float=None, mode: T_MODE_5='POINTS')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.Line(cls, start: Vector=None, end: Vector=None, direction: Vector=None, length: Float=None, mode: T_MODE_5='POINTS')` — class method; returns `OUT`.
 
 ## Curve Tangent
 
-> `bl_idname` : GeometryNodeInputTangent
-
-### class Curve
-
-```python
-prop = Curve.tangent
-```
+Blender identifier: `GeometryNodeInputTangent`
 
 ### nd
 
-``` python
-nd.curve_tangent(self)
-```
+- `nd.curve_tangent(cls)` — property; returns `OUT`.
 
 ## Curve Tilt
 
-> `bl_idname` : GeometryNodeInputCurveTilt
-
-### class Curve
-
-```python
-prop = Curve.tilt
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.tilt
-```
+Blender identifier: `GeometryNodeInputCurveTilt`
 
 ### nd
 
-``` python
-nd.curve_tilt(self)
-```
+- `nd.curve_tilt(cls)` — property; returns `OUT`.
+
+### Spline
+
+- `Spline.tilt(self)` — property; returns `OUT`.
+
+### Curve
+
+- `Curve.tilt(self)` — property; returns `OUT`.
 
 ## Curve of Point
 
-> `bl_idname` : GeometryNodeCurveOfPoint
-
-### class Curve
-
-```python
-Curve.curve_of_point(cls, point_index: Integer = None)
-```
-
-### class SplinePoint
-
-```python
-Spline.points.curve_of_point(cls, point_index: Integer = None)
-```
-
-```python
-Spline.points.curve_index(cls, point_index: Integer = None)
-```
-
-```python
-Spline.points.index_in_curve(cls, point_index: Integer = None)
-```
+Blender identifier: `GeometryNodeCurveOfPoint`
 
 ### nd
 
-``` python
-nd.curve_of_point(cls, point_index: Integer = None)
-```
+- `nd.curve_of_point(cls, point_index: Integer=None)` — class method; returns `OUT`.
 
 ## Curve to Mesh
 
-> `bl_idname` : GeometryNodeCurveToMesh
-
-### class Curve
-
-```python
-Curve.to_mesh(self,
-                    profile_curve: Curve = None,
-                    scale: Float = None,
-                    fill_caps: Boolean = None,
-                    miter_scale: Boolean = None,
-                    miter_scale_limit: Float = None)
-```
+Blender identifier: `GeometryNodeCurveToMesh`
 
 ### nd
 
-``` python
-nd.curve_to_mesh(cls,
-                    curve: Curve = None,
-                    profile_curve: Curve = None,
-                    scale: Float = None,
-                    fill_caps: Boolean = None,
-                    miter_scale: Boolean = None,
-                    miter_scale_limit: Float = None)
-```
+- `nd.curve_to_mesh(cls, curve: Curve=None, profile_curve: Curve=None, scale: Float=None, fill_caps: Boolean=None, miter_scale: Boolean=None, miter_scale_limit: Float=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.to_mesh(self, profile_curve: Curve=None, scale: Float=None, fill_caps: Boolean=None, miter_scale: Boolean=None, miter_scale_limit: Float=None)` — method; returns `OUT`.
 
 ## Curve to Points
 
-> `bl_idname` : GeometryNodeCurveToPoints
-
-### class Curve
-
-```python
-Curve.to_points_evaluated(self)
-```
-
-```python
-Curve.to_points_count(self, count: Integer = None)
-```
-
-```python
-Curve.to_points_length(self, length: Float = None)
-```
-
-```python
-Curve.to_points(self,
-                    count: Integer = None,
-                    mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT')
-```
-
-### class SplinePoint
-
-```python
-Spline.points.to_points_evaluated(self)
-```
-
-```python
-Spline.points.to_points_count(self, count: Integer = None)
-```
-
-```python
-Spline.points.to_points_length(self, length: Float = None)
-```
-
-```python
-Spline.points.to_points(self,
-                    count: Integer = None,
-                    mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT')
-```
+Blender identifier: `GeometryNodeCurveToPoints`
 
 ### nd
 
-``` python
-nd.curve_to_points(cls,
-                    curve: Curve = None,
-                    count: Integer = None,
-                    length: Float = None,
-                    mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT')
-```
+- `nd.curve_to_points(cls, curve: Curve=None, count: Integer=None, length: Float=None, mode: T_MODE_6='COUNT')` — class method; returns `OUT`.
 
-## Curves Info
+### Curve
 
-> `bl_idname` : ShaderNodeHairInfo
-
-### snd
-
-``` python
-nd.curves_info(cls)
-```
+- `Curve.to_points(self, count: Integer=None, length: Float=None, mode: T_MODE_6='COUNT')` — method; returns `OUT`.
 
 ## Curves to Grease Pencil
 
-> `bl_idname` : GeometryNodeCurvesToGreasePencil
-
-### class Curve
-
-```python
-Curve.to_grease_pencil(self, instances_as_layers: Boolean = None)
-```
+Blender identifier: `GeometryNodeCurvesToGreasePencil`
 
 ### nd
 
-``` python
-nd.curves_to_grease_pencil(cls,
-                    curves: Curve = None,
-                    selection: Boolean = None,
-                    instances_as_layers: Boolean = None)
-```
+- `nd.curves_to_grease_pencil(cls, curves: Curve=None, selection: Boolean=None, instances_as_layers: Boolean=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.to_grease_pencil(self, instances_as_layers: Boolean=None)` — method; returns `OUT`.
 
 ## Cylinder
 
-> `bl_idname` : GeometryNodeMeshCylinder
-
-### class Mesh
-
-```python
-Mesh.Cylinder(cls,
-                    vertices: Integer = None,
-                    side_segments: Integer = None,
-                    fill_segments: Integer = None,
-                    radius: Float = None,
-                    depth: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON')
-```
+Blender identifier: `GeometryNodeMeshCylinder`
 
 ### nd
 
-``` python
-nd.cylinder(cls,
-                    vertices: Integer = None,
-                    side_segments: Integer = None,
-                    fill_segments: Integer = None,
-                    radius: Float = None,
-                    depth: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON')
-```
+- `nd.cylinder(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius: Float=None, depth: Float=None, fill_type: T_FILL_TYPE_1='NGON')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Cylinder(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius: Float=None, depth: Float=None, fill_type: T_FILL_TYPE_1='NGON')` — class method; returns `OUT`.
 
 ## Deactivate Voxels
 
-> `bl_idname` : GeometryNodeGridDeactivateVoxels
+Blender identifier: `GeometryNodeGridDeactivateVoxels`
 
 ### nd
 
-``` python
-nd.deactivate_voxels(cls,
-                    grid: Float = None,
-                    selection: Boolean = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.deactivate_voxels(cls, grid: Socket=None, selection: Boolean=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.deactivate_voxels(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.deactivate_voxels(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.deactivate_voxels(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.deactivate_voxels(self, selection: Boolean=None)` — method; returns `OUT`.
 
 ## Deform Curves on Surface
 
-> `bl_idname` : GeometryNodeDeformCurvesOnSurface
-
-### class Curve
-
-```python
-Curve.deform_on_surface(self)
-```
+Blender identifier: `GeometryNodeDeformCurvesOnSurface`
 
 ### nd
 
-``` python
-nd.deform_curves_on_surface(cls, curves: Curve = None)
-```
+- `nd.deform_curves_on_surface(cls, curves: Curve=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.deform_on_surface(self)` — method; returns `OUT`.
 
 ## Delete Geometry
 
-> `bl_idname` : GeometryNodeDeleteGeometry
-
-### class Point
-
-```python
-Mesh.points.delete_geometry_all(self)
-```
-
-```python
-Mesh.points.delete_geometry_edge_face(self)
-```
-
-```python
-Mesh.points.delete_geometry_only_face(self)
-```
-
-```python
-Mesh.points.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-Mesh.points.delete_all(self)
-```
-
-```python
-Mesh.points.delete_edge_face(self)
-```
-
-```python
-Mesh.points.delete_only_face(self)
-```
-
-```python
-Mesh.points.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-### class Edge
-
-```python
-Mesh.edges.delete_geometry_all(self)
-```
-
-```python
-Mesh.edges.delete_geometry_edge_face(self)
-```
-
-```python
-Mesh.edges.delete_geometry_only_face(self)
-```
-
-```python
-Mesh.edges.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-Mesh.edges.delete_all(self)
-```
-
-```python
-Mesh.edges.delete_edge_face(self)
-```
-
-```python
-Mesh.edges.delete_only_face(self)
-```
-
-```python
-Mesh.edges.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-### class Face
-
-```python
-Mesh.faces.delete_geometry_all(self)
-```
-
-```python
-Mesh.faces.delete_geometry_edge_face(self)
-```
-
-```python
-Mesh.faces.delete_geometry_only_face(self)
-```
-
-```python
-Mesh.faces.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-Mesh.faces.delete_all(self)
-```
-
-```python
-Mesh.faces.delete_edge_face(self)
-```
-
-```python
-Mesh.faces.delete_only_face(self)
-```
-
-```python
-Mesh.faces.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-### class Spline
-
-```python
-Spline.splines.delete_geometry_all(self)
-```
-
-```python
-Spline.splines.delete_geometry_edge_face(self)
-```
-
-```python
-Spline.splines.delete_geometry_only_face(self)
-```
-
-```python
-Spline.splines.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-Spline.splines.delete_all(self)
-```
-
-```python
-Spline.splines.delete_edge_face(self)
-```
-
-```python
-Spline.splines.delete_only_face(self)
-```
-
-```python
-Spline.splines.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-### class Instance
-
-```python
-Instances.insts.delete_geometry_all(self)
-```
-
-```python
-Instances.insts.delete_geometry_edge_face(self)
-```
-
-```python
-Instances.insts.delete_geometry_only_face(self)
-```
-
-```python
-Instances.insts.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-Instances.insts.delete_all(self)
-```
-
-```python
-Instances.insts.delete_edge_face(self)
-```
-
-```python
-Instances.insts.delete_only_face(self)
-```
-
-```python
-Instances.insts.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.delete_geometry_all(self)
-```
-
-```python
-GreasePencil.layers.delete_geometry_edge_face(self)
-```
-
-```python
-GreasePencil.layers.delete_geometry_only_face(self)
-```
-
-```python
-GreasePencil.layers.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
-
-```python
-GreasePencil.layers.delete_all(self)
-```
-
-```python
-GreasePencil.layers.delete_edge_face(self)
-```
-
-```python
-GreasePencil.layers.delete_only_face(self)
-```
-
-```python
-GreasePencil.layers.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
+Blender identifier: `GeometryNodeDeleteGeometry`
 
 ### nd
 
-``` python
-nd.delete_geometry(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT',
-                    mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
-```
+- `nd.delete_geometry(cls, geometry: Geometry=None, selection: Boolean=None, mode: T_MODE_7='ALL', domain: T_DOMAIN_3='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
+
+### Face
+
+- `Face.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.delete(self, mode: T_MODE_7='ALL')` — method; returns `OUT`.
 
 ## Dial Gizmo
 
-> `bl_idname` : GeometryNodeGizmoDial
-
-### class Float
-
-```python
-Float.dial_gizmo(self,
-                    *value: Float,
-                    position: Vector = None,
-                    up: Vector = None,
-                    screen_space: Boolean = None,
-                    radius: Float = None,
-                    color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'] = 'PRIMARY')
-```
+Blender identifier: `GeometryNodeGizmoDial`
 
 ### nd
 
-``` python
-nd.dial_gizmo(cls,
-                    *value: Float,
-                    position: Vector = None,
-                    up: Vector = None,
-                    screen_space: Boolean = None,
-                    radius: Float = None,
-                    color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'] = 'PRIMARY')
-```
+- `nd.dial_gizmo(cls, *value: Float, position: Vector=None, up: Vector=None, screen_space: Boolean=None, radius: Float=None, color_id: T_COLOR_ID_1='PRIMARY')` — class method; returns `OUT`.
 
-## Diffuse BSDF
+### Float
 
-> `bl_idname` : ShaderNodeBsdfDiffuse
-
-### class Shader
-
-```python
-Shader.Diffuse(cls, color: Color = None, roughness: Float = None, normal: Vector = None)
-```
-
-### snd
-
-``` python
-nd.diffuse_bsdf(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    normal: Vector = None,
-                    weight: Float = None)
-```
-
-## Displacement
-
-> `bl_idname` : ShaderNodeDisplacement
-
-### class Float
-
-```python
-Float.displacement(self,
-                    midlevel: Float = None,
-                    scale: Float = None,
-                    normal: Vector = None,
-                    space: Literal['OBJECT', 'WORLD'] = 'OBJECT')
-```
-
-### snd
-
-``` python
-nd.displacement(cls,
-                    height: Float = None,
-                    midlevel: Float = None,
-                    scale: Float = None,
-                    normal: Vector = None,
-                    space: Literal['OBJECT', 'WORLD'] = 'OBJECT')
-```
+- `Float.dial_gizmo(self, *value: Float, position: Vector=None, up: Vector=None, screen_space: Boolean=None, radius: Float=None, color_id: T_COLOR_ID_1='PRIMARY')` — method; returns `OUT`.
 
 ## Distribute Points in Grid
 
-> `bl_idname` : GeometryNodeDistributePointsInGrid
-
-### class Float
-
-```python
-Float.distribute_points_in_grid_density_random(self, density: Float = None, seed: Integer = None)
-```
-
-```python
-Float.distribute_points_in_grid_density_grid(self, spacing: Vector = None, threshold: Float = None)
-```
-
-```python
-Float.distribute_points_in_grid(self,
-                    density: Float = None,
-                    seed: Integer = None,
-                    mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID'] = 'DENSITY_RANDOM')
-```
+Blender identifier: `GeometryNodeDistributePointsInGrid`
 
 ### nd
 
-``` python
-nd.distribute_points_in_grid(cls,
-                    grid: Float = None,
-                    density: Float = None,
-                    seed: Integer = None,
-                    spacing: Vector = None,
-                    threshold: Float = None,
-                    mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID'] = 'DENSITY_RANDOM')
-```
+- `nd.distribute_points_in_grid(cls, grid: Float=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: T_MODE_8='DENSITY_RANDOM')` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.DistributePointsInGrid(cls, grid: Float=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: T_MODE_8='DENSITY_RANDOM')` — class method; returns `OUT`.
 
 ## Distribute Points in Volume
 
-> `bl_idname` : GeometryNodeDistributePointsInVolume
-
-### class Volume
-
-```python
-Volume.distribute_points(self,
-                    mode: Literal['Random', 'Grid'] = None,
-                    density: Float = None,
-                    seed: Integer = None,
-                    spacing: Vector = None,
-                    threshold: Float = None)
-```
+Blender identifier: `GeometryNodeDistributePointsInVolume`
 
 ### nd
 
-``` python
-nd.distribute_points_in_volume(cls,
-                    volume: Volume = None,
-                    mode: Literal['Random', 'Grid'] = None,
-                    density: Float = None,
-                    seed: Integer = None,
-                    spacing: Vector = None,
-                    threshold: Float = None)
-```
+- `nd.distribute_points_in_volume(cls, volume: Volume=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: Menu=None)` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.distribute_points_in(self, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Distribute Points on Faces
 
-> `bl_idname` : GeometryNodeDistributePointsOnFaces
-
-### class Mesh
-
-```python
-Mesh.distribute_points_on_faces(self,
-                    density: Float = None,
-                    seed: Integer = None,
-                    distribute_method: Literal['RANDOM', 'POISSON'] = 'RANDOM')
-```
-
-```python
-Mesh.distribute_points_on_faces_random(self, density: Float = None, seed: Integer = None)
-```
-
-```python
-Mesh.distribute_points_on_faces_poisson(self,
-                    distance_min: Float = None,
-                    density_max: Float = None,
-                    density_factor: Float = None,
-                    seed: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.distribute_points(self,
-                    density: Float = None,
-                    seed: Integer = None,
-                    distribute_method: Literal['RANDOM', 'POISSON'] = 'RANDOM')
-```
-
-```python
-Mesh.faces.distribute_points_random(self, density: Float = None, seed: Integer = None)
-```
-
-```python
-Mesh.faces.distribute_points_poisson(self,
-                    distance_min: Float = None,
-                    density_max: Float = None,
-                    density_factor: Float = None,
-                    seed: Integer = None)
-```
+Blender identifier: `GeometryNodeDistributePointsOnFaces`
 
 ### nd
 
-``` python
-nd.distribute_points_on_faces(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    distance_min: Float = None,
-                    density_max: Float = None,
-                    density: Float = None,
-                    density_factor: Float = None,
-                    seed: Integer = None,
-                    distribute_method: Literal['RANDOM', 'POISSON'] = 'RANDOM')
-```
+- `nd.distribute_points_on_faces(cls, mesh: Mesh=None, selection: Boolean=None, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: T_DISTRIBUTE_METHOD_1='RANDOM')` — class method; returns `OUT`.
+
+### Face
+
+- `Face.distribute_points(self, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: T_DISTRIBUTE_METHOD_1='RANDOM')` — method; returns `OUT`.
 
 ## Domain Size
 
-> `bl_idname` : GeometryNodeAttributeDomainSize
-
-### class Mesh
-
-```python
-Mesh.domain_size(self)
-```
-
-### class Curve
-
-```python
-Curve.domain_size(self)
-```
-
-### class Cloud
-
-```python
-Cloud.domain_size(self)
-```
-
-### class Instances
-
-```python
-Instances.domain_size(self)
-```
-
-### class GreasePencil
-
-```python
-GreasePencil.domain_size(self)
-```
+Blender identifier: `GeometryNodeAttributeDomainSize`
 
 ### nd
 
-``` python
-nd.domain_size(cls,
-                    geometry: Geometry = None,
-                    component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'] = 'MESH')
-```
+- `nd.domain_size(cls, geometry: Geometry=None, component: T_COMPONENT_1='MESH')` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.domain_size(self, component: T_COMPONENT_1='MESH')` — method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.domain_size(self)` — method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.domain_size(self)` — method; returns `OUT`.
+
+### Curve
+
+- `Curve.domain_size(self)` — method; returns `OUT`.
+
+### Instances
+
+- `Instances.domain_size(self)` — method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.domain_size(self)` — method; returns `OUT`.
 
 ## Dual Mesh
 
-> `bl_idname` : GeometryNodeDualMesh
-
-### class Mesh
-
-```python
-Mesh.dual(self, keep_boundaries: Boolean = None)
-```
+Blender identifier: `GeometryNodeDualMesh`
 
 ### nd
 
-``` python
-nd.dual_mesh(cls, mesh: Mesh = None, keep_boundaries: Boolean = None)
-```
+- `nd.dual_mesh(cls, mesh: Mesh=None, keep_boundaries: Boolean=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.dual(self, keep_boundaries: Boolean=None)` — method; returns `OUT`.
 
 ## Duplicate Elements
 
-> `bl_idname` : GeometryNodeDuplicateElements
-
-### class Point
-
-```python
-Mesh.points.duplicate(self, amount: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.duplicate(self, amount: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.duplicate(self, amount: Integer = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.duplicate(self, amount: Integer = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.duplicate(self, amount: Integer = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.duplicate(self, amount: Integer = None)
-```
+Blender identifier: `GeometryNodeDuplicateElements`
 
 ### nd
 
-``` python
-nd.duplicate_elements(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    amount: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'] = 'POINT')
-```
+- `nd.duplicate_elements(cls, geometry: Geometry=None, selection: Boolean=None, amount: Integer=None, domain: T_DOMAIN_4='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.duplicate_elements(self, amount: Integer=None)` — method; returns `OUT`.
 
 ## Edge Angle
 
-> `bl_idname` : GeometryNodeInputMeshEdgeAngle
-
-### class Mesh
-
-```python
-prop = Mesh.edge_angle
-```
-
-```python
-prop = Mesh.unsigned_edge_angle
-```
-
-```python
-prop = Mesh.signed_edge_angle
-```
-
-### class Edge
-
-```python
-prop = Mesh.edges.edge_angle
-```
-
-```python
-prop = Mesh.edges.unsigned_angle
-```
-
-```python
-prop = Mesh.edges.signed_angle
-```
+Blender identifier: `GeometryNodeInputMeshEdgeAngle`
 
 ### nd
 
-``` python
-nd.edge_angle(cls)
-```
+- `nd.edge_angle(cls)` — class method; returns `OUT`.
 
 ## Edge Neighbors
 
-> `bl_idname` : GeometryNodeInputMeshEdgeNeighbors
-
-### class Mesh
-
-```python
-prop = Mesh.edge_neighbors
-```
-
-### class Edge
-
-```python
-prop = Mesh.edges.face_count
-```
+Blender identifier: `GeometryNodeInputMeshEdgeNeighbors`
 
 ### nd
 
-``` python
-nd.edge_neighbors(self)
-```
+- `nd.edge_neighbors(cls)` — property; returns `OUT`.
 
 ## Edge Paths to Curves
 
-> `bl_idname` : GeometryNodeEdgePathsToCurves
-
-### class Mesh
-
-```python
-Mesh.edge_paths_to_curves(self, start_vertices: Boolean = None, next_vertex_index: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.paths_to_curves(self, start_vertices: Boolean = None, next_vertex_index: Integer = None)
-```
+Blender identifier: `GeometryNodeEdgePathsToCurves`
 
 ### nd
 
-``` python
-nd.edge_paths_to_curves(cls,
-                    mesh: Mesh = None,
-                    start_vertices: Boolean = None,
-                    next_vertex_index: Integer = None)
-```
+- `nd.edge_paths_to_curves(cls, mesh: Mesh=None, start_vertices: Boolean=None, next_vertex_index: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.to_curves(self, start_vertices: Boolean=None, next_vertex_index: Integer=None)` — method; returns `OUT`.
 
 ## Edge Paths to Selection
 
-> `bl_idname` : GeometryNodeEdgePathsToSelection
-
-### class Mesh
-
-```python
-Mesh.edge_paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
-```
+Blender identifier: `GeometryNodeEdgePathsToSelection`
 
 ### nd
 
-``` python
-nd.edge_paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
-```
+- `nd.edge_paths_to_selection(cls, start_vertices: Boolean=None, next_vertex_index: Integer=None)` — class method; returns `OUT`.
 
 ## Edge Vertices
 
-> `bl_idname` : GeometryNodeInputMeshEdgeVertices
-
-### class Mesh
-
-```python
-prop = Mesh.edge_vertices
-```
-
-### class Edge
-
-```python
-prop = Mesh.edges.edge_vertices
-```
-
-```python
-prop = Mesh.edges.vertex_index_1
-```
-
-```python
-prop = Mesh.edges.vertex_index_2
-```
-
-```python
-prop = Mesh.edges.position_1
-```
-
-```python
-prop = Mesh.edges.position_2
-```
+Blender identifier: `GeometryNodeInputMeshEdgeVertices`
 
 ### nd
 
-``` python
-nd.edge_vertices(cls)
-```
+- `nd.edge_vertices(cls)` — class method; returns `OUT`.
 
 ## Edges of Corner
 
-> `bl_idname` : GeometryNodeEdgesOfCorner
-
-### class Mesh
-
-```python
-Mesh.edges_of_corner(cls, corner_index: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.edges(cls, corner_index: Integer = None)
-```
-
-```python
-Mesh.corners.next_edge_index(cls, corner_index: Integer = None)
-```
-
-```python
-Mesh.corners.previous_edge_index(cls, corner_index: Integer = None)
-```
+Blender identifier: `GeometryNodeEdgesOfCorner`
 
 ### nd
 
-``` python
-nd.edges_of_corner(cls, corner_index: Integer = None)
-```
+- `nd.edges_of_corner(cls, corner_index: Integer=None)` — class method; returns `OUT`.
 
 ## Edges of Vertex
 
-> `bl_idname` : GeometryNodeEdgesOfVertex
-
-### class Mesh
-
-```python
-Mesh.edges_of_vertex(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-### class Vertex
-
-```python
-Mesh.points.edges(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.points.edge_index(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Mesh.points.edges_total(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+Blender identifier: `GeometryNodeEdgesOfVertex`
 
 ### nd
 
-``` python
-nd.edges_of_vertex(cls,
-                    vertex_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+- `nd.edges_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None)` — class method; returns `OUT`.
 
 ## Edges to Face Groups
 
-> `bl_idname` : GeometryNodeEdgesToFaceGroups
-
-### class Mesh
-
-```python
-Mesh.edges_to_face_groups(cls, boundary_edges: Boolean = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.to_face_groups(cls, boundary_edges: Boolean = None)
-```
+Blender identifier: `GeometryNodeEdgesToFaceGroups`
 
 ### nd
 
-``` python
-nd.edges_to_face_groups(cls, boundary_edges: Boolean = None)
-```
-
-## Emission
-
-> `bl_idname` : ShaderNodeEmission
-
-### class Shader
-
-```python
-Shader.Emission(cls, color: Color = None, strength: Float = None)
-```
-
-### snd
-
-``` python
-nd.emission(cls, color: Color = None, strength: Float = None, weight: Float = None)
-```
+- `nd.edges_to_face_groups(cls, boundary_edges: Boolean=None)` — class method; returns `OUT`.
 
 ## Enable Output
 
-> `bl_idname` : NodeEnableOutput
-
-### class Float
-
-```python
-Float.enable_output(self, enable: Boolean = None)
-```
-
-### class Integer
-
-```python
-Integer.enable_output(self, enable: Boolean = None)
-```
-
-### class Boolean
-
-```python
-Boolean.enable_output(self, enable: Boolean = None)
-```
-
-### class Vector
-
-```python
-Vector.enable_output(self, enable: Boolean = None)
-```
-
-### class Color
-
-```python
-Color.enable_output(self, enable: Boolean = None)
-```
-
-### class Rotation
-
-```python
-Rotation.enable_output(self, enable: Boolean = None)
-```
-
-### class Matrix
-
-```python
-Matrix.enable_output(self, enable: Boolean = None)
-```
-
-### class String
-
-```python
-String.enable_output(self, enable: Boolean = None)
-```
-
-### class Menu
-
-```python
-Menu.enable_output(self, enable: Boolean = None)
-```
-
-### class Object
-
-```python
-Object.enable_output(self, enable: Boolean = None)
-```
-
-### class Image
-
-```python
-Image.enable_output(self, enable: Boolean = None)
-```
-
-### class Geometry
-
-```python
-Geometry.enable_output(self, enable: Boolean = None)
-```
-
-### class Collection
-
-```python
-Collection.enable_output(self, enable: Boolean = None)
-```
-
-### class Material
-
-```python
-Material.enable_output(self, enable: Boolean = None)
-```
-
-### class Bundle
-
-```python
-Bundle.enable_output(self, enable: Boolean = None)
-```
-
-### class Closure
-
-```python
-Closure.enable_output(self, enable: Boolean = None)
-```
-
-### class Font
-
-```python
-Font.enable_output(self, enable: Boolean = None)
-```
-
-### class Sound
-
-```python
-Sound.enable_output(self, enable: Boolean = None)
-```
+Blender identifier: `NodeEnableOutput`
 
 ### nd
 
-``` python
-nd.enable_output(cls,
-                    enable: Boolean = None,
-                    value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT')
-```
+- `nd.enable_output(cls, enable: Boolean=None, value: Socket=None, data_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.enable_output(cls,
-                    enable: Boolean = None,
-                    value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE'] = 'FLOAT')
-```
+- `Float.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Color
+
+- `Color.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### String
+
+- `String.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Object
+
+- `Object.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Image
+
+- `Image.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Material
+
+- `Material.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Font
+
+- `Font.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.enable_output(self, enable: Boolean=None)` — method; returns `OUT`.
 
 ## Endpoint Selection
 
-> `bl_idname` : GeometryNodeCurveEndpointSelection
-
-### class Curve
-
-```python
-Curve.endpoint_selection(cls, start_size: Integer = None, end_size: Integer = None)
-```
+Blender identifier: `GeometryNodeCurveEndpointSelection`
 
 ### nd
 
-``` python
-nd.endpoint_selection(cls, start_size: Integer = None, end_size: Integer = None)
-```
-
-## Environment Texture
-
-> `bl_idname` : ShaderNodeTexEnvironment
-
-### class Vector
-
-```python
-Vector.environment_texture(self,
-                    image = None,
-                    interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
-                    projection: Literal['EQUIRECTANGULAR', 'MIRROR_BALL'] = 'EQUIRECTANGULAR')
-```
-
-### snd
-
-``` python
-nd.environment_texture(cls,
-                    vector: Vector = None,
-                    image = None,
-                    interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
-                    projection: Literal['EQUIRECTANGULAR', 'MIRROR_BALL'] = 'EQUIRECTANGULAR')
-```
+- `nd.endpoint_selection(cls, start_size: Integer=None, end_size: Integer=None)` — class method; returns `OUT`.
 
 ## Euler to Rotation
 
-> `bl_idname` : FunctionNodeEulerToRotation
-
-### class Rotation
-
-```python
-Rotation.FromEuler(cls, euler: Vector = None)
-```
-
-```python
-Rotation.FromList(cls, value)
-```
-
-### class Vector
-
-```python
-Vector.to_rotation(self)
-```
+Blender identifier: `FunctionNodeEulerToRotation`
 
 ### nd
 
-``` python
-nd.euler_to_rotation(cls, euler: Vector = None)
-```
+- `nd.euler_to_rotation(cls, euler: Vector=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.to_rotation(self)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.FromEuler(cls, euler: Vector=None)` — class method; returns `OUT`.
 
 ## Evaluate Closure
 
-> `bl_idname` : NodeEvaluateClosure
+Blender identifier: `NodeEvaluateClosure`
 
 ### nd
 
-``` python
-nd.evaluate_closure(cls,
-                    closure: Closure = None,
-                    active_input_index = 0,
-                    active_output_index = 0,
-                    define_signature = False)
-```
+- `nd.evaluate_closure(cls, closure: Closure=None, named_sockets: dict={}, define_signature: bool=False, **sockets)` — class method; returns `OUT`.
 
-### snd
+### Closure
 
-``` python
-nd.evaluate_closure(cls,
-                    closure: Closure = None,
-                    active_input_index = 0,
-                    active_output_index = 0,
-                    define_signature = False)
-```
+- `Closure.evaluate(self, named_sockets: dict={}, define_signature: bool=False, **sockets)` — method; returns `OUT`.
 
 ## Evaluate at Index
 
-> `bl_idname` : GeometryNodeFieldAtIndex
-
-### class Point
-
-```python
-Mesh.points.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.evaluate_at_index(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None)
-```
+Blender identifier: `GeometryNodeFieldAtIndex`
 
 ### nd
 
-``` python
-nd.evaluate_at_index(cls,
-                    value: Float = None,
-                    index: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.evaluate_at_index(cls, value: Socket=None, index: Integer=None, domain: T_DOMAIN_1='POINT', data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.evaluate_at_index(self, value: Socket=None, index: Integer=None)` — method; returns `OUT`.
 
 ## Evaluate on Domain
 
-> `bl_idname` : GeometryNodeFieldOnDomain
-
-### class Point
-
-```python
-Mesh.points.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.evaluate_on_domain(cls,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
-```
+Blender identifier: `GeometryNodeFieldOnDomain`
 
 ### nd
 
-``` python
-nd.evaluate_on_domain(cls,
-                    value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.evaluate_on_domain(cls, value: Socket=None, domain: T_DOMAIN_1='POINT', data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.evaluate_on_domain(self, value: Socket=None)` — method; returns `OUT`.
 
 ## Extrude Mesh
 
-> `bl_idname` : GeometryNodeExtrudeMesh
-
-### class Mesh
-
-```python
-Mesh.extrude_vertices(self, offset: Vector = None, offset_scale: Float = None)
-```
-
-```python
-Mesh.extrude_edges(self, offset: Vector = None, offset_scale: Float = None)
-```
-
-```python
-Mesh.extrude_faces(self,
-                    offset: Vector = None,
-                    offset_scale: Float = None,
-                    individual: Boolean = None)
-```
-
-```python
-Mesh.extrude(self,
-                    offset: Vector = None,
-                    offset_scale: Float = None,
-                    individual: Boolean = None,
-                    mode: Literal['VERTICES', 'EDGES', 'FACES'] = 'FACES')
-```
-
-### class Vertex
-
-```python
-Mesh.points.extrude(self, offset: Vector = None, offset_scale: Float = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.extrude(self, offset: Vector = None, offset_scale: Float = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.extrude(self,
-                    offset: Vector = None,
-                    offset_scale: Float = None,
-                    individual: Boolean = None)
-```
+Blender identifier: `GeometryNodeExtrudeMesh`
 
 ### nd
 
-``` python
-nd.extrude_mesh(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    offset: Vector = None,
-                    offset_scale: Float = None,
-                    individual: Boolean = None,
-                    mode: Literal['VERTICES', 'EDGES', 'FACES'] = 'FACES')
-```
+- `nd.extrude_mesh(cls, mesh: Mesh=None, selection: Boolean=None, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None, mode: T_MODE_9='FACES')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.extrude(self, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None, mode: T_MODE_9='FACES')` — method; returns `OUT`.
+
+### Vertex
+
+- `Vertex.extrude(self, offset: Vector=None, offset_scale: Float=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.extrude(self, offset: Vector=None, offset_scale: Float=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.extrude(self, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None)` — method; returns `OUT`.
 
 ## Face Area
 
-> `bl_idname` : GeometryNodeInputMeshFaceArea
-
-### class Mesh
-
-```python
-prop = Mesh.face_area
-```
-
-### class Face
-
-```python
-prop = Mesh.faces.area
-```
+Blender identifier: `GeometryNodeInputMeshFaceArea`
 
 ### nd
 
-``` python
-nd.face_area(self)
-```
+- `nd.face_area(cls)` — property; returns `OUT`.
 
 ## Face Group Boundaries
 
-> `bl_idname` : GeometryNodeMeshFaceSetBoundaries
-
-### class Mesh
-
-```python
-Mesh.face_group_boundaries(cls, face_group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeMeshFaceSetBoundaries`
 
 ### nd
 
-``` python
-nd.face_group_boundaries(cls, face_group_id: Integer = None)
-```
+- `nd.face_group_boundaries(cls, face_group_id: Integer=None)` — class method; returns `OUT`.
 
 ## Face Neighbors
 
-> `bl_idname` : GeometryNodeInputMeshFaceNeighbors
-
-### class Mesh
-
-```python
-prop = Mesh.face_neighbors
-```
-
-### class Face
-
-```python
-prop = Mesh.faces.neighbors
-```
-
-```python
-prop = Mesh.faces.neighbors_vertex_count
-```
-
-```python
-prop = Mesh.faces.neighbors_face_count
-```
+Blender identifier: `GeometryNodeInputMeshFaceNeighbors`
 
 ### nd
 
-``` python
-nd.face_neighbors(cls)
-```
+- `nd.face_neighbors(cls)` — class method; returns `OUT`.
 
 ## Face Set
 
-> `bl_idname` : GeometryNodeToolFaceSet
+Blender identifier: `GeometryNodeToolFaceSet`
 
 ### nd
 
-``` python
-nd.face_set(cls)
-```
+- `nd.face_set(cls)` — class method; returns `OUT`.
 
 ## Face of Corner
 
-> `bl_idname` : GeometryNodeFaceOfCorner
-
-### class Mesh
-
-```python
-Mesh.face_of_corner(cls, corner_index: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.face(cls, corner_index: Integer = None)
-```
-
-```python
-Mesh.corners.face_index(cls, corner_index: Integer = None)
-```
-
-```python
-Mesh.corners.index_in_face(cls, corner_index: Integer = None)
-```
+Blender identifier: `GeometryNodeFaceOfCorner`
 
 ### nd
 
-``` python
-nd.face_of_corner(cls, corner_index: Integer = None)
-```
+- `nd.face_of_corner(cls, corner_index: Integer=None)` — class method; returns `OUT`.
 
 ## Field Average
 
-> `bl_idname` : GeometryNodeFieldAverage
-
-### class Point
-
-```python
-Mesh.points.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Edge
-
-```python
-Mesh.edges.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Face
-
-```python
-Mesh.faces.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Corner
-
-```python
-Mesh.corners.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Spline
-
-```python
-Spline.splines.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Instance
-
-```python
-Instances.insts.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.field_average(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+Blender identifier: `GeometryNodeFieldAverage`
 
 ### nd
 
-``` python
-nd.field_average(cls,
-                    value: Float = None,
-                    group_id: Integer = None,
-                    data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.field_average(cls, value: Socket=None, group_id: Integer=None, data_type: T_DATA_TYPE_3='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.field_average(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Field Min & Max
 
-> `bl_idname` : GeometryNodeFieldMinAndMax
-
-### class Point
-
-```python
-Mesh.points.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Edge
-
-```python
-Mesh.edges.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Face
-
-```python
-Mesh.faces.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Corner
-
-```python
-Mesh.corners.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Spline
-
-```python
-Spline.splines.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Instance
-
-```python
-Instances.insts.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.field_min_max(cls,
-                    value: Float | Integer | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+Blender identifier: `GeometryNodeFieldMinAndMax`
 
 ### nd
 
-``` python
-nd.field_min_max(cls,
-                    value: Float = None,
-                    group_id: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.field_min_max(cls, value: Socket=None, group_id: Integer=None, data_type: T_DATA_TYPE_9='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.field_min_max(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Field Variance
 
-> `bl_idname` : GeometryNodeFieldVariance
-
-### class Point
-
-```python
-Mesh.points.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Edge
-
-```python
-Mesh.edges.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Face
-
-```python
-Mesh.faces.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Corner
-
-```python
-Mesh.corners.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Spline
-
-```python
-Spline.splines.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Instance
-
-```python
-Instances.insts.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.field_variance(cls,
-                    value: Float | Vector = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+Blender identifier: `GeometryNodeFieldVariance`
 
 ### nd
 
-``` python
-nd.field_variance(cls,
-                    value: Float = None,
-                    group_id: Integer = None,
-                    data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.field_variance(cls, value: Socket=None, group_id: Integer=None, data_type: T_DATA_TYPE_3='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.field_variance(self, value: Socket=None, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Field to Grid
 
-> `bl_idname` : GeometryNodeFieldToGrid
-
-### class Float
-
-```python
-Float.field_to_grid(self, named_sockets: dict = {}, **sockets)
-```
-
-### class Integer
-
-```python
-Integer.field_to_grid(self, named_sockets: dict = {}, **sockets)
-```
-
-### class Boolean
-
-```python
-Boolean.field_to_grid(self, named_sockets: dict = {}, **sockets)
-```
-
-### class Vector
-
-```python
-Vector.field_to_grid(self, named_sockets: dict = {}, **sockets)
-```
+Blender identifier: `GeometryNodeFieldToGrid`
 
 ### nd
 
-``` python
-nd.field_to_grid(cls,
-                    named_sockets: dict = {},
-                    topology: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT',
-                    **sockets)
-```
+- `nd.field_to_grid(cls, topology: Socket=None, named_sockets: dict={}, data_type: T_DATA_TYPE_5='FLOAT', **sockets)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.field_to_grid(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.field_to_grid(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.field_to_grid(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.field_to_grid(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
 
 ## Field to List
 
-> `bl_idname` : GeometryNodeFieldToList
-
-### class Socket
-
-```python
-Socket.field_to_list(self, count, **values)
-```
-
-```python
-Socket.to_list(self, count=None)
-```
+Blender identifier: `GeometryNodeFieldToList`
 
 ### nd
 
-``` python
-nd.field_to_list(cls, named_sockets: dict = {}, count: Integer = None, **sockets)
-```
+- `nd.field_to_list(cls, count: Integer=None, named_sockets: dict={}, **sockets)` — class method; returns `OUT`.
+
+### Integer
+
+- `Integer.field_to_list(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
 
 ## Fill Curve
 
-> `bl_idname` : GeometryNodeFillCurve
-
-### class Curve
-
-```python
-Curve.fill(self,
-                    group_id: Integer = None,
-                    mode: Literal['Triangles', 'N-gons'] = None,
-                    fill_rule: Literal['Even-Odd', 'Non-Zero'] = None)
-```
+Blender identifier: `GeometryNodeFillCurve`
 
 ### nd
 
-``` python
-nd.fill_curve(cls,
-                    curve: Curve = None,
-                    group_id: Integer = None,
-                    mode: Literal['Triangles', 'N-gons'] = None,
-                    fill_rule: Literal['Even-Odd', 'Non-Zero'] = None)
-```
+- `nd.fill_curve(cls, curve: Curve=None, group_id: Integer=None, mode: Menu=None, fill_rule: Menu=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.fill(self, group_id: Integer=None, mode: Menu=None, fill_rule: Menu=None)` — method; returns `OUT`.
 
 ## Fillet Curve
 
-> `bl_idname` : GeometryNodeFilletCurve
-
-### class Curve
-
-```python
-Curve.fillet(self,
-                    radius: Float = None,
-                    limit_radius: Boolean = None,
-                    mode: Literal['Bézier', 'Poly'] = None,
-                    count: Integer = None)
-```
+Blender identifier: `GeometryNodeFilletCurve`
 
 ### nd
 
-``` python
-nd.fillet_curve(cls,
-                    curve: Curve = None,
-                    radius: Float = None,
-                    limit_radius: Boolean = None,
-                    mode: Literal['Bézier', 'Poly'] = None,
-                    count: Integer = None)
-```
+- `nd.fillet_curve(cls, curve: Curve=None, radius: Float=None, limit_radius: Boolean=None, count: Integer=None, mode: Menu=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.fillet(self, radius: Float=None, limit_radius: Boolean=None, count: Integer=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Filter List
 
-> `bl_idname` : GeometryNodeFilterList
-
-### class Float
-
-```python
-Float.filter_list(self, selection: Boolean = None)
-```
-
-### class Integer
-
-```python
-Integer.filter_list(self, selection: Boolean = None)
-```
-
-### class Boolean
-
-```python
-Boolean.filter_list(self, selection: Boolean = None)
-```
-
-### class Vector
-
-```python
-Vector.filter_list(self, selection: Boolean = None)
-```
-
-### class Color
-
-```python
-Color.filter_list(self, selection: Boolean = None)
-```
-
-### class Rotation
-
-```python
-Rotation.filter_list(self, selection: Boolean = None)
-```
-
-### class Matrix
-
-```python
-Matrix.filter_list(self, selection: Boolean = None)
-```
-
-### class String
-
-```python
-String.filter_list(self, selection: Boolean = None)
-```
-
-### class Menu
-
-```python
-Menu.filter_list(self, selection: Boolean = None)
-```
-
-### class Object
-
-```python
-Object.filter_list(self, selection: Boolean = None)
-```
-
-### class Image
-
-```python
-Image.filter_list(self, selection: Boolean = None)
-```
-
-### class Geometry
-
-```python
-Geometry.filter_list(self)
-```
-
-### class Collection
-
-```python
-Collection.filter_list(self, selection: Boolean = None)
-```
-
-### class Material
-
-```python
-Material.filter_list(self, selection: Boolean = None)
-```
-
-### class Bundle
-
-```python
-Bundle.filter_list(self, selection: Boolean = None)
-```
-
-### class Closure
-
-```python
-Closure.filter_list(self, selection: Boolean = None)
-```
-
-### class Font
-
-```python
-Font.filter_list(self, selection: Boolean = None)
-```
-
-### class Sound
-
-```python
-Sound.filter_list(self, selection: Boolean = None)
-```
+Blender identifier: `GeometryNodeFilterList`
 
 ### nd
 
-``` python
-nd.filter_list(cls,
-                    list: Float = None,
-                    selection: Boolean = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT')
-```
+- `nd.filter_list(cls, list: Socket=None, selection: Boolean=None, socket_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Color
+
+- `Color.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### String
+
+- `String.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Object
+
+- `Object.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Image
+
+- `Image.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Material
+
+- `Material.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Font
+
+- `Font.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.filter_list(self, selection: Boolean=None)` — method; returns `OUT`.
 
 ## Find in String
 
-> `bl_idname` : FunctionNodeFindInString
-
-### class String
-
-```python
-String.find_in_string(self, search: String = None, mode: Literal['From Start', 'From End'] = None)
-```
-
-```python
-String.find(self, search: String = None, mode: Literal['From Start', 'From End'] = None)
-```
+Blender identifier: `FunctionNodeFindInString`
 
 ### nd
 
-``` python
-nd.find_in_string(cls,
-                    string: String = None,
-                    search: String = None,
-                    mode: Literal['From Start', 'From End'] = None)
-```
+- `nd.find_in_string(cls, string: String=None, search: String=None, mode: Menu=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.find_in_string(cls,
-                    string: String = None,
-                    search: String = None,
-                    mode: Literal['From Start', 'From End'] = None)
-```
+- `String.find_in_string(self, search: String=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Flip Faces
 
-> `bl_idname` : GeometryNodeFlipFaces
-
-### class Mesh
-
-```python
-Mesh.flip_faces(self)
-```
+Blender identifier: `GeometryNodeFlipFaces`
 
 ### nd
 
-``` python
-nd.flip_faces(cls, mesh: Mesh = None, selection: Boolean = None)
-```
+- `nd.flip_faces(cls, mesh: Mesh=None, selection: Boolean=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.flip_faces(self)` — method; returns `OUT`.
 
 ## Float Curve
 
-> `bl_idname` : ShaderNodeFloatCurve
+Blender identifier: `ShaderNodeFloatCurve`
 
 ### nd
 
-``` python
-nd.float_curve(cls, value: Float = None, factor: Float = None)
-```
+- `nd.float_curve(cls, value: Float=None, factor: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.float_curve(cls, value: Float = None, factor: Float = None)
-```
+- `Float.float_curve(self, value: Float=None)` — method; returns `OUT`.
 
 ## Float to Integer
 
-> `bl_idname` : FunctionNodeFloatToInt
-
-### class Float
-
-```python
-Float.to_integer(self,
-                    rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'] = 'ROUND')
-```
+Blender identifier: `FunctionNodeFloatToInt`
 
 ### nd
 
-``` python
-nd.float_to_integer(cls,
-                    float: Float = None,
-                    rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'] = 'ROUND')
-```
+- `nd.float_to_integer(cls, float: Float=None, rounding_mode: T_ROUNDING_MODE_1='ROUND')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.to_integer(self, rounding_mode: T_ROUNDING_MODE_1='ROUND')` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.FromFloat(cls, float: Float=None, rounding_mode: T_ROUNDING_MODE_1='ROUND')` — class method; returns `OUT`.
 
 ## Font
 
-> `bl_idname` : GeometryNodeInputFont
+Blender identifier: `GeometryNodeInputFont`
 
 ### nd
 
-``` python
-nd.font(cls, font = None)
-```
-
-## For Each Geometry Element Input
-
-> `bl_idname` : GeometryNodeForeachGeometryElementInput
-
-### class Domain
-
-```python
-
-with GeoNodes("For Each Element example"):
-    
-    for feel in Mesh.Cube().points.for_each(position=nd.position):
-        cube = Mesh.Cube(size=0.3)
-        cube.transform(translation=feel.position)
-        feel.geometry = cube
-        
-    feel.generated.out()
-
-```
-
-## For Each Geometry Element Output
-
-> `bl_idname` : GeometryNodeForeachGeometryElementOutput
-
-### class Domain
-
-```python
-
-with GeoNodes("For Each Element example"):
-    
-    for feel in Mesh.Cube().points.for_each(position=nd.position):
-        cube = Mesh.Cube(size=0.3)
-        cube.transform(translation=feel.position)
-        feel.geometry = cube
-        
-    feel.generated.out()
-
-```
+- `nd.font(cls, font=None)` — class method; returns `OUT`.
 
 ## Format String
 
-> `bl_idname` : FunctionNodeFormatString
-
-### class String
-
-```python
-String.format(self, named_sockets: dict = {}, **sockets)
-```
-
-```python
-String.Format(cls, named_sockets: dict = {}, format: String = None, **sockets)
-```
+Blender identifier: `FunctionNodeFormatString`
 
 ### nd
 
-``` python
-nd.format_string(cls, named_sockets: dict = {}, format: String = None, **sockets)
-```
+- `nd.format_string(cls, format: String=None, named_sockets: dict={}, **sockets)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.format_string(cls, named_sockets: dict = {}, format: String = None, **sockets)
-```
+- `String.format(self, named_sockets: dict={}, **sockets)` — method; returns `OUT`.
 
 ## Frame
 
-> `bl_idname` : NodeFrame
+Blender identifier: `NodeFrame`
 
-### class Layout
+### nd
 
-```python
-
-with GeoNodes("Layout Example"):
-    
-    geo = Geometry()
-    tr = Vector(name="Translaion")
-    
-    with Layout("Group node in a Frame"):
-        geo += Geometry(geo).transform(translation=tr)
-        
-    geo.out()       
- 
-```
-
-## Fresnel
-
-> `bl_idname` : ShaderNodeFresnel
-
-### class Float
-
-```python
-Float.fresnel(self, normal: Vector = None)
-```
-
-### snd
-
-``` python
-nd.fresnel(cls, ior: Float = None, normal: Vector = None)
-```
+- `nd.frame(cls, text=None, shrink: bool=True, label_size: int=20)` — class method; returns `NODE`.
 
 ## Gabor Texture
 
-> `bl_idname` : ShaderNodeTexGabor
-
-### class Float
-
-```python
-Float.Gabor(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    frequency: Float = None,
-                    anisotropy: Float = None,
-                    orientation: Float = None,
-                    gabor_type: Literal['2D', '3D'] = '2D')
-```
-
-### class Texture
-
-```python
-Texture.Gabor(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    frequency: Float = None,
-                    anisotropy: Float = None,
-                    orientation: Float = None,
-                    gabor_type: Literal['2D', '3D'] = '2D')
-```
+Blender identifier: `ShaderNodeTexGabor`
 
 ### nd
 
-``` python
-nd.gabor_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    frequency: Float = None,
-                    anisotropy: Float = None,
-                    orientation: Float = None,
-                    orientation_1: Vector = None,
-                    gabor_type: Literal['2D', '3D'] = '2D')
-```
+- `nd.gabor_texture(cls, vector: Vector=None, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Socket=None, gabor_type: T_GABOR_TYPE_1='2D')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.gabor_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    frequency: Float = None,
-                    anisotropy: Float = None,
-                    orientation: Float = None,
-                    orientation_1: Vector = None,
-                    gabor_type: Literal['2D', '3D'] = '2D')
-```
+- `Texture.Gabor(cls, vector: Vector=None, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Socket=None, gabor_type: T_GABOR_TYPE_1='2D')` — class method; returns `OUT`.
 
 ## Gamma
 
-> `bl_idname` : ShaderNodeGamma
-
-### class Color
-
-```python
-Color.gamma(self, gamma: Float = None)
-```
+Blender identifier: `ShaderNodeGamma`
 
 ### nd
 
-``` python
-nd.gamma(cls, color: Color = None, gamma: Float = None)
-```
+- `nd.gamma(cls, color: Color=None, gamma: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Color
 
-``` python
-nd.gamma(cls, color: Color = None, gamma: Float = None)
-```
-
-## Geometry
-
-> `bl_idname` : ShaderNodeNewGeometry
-
-### snd
-
-``` python
-nd.geometry(cls)
-```
+- `Color.gamma(self, gamma: Float=None)` — method; returns `OUT`.
 
 ## Geometry Materials
 
-> `bl_idname` : GeometryNodeGeometryMaterials
+Blender identifier: `GeometryNodeGeometryMaterials`
 
 ### nd
 
-``` python
-nd.geometry_materials(cls,
-                    geometry: Geometry = None,
-                    component_type: Literal['Mesh', 'Point Cloud', 'Curve', 'Grease Pencil'] = None)
-```
+- `nd.geometry_materials(cls, geometry: Geometry=None, component_type: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.materials(self, component_type: Menu=None)` — method; returns `OUT`.
 
 ## Geometry Proximity
 
-> `bl_idname` : GeometryNodeProximity
-
-### class Geometry
-
-```python
-Geometry.proximity(self,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None,
-                    target_element: Literal['POINTS', 'EDGES', 'FACES'] = 'FACES')
-```
-
-```python
-Geometry.proximity_points(self,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None)
-```
-
-```python
-Geometry.proximity_edges(self,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None)
-```
-
-```python
-Geometry.proximity_faces(self,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeProximity`
 
 ### nd
 
-``` python
-nd.geometry_proximity(cls,
-                    geometry: Geometry = None,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None,
-                    target_element: Literal['POINTS', 'EDGES', 'FACES'] = 'FACES')
-```
+- `nd.geometry_proximity(cls, geometry: Geometry=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, target_element: T_TARGET_ELEMENT_1='FACES')` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.proximity(self, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, target_element: T_TARGET_ELEMENT_1='FACES')` — method; returns `OUT`.
+- `Geometry.proximity_points(self, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None)` — method; returns `OUT`.
+- `Geometry.proximity_edges(self, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None)` — method; returns `OUT`.
+- `Geometry.proximity_faces(self, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None)` — method; returns `OUT`.
 
 ## Geometry to Instance
 
-> `bl_idname` : GeometryNodeGeometryToInstance
-
-### class Geometry
-
-```python
-Geometry.to_instance(self, *geometry: Geometry)
-```
-
-### class Instances
-
-```python
-Instances.FromGeometry(cls, *geometry: Geometry)
-```
+Blender identifier: `GeometryNodeGeometryToInstance`
 
 ### nd
 
-``` python
-nd.geometry_to_instance(cls, *geometry: Geometry)
-```
+- `nd.geometry_to_instance(cls, *geometry: Geometry)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.to_instance(self, *geometry: Geometry)` — method; returns `OUT`.
 
 ## Get Attribute Names
 
-> `bl_idname` : GeometryNodeGetAttributeNames
+Blender identifier: `GeometryNodeGetAttributeNames`
 
 ### nd
 
-``` python
-nd.get_attribute_names(cls,
-                    geometry: Geometry = None,
-                    filter_data_type: Boolean = None,
-                    data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', 'String', '8-Bit Integer', '2D 16-Bit Integer Vector', '2D Integer Vector', '2D Vector', '4D Vector', 'Byte Color'] = None,
-                    filter_domain: Boolean = None,
-                    domain: Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer'] = None)
-```
+- `nd.get_attribute_names(cls, geometry: Geometry=None, filter_data_type: Boolean=None, filter_domain: Boolean=None, data_type: Menu=None, domain: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.get_attribute_names(self, filter_data_type: Boolean=None, filter_domain: Boolean=None, data_type: Menu=None, domain: Menu=None)` — method; returns `OUT`.
 
 ## Get Bundle Item
 
-> `bl_idname` : NodeGetBundleItem
-
-### class Bundle
-
-```python
-Bundle.get_item(self,
-                    path: String = None,
-                    remove: Boolean = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+Blender identifier: `NodeGetBundleItem`
 
 ### nd
 
-``` python
-nd.get_bundle_item(cls,
-                    bundle: Bundle = None,
-                    path: String = None,
-                    remove: Boolean = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+- `nd.get_item(cls, bundle: Bundle=None, path: String=None, remove: Boolean=None, socket_type: T_DATA_TYPE_6='FLOAT', shape: T_STRUCTURE_TYPE_1='AUTO')` — class method; returns `Item`.
+
+### Bundle
+
+- `Bundle.get_item(self, path: String=None, remove: Boolean=None, socket_type: T_DATA_TYPE_6='FLOAT', shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `Item`.
 
 ## Get Geometry Bundle
 
-> `bl_idname` : GeometryNodeGetGeometryBundle
-
-### class Geometry
-
-```python
-Geometry.get_bundle(self, remove: Boolean = None)
-```
+Blender identifier: `GeometryNodeGetGeometryBundle`
 
 ### nd
 
-``` python
-nd.get_geometry_bundle(cls, geometry: Geometry = None, remove: Boolean = None)
-```
+- `nd.get_geometry_bundle(cls, geometry: Geometry=None, remove: Boolean=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.get_bundle(self, remove: Boolean=None)` — method; returns `OUT`.
+- `Geometry.bundle(self)` — property; returns `Bundle`.
 
 ## Get Geometry Component
 
-> `bl_idname` : GeometryNodeGetGeometryComponent
-
-### class Geometry
-
-```python
-Geometry.get_component(self,
-                    type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume'] = None,
-                    remove: Boolean = None)
-```
-
-```python
-Geometry.get_mesh(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_cloud(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_point_cloud(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_curve(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_instances(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_grease_pencil(self, remove: Boolean = None)
-```
-
-```python
-Geometry.get_volume(self, remove: Boolean = None)
-```
+Blender identifier: `GeometryNodeGetGeometryComponent`
 
 ### nd
 
-``` python
-nd.get_geometry_component(cls,
-                    geometry: Geometry = None,
-                    type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume'] = None,
-                    remove: Boolean = None)
-```
+- `nd.get_geometry_component(cls, geometry: Geometry=None, remove: Boolean=None, type: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.get_component(self, remove: Boolean=None, type: Menu=None)` — method; returns `OUT`.
 
 ## Get Grid Names
 
-> `bl_idname` : GeometryNodeGetGridNames
+Blender identifier: `GeometryNodeGetGridNames`
 
 ### nd
 
-``` python
-nd.get_grid_names(cls, volume: Volume = None)
-```
+- `nd.get_grid_names(cls, volume: Volume=None)` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.get_grid_names(self)` — method; returns `OUT`.
 
 ## Get List Item
 
-> `bl_idname` : GeometryNodeListGetItem
-
-### class Float
-
-```python
-Float.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Integer
-
-```python
-Integer.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Boolean
-
-```python
-Boolean.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Vector
-
-```python
-Vector.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Color
-
-```python
-Color.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Rotation
-
-```python
-Rotation.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Matrix
-
-```python
-Matrix.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class String
-
-```python
-String.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Menu
-
-```python
-Menu.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Object
-
-```python
-Object.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Image
-
-```python
-Image.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Geometry
-
-```python
-Geometry.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Collection
-
-```python
-Collection.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Material
-
-```python
-Material.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Bundle
-
-```python
-Bundle.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Closure
-
-```python
-Closure.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Font
-
-```python
-Font.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-### class Sound
-
-```python
-Sound.get_list_item(self,
-                    index: Integer = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+Blender identifier: `GeometryNodeListGetItem`
 
 ### nd
 
-``` python
-nd.get_list_item(cls,
-                    list: Float = None,
-                    index: Integer = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+- `nd.get_list_item(cls, list: Socket=None, index: Integer=None, socket_type: T_DATA_TYPE_6='FLOAT', shape: T_STRUCTURE_TYPE_1='AUTO')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Color
+
+- `Color.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### String
+
+- `String.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Object
+
+- `Object.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Image
+
+- `Image.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Material
+
+- `Material.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Font
+
+- `Font.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.get_list_item(self, index: Integer=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
 
 ## Get Named Grid
 
-> `bl_idname` : GeometryNodeGetNamedGrid
-
-### class Volume
-
-```python
-Volume.get_named_grid(self,
-                    name: String = None,
-                    remove: Boolean = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+Blender identifier: `GeometryNodeGetNamedGrid`
 
 ### nd
 
-``` python
-nd.get_named_grid(cls,
-                    volume: Volume = None,
-                    name: String = None,
-                    remove: Boolean = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.get_named_grid(cls, volume: Volume=None, name: String=None, remove: Boolean=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.get_named_grid(self, name: String=None, remove: Boolean=None, data_type: T_DATA_TYPE_5='FLOAT')` — method; returns `OUT`.
 
 ## Get Nested Bundle Paths
 
-> `bl_idname` : NodeGetNestedBundlePaths
-
-### class Bundle
-
-```python
-Bundle.get_nested_paths(self,
-                    mode: Literal['All', 'Bundle Type', 'Data Type'] = None,
-                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
-                    bundle_type: String = None,
-                    data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound'] = None)
-```
+Blender identifier: `NodeGetNestedBundlePaths`
 
 ### nd
 
-``` python
-nd.get_nested_bundle_paths(cls,
-                    bundle: Bundle = None,
-                    mode: Literal['All', 'Bundle Type', 'Data Type'] = None,
-                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
-                    bundle_type: String = None,
-                    data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound'] = None)
-```
+- `nd.get_nested_bundle_paths(cls, bundle: Bundle=None, bundle_type: String=None, mode: Menu=None, pattern_mode: Menu=None, data_type: Menu=None)` — class method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.get_nested_paths(self, bundle_type: String=None, mode: Menu=None, pattern_mode: Menu=None, data_type: Menu=None)` — method; returns `OUT`.
 
 ## Get Vector Component
 
-> `bl_idname` : FunctionNodeGetVectorComponent
+Blender identifier: `FunctionNodeGetVectorComponent`
 
 ### nd
 
-``` python
-nd.get_vector_component(cls, vector: Vector = None, index: Integer = None)
-```
+- `nd.get_vector_component(cls, vector: Vector=None, index: Integer=None)` — class method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.get_vector_component(cls, vector: Vector = None, index: Integer = None)
-```
-
-## Glass BSDF
-
-> `bl_idname` : ShaderNodeBsdfGlass
-
-### class Shader
-
-```python
-Shader.Glass(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    ior: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX'] = 'MULTI_GGX')
-```
-
-### snd
-
-``` python
-nd.glass_bsdf(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    ior: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    weight: Float = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX'] = 'MULTI_GGX')
-```
-
-## Glossy BSDF
-
-> `bl_idname` : ShaderNodeBsdfAnisotropic
-
-### class Shader
-
-```python
-Shader.Glossy(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'] = 'MULTI_GGX')
-```
-
-### snd
-
-``` python
-nd.glossy_bsdf(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    weight: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'] = 'MULTI_GGX')
-```
+- `Vector.get_component(self, index: Integer=None)` — method; returns `OUT`.
 
 ## Gradient Texture
 
-> `bl_idname` : ShaderNodeTexGradient
-
-### class Color
-
-```python
-Color.Gradient(cls,
-                    vector: Vector = None,
-                    gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
-```
-
-### class Texture
-
-```python
-Texture.Gradient(cls,
-                    vector: Vector = None,
-                    gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
-```
+Blender identifier: `ShaderNodeTexGradient`
 
 ### nd
 
-``` python
-nd.gradient_texture(cls,
-                    vector: Vector = None,
-                    gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
-```
+- `nd.gradient_texture(cls, vector: Vector=None, gradient_type: T_GRADIENT_TYPE_1='LINEAR')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.gradient_texture(cls,
-                    vector: Vector = None,
-                    gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
-```
+- `Texture.Gradient(cls, vector: Vector=None, gradient_type: T_GRADIENT_TYPE_1='LINEAR')` — class method; returns `OUT`.
 
 ## Grease Pencil Color
 
-> `bl_idname` : GeometryNodeGreasePencilColor
+Blender identifier: `GeometryNodeGreasePencilColor`
 
 ### nd
 
-``` python
-nd.grease_pencil_color(cls)
-```
+- `nd.grease_pencil_color(cls)` — class method; returns `OUT`.
 
 ## Grease Pencil Draw Time
 
-> `bl_idname` : GeometryNodeGreasePencilDrawTime
+Blender identifier: `GeometryNodeGreasePencilDrawTime`
 
 ### nd
 
-``` python
-nd.grease_pencil_draw_time(cls)
-```
+- `nd.grease_pencil_draw_time(cls)` — class method; returns `OUT`.
 
 ## Grease Pencil Fill ID
 
-> `bl_idname` : GeometryNodeGreasePencilFillID
+Blender identifier: `GeometryNodeGreasePencilFillID`
 
 ### nd
 
-``` python
-nd.grease_pencil_fill_id(self)
-```
+- `nd.grease_pencil_fill_id(cls)` — property; returns `OUT`.
 
 ## Grease Pencil Opacity
 
-> `bl_idname` : GeometryNodeGreasePencilOpacity
+Blender identifier: `GeometryNodeGreasePencilOpacity`
 
 ### nd
 
-``` python
-nd.grease_pencil_opacity(cls)
-```
+- `nd.grease_pencil_opacity(cls)` — class method; returns `OUT`.
 
 ## Grease Pencil Stroke Softness
 
-> `bl_idname` : GeometryNodeGreasePencilStrokeSoftness
+Blender identifier: `GeometryNodeGreasePencilStrokeSoftness`
 
 ### nd
 
-``` python
-nd.grease_pencil_stroke_softness(self)
-```
+- `nd.grease_pencil_stroke_softness(cls)` — property; returns `OUT`.
 
 ## Grease Pencil Stroke Visibility
 
-> `bl_idname` : GeometryNodeGreasePencilStrokeVisibility
+Blender identifier: `GeometryNodeGreasePencilStrokeVisibility`
 
 ### nd
 
-``` python
-nd.grease_pencil_stroke_visibility(self)
-```
+- `nd.grease_pencil_stroke_visibility(cls)` — property; returns `OUT`.
 
 ## Grease Pencil to Curves
 
-> `bl_idname` : GeometryNodeGreasePencilToCurves
-
-### class GreasePencil
-
-```python
-GreasePencil.to_curves(self, layers_as_instances: Boolean = None)
-```
+Blender identifier: `GeometryNodeGreasePencilToCurves`
 
 ### nd
 
-``` python
-nd.grease_pencil_to_curves(cls,
-                    grease_pencil: GreasePencil = None,
-                    selection: Boolean = None,
-                    layers_as_instances: Boolean = None)
-```
+- `nd.grease_pencil_to_curves(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, layers_as_instances: Boolean=None)` — class method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.to_curves(self, layers_as_instances: Boolean=None)` — method; returns `OUT`.
 
 ## Grid
 
-> `bl_idname` : GeometryNodeMeshGrid
-
-### class Mesh
-
-```python
-Mesh.Grid(cls,
-                    size_x: Float = None,
-                    size_y: Float = None,
-                    vertices_x: Integer = None,
-                    vertices_y: Integer = None)
-```
+Blender identifier: `GeometryNodeMeshGrid`
 
 ### nd
 
-``` python
-nd.grid(cls,
-                    size_x: Float = None,
-                    size_y: Float = None,
-                    vertices_x: Integer = None,
-                    vertices_y: Integer = None)
-```
+- `nd.grid(cls, size_x: Float=None, size_y: Float=None, vertices_x: Integer=None, vertices_y: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Grid(cls, size_x: Float=None, size_y: Float=None, vertices_x: Integer=None, vertices_y: Integer=None)` — class method; returns `OUT`.
 
 ## Grid Curl
 
-> `bl_idname` : GeometryNodeGridCurl
-
-### class Vector
-
-```python
-Vector.grid_curl(self)
-```
+Blender identifier: `GeometryNodeGridCurl`
 
 ### nd
 
-``` python
-nd.grid_curl(cls, grid: Vector = None)
-```
+- `nd.grid_curl(cls, grid: Vector=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_curl(self)` — method; returns `OUT`.
 
 ## Grid Dilate & Erode
 
-> `bl_idname` : GeometryNodeGridDilateAndErode
-
-### class Float
-
-```python
-Float.grid_dilate_erode(self,
-                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
-                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
-                    steps: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.grid_dilate_erode(self,
-                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
-                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
-                    steps: Integer = None)
-```
-
-### class Boolean
-
-```python
-Boolean.grid_dilate_erode(self,
-                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
-                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
-                    steps: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.grid_dilate_erode(self,
-                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
-                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
-                    steps: Integer = None)
-```
+Blender identifier: `GeometryNodeGridDilateAndErode`
 
 ### nd
 
-``` python
-nd.grid_dilate_erode(cls,
-                    grid: Float = None,
-                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
-                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
-                    steps: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_dilate_erode(cls, grid: Socket=None, steps: Integer=None, connectivity: Menu=None, tiles: Menu=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_dilate_erode(self, steps: Integer=None, connectivity: Menu=None, tiles: Menu=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.grid_dilate_erode(self, steps: Integer=None, connectivity: Menu=None, tiles: Menu=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.grid_dilate_erode(self, steps: Integer=None, connectivity: Menu=None, tiles: Menu=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_dilate_erode(self, steps: Integer=None, connectivity: Menu=None, tiles: Menu=None)` — method; returns `OUT`.
 
 ## Grid Divergence
 
-> `bl_idname` : GeometryNodeGridDivergence
-
-### class Vector
-
-```python
-Vector.grid_divergence(self)
-```
+Blender identifier: `GeometryNodeGridDivergence`
 
 ### nd
 
-``` python
-nd.grid_divergence(cls, grid: Vector = None)
-```
+- `nd.grid_divergence(cls, grid: Vector=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_divergence(self)` — method; returns `OUT`.
 
 ## Grid Gradient
 
-> `bl_idname` : GeometryNodeGridGradient
-
-### class Float
-
-```python
-Float.grid_gradient(self)
-```
+Blender identifier: `GeometryNodeGridGradient`
 
 ### nd
 
-``` python
-nd.grid_gradient(cls, grid: Float = None)
-```
+- `nd.grid_gradient(cls, grid: Float=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_gradient(self)` — method; returns `OUT`.
 
 ## Grid Info
 
-> `bl_idname` : GeometryNodeGridInfo
-
-### class Float
-
-```python
-Float.grid_info(self)
-```
-
-### class Integer
-
-```python
-Integer.grid_info(self)
-```
-
-### class Boolean
-
-```python
-Boolean.grid_info(self)
-```
-
-### class Vector
-
-```python
-Vector.grid_info(self)
-```
+Blender identifier: `GeometryNodeGridInfo`
 
 ### nd
 
-``` python
-nd.grid_info(cls,
-                    grid: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_info(cls, grid: Socket=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_info(self)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.grid_info(self)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.grid_info(self)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_info(self)` — method; returns `OUT`.
 
 ## Grid Laplacian
 
-> `bl_idname` : GeometryNodeGridLaplacian
-
-### class Float
-
-```python
-Float.grid_laplacian(self)
-```
+Blender identifier: `GeometryNodeGridLaplacian`
 
 ### nd
 
-``` python
-nd.grid_laplacian(cls, grid: Float = None)
-```
+- `nd.grid_laplacian(cls, grid: Float=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_laplacian(self)` — method; returns `OUT`.
 
 ## Grid Mean
 
-> `bl_idname` : GeometryNodeGridMean
-
-### class Float
-
-```python
-Float.grid_mean(self, width: Integer = None, iterations: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.grid_mean(self, width: Integer = None, iterations: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.grid_mean(self, width: Integer = None, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeGridMean`
 
 ### nd
 
-``` python
-nd.grid_mean(cls,
-                    grid: Float = None,
-                    width: Integer = None,
-                    iterations: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_mean(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: T_DATA_TYPE_2='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_mean(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.grid_mean(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_mean(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
 
 ## Grid Median
 
-> `bl_idname` : GeometryNodeGridMedian
-
-### class Float
-
-```python
-Float.grid_median(self, width: Integer = None, iterations: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.grid_median(self, width: Integer = None, iterations: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.grid_median(self, width: Integer = None, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeGridMedian`
 
 ### nd
 
-``` python
-nd.grid_median(cls,
-                    grid: Float = None,
-                    width: Integer = None,
-                    iterations: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_median(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: T_DATA_TYPE_2='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_median(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.grid_median(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_median(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
 
 ## Grid Solve Poisson
 
-> `bl_idname` : GeometryNodeGridSolvePoisson
+Blender identifier: `GeometryNodeGridSolvePoisson`
 
 ### nd
 
-``` python
-nd.grid_solve_poisson(cls,
-                    grid: Float = None,
-                    max_iterations: Integer = None,
-                    error_threshold: Float = None,
-                    threshold_mode: Literal['Relative', 'Absolute'] = None,
-                    boundary: Literal['Fixed', 'Gradient', 'Mixed'] = None,
-                    boundary_value: Float = None,
-                    boundary_gradient: Vector = None,
-                    boundary_factor: Float = None)
-```
+- `nd.grid_solve_poisson(cls, grid: Float=None, max_iterations: Integer=None, error_threshold: Float=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None, threshold_mode: Menu=None, boundary: Menu=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_solve_poisson(self, max_iterations: Integer=None, error_threshold: Float=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None, threshold_mode: Menu=None, boundary: Menu=None)` — method; returns `OUT`.
 
 ## Grid Topology Boolean
 
-> `bl_idname` : GeometryNodeGridTopologyBoolean
+Blender identifier: `GeometryNodeGridTopologyBoolean`
 
 ### nd
 
-``` python
-nd.grid_topology_boolean(cls,
-                    *grid_2: Float,
-                    operation: Literal['Intersect', 'Union', 'Difference'] = None,
-                    grid_1: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_topology_boolean(cls, *grid_2: Socket, grid_1: Socket=None, operation: Menu=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.grid_topology_boolean(self, *grid_2: Float, operation: Menu=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.grid_topology_boolean(self, *grid_2: Integer, operation: Menu=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.grid_topology_boolean(self, *grid_2: Boolean, operation: Menu=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.grid_topology_boolean(self, *grid_2: Vector, operation: Menu=None)` — method; returns `OUT`.
 
 ## Grid to Mesh
 
-> `bl_idname` : GeometryNodeGridToMesh
-
-### class Float
-
-```python
-Float.grid_to_mesh(self, threshold: Float = None, adaptivity: Float = None)
-```
+Blender identifier: `GeometryNodeGridToMesh`
 
 ### nd
 
-``` python
-nd.grid_to_mesh(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None)
-```
+- `nd.grid_to_mesh(cls, grid: Float=None, threshold: Float=None, adaptivity: Float=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.FromGrid(cls, grid: Float=None, threshold: Float=None, adaptivity: Float=None)` — class method; returns `OUT`.
 
 ## Grid to Points
 
-> `bl_idname` : GeometryNodeGridToPoints
-
-### class Float
-
-```python
-Float.grid_to_points(self)
-```
-
-### class Integer
-
-```python
-Integer.grid_to_points(self)
-```
-
-### class Boolean
-
-```python
-Boolean.grid_to_points(self)
-```
-
-### class Vector
-
-```python
-Vector.grid_to_points(self)
-```
+Blender identifier: `GeometryNodeGridToPoints`
 
 ### nd
 
-``` python
-nd.grid_to_points(cls,
-                    grid: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.grid_to_points(cls, grid: Socket=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
 
-## Group
+### Cloud
 
-> `bl_idname` : ShaderNodeGroup
-
-### class Group
-
-```python
-
-with GeoNodes("Multiply by Two", is_group=True):
-    
-    a = Float(name="Value")
-    (a + 2).out("Double")
-    
-with GeoNodes("Calling a group example"):
-    
-    v = Float(0, "Your value")
-    dbl = Group("Multiply by Two", value=v).double
-    dbl.out("Double")
-    
-    # Alternaticve way
-    again = G().multiply_by_two(dbl)
-    
-    again.out("Double Double")
-
-```
-
-## Group Input
-
-> `bl_idname` : NodeGroupInput
-
-### nd
-
-``` python
-nd.group_input(self)
-```
-
-### snd
-
-``` python
-nd.group_input(self)
-```
-
-## Group Output
-
-> `bl_idname` : NodeGroupOutput
-
-### nd
-
-``` python
-nd.group_output(cls, is_active_output = True)
-```
-
-### snd
-
-``` python
-nd.group_output(cls, is_active_output = True)
-```
-
-## Hair BSDF
-
-> `bl_idname` : ShaderNodeBsdfHair
-
-### class Shader
-
-```python
-Shader.Hair(cls,
-                    color: Color = None,
-                    offset: Float = None,
-                    roughnessu: Float = None,
-                    roughnessv: Float = None,
-                    tangent: Vector = None,
-                    component: Literal['Reflection', 'Transmission'] = 'Reflection')
-```
-
-### snd
-
-``` python
-nd.hair_bsdf(cls,
-                    color: Color = None,
-                    offset: Float = None,
-                    roughnessu: Float = None,
-                    roughnessv: Float = None,
-                    tangent: Vector = None,
-                    weight: Float = None,
-                    component: Literal['Reflection', 'Transmission'] = 'Reflection')
-```
+- `Cloud.FromGrid(cls, grid: Socket=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
 
 ## Handle Type Selection
 
-> `bl_idname` : GeometryNodeCurveHandleTypeSelection
-
-### class Curve
-
-```python
-Curve.handle_type_selection(cls,
-                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
-```
+Blender identifier: `GeometryNodeCurveHandleTypeSelection`
 
 ### nd
 
-``` python
-nd.handle_type_selection(cls,
-                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
-```
+- `nd.handle_type_selection(cls, handle_type: T_HANDLE_TYPE_1='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'LEFT', 'RIGHT'})` — class method; returns `OUT`.
 
 ## Hash Value
 
-> `bl_idname` : FunctionNodeHashValue
-
-### class Float
-
-```python
-Float.hash_value(self, seed: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.hash_value(self, seed: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.hash_value(self, seed: Integer = None)
-```
-
-### class Color
-
-```python
-Color.hash_value(self, seed: Integer = None)
-```
-
-### class Rotation
-
-```python
-Rotation.hash_value(self, seed: Integer = None)
-```
-
-### class Matrix
-
-```python
-Matrix.hash_value(self, seed: Integer = None)
-```
-
-### class String
-
-```python
-String.hash_value(self, seed: Integer = None)
-```
+Blender identifier: `FunctionNodeHashValue`
 
 ### nd
 
-``` python
-nd.hash_value(cls,
-                    value: Integer = None,
-                    seed: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'] = 'INT')
-```
+- `nd.hash_value(cls, value: Socket=None, seed: Integer=None, data_type: T_DATA_TYPE_10='INT')` — class method; returns `OUT`.
 
-## Holdout
+### Float
 
-> `bl_idname` : ShaderNodeHoldout
+- `Float.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-### class Shader
+### Integer
 
-```python
-Shader.Holdout(cls)
-```
+- `Integer.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.holdout(cls, weight: Float = None)
-```
+- `Vector.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-## Hue/Saturation/Value
+### Color
 
-> `bl_idname` : ShaderNodeHueSaturation
+- `Color.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-### class Float
+### Rotation
 
-```python
-Float.hue_saturation_value(self,
-                    saturation: Float = None,
-                    value: Float = None,
-                    color: Color = None,
-                    factor: Float = None)
-```
+- `Rotation.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-### class Color
+### Matrix
 
-```python
-Color.hue_saturation_value(self,
-                    hue: Float = None,
-                    saturation: Float = None,
-                    value: Float = None,
-                    factor: Float = None)
-```
+- `Matrix.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.hue_saturation_value(cls,
-                    hue: Float = None,
-                    saturation: Float = None,
-                    value: Float = None,
-                    color: Color = None,
-                    factor: Float = None)
-```
+- `String.hash_value(self, seed: Integer=None)` — method; returns `OUT`.
 
 ## ID
 
-> `bl_idname` : GeometryNodeInputID
-
-### class Geometry
-
-```python
-prop = Geometry.id
-```
+Blender identifier: `GeometryNodeInputID`
 
 ### nd
 
-``` python
-nd.id(self)
-```
+- `nd.id(cls)` — property; returns `OUT`.
 
-## IES Texture
+### Geometry
 
-> `bl_idname` : ShaderNodeTexIES
-
-### class Vector
-
-```python
-Vector.ies_texture_internal(self, strength: Float = None, filepath = '', ies = None)
-```
-
-```python
-Vector.ies_texture_external(self, strength: Float = None, filepath = '', ies = None)
-```
-
-```python
-Vector.ies_texture(self,
-                    strength: Float = None,
-                    filepath = '',
-                    ies = None,
-                    mode: Literal['INTERNAL', 'EXTERNAL'] = 'INTERNAL')
-```
-
-### snd
-
-``` python
-nd.ies_texture(cls,
-                    vector: Vector = None,
-                    strength: Float = None,
-                    filepath = '',
-                    ies = None,
-                    mode: Literal['INTERNAL', 'EXTERNAL'] = 'INTERNAL')
-```
+- `Geometry.id(self)` — property; returns `OUT`.
 
 ## Ico Sphere
 
-> `bl_idname` : GeometryNodeMeshIcoSphere
-
-### class Mesh
-
-```python
-Mesh.IcoSphere(cls, radius: Float = None, subdivisions: Integer = None)
-```
+Blender identifier: `GeometryNodeMeshIcoSphere`
 
 ### nd
 
-``` python
-nd.ico_sphere(cls, radius: Float = None, subdivisions: Integer = None)
-```
+- `nd.ico_sphere(cls, radius: Float=None, subdivisions: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.IcoSphere(cls, radius: Float=None, subdivisions: Integer=None)` — class method; returns `OUT`.
 
 ## Image
 
-> `bl_idname` : GeometryNodeInputImage
+Blender identifier: `GeometryNodeInputImage`
 
 ### nd
 
-``` python
-nd.image(cls, image = None)
-```
+- `nd.image(cls, image=None)` — class method; returns `OUT`.
 
 ## Image Info
 
-> `bl_idname` : GeometryNodeImageInfo
-
-### class Image
-
-```python
-Image.info(self, frame: Integer = None)
-```
-
-```python
-Image.width(self, frame: Integer = None)
-```
-
-```python
-Image.height(self, frame: Integer = None)
-```
-
-```python
-Image.has_alpha(self, frame: Integer = None)
-```
-
-```python
-Image.frame_count(self, frame: Integer = None)
-```
-
-```python
-Image.fps(self, frame: Integer = None)
-```
+Blender identifier: `GeometryNodeImageInfo`
 
 ### nd
 
-``` python
-nd.image_info(cls, image: Image = None, frame: Integer = None)
-```
+- `nd.image_info(cls, image: Image=None, frame: Integer=None)` — class method; returns `OUT`.
+
+### Image
+
+- `Image.info(self, frame: Integer=None)` — method; returns `OUT`.
 
 ## Image Texture
 
-> `bl_idname` : ShaderNodeTexImage
+Blender identifier: `GeometryNodeImageTexture`
 
-### class Vector
+### nd
 
-```python
-Vector.image_texture(self,
-                    extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR'] = 'REPEAT',
-                    image = None,
-                    interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
-                    projection: Literal['FLAT', 'BOX', 'SPHERE', 'TUBE'] = 'FLAT',
-                    projection_blend = 0.0)
-```
+- `nd.image_texture(cls, image: Image=None, vector: Vector=None, frame: Integer=None, interpolation: T_INTERPOLATION_1='Linear', extension: T_EXTENSION_1='REPEAT')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.image_texture(cls,
-                    vector: Vector = None,
-                    extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR'] = 'REPEAT',
-                    image = None,
-                    interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
-                    projection: Literal['FLAT', 'BOX', 'SPHERE', 'TUBE'] = 'FLAT',
-                    projection_blend = 0.0)
-```
+- `Texture.Image(cls, image: Image=None, vector: Vector=None, frame: Integer=None, interpolation: T_INTERPOLATION_1='Linear', extension: T_EXTENSION_1='REPEAT')` — class method; returns `OUT`.
 
 ## Implicit Conversion
 
-> `bl_idname` : NodeImplicitConversion
-
-### class Float
-
-```python
-Float.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Integer
-
-```python
-Integer.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Boolean
-
-```python
-Boolean.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Vector
-
-```python
-Vector.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Color
-
-```python
-Color.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Rotation
-
-```python
-Rotation.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Matrix
-
-```python
-Matrix.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class String
-
-```python
-String.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Menu
-
-```python
-Menu.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Object
-
-```python
-Object.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Image
-
-```python
-Image.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Geometry
-
-```python
-Geometry.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Collection
-
-```python
-Collection.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Material
-
-```python
-Material.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Bundle
-
-```python
-Bundle.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Closure
-
-```python
-Closure.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Font
-
-```python
-Font.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
-
-### class Sound
-
-```python
-Sound.implicit_conversion(self, socket_idname = 'NodeSocketColor')
-```
+Blender identifier: `NodeImplicitConversion`
 
 ### nd
 
-``` python
-nd.implicit_conversion(cls,
-                    value: Color = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'RGBA',
-                    socket_idname = 'NodeSocketColor')
-```
+- `nd.implicit_conversion(cls, value: Socket=None, socket_idname: str='NodeSocketColor', data_type: T_DATA_TYPE_6='RGBA')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.implicit_conversion(cls,
-                    value: Color = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE'] = 'RGBA',
-                    socket_idname = 'NodeSocketColor')
-```
+- `Float.implicit_conversion(self, socket_idname: str='NodeSocketFloat')` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.implicit_conversion(self, socket_idname: str='NodeSocketInt')` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.implicit_conversion(self, socket_idname: str='NodeSocketBool')` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.implicit_conversion(self, socket_idname: str='NodeSocketVector')` — method; returns `OUT`.
+
+### Color
+
+- `Color.implicit_conversion(self, socket_idname: str='NodeSocketColor')` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.implicit_conversion(self, socket_idname: str='NodeSocketRotation')` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.implicit_conversion(self, socket_idname: str='NodeSocketMatrix')` — method; returns `OUT`.
+
+### String
+
+- `String.implicit_conversion(self, socket_idname: str='NodeSocketString')` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.implicit_conversion(self, socket_idname: str='NodeSocketMenu')` — method; returns `OUT`.
+
+### Object
+
+- `Object.implicit_conversion(self, socket_idname: str='NodeSocketObject')` — method; returns `OUT`.
+
+### Image
+
+- `Image.implicit_conversion(self, socket_idname: str='NodeSocketImage')` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.implicit_conversion(self, socket_idname: str='NodeSocketGeometry')` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.implicit_conversion(self, socket_idname: str='NodeSocketCollection')` — method; returns `OUT`.
+
+### Material
+
+- `Material.implicit_conversion(self, socket_idname: str='NodeSocketMaterial')` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.implicit_conversion(self, socket_idname: str='NodeSocketBundle')` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.implicit_conversion(self, socket_idname: str='NodeSocketClosure')` — method; returns `OUT`.
+
+### Font
+
+- `Font.implicit_conversion(self, socket_idname: str='NodeSocketFont')` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.implicit_conversion(self, socket_idname: str='NodeSocketSound')` — method; returns `OUT`.
 
 ## Import CSV
 
-> `bl_idname` : GeometryNodeImportCSV
-
-### class Cloud
-
-```python
-Cloud.ImportCSV(cls, path: String = None, delimiter: String = None)
-```
+Blender identifier: `GeometryNodeImportCSV`
 
 ### nd
 
-``` python
-nd.import_csv(cls, path: String = None, delimiter: String = None)
-```
+- `nd.import_csv(cls, path: String=None, delimiter: String=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.ImportCSV(cls, path: String=None, delimiter: String=None)` — class method; returns `OUT`.
 
 ## Import OBJ
 
-> `bl_idname` : GeometryNodeImportOBJ
-
-### class Instances
-
-```python
-Instances.ImportOBJ(cls, path: String = None)
-```
+Blender identifier: `GeometryNodeImportOBJ`
 
 ### nd
 
-``` python
-nd.import_obj(cls, path: String = None)
-```
+- `nd.import_obj(cls, path: String=None)` — class method; returns `OUT`.
+
+### Instances
+
+- `Instances.ImportOBJ(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Import PLY
 
-> `bl_idname` : GeometryNodeImportPLY
-
-### class Geometry
-
-```python
-Geometry.ImportPLY(cls, path: String = None)
-```
+Blender identifier: `GeometryNodeImportPLY`
 
 ### nd
 
-``` python
-nd.import_ply(cls, path: String = None)
-```
+- `nd.import_ply(cls, path: String=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.ImportPLY(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Import SPZ
 
-> `bl_idname` : GeometryNodeImportSPZ
+Blender identifier: `GeometryNodeImportSPZ`
 
 ### nd
 
-``` python
-nd.import_spz(cls, path: String = None)
-```
+- `nd.import_spz(cls, path: String=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.ImportSPZ(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Import STL
 
-> `bl_idname` : GeometryNodeImportSTL
-
-### class Mesh
-
-```python
-Mesh.ImportSTL(cls, path: String = None)
-```
+Blender identifier: `GeometryNodeImportSTL`
 
 ### nd
 
-``` python
-nd.import_stl(cls, path: String = None)
-```
+- `nd.import_stl(cls, path: String=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.ImportSTL(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Import Text
 
-> `bl_idname` : GeometryNodeImportText
-
-### class String
-
-```python
-String.ImportText(cls, path: String = None)
-```
+Blender identifier: `GeometryNodeImportText`
 
 ### nd
 
-``` python
-nd.import_text(cls, path: String = None)
-```
+- `nd.import_text(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Import VDB
 
-> `bl_idname` : GeometryNodeImportVDB
-
-### class Volume
-
-```python
-Volume.ImportVDB(cls, path: String = None)
-```
+Blender identifier: `GeometryNodeImportVDB`
 
 ### nd
 
-``` python
-nd.import_vdb(cls, path: String = None)
-```
+- `nd.import_vdb(cls, path: String=None)` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.ImportVDB(cls, path: String=None)` — class method; returns `OUT`.
 
 ## Index
 
-> `bl_idname` : GeometryNodeInputIndex
-
-### class Geometry
-
-```python
-prop = Geometry.index
-```
+Blender identifier: `GeometryNodeInputIndex`
 
 ### nd
 
-``` python
-nd.index(self)
-```
+- `nd.index(cls)` — property; returns `OUT`.
 
 ## Index Switch
 
-> `bl_idname` : GeometryNodeIndexSwitch
+Blender identifier: `GeometryNodeIndexSwitch`
 
-### class Socket
+### nd
 
-```python
-Socket.IndexSwitch(*values, index=0)
-```
+- `nd.index_switch(cls, *items, index: Integer=None, data_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
 
-```python
-Socket.index_switch(*values, index=0)
-```
+### Float
+
+- `Float.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Color
+
+- `Color.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### String
+
+- `String.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Object
+
+- `Object.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Image
+
+- `Image.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Material
+
+- `Material.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Font
+
+- `Font.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.index_switch(self, *items, index: Integer=None)` — method; returns `OUT`.
 
 ## Index of Nearest
 
-> `bl_idname` : GeometryNodeIndexOfNearest
-
-### class Geometry
-
-```python
-Geometry.index_of_nearest(cls, position: Vector = None, group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeIndexOfNearest`
 
 ### nd
 
-``` python
-nd.index_of_nearest(cls, position: Vector = None, group_id: Integer = None)
-```
+- `nd.index_of_nearest(cls, position: Vector=None, group_id: Integer=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.index_of_nearest(self, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Instance Bounds
 
-> `bl_idname` : GeometryNodeInputInstanceBounds
+Blender identifier: `GeometryNodeInputInstanceBounds`
 
 ### nd
 
-``` python
-nd.instance_bounds(cls, use_radius: Boolean = None)
-```
+- `nd.instance_bounds(cls, use_radius: Boolean=None)` — class method; returns `OUT`.
 
 ## Instance Reference
 
-> `bl_idname` : GeometryNodeInputInstanceReference
-
-### class Instances
-
-```python
-prop = Instances.reference
-```
-
-### class Instance
-
-```python
-prop = Instances.insts.reference
-```
+Blender identifier: `GeometryNodeInputInstanceReference`
 
 ### nd
 
-``` python
-nd.instance_reference(self)
-```
+- `nd.instance_reference(cls)` — property; returns `OUT`.
 
 ## Instance Rotation
 
-> `bl_idname` : GeometryNodeInputInstanceRotation
-
-### class Instances
-
-```python
-prop = Instances.rotation
-```
+Blender identifier: `GeometryNodeInputInstanceRotation`
 
 ### nd
 
-``` python
-nd.instance_rotation(self)
-```
+- `nd.instance_rotation(cls)` — property; returns `OUT`.
 
 ## Instance Scale
 
-> `bl_idname` : GeometryNodeInputInstanceScale
-
-### class Instances
-
-```python
-prop = Instances.instance_scale
-```
+Blender identifier: `GeometryNodeInputInstanceScale`
 
 ### nd
 
-``` python
-nd.instance_scale(self)
-```
+- `nd.instance_scale(cls)` — property; returns `OUT`.
 
 ## Instance Transform
 
-> `bl_idname` : GeometryNodeInstanceTransform
-
-### class Instances
-
-```python
-prop = Instances.transform
-```
+Blender identifier: `GeometryNodeInstanceTransform`
 
 ### nd
 
-``` python
-nd.instance_transform(self)
-```
+- `nd.instance_transform(cls)` — property; returns `OUT`.
+
+### Instance
+
+- `Instance.transform(self)` — property; returns `OUT`.
 
 ## Instance on Points
 
-> `bl_idname` : GeometryNodeInstanceOnPoints
-
-### class Geometry
-
-```python
-Geometry.instance_on_points(self,
-                    instance: Instances = None,
-                    pick_instance: Boolean = None,
-                    instance_index: Integer = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
-
-### class Cloud
-
-```python
-Cloud.instance_on(self,
-                    instance: Instances = None,
-                    pick_instance: Boolean = None,
-                    instance_index: Integer = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
-
-### class Point
-
-```python
-Mesh.points.instance_on(self,
-                    instance: Instances = None,
-                    pick_instance: Boolean = None,
-                    instance_index: Integer = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
+Blender identifier: `GeometryNodeInstanceOnPoints`
 
 ### nd
 
-``` python
-nd.instance_on_points(cls,
-                    points: Cloud = None,
-                    selection: Boolean = None,
-                    instance: Instances = None,
-                    pick_instance: Boolean = None,
-                    instance_index: Integer = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None)
-```
+- `nd.instance_on_points(cls, points: Cloud=None, selection: Boolean=None, instance: Instances=None, pick_instance: Boolean=None, instance_index: Integer=None, rotation: Rotation=None, scale: Vector=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.instance_on_points(self, instance: Instances=None, pick_instance: Boolean=None, instance_index: Integer=None, rotation: Rotation=None, scale: Vector=None)` — method; returns `OUT`.
 
 ## Instances to Points
 
-> `bl_idname` : GeometryNodeInstancesToPoints
-
-### class Instances
-
-```python
-Instances.to_points(self, position: Vector = None, radius: Float = None)
-```
+Blender identifier: `GeometryNodeInstancesToPoints`
 
 ### nd
 
-``` python
-nd.instances_to_points(cls,
-                    instances: Instances = None,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    radius: Float = None)
-```
+- `nd.instances_to_points(cls, instances: Instances=None, selection: Boolean=None, position: Vector=None, radius: Float=None)` — class method; returns `OUT`.
+
+### Instances
+
+- `Instances.to_points(self, position: Vector=None, radius: Float=None)` — method; returns `OUT`.
 
 ## Integer
 
-> `bl_idname` : FunctionNodeInputInt
+Blender identifier: `FunctionNodeInputInt`
 
 ### nd
 
-``` python
-nd.integer(cls, integer = 0)
-```
-
-### snd
-
-``` python
-nd.integer(cls, integer = 0)
-```
+- `nd.integer(cls, integer: int=0)` — class method; returns `OUT`.
 
 ## Integer Math
 
-> `bl_idname` : FunctionNodeIntegerMath
-
-### class Integer
-
-```python
-Integer.add(self, value: Integer = None)
-```
-
-```python
-Integer.subtract(self, value: Integer = None)
-```
-
-```python
-Integer.multiply(self, value: Integer = None)
-```
-
-```python
-Integer.divide(self, value: Integer = None)
-```
-
-```python
-Integer.multiply_add(self, multiplier: Integer = None, addend: Integer = None)
-```
-
-```python
-Integer.abs(self)
-```
-
-```python
-Integer.negate(self)
-```
-
-```python
-Integer.power(self, exponent: Integer = None)
-```
-
-```python
-Integer.min(self, value: Integer = None)
-```
-
-```python
-Integer.max(self, value: Integer = None)
-```
-
-```python
-Integer.sign(self)
-```
-
-```python
-Integer.divide_round(self, value: Integer = None)
-```
-
-```python
-Integer.divide_floor(self, value: Integer = None)
-```
-
-```python
-Integer.divide_ceil(self, value: Integer = None)
-```
-
-```python
-Integer.floored_modulo(self, value: Integer = None)
-```
-
-```python
-Integer.modulo(self, value: Integer = None)
-```
-
-```python
-Integer.gcd(self, value: Integer = None)
-```
-
-```python
-Integer.lcm(self, value: Integer = None)
-```
-
-### class gnmath
-
-```python
-gnmath.iadd(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.isubtract(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.imultiply(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.idivide(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.imultiply_add(value: Integer = None, multiplier: Integer = None, addend: Integer = None)
-```
-
-```python
-gnmath.iabs(value: Integer = None)
-```
-
-```python
-gnmath.negate(value: Integer = None)
-```
-
-```python
-gnmath.ipower(base: Integer = None, exponent: Integer = None)
-```
-
-```python
-gnmath.imin(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.imax(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.isign(value: Integer = None)
-```
-
-```python
-gnmath.divide_round(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.divide_floor(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.divide_ceil(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.ifloored_modulo(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.imodulo(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.gcd(value: Integer = None, value_1: Integer = None)
-```
-
-```python
-gnmath.lcm(value: Integer = None, value_1: Integer = None)
-```
+Blender identifier: `FunctionNodeIntegerMath`
 
 ### nd
 
-``` python
-nd.integer_math(cls,
-                    value: Integer = None,
-                    value_1: Integer = None,
-                    value_2: Integer = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'] = 'ADD')
-```
+- `nd.integer_math(cls, value: Integer=None, value_1: Integer=None, addend: Integer=None, *, base: Integer=None, multiplier: Integer=None, exponent: Integer=None, operation: T_OPERATION_4='ADD')` — class method; returns `OUT`.
 
-### snd
+### gnmath
 
-``` python
-nd.integer_math(cls,
-                    value: Integer = None,
-                    value_1: Integer = None,
-                    value_2: Integer = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'] = 'ADD')
-```
+- `gnmath.iadd(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.isubtract(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.imultiply(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.idivide(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.ipower(base: Integer=None, exponent: Integer=None)` — method; returns `OUT`.
+- `gnmath.imodulo(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.iabs(value: Integer=None)` — method; returns `OUT`.
+- `gnmath.negate(value: Integer=None)` — method; returns `OUT`.
+- `gnmath.imultiply_add(value: Integer=None, multiplier: Integer=None, addend: Integer=None)` — method; returns `OUT`.
+- `gnmath.isign(value: Integer=None)` — method; returns `OUT`.
+- `gnmath.imin(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.imax(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.divide_round(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.divide_floor(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.divide_ceil(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.ifloored_modulo(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.gcd(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
+- `gnmath.lcm(value: Integer=None, value_1: Integer=None)` — method; returns `OUT`.
 
-## Integer Vector
+### Integer
 
-> `bl_idname` : FunctionNodeInputIntVector
-
-### nd
-
-``` python
-nd.integer_vector(cls, vector_dimensions = 3)
-```
+- `Integer.add(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.__add__(self, other)` — method; returns `OUT`.
+- `Integer.__radd__(self, other)` — method; returns `OUT`.
+- `Integer.__iadd__(self, other)` — method; returns `OUT`.
+- `Integer.subtract(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.__sub__(self, other)` — method; returns `OUT`.
+- `Integer.__rsub__(self, other)` — method; returns `OUT`.
+- `Integer.__isub__(self, other)` — method; returns `OUT`.
+- `Integer.multiply(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.__mul__(self, other)` — method; returns `OUT`.
+- `Integer.__rmul__(self, other)` — method; returns `OUT`.
+- `Integer.__imul__(self, other)` — method; returns `OUT`.
+- `Integer.divide(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.__floordiv__(self, other)` — method; returns `OUT`.
+- `Integer.__rfloordiv__(self, other)` — method; returns `OUT`.
+- `Integer.__ifloordiv__(self, other)` — method; returns `OUT`.
+- `Integer.power(self, exponent: Integer=None)` — method; returns `OUT`.
+- `Integer.__pow__(self, other)` — method; returns `OUT`.
+- `Integer.__rpow__(self, other)` — method; returns `OUT`.
+- `Integer.__ipow__(self, other)` — method; returns `OUT`.
+- `Integer.modulo(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.__mod__(self, other)` — method; returns `OUT`.
+- `Integer.__rmod__(self, other)` — method; returns `OUT`.
+- `Integer.__imod__(self, other)` — method; returns `OUT`.
+- `Integer.abs(self)` — method; returns `OUT`.
+- `Integer.__abs__(self)` — method; returns `OUT`.
+- `Integer.negate(self)` — method; returns `OUT`.
+- `Integer.__neg__(self)` — method; returns `OUT`.
+- `Integer.multiply_add(self, multiplier: Integer=None, addend: Integer=None)` — method; returns `OUT`.
+- `Integer.sign(self)` — method; returns `OUT`.
+- `Integer.min(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.max(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.divide_round(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.divide_floor(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.divide_ceil(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.floored_modulo(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.gcd(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.lcm(self, value: Integer=None)` — method; returns `OUT`.
+- `Integer.integer_math(self, value: Integer=None, addend: Integer=None, *, multiplier: Integer=None, exponent: Integer=None, operation: T_OPERATION_4='ADD')` — method; returns `OUT`.
 
 ## Interpolate Curves
 
-> `bl_idname` : GeometryNodeInterpolateCurves
-
-### class Curve
-
-```python
-Curve.Interpolate(cls,
-                    guide_curves: Curve = None,
-                    guide_up: Vector = None,
-                    guide_group_id: Integer = None,
-                    points: Cloud = None,
-                    point_up: Vector = None,
-                    point_group_id: Integer = None,
-                    max_neighbors: Integer = None)
-```
-
-```python
-Curve.interpolate(self,
-                    guide_up: Vector = None,
-                    guide_group_id: Integer = None,
-                    points: Cloud = None,
-                    point_up: Vector = None,
-                    point_group_id: Integer = None,
-                    max_neighbors: Integer = None)
-```
-
-### class Cloud
-
-```python
-Cloud.interpolate_curves(self,
-                    guide_curves: Curve = None,
-                    guide_up: Vector = None,
-                    guide_group_id: Integer = None,
-                    point_up: Vector = None,
-                    point_group_id: Integer = None,
-                    max_neighbors: Integer = None)
-```
+Blender identifier: `GeometryNodeInterpolateCurves`
 
 ### nd
 
-``` python
-nd.interpolate_curves(cls,
-                    guide_curves: Curve = None,
-                    guide_up: Vector = None,
-                    guide_group_id: Integer = None,
-                    points: Cloud = None,
-                    point_up: Vector = None,
-                    point_group_id: Integer = None,
-                    max_neighbors: Integer = None)
-```
+- `nd.interpolate_curves(cls, guide_curves: Curve=None, guide_up: Vector=None, guide_group_id: Integer=None, points: Cloud=None, point_up: Vector=None, point_group_id: Integer=None, max_neighbors: Integer=None)` — class method; returns `OUT`.
 
-## Invert Color
+### Curve
 
-> `bl_idname` : ShaderNodeInvert
-
-### class Color
-
-```python
-Color.invert_color(self, factor: Float = None)
-```
-
-### snd
-
-``` python
-nd.invert_color(cls, color: Color = None, factor: Float = None)
-```
+- `Curve.interpolate(self, guide_up: Vector=None, guide_group_id: Integer=None, points: Cloud=None, point_up: Vector=None, point_group_id: Integer=None, max_neighbors: Integer=None)` — method; returns `OUT`.
 
 ## Invert Matrix
 
-> `bl_idname` : FunctionNodeInvertMatrix
-
-### class Matrix
-
-```python
-Matrix.invert(self)
-```
+Blender identifier: `FunctionNodeInvertMatrix`
 
 ### nd
 
-``` python
-nd.invert_matrix(cls, matrix: Matrix = None)
-```
+- `nd.invert_matrix(cls, matrix: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.invert(self)` — method; returns `OUT`.
 
 ## Invert Rotation
 
-> `bl_idname` : FunctionNodeInvertRotation
-
-### class Rotation
-
-```python
-Rotation.invert(self)
-```
+Blender identifier: `FunctionNodeInvertRotation`
 
 ### nd
 
-``` python
-nd.invert_rotation(cls, rotation: Rotation = None)
-```
+- `nd.invert_rotation(cls, rotation: Rotation=None)` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.invert(self)` — method; returns `OUT`.
 
 ## Is Edge Smooth
 
-> `bl_idname` : GeometryNodeInputEdgeSmooth
-
-### class Edge
-
-```python
-prop = Mesh.edges.shade_smooth
-```
-
-```python
-prop = Mesh.edges.smooth
-```
+Blender identifier: `GeometryNodeInputEdgeSmooth`
 
 ### nd
 
-``` python
-nd.is_edge_smooth(self)
-```
+- `nd.is_edge_smooth(cls)` — property; returns `OUT`.
+
+### Edge
+
+- `Edge.shade_smooth(self)` — property; returns `OUT`.
+- `Edge.smooth(self)` — property; returns `OUT`.
 
 ## Is Face Planar
 
-> `bl_idname` : GeometryNodeInputMeshFaceIsPlanar
-
-### class Mesh
-
-```python
-Mesh.is_face_planar(cls, threshold: Float = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.is_planar(cls, threshold: Float = None)
-```
+Blender identifier: `GeometryNodeInputMeshFaceIsPlanar`
 
 ### nd
 
-``` python
-nd.is_face_planar(cls, threshold: Float = None)
-```
+- `nd.is_face_planar(cls, threshold: Float=None)` — class method; returns `OUT`.
 
 ## Is Face Smooth
 
-> `bl_idname` : GeometryNodeInputShadeSmooth
-
-### class Face
-
-```python
-prop = Mesh.faces.shade_smooth
-```
-
-```python
-prop = Mesh.faces.smooth
-```
+Blender identifier: `GeometryNodeInputShadeSmooth`
 
 ### nd
 
-``` python
-nd.is_face_smooth(self)
-```
+- `nd.is_face_smooth(cls)` — property; returns `OUT`.
+
+### Face
+
+- `Face.shade_smooth(self)` — property; returns `OUT`.
+- `Face.smooth(self)` — property; returns `OUT`.
 
 ## Is Spline Cyclic
 
-> `bl_idname` : GeometryNodeInputSplineCyclic
-
-### class Curve
-
-```python
-prop = Curve.is_cyclic
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.is_cyclic
-```
+Blender identifier: `GeometryNodeInputSplineCyclic`
 
 ### nd
 
-``` python
-nd.is_spline_cyclic(self)
-```
+- `nd.is_spline_cyclic(cls)` — property; returns `OUT`.
+
+### Spline
+
+- `Spline.is_cyclic(self)` — property; returns `OUT`.
+
+### Curve
+
+- `Curve.is_cyclic(self)` — property; returns `OUT`.
 
 ## Is Viewport
 
-> `bl_idname` : GeometryNodeIsViewport
-
-### class Boolean
-
-```python
-prop = Boolean.is_viewport
-```
+Blender identifier: `GeometryNodeIsViewport`
 
 ### nd
 
-``` python
-nd.is_viewport(self)
-```
+- `nd.is_viewport(cls)` — property; returns `OUT`.
 
 ## Join Bundle
 
-> `bl_idname` : NodeJoinBundle
-
-### class Bundle
-
-```python
-Bundle.join(self, *bundle: Bundle)
-```
-
-```python
-Bundle.join_bundle(self, *bundle: Bundle)
-```
+Blender identifier: `NodeJoinBundle`
 
 ### nd
 
-``` python
-nd.join_bundle(cls, *bundle: Bundle)
-```
+- `nd.join_bundle(cls, *bundle: Bundle)` — class method; returns `OUT`.
 
-### snd
+### Bundle
 
-``` python
-nd.join_bundle(cls, *bundle: Bundle)
-```
+- `Bundle.join(self, *bundle: Bundle)` — method; returns `OUT`.
 
 ## Join Geometry
 
-> `bl_idname` : GeometryNodeJoinGeometry
-
-### class Geometry
-
-```python
-Geometry.join(self, *geometry: Geometry)
-```
-
-```python
-Geometry.Join(cls, *geometry: Geometry)
-```
+Blender identifier: `GeometryNodeJoinGeometry`
 
 ### nd
 
-``` python
-nd.join_geometry(cls, *geometry: Geometry)
-```
+- `nd.join_geometry(cls, *geometry: Geometry)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.join(self, *geometry: Geometry)` — method; returns `OUT`.
 
 ## Join Strings
 
-> `bl_idname` : GeometryNodeStringJoin
-
-### class String
-
-```python
-String.join(self, *strings: String)
-```
-
-```python
-String.Join(cls, *strings: String, delimiter: String = None)
-```
+Blender identifier: `GeometryNodeStringJoin`
 
 ### nd
 
-``` python
-nd.join_strings(cls, *strings: String, delimiter: String = None)
-```
+- `nd.join_strings(cls, *strings: String, delimiter: String=None)` — class method; returns `OUT`.
 
-## Layer Weight
+### String
 
-> `bl_idname` : ShaderNodeLayerWeight
-
-### class Float
-
-```python
-Float.layer_weight(self, normal: Vector = None)
-```
-
-### snd
-
-``` python
-nd.layer_weight(cls, blend: Float = None, normal: Vector = None)
-```
-
-## Light Accumulation
-
-> `bl_idname` : ShaderNodeLightAccumulation
-
-### snd
-
-``` python
-nd.light_accumulation(cls,
-                    lightindex: Integer = None,
-                    diffuse_light: Color = None,
-                    diffuse_color: Color = None,
-                    glossy_light: Color = None,
-                    glossy_color: Color = None,
-                    transmission_light: Color = None,
-                    transmission_color: Color = None,
-                    weight: Float = None)
-```
-
-## Light Evaluation
-
-> `bl_idname` : ShaderNodeLightEvaluation
-
-### snd
-
-``` python
-nd.light_evaluation(cls,
-                    lightindex: Integer = None,
-                    position: Vector = None,
-                    normal: Vector = None,
-                    roughness: Float = None,
-                    mode: Literal['DIFFUSE', 'GLOSSY'] = 'DIFFUSE')
-```
-
-## Light Falloff
-
-> `bl_idname` : ShaderNodeLightFalloff
-
-### class Float
-
-```python
-Float.light_falloff(self, smooth: Float = None)
-```
-
-### snd
-
-``` python
-nd.light_falloff(cls, strength: Float = None, smooth: Float = None)
-```
-
-## Light Info
-
-> `bl_idname` : ShaderNodeLightInfo
-
-### snd
-
-``` python
-nd.light_info(cls, lightindex: Integer = None)
-```
-
-## Light Iter Internal Input
-
-> `bl_idname` : ShaderNodeLightIterInternalInput
-
-### snd
-
-``` python
-nd.light_iter_internal_input(self)
-```
-
-## Light Iter Internal Output
-
-> `bl_idname` : ShaderNodeLightIterInternalOutput
-
-### snd
-
-``` python
-nd.light_iter_internal_output(self)
-```
-
-## Light Output
-
-> `bl_idname` : ShaderNodeOutputLight
-
-### class Shader
-
-```python
-Shader.light_output(self,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
-
-### snd
-
-``` python
-nd.light_output(cls,
-                    surface: Shader = None,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
-
-## Light Path
-
-> `bl_idname` : ShaderNodeLightPath
-
-### snd
-
-``` python
-nd.light_path(cls)
-```
-
-## Line Style Output
-
-> `bl_idname` : ShaderNodeOutputLineStyle
-
-### class Color
-
-```python
-Color.line_style_output(self,
-                    color_fac: Float = None,
-                    alpha: Float = None,
-                    alpha_fac: Float = None,
-                    blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'] = 'MIX',
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL',
-                    use_alpha = False,
-                    use_clamp = False)
-```
-
-### snd
-
-``` python
-nd.line_style_output(cls,
-                    color: Color = None,
-                    color_fac: Float = None,
-                    alpha: Float = None,
-                    alpha_fac: Float = None,
-                    blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'] = 'MIX',
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL',
-                    use_alpha = False,
-                    use_clamp = False)
-```
+- `String.join(self, *strings: String)` — method; returns `OUT`.
 
 ## Linear Gizmo
 
-> `bl_idname` : GeometryNodeGizmoLinear
-
-### class Float
-
-```python
-Float.linear_gizmo(self,
-                    *value: Float,
-                    position: Vector = None,
-                    direction: Vector = None,
-                    color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'] = 'PRIMARY',
-                    draw_style: Literal['ARROW', 'CROSS', 'BOX'] = 'ARROW')
-```
+Blender identifier: `GeometryNodeGizmoLinear`
 
 ### nd
 
-``` python
-nd.linear_gizmo(cls,
-                    *value: Float,
-                    position: Vector = None,
-                    direction: Vector = None,
-                    color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'] = 'PRIMARY',
-                    draw_style: Literal['ARROW', 'CROSS', 'BOX'] = 'ARROW')
-```
+- `nd.linear_gizmo(cls, *value: Float, position: Vector=None, direction: Vector=None, color_id: T_COLOR_ID_1='PRIMARY', draw_style: T_DRAW_STYLE_1='ARROW')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.linear_gizmo(self, *value: Float, position: Vector=None, direction: Vector=None, color_id: T_COLOR_ID_1='PRIMARY', draw_style: T_DRAW_STYLE_1='ARROW')` — method; returns `OUT`.
 
 ## List Length
 
-> `bl_idname` : GeometryNodeListLength
-
-### class Float
-
-```python
-Float.list_length(self)
-```
-
-### class Integer
-
-```python
-Integer.list_length(self)
-```
-
-### class Boolean
-
-```python
-Boolean.list_length(self)
-```
-
-### class Vector
-
-```python
-Vector.list_length(self)
-```
-
-### class Color
-
-```python
-Color.list_length(self)
-```
-
-### class Rotation
-
-```python
-Rotation.list_length(self)
-```
-
-### class Matrix
-
-```python
-Matrix.list_length(self)
-```
-
-### class String
-
-```python
-String.list_length(self)
-```
-
-### class Menu
-
-```python
-Menu.list_length(self)
-```
-
-### class Object
-
-```python
-Object.list_length(self)
-```
-
-### class Image
-
-```python
-Image.list_length(self)
-```
-
-### class Geometry
-
-```python
-Geometry.list_length(self)
-```
-
-### class Collection
-
-```python
-Collection.list_length(self)
-```
-
-### class Material
-
-```python
-Material.list_length(self)
-```
-
-### class Bundle
-
-```python
-Bundle.list_length(self)
-```
-
-### class Closure
-
-```python
-Closure.list_length(self)
-```
-
-### class Font
-
-```python
-Font.list_length(self)
-```
-
-### class Sound
-
-```python
-Sound.list_length(self)
-```
+Blender identifier: `GeometryNodeListLength`
 
 ### nd
 
-``` python
-nd.list_length(cls,
-                    list: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT')
-```
+- `nd.list_length(cls, list: Socket=None, data_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.list_length(self)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.list_length(self)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.list_length(self)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.list_length(self)` — method; returns `OUT`.
+
+### Color
+
+- `Color.list_length(self)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.list_length(self)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.list_length(self)` — method; returns `OUT`.
+
+### String
+
+- `String.list_length(self)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.list_length(self)` — method; returns `OUT`.
+
+### Object
+
+- `Object.list_length(self)` — method; returns `OUT`.
+
+### Image
+
+- `Image.list_length(self)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.list_length(self)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.list_length(self)` — method; returns `OUT`.
+
+### Material
+
+- `Material.list_length(self)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.list_length(self)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.list_length(self)` — method; returns `OUT`.
+
+### Font
+
+- `Font.list_length(self)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.list_length(self)` — method; returns `OUT`.
 
 ## Magic Texture
 
-> `bl_idname` : ShaderNodeTexMagic
-
-### class Color
-
-```python
-Color.Magic(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    turbulence_depth = 2)
-```
-
-### class Texture
-
-```python
-Texture.Magic(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    turbulence_depth = 2)
-```
+Blender identifier: `ShaderNodeTexMagic`
 
 ### nd
 
-``` python
-nd.magic_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    turbulence_depth = 2)
-```
+- `nd.magic_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, turbulence_depth: int=2)` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.magic_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    turbulence_depth = 2)
-```
+- `Texture.Magic(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, turbulence_depth: int=2)` — class method; returns `OUT`.
 
 ## Map Range
 
-> `bl_idname` : ShaderNodeMapRange
-
-### class Float
-
-```python
-Float.map_range(self,
-                    from_min: Float | Vector = None,
-                    from_max: Float | Vector = None,
-                    to_min: Float | Vector = None,
-                    to_max: Float | Vector = None,
-                    clamp = True,
-                    interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR')
-```
-
-```python
-Float.map_range_linear(self,
-                    from_min: Float | Vector = None,
-                    from_max: Float | Vector = None,
-                    to_min: Float | Vector = None,
-                    to_max: Float | Vector = None,
-                    clamp = True)
-```
-
-```python
-Float.map_range_stepped(self,
-                    from_min: Float | Vector = None,
-                    from_max: Float | Vector = None,
-                    to_min: Float | Vector = None,
-                    to_max: Float | Vector = None,
-                    steps: Float = None,
-                    clamp = True)
-```
-
-```python
-Float.map_range_smooth_step(self,
-                    from_min: Float | Vector = None,
-                    from_max: Float | Vector = None,
-                    to_min: Float | Vector = None,
-                    to_max: Float | Vector = None,
-                    clamp = True)
-```
-
-```python
-Float.map_range_smoother_step(self,
-                    from_min: Float | Vector = None,
-                    from_max: Float | Vector = None,
-                    to_min: Float | Vector = None,
-                    to_max: Float | Vector = None,
-                    clamp = True)
-```
-
-### class Vector
-
-```python
-Vector.map_range(self,
-                    from_min: Vector = None,
-                    from_max: Vector = None,
-                    to_min: Vector = None,
-                    to_max: Vector = None,
-                    clamp = True,
-                    interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR')
-```
+Blender identifier: `ShaderNodeMapRange`
 
 ### nd
 
-``` python
-nd.map_range(cls,
-                    value: Float = None,
-                    from_min: Float = None,
-                    from_max: Float = None,
-                    to_min: Float = None,
-                    to_max: Float = None,
-                    steps: Float = None,
-                    vector: Vector = None,
-                    from_min_1: Vector = None,
-                    from_max_1: Vector = None,
-                    to_min_1: Vector = None,
-                    to_max_1: Vector = None,
-                    steps_1: Vector = None,
-                    clamp = True,
-                    data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR')
-```
+- `nd.map_range(cls, value: Float=None, from_min: Socket=None, from_max: Socket=None, to_min: Socket=None, to_max: Socket=None, steps: Socket=None, vector: Vector=None, clamp: bool=True, interpolation_type: T_INTERPOLATION_TYPE_1='LINEAR', data_type: T_DATA_TYPE_3='FLOAT')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.map_range(cls,
-                    value: Float = None,
-                    from_min: Float = None,
-                    from_max: Float = None,
-                    to_min: Float = None,
-                    to_max: Float = None,
-                    steps: Float = None,
-                    vector: Vector = None,
-                    from_min_1: Vector = None,
-                    from_max_1: Vector = None,
-                    to_min_1: Vector = None,
-                    to_max_1: Vector = None,
-                    steps_1: Vector = None,
-                    clamp = True,
-                    data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
-                    interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR')
-```
+- `Float.map_range(self, from_min: Float=None, from_max: Float=None, to_min: Float=None, to_max: Float=None, steps: Float=None, clamp: bool=True, interpolation_type: T_INTERPOLATION_TYPE_1='LINEAR')` — method; returns `OUT`.
+- `Float.interpolate(self, to_min: Float=None, to_max: Float=None, clamp: bool=True, interpolation_type: T_INTERPOLATION_TYPE_1='LINEAR')` — method; returns `OUT`.
 
-## Mapping
+### Vector
 
-> `bl_idname` : ShaderNodeMapping
-
-### class Vector
-
-```python
-Vector.mapping(self,
-                    location: Vector = None,
-                    rotation: Vector = None,
-                    scale: Vector = None,
-                    vector_type: Literal['POINT', 'TEXTURE', 'VECTOR', 'NORMAL'] = 'POINT')
-```
-
-### snd
-
-``` python
-nd.mapping(cls,
-                    vector: Vector = None,
-                    location: Vector = None,
-                    rotation: Vector = None,
-                    scale: Vector = None,
-                    vector_type: Literal['POINT', 'TEXTURE', 'VECTOR', 'NORMAL'] = 'POINT')
-```
+- `Vector.map_range(self, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp: bool=True, interpolation_type: T_INTERPOLATION_TYPE_1='LINEAR')` — method; returns `OUT`.
+- `Vector.interpolate(self, to_min: Vector=None, to_max: Vector=None, clamp: bool=True, interpolation_type: T_INTERPOLATION_TYPE_1='LINEAR')` — method; returns `OUT`.
 
 ## Match String
 
-> `bl_idname` : FunctionNodeMatchString
-
-### class String
-
-```python
-String.match_string(self,
-                    operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
-                    key: String = None)
-```
+Blender identifier: `FunctionNodeMatchString`
 
 ### nd
 
-``` python
-nd.match_string(cls,
-                    string: String = None,
-                    operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
-                    key: String = None)
-```
+- `nd.match_string(cls, string: String=None, key: String=None, operation: Menu=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.match_string(cls,
-                    string: String = None,
-                    operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
-                    key: String = None)
-```
+- `String.match(self, key: String=None, operation: Menu=None)` — method; returns `OUT`.
 
 ## Material
 
-> `bl_idname` : GeometryNodeInputMaterial
+Blender identifier: `GeometryNodeInputMaterial`
 
 ### nd
 
-``` python
-nd.material(cls, material = None)
-```
+- `nd.material(cls, material=None)` — class method; returns `OUT`.
 
 ## Material Index
 
-> `bl_idname` : GeometryNodeInputMaterialIndex
-
-### class Geometry
-
-```python
-prop = Geometry.material_index
-```
-
-### class Face
-
-```python
-prop = Mesh.faces.material_index
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.material_index
-```
+Blender identifier: `GeometryNodeInputMaterialIndex`
 
 ### nd
 
-``` python
-nd.material_index(self)
-```
+- `nd.material_index(cls)` — property; returns `OUT`.
 
-## Material Output
+### Face
 
-> `bl_idname` : ShaderNodeOutputMaterial
+- `Face.material_index(self)` — property; returns `OUT`.
 
-### class Shader
+### Mesh
 
-```python
-Shader.material_output(self,
-                    volume: VolumeShader = None,
-                    displacement: Vector = None,
-                    thickness: Float = None,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
+- `Mesh.material_index(self)` — property; returns `OUT`.
 
-### snd
+### Spline
 
-``` python
-nd.material_output(cls,
-                    surface: Shader = None,
-                    volume: VolumeShader = None,
-                    displacement: Vector = None,
-                    thickness: Float = None,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
+- `Spline.material_index(self)` — property; returns `OUT`.
 
 ## Material Selection
 
-> `bl_idname` : GeometryNodeMaterialSelection
-
-### class Mesh
-
-```python
-Mesh.material_selection(cls, material: Material = None)
-```
-
-### class Curve
-
-```python
-Curve.material_selection(cls, material: Material = None)
-```
+Blender identifier: `GeometryNodeMaterialSelection`
 
 ### nd
 
-``` python
-nd.material_selection(cls, material: Material = None)
-```
+- `nd.material_selection(cls, material: Material=None)` — class method; returns `OUT`.
+
+### Material
+
+- `Material.material_selection(self)` — method; returns `OUT`.
 
 ## Math
 
-> `bl_idname` : ShaderNodeMath
-
-### class Float
-
-```python
-Float.add(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.subtract(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.multiply(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.divide(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.multiply_add(self, multiplier: Float = None, addend: Float = None, use_clamp = False)
-```
-
-```python
-Float.power(self, exponent: Float = None, use_clamp = False)
-```
-
-```python
-Float.log(self, base: Float = None, use_clamp = False)
-```
-
-```python
-Float.sqrt(self, use_clamp = False)
-```
-
-```python
-Float.inverse_sqrt(self, use_clamp = False)
-```
-
-```python
-Float.abs(self, use_clamp = False)
-```
-
-```python
-Float.exp(self, use_clamp = False)
-```
-
-```python
-Float.min(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.max(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.mless_than(self, threshold: Float = None, use_clamp = False)
-```
-
-```python
-Float.mgreater_than(self, threshold: Float = None, use_clamp = False)
-```
-
-```python
-Float.sign(self, use_clamp = False)
-```
-
-```python
-Float.compare(self, value: Float = None, epsilon: Float = None, use_clamp = False)
-```
-
-```python
-Float.smooth_min(self, value: Float = None, distance: Float = None, use_clamp = False)
-```
-
-```python
-Float.smooth_max(self, value: Float = None, distance: Float = None, use_clamp = False)
-```
-
-```python
-Float.round(self, use_clamp = False)
-```
-
-```python
-Float.floor(self, use_clamp = False)
-```
-
-```python
-Float.ceil(self, use_clamp = False)
-```
-
-```python
-Float.trunc(self, use_clamp = False)
-```
-
-```python
-Float.fract(self, use_clamp = False)
-```
-
-```python
-Float.modulo(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.floored_modulo(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.wrap(self, max: Float = None, min: Float = None, use_clamp = False)
-```
-
-```python
-Float.snap(self, increment: Float = None, use_clamp = False)
-```
-
-```python
-Float.pingpong(self, scale: Float = None, use_clamp = False)
-```
-
-```python
-Float.sin(self, use_clamp = False)
-```
-
-```python
-Float.cos(self, use_clamp = False)
-```
-
-```python
-Float.tan(self, use_clamp = False)
-```
-
-```python
-Float.asin(self, use_clamp = False)
-```
-
-```python
-Float.acos(self, use_clamp = False)
-```
-
-```python
-Float.arctangent(self, use_clamp = False)
-```
-
-```python
-Float.atan2(self, value: Float = None, use_clamp = False)
-```
-
-```python
-Float.sinh(self, use_clamp = False)
-```
-
-```python
-Float.cosh(self, use_clamp = False)
-```
-
-```python
-Float.tanh(self, use_clamp = False)
-```
-
-```python
-Float.radians(self, use_clamp = False)
-```
-
-```python
-Float.degrees(self, use_clamp = False)
-```
-
-### class gnmath
-
-```python
-gnmath.add(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.subtract(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.multiply(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.divide(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.multiply_add(value: Float = None,
-                    multiplier: Float = None,
-                    addend: Float = None,
-                    use_clamp = False)
-```
-
-```python
-gnmath.power(base: Float = None, exponent: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.log(value: Float = None, base: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.sqrt(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.inverse_sqrt(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.abs(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.exp(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.min(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.max(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.mless_than(value: Float = None, threshold: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.mgreater_than(value: Float = None, threshold: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.sign(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.compare(value: Float = None,
-                    value_1: Float = None,
-                    epsilon: Float = None,
-                    use_clamp = False)
-```
-
-```python
-gnmath.smooth_min(value: Float = None,
-                    value_1: Float = None,
-                    distance: Float = None,
-                    use_clamp = False)
-```
-
-```python
-gnmath.smooth_max(value: Float = None,
-                    value_1: Float = None,
-                    distance: Float = None,
-                    use_clamp = False)
-```
-
-```python
-gnmath.round(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.floor(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.ceil(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.trunc(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.fract(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.modulo(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.floored_modulo(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.wrap(value: Float = None, max: Float = None, min: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.snap(value: Float = None, increment: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.pingpong(value: Float = None, scale: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.sin(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.cos(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.tan(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.asin(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.acos(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.arctangent(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.atan2(value: Float = None, value_1: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.sinh(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.cosh(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.tanh(value: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.radians(degrees: Float = None, use_clamp = False)
-```
-
-```python
-gnmath.degrees(radians: Float = None, use_clamp = False)
-```
+Blender identifier: `ShaderNodeMath`
 
 ### nd
 
-``` python
-nd.math(cls,
-                    value: Float = None,
-                    value_1: Float = None,
-                    value_2: Float = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'] = 'ADD',
-                    use_clamp = False)
-```
+- `nd.math(cls, value: Float=None, value_1: Float=None, addend: Float=None, *, base: Float=None, degrees: Float=None, radians: Float=None, multiplier: Float=None, exponent: Float=None, base_1: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, use_clamp: bool=False, operation: T_OPERATION_5='ADD')` — class method; returns `OUT`.
 
-### snd
+### gnmath
 
-``` python
-nd.math(cls,
-                    value: Float = None,
-                    value_1: Float = None,
-                    value_2: Float = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'] = 'ADD',
-                    use_clamp = False)
-```
+- `gnmath.add(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.subtract(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.multiply(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.divide(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.power(base: Float=None, exponent: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.abs(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.round(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.trunc(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.floor(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.ceil(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.multiply_add(value: Float=None, multiplier: Float=None, addend: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.log(value: Float=None, base: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.sqrt(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.inverse_sqrt(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.exp(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.min(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.max(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.sign(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.smooth_min(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.smooth_max(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.fract(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.floored_modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.wrap(value: Float=None, max: Float=None, min: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.snap(value: Float=None, increment: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.pingpong(value: Float=None, scale: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.sin(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.cos(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.tan(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.asin(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.acos(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.arctangent(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.atan2(value: Float=None, value_1: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.sinh(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.cosh(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.tanh(value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.radians(degrees: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.degrees(radians: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.math_less_than(value: Float=None, threshold: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.math_greater_than(value: Float=None, threshold: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `gnmath.math_compare(value: Float=None, value_1: Float=None, epsilon: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+
+### Float
+
+- `Float.add(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__add__(self, other)` — method; returns `OUT`.
+- `Float.__radd__(self, other)` — method; returns `OUT`.
+- `Float.__iadd__(self, other)` — method; returns `OUT`.
+- `Float.subtract(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__sub__(self, other)` — method; returns `OUT`.
+- `Float.__rsub__(self, other)` — method; returns `OUT`.
+- `Float.__isub__(self, other)` — method; returns `OUT`.
+- `Float.multiply(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__mul__(self, other)` — method; returns `OUT`.
+- `Float.__rmul__(self, other)` — method; returns `OUT`.
+- `Float.__imul__(self, other)` — method; returns `OUT`.
+- `Float.__neg__(self)` — method; returns `OUT`.
+- `Float.divide(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__truediv__(self, other)` — method; returns `OUT`.
+- `Float.__rtruediv__(self, other)` — method; returns `OUT`.
+- `Float.__itruediv__(self, other)` — method; returns `OUT`.
+- `Float.power(self, exponent: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__pow__(self, other)` — method; returns `OUT`.
+- `Float.__rpow__(self, other)` — method; returns `OUT`.
+- `Float.__ipow__(self, other)` — method; returns `OUT`.
+- `Float.modulo(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__mod__(self, other)` — method; returns `OUT`.
+- `Float.__rmod__(self, other)` — method; returns `OUT`.
+- `Float.__imod__(self, other)` — method; returns `OUT`.
+- `Float.abs(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__abs__(self)` — method; returns `OUT`.
+- `Float.round(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__round__(self)` — method; returns `OUT`.
+- `Float.trunc(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__trunc__(self)` — method; returns `OUT`.
+- `Float.floor(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__floor__(self)` — method; returns `OUT`.
+- `Float.ceil(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.__ceil__(self)` — method; returns `OUT`.
+- `Float.multiply_add(self, multiplier: Float=None, addend: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.log(self, base: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.sqrt(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.inverse_sqrt(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.exp(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.min(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.max(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.sign(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.smooth_min(self, value: Float=None, distance: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.smooth_max(self, value: Float=None, distance: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.fract(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.floored_modulo(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.wrap(self, max: Float=None, min: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.snap(self, increment: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.pingpong(self, scale: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.sin(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.cos(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.tan(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.asin(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.acos(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.arctangent(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.atan2(self, value: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.sinh(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.cosh(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.tanh(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.radians(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.degrees(self, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.math_less_than(self, threshold: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.math_greater_than(self, threshold: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.math_compare(self, value: Float=None, epsilon: Float=None, use_clamp: bool=False)` — method; returns `OUT`.
+- `Float.math(self, value: Float=None, addend: Float=None, *, multiplier: Float=None, exponent: Float=None, base: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, use_clamp: bool=False, operation: T_OPERATION_5='ADD')` — method; returns `OUT`.
 
 ## Matrix Determinant
 
-> `bl_idname` : FunctionNodeMatrixDeterminant
-
-### class Matrix
-
-```python
-Matrix.determinant(self)
-```
+Blender identifier: `FunctionNodeMatrixDeterminant`
 
 ### nd
 
-``` python
-nd.matrix_determinant(cls, matrix: Matrix = None)
-```
+- `nd.matrix_determinant(cls, matrix: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.determinant(self)` — method; returns `OUT`.
 
 ## Matrix SVD
 
-> `bl_idname` : FunctionNodeMatrixSVD
-
-### class Matrix
-
-```python
-Matrix.svd(self)
-```
+Blender identifier: `FunctionNodeMatrixSVD`
 
 ### nd
 
-``` python
-nd.matrix_svd(cls, matrix: Matrix = None)
-```
+- `nd.matrix_svd(cls, matrix: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.matrix_svd(self)` — method; returns `OUT`.
 
 ## Menu
 
-> `bl_idname` : FunctionNodeInputMenu
+Blender identifier: `FunctionNodeInputMenu`
 
 ### nd
 
-``` python
-nd.menu(menu=None)
-```
-
-### snd
-
-``` python
-nd.menu(menu=None)
-```
+- `nd.menu(cls, value: str='')` — class method; returns `OUT`.
 
 ## Menu Switch
 
-> `bl_idname` : GeometryNodeMenuSwitch
+Blender identifier: `GeometryNodeMenuSwitch`
 
-### class Socket
+### nd
 
-```python
-Socket.MenuSwitch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
-```
+- `nd.menu_switch(cls, named_sockets: dict={}, menu: Menu=None, data_type: T_DATA_TYPE_6='GEOMETRY', **sockets)` — class method; returns `OUT`.
 
-```python
-Socket.menu_switch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)
-```
+### Float
+
+- `Float.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Color
+
+- `Color.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### String
+
+- `String.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Object
+
+- `Object.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Image
+
+- `Image.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Material
+
+- `Material.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Font
+
+- `Font.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.menu_switch(self, named_sockets: dict={}, menu: Menu=None, **sockets)` — method; returns `OUT`.
 
 ## Merge Layers
 
-> `bl_idname` : GeometryNodeMergeLayers
-
-### class GreasePencil
-
-```python
-GreasePencil.merge_layers_by_name(self, mode: Literal['By Name', 'By Group ID'] = None, group_id: Integer = None)
-```
-
-```python
-GreasePencil.merge_layers_by_id(self, mode: Literal['By Name', 'By Group ID'] = None, group_id: Integer = None)
-```
-
-```python
-GreasePencil.merge_layers(self,
-                    mode_1: Literal['By Name', 'By Group ID'] = None,
-                    group_id: Integer = None,
-                    mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID'] = 'MERGE_BY_NAME')
-```
+Blender identifier: `GeometryNodeMergeLayers`
 
 ### nd
 
-``` python
-nd.merge_layers(cls,
-                    grease_pencil: GreasePencil = None,
-                    selection: Boolean = None,
-                    mode_1: Literal['By Name', 'By Group ID'] = None,
-                    group_id: Integer = None,
-                    mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID'] = 'MERGE_BY_NAME')
-```
+- `nd.merge_layers(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, group_id: Integer=None, mode_1: Menu=None, mode: T_MODE_10='MERGE_BY_NAME')` — class method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.merge_layers(self, group_id: Integer=None, mode_1: Menu=None, mode: T_MODE_10='MERGE_BY_NAME')` — method; returns `OUT`.
 
 ## Merge Points
 
-> `bl_idname` : GeometryNodeMergePoints
-
-### class Geometry
-
-```python
-Geometry.merge_points(self, merge_id: Integer = None)
-```
-
-### class Point
-
-```python
-Mesh.points.merge(self, merge_id: Integer = None)
-```
+Blender identifier: `GeometryNodeMergePoints`
 
 ### nd
 
-``` python
-nd.merge_points(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    merge_id: Integer = None)
-```
+- `nd.merge_points(cls, geometry: Geometry=None, selection: Boolean=None, merge_id: Integer=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.merge_points(self, merge_id: Integer=None)` — method; returns `OUT`.
 
 ## Merge by Distance
 
-> `bl_idname` : GeometryNodeMergeByDistance
-
-### class Geometry
-
-```python
-Geometry.merge_by_distance(self, mode: Literal['All', 'Connected'] = None, distance: Float = None)
-```
-
-```python
-Geometry.merge(self, mode: Literal['All', 'Connected'] = None, distance: Float = None)
-```
+Blender identifier: `GeometryNodeMergeByDistance`
 
 ### nd
 
-``` python
-nd.merge_by_distance(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    mode: Literal['All', 'Connected'] = None,
-                    distance: Float = None)
-```
+- `nd.merge_by_distance(cls, geometry: Geometry=None, selection: Boolean=None, distance: Float=None, mode: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.merge_by_distance(self, distance: Float=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Mesh Bevel
 
-> `bl_idname` : GeometryNodeMeshBevel
-
-### class Mesh
-
-```python
-Mesh.bevel(self,
-                    affect_kind: Literal['Vertices', 'Edges'] = None,
-                    start_left_offset: Float = None,
-                    start_right_offset: Float = None,
-                    end_left_offset: Float = None,
-                    end_right_offset: Float = None,
-                    offset: Float = None,
-                    miter: Boolean = None,
-                    spread: Float = None,
-                    segments: Integer = None,
-                    shape: Float = None,
-                    profile: Geometry = None)
-```
+Blender identifier: `GeometryNodeMeshBevel`
 
 ### nd
 
-``` python
-nd.mesh_bevel(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    affect_kind: Literal['Vertices', 'Edges'] = None,
-                    start_left_offset: Float = None,
-                    start_right_offset: Float = None,
-                    end_left_offset: Float = None,
-                    end_right_offset: Float = None,
-                    offset: Float = None,
-                    miter: Boolean = None,
-                    spread: Float = None,
-                    segments: Integer = None,
-                    shape: Float = None,
-                    profile: Geometry = None)
-```
+- `nd.mesh_bevel(cls, mesh: Mesh=None, selection: Boolean=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None, affect_kind: Menu=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.bevel(self, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None, affect_kind: Menu=None)` — method; returns `OUT`.
 
 ## Mesh Boolean
 
-> `bl_idname` : GeometryNodeMeshBoolean
-
-### class Mesh
-
-```python
-Mesh.boolean(self,
-                    *mesh_2: Mesh,
-                    operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE',
-                    solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.Boolean(cls,
-                    *mesh_2: Mesh,
-                    mesh_1: Mesh = None,
-                    operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE',
-                    solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.intersect(self, *mesh: Mesh, solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.union(self, *mesh: Mesh, solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.difference(self, *mesh_2: Mesh, solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.Intersect(cls, *mesh: Mesh, solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.Union(cls, *mesh: Mesh, solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
-
-```python
-Mesh.Difference(cls,
-                    *mesh_2: Mesh,
-                    mesh_1: Mesh = None,
-                    solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
+Blender identifier: `GeometryNodeMeshBoolean`
 
 ### nd
 
-``` python
-nd.mesh_boolean(cls,
-                    *mesh_2: Mesh,
-                    mesh_1: Mesh = None,
-                    self_intersection: Boolean = None,
-                    hole_tolerant: Boolean = None,
-                    operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE',
-                    solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT')
-```
+- `nd.mesh_boolean(cls, *mesh: Mesh, mesh_1: Mesh=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: T_OPERATION_6='DIFFERENCE', solver: T_SOLVER_1='FLOAT')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.boolean(self, *mesh: Mesh, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: T_OPERATION_6='DIFFERENCE', solver: T_SOLVER_1='FLOAT')` — method; returns `OUT`.
+- `Mesh.intersect(self, *mesh: Mesh, self_intersection: Boolean=None, hole_tolerant: Boolean=None, solver: T_SOLVER_1='FLOAT')` — method; returns `OUT`.
+- `Mesh.union(self, *mesh: Mesh, self_intersection: Boolean=None, hole_tolerant: Boolean=None, solver: T_SOLVER_1='FLOAT')` — method; returns `OUT`.
+- `Mesh.difference(self, *mesh_2: Mesh, self_intersection: Boolean=None, hole_tolerant: Boolean=None, solver: T_SOLVER_1='FLOAT')` — method; returns `OUT`.
 
 ## Mesh Circle
 
-> `bl_idname` : GeometryNodeMeshCircle
-
-### class Mesh
-
-```python
-Mesh.Circle(cls,
-                    vertices: Integer = None,
-                    radius: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NONE')
-```
+Blender identifier: `GeometryNodeMeshCircle`
 
 ### nd
 
-``` python
-nd.mesh_circle(cls,
-                    vertices: Integer = None,
-                    radius: Float = None,
-                    fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NONE')
-```
+- `nd.mesh_circle(cls, vertices: Integer=None, radius: Float=None, fill_type: T_FILL_TYPE_1='NONE')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Circle(cls, vertices: Integer=None, radius: Float=None, fill_type: T_FILL_TYPE_1='NONE')` — class method; returns `OUT`.
 
 ## Mesh Island
 
-> `bl_idname` : GeometryNodeInputMeshIsland
-
-### class Mesh
-
-```python
-prop = Mesh.mesh_island
-```
-
-```python
-prop = Mesh.island_index
-```
-
-```python
-prop = Mesh.island_count
-```
+Blender identifier: `GeometryNodeInputMeshIsland`
 
 ### nd
 
-``` python
-nd.mesh_island(cls)
-```
+- `nd.mesh_island(cls)` — class method; returns `OUT`.
 
 ## Mesh Line
 
-> `bl_idname` : GeometryNodeMeshLine
-
-### class Mesh
-
-```python
-Mesh.LineOffset(cls,
-                    count: Integer = None,
-                    start_location: Vector = None,
-                    offset: Vector = None,
-                    count_mode: Literal['TOTAL', 'RESOLUTION'] = 'TOTAL')
-```
-
-```python
-Mesh.LineEndPoints(cls,
-                    count: Integer = None,
-                    start_location: Vector = None,
-                    end_location: Vector = None,
-                    count_mode: Literal['TOTAL', 'RESOLUTION'] = 'TOTAL')
-```
-
-```python
-Mesh.Line(cls,
-                    count: Integer = None,
-                    start_location: Vector = None,
-                    offset: Vector = None,
-                    count_mode: Literal['TOTAL', 'RESOLUTION'] = 'TOTAL',
-                    mode: Literal['OFFSET', 'END_POINTS'] = 'OFFSET')
-```
+Blender identifier: `GeometryNodeMeshLine`
 
 ### nd
 
-``` python
-nd.mesh_line(cls,
-                    count: Integer = None,
-                    resolution: Float = None,
-                    start_location: Vector = None,
-                    offset: Vector = None,
-                    count_mode: Literal['TOTAL', 'RESOLUTION'] = 'TOTAL',
-                    mode: Literal['OFFSET', 'END_POINTS'] = 'OFFSET')
-```
+- `nd.mesh_line(cls, count: Integer=None, resolution: Float=None, start_location: Vector=None, offset: Vector=None, *, end_location: Vector=None, mode: T_MODE_11='OFFSET', count_mode: T_COUNT_MODE_1='TOTAL')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.Line(cls, count: Integer=None, resolution: Float=None, start_location: Vector=None, offset: Vector=None, *, end_location: Vector=None, mode: T_MODE_11='OFFSET', count_mode: T_COUNT_MODE_1='TOTAL')` — class method; returns `OUT`.
 
 ## Mesh to Curve
 
-> `bl_idname` : GeometryNodeMeshToCurve
-
-### class Mesh
-
-```python
-Mesh.to_curve_edges(self)
-```
-
-```python
-Mesh.to_curve_faces(self)
-```
-
-```python
-Mesh.to_curve(self, mode: Literal['EDGES', 'FACES'] = 'EDGES')
-```
+Blender identifier: `GeometryNodeMeshToCurve`
 
 ### nd
 
-``` python
-nd.mesh_to_curve(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    mode: Literal['EDGES', 'FACES'] = 'EDGES')
-```
+- `nd.mesh_to_curve(cls, mesh: Mesh=None, selection: Boolean=None, mode: T_MODE_12='EDGES')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.to_curve(self, mode: T_MODE_12='EDGES')` — method; returns `OUT`.
 
 ## Mesh to Density Grid
 
-> `bl_idname` : GeometryNodeMeshToDensityGrid
-
-### class Mesh
-
-```python
-Mesh.to_density_grid(self,
-                    density: Float = None,
-                    voxel_size: Float = None,
-                    gradient_width: Float = None)
-```
+Blender identifier: `GeometryNodeMeshToDensityGrid`
 
 ### nd
 
-``` python
-nd.mesh_to_density_grid(cls,
-                    mesh: Mesh = None,
-                    density: Float = None,
-                    voxel_size: Float = None,
-                    gradient_width: Float = None)
-```
+- `nd.mesh_to_density_grid(cls, mesh: Mesh=None, density: Float=None, voxel_size: Float=None, gradient_width: Float=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.to_density_grid(self, density: Float=None, voxel_size: Float=None, gradient_width: Float=None)` — method; returns `OUT`.
 
 ## Mesh to Points
 
-> `bl_idname` : GeometryNodeMeshToPoints
-
-### class Mesh
-
-```python
-Mesh.to_points(self,
-                    position: Vector = None,
-                    radius: Float = None,
-                    mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS'] = 'VERTICES')
-```
-
-```python
-Mesh.vertices_to_points(self, position: Vector = None, radius: Float = None)
-```
-
-```python
-Mesh.edges_to_points(self, position: Vector = None, radius: Float = None)
-```
-
-```python
-Mesh.faces_to_points(self, position: Vector = None, radius: Float = None)
-```
-
-```python
-Mesh.corners_to_points(self, position: Vector = None, radius: Float = None)
-```
-
-### class Vertex
-
-```python
-Mesh.points.to_points(self, position: Vector = None, radius: Float = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.to_points(self, position: Vector = None, radius: Float = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.to_points(self, position: Vector = None, radius: Float = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.to_points(self, position: Vector = None, radius: Float = None)
-```
+Blender identifier: `GeometryNodeMeshToPoints`
 
 ### nd
 
-``` python
-nd.mesh_to_points(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    radius: Float = None,
-                    mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS'] = 'VERTICES')
-```
+- `nd.mesh_to_points(cls, mesh: Mesh=None, selection: Boolean=None, position: Vector=None, radius: Float=None, mode: T_MODE_13='VERTICES')` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.to_points(self, position: Vector=None, radius: Float=None, mode: T_MODE_13='VERTICES')` — method; returns `OUT`.
+
+### Vertex
+
+- `Vertex.to_points(self, position: Vector=None, radius: Float=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.to_points(self, position: Vector=None, radius: Float=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.to_points(self, position: Vector=None, radius: Float=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.to_points(self, position: Vector=None, radius: Float=None)` — method; returns `OUT`.
 
 ## Mesh to SDF Grid
 
-> `bl_idname` : GeometryNodeMeshToSDFGrid
-
-### class Mesh
-
-```python
-Mesh.to_sdf_grid(self, voxel_size: Float = None, band_width: Integer = None)
-```
+Blender identifier: `GeometryNodeMeshToSDFGrid`
 
 ### nd
 
-``` python
-nd.mesh_to_sdf_grid(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None)
-```
+- `nd.mesh_to_sdf_grid(cls, mesh: Mesh=None, voxel_size: Float=None, band_width: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.to_sdf_grid(self, voxel_size: Float=None, band_width: Integer=None)` — method; returns `OUT`.
 
 ## Mesh to Volume
 
-> `bl_idname` : GeometryNodeMeshToVolume
-
-### class Mesh
-
-```python
-Mesh.to_volume(self,
-                    density: Float = None,
-                    resolution_mode: Literal['Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    interior_band_width: Float = None)
-```
+Blender identifier: `GeometryNodeMeshToVolume`
 
 ### nd
 
-``` python
-nd.mesh_to_volume(cls,
-                    mesh: Mesh = None,
-                    density: Float = None,
-                    resolution_mode: Literal['Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    interior_band_width: Float = None)
-```
+- `nd.mesh_to_volume(cls, mesh: Mesh=None, density: Float=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None, resolution_mode: Menu=None)` — class method; returns `OUT`.
 
-## Metallic BSDF
+### Mesh
 
-> `bl_idname` : ShaderNodeBsdfMetallic
-
-### class Shader
-
-```python
-Shader.Metallic(cls,
-                    base_color: Color = None,
-                    edge_tint: Color = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    fresnel_type: Literal['PHYSICAL_CONDUCTOR', 'F82'] = 'F82')
-```
-
-### snd
-
-``` python
-nd.metallic_bsdf(cls,
-                    base_color: Color = None,
-                    edge_tint: Color = None,
-                    ior: Vector = None,
-                    extinction: Vector = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    rotation: Float = None,
-                    normal: Vector = None,
-                    tangent: Vector = None,
-                    weight: Float = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    fresnel_type: Literal['PHYSICAL_CONDUCTOR', 'F82'] = 'F82')
-```
+- `Mesh.to_volume(self, density: Float=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None, resolution_mode: Menu=None)` — method; returns `OUT`.
 
 ## Mix
 
-> `bl_idname` : ShaderNodeMix
-
-### class Float
-
-```python
-Float.mix(self, b: Float = None, factor: Float = None, clamp_factor = True)
-```
-
-### class Rotation
-
-```python
-Rotation.mix(self, b: Rotation = None, factor: Float = None, clamp_factor = True)
-```
-
-### class Vector
-
-```python
-Vector.mix_uniform(self, b: Vector = None, factor: Float = None, clamp_factor = True)
-```
-
-```python
-Vector.mix_non_uniform(self, b: Vector = None, factor: Vector = None, clamp_factor = True)
-```
-
-### class Color
-
-```python
-Color.mix_mix(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_darken(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_multiply(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_burn(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_lighten(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_screen(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_dodge(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_add(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_overlay(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_soft_light(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_linear_light(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_difference(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_exclusion(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_subtract(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_divide(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_hue(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_saturation(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_color(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix_value(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False)
-```
-
-```python
-Color.mix(self,
-                    b: Color = None,
-                    factor: Float = None,
-                    clamp_factor = True,
-                    clamp_result = False,
-                    factor_mode: Literal['UNIFORM', 'NON_UNIFORM'] = 'UNIFORM')
-```
+Blender identifier: `ShaderNodeMix`
 
 ### nd
 
-``` python
-nd.mix(cls,
-                    a: Float = None,
-                    b: Float = None,
-                    a_1: Vector = None,
-                    b_1: Vector = None,
-                    a_2: Color = None,
-                    b_2: Color = None,
-                    a_3: Rotation = None,
-                    b_3: Rotation = None,
-                    factor: Vector = None,
-                    blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'] = 'MIX',
-                    clamp_factor = True,
-                    clamp_result = False,
-                    data_type: Literal['FLOAT', 'VECTOR', 'RGBA', 'ROTATION'] = 'FLOAT',
-                    factor_mode: Literal['UNIFORM', 'NON_UNIFORM'] = 'UNIFORM')
-```
+- `nd.mix(cls, a: Socket=None, b: Socket=None, factor: Socket=None, clamp_factor: bool=True, clamp_result: bool=False, data_type: T_DATA_TYPE_11='FLOAT', factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.mix(cls,
-                    a: Float = None,
-                    b: Float = None,
-                    a_1: Vector = None,
-                    b_1: Vector = None,
-                    a_2: Color = None,
-                    b_2: Color = None,
-                    a_3: Rotation = None,
-                    b_3: Rotation = None,
-                    factor: Vector = None,
-                    blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'] = 'MIX',
-                    clamp_factor = True,
-                    clamp_result = False,
-                    data_type: Literal['FLOAT', 'VECTOR', 'RGBA'] = 'FLOAT',
-                    factor_mode: Literal['UNIFORM', 'NON_UNIFORM'] = 'UNIFORM')
-```
+- `Float.Mix(cls, a: Float=None, b: Float=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
+- `Float.mix(self, b: Float=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — method; returns `OUT`.
 
-## Mix Shader
+### Vector
 
-> `bl_idname` : ShaderNodeMixShader
+- `Vector.Mix(cls, a: Vector=None, b: Vector=None, factor: Socket=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
+- `Vector.mix(self, b: Vector=None, factor: Socket=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — method; returns `OUT`.
 
-### class Shader
+### Color
 
-```python
-Shader.mix(self, shader: Shader = None, factor: Float = None)
-```
+- `Color.Mix(cls, a: Color=None, b: Color=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
+- `Color.mix(self, b: Color=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — method; returns `OUT`.
 
-### snd
+### Rotation
 
-``` python
-nd.mix_shader(cls, shader: Shader = None, shader_1: Shader = None, factor: Float = None)
-```
+- `Rotation.Mix(cls, a: Rotation=None, b: Rotation=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
+- `Rotation.mix(self, b: Rotation=None, factor: Float=None, clamp_factor: bool=True, clamp_result: bool=False, factor_mode: T_FACTOR_MODE_1='UNIFORM', blend_type: T_BLEND_TYPE_1='MIX')` — method; returns `OUT`.
+
+## Mix (Legacy)
+
+Blender identifier: `ShaderNodeMixRGB`
+
+### nd
+
+- `nd.mix_legacy_(cls, color1: Color=None, color2: Color=None, factor: Float=None, use_alpha: bool=False, use_clamp: bool=False, blend_type: T_BLEND_TYPE_1='MIX')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.mix_legacy_(self, color1: Color=None, color2: Color=None, use_alpha: bool=False, use_clamp: bool=False, blend_type: T_BLEND_TYPE_1='MIX')` — method; returns `OUT`.
 
 ## Mouse Position
 
-> `bl_idname` : GeometryNodeToolMousePosition
+Blender identifier: `GeometryNodeToolMousePosition`
 
 ### nd
 
-``` python
-nd.mouse_position(cls)
-```
+- `nd.mouse_position(cls)` — class method; returns `OUT`.
 
 ## Multiply Matrices
 
-> `bl_idname` : FunctionNodeMatrixMultiply
-
-### class Matrix
-
-```python
-Matrix.multiply(self, matrix: Matrix = None)
-```
+Blender identifier: `FunctionNodeMatrixMultiply`
 
 ### nd
 
-``` python
-nd.multiply_matrices(cls, matrix: Matrix = None, matrix_1: Matrix = None)
-```
+- `nd.multiply_matrices(cls, matrix: Matrix=None, matrix_1: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.multiply(self, matrix: Matrix=None)` — method; returns `OUT`.
 
 ## NURBS Order
 
-> `bl_idname` : GeometryNodeNURBSOrder
+Blender identifier: `GeometryNodeNURBSOrder`
 
 ### nd
 
-``` python
-nd.nurbs_order(self)
-```
+- `nd.nurbs_order(cls)` — property; returns `OUT`.
 
 ## NURBS Weight
 
-> `bl_idname` : GeometryNodeNURBSWeight
+Blender identifier: `GeometryNodeNURBSWeight`
 
 ### nd
 
-``` python
-nd.nurbs_weight(self)
-```
+- `nd.nurbs_weight(cls)` — property; returns `OUT`.
 
 ## Named Attribute
 
-> `bl_idname` : GeometryNodeInputNamedAttribute
-
-### class Float
-
-```python
-Float.Named(cls, name: String = None)
-```
-
-```python
-Float.NamedAttribute(cls, name: String = None)
-```
-
-### class Integer
-
-```python
-Integer.Named(cls, name: String = None)
-```
-
-```python
-Integer.NamedAttribute(cls, name: String = None)
-```
-
-### class Boolean
-
-```python
-Boolean.Named(cls, name: String = None)
-```
-
-```python
-Boolean.NamedAttribute(cls, name: String = None)
-```
-
-### class Vector
-
-```python
-Vector.Named(cls, name: String = None)
-```
-
-```python
-Vector.NamedAttribute(cls, name: String = None)
-```
-
-### class Color
-
-```python
-Color.Named(cls, name: String = None)
-```
-
-```python
-Color.NamedAttribute(cls, name: String = None)
-```
-
-### class Rotation
-
-```python
-Rotation.Named(cls, name: String = None)
-```
-
-```python
-Rotation.NamedAttribute(cls, name: String = None)
-```
-
-### class Matrix
-
-```python
-Matrix.Named(cls, name: String = None)
-```
-
-```python
-Matrix.NamedAttribute(cls, name: String = None)
-```
-
-### class Attribute
-
-```python
-Attribute.get(self)
-```
-
-```python
-prop = Attribute.value
-```
+Blender identifier: `GeometryNodeInputNamedAttribute`
 
 ### nd
 
-``` python
-nd.named_attribute(cls,
-                    name: String = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT')
-```
+- `nd.named_attribute(cls, name: String=None, data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
 
 ## Named Layer Selection
 
-> `bl_idname` : GeometryNodeInputNamedLayerSelection
-
-### class GreasePencil
-
-```python
-GreasePencil.named_layer_selection(cls, name: String = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.named_selection(cls, name: String = None)
-```
+Blender identifier: `GeometryNodeInputNamedLayerSelection`
 
 ### nd
 
-``` python
-nd.named_layer_selection(cls, name: String = None)
-```
+- `nd.named_layer_selection(cls, name: String=None)` — class method; returns `OUT`.
 
 ## Noise Texture
 
-> `bl_idname` : ShaderNodeTexNoise
-
-### class Float
-
-```python
-Float.Noise(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    distortion: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D',
-                    noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'] = 'FBM',
-                    normalize = True)
-```
-
-### class Texture
-
-```python
-Texture.Noise(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    distortion: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D',
-                    noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'] = 'FBM',
-                    normalize = True)
-```
+Blender identifier: `ShaderNodeTexNoise`
 
 ### nd
 
-``` python
-nd.noise_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    offset: Float = None,
-                    gain: Float = None,
-                    distortion: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D',
-                    noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'] = 'FBM',
-                    normalize = True)
-```
+- `nd.noise_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, normalize: bool=True, noise_dimensions: T_NOISE_DIMENSIONS_1='3D', noise_type: T_NOISE_TYPE_1='FBM')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.noise_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    offset: Float = None,
-                    gain: Float = None,
-                    distortion: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D',
-                    noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'] = 'FBM',
-                    normalize = True)
-```
+- `Texture.Noise(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, normalize: bool=True, noise_dimensions: T_NOISE_DIMENSIONS_1='3D', noise_type: T_NOISE_TYPE_1='FBM')` — class method; returns `OUT`.
 
 ## Normal
 
-> `bl_idname` : ShaderNodeNormal
+Blender identifier: `GeometryNodeInputNormal`
 
-### class Vector
+### nd
 
-```python
-Vector.normal(self)
-```
-
-### snd
-
-``` python
-nd.normal(cls, normal: Vector = None)
-```
-
-## Normal Map
-
-> `bl_idname` : ShaderNodeNormalMap
-
-### class Float
-
-```python
-Float.normal_map(self,
-                    color: Color = None,
-                    base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
-                    convention: Literal['OPENGL', 'DIRECTX'] = 'OPENGL',
-                    space: Literal['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'] = 'TANGENT',
-                    uv_map = '')
-```
-
-### snd
-
-``` python
-nd.normal_map(cls,
-                    strength: Float = None,
-                    color: Color = None,
-                    base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
-                    convention: Literal['OPENGL', 'DIRECTX'] = 'OPENGL',
-                    space: Literal['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'] = 'TANGENT',
-                    uv_map = '')
-```
+- `nd.normal(cls)` — property; returns `Normal`.
+- `nd.true_normal(cls)` — property; returns `True Normal`.
 
 ## Object
 
-> `bl_idname` : GeometryNodeInputObject
+Blender identifier: `GeometryNodeInputObject`
 
 ### nd
 
-``` python
-nd.object(cls, object = None)
-```
+- `nd.object(cls, object=None)` — class method; returns `OUT`.
 
 ## Object Info
 
-> `bl_idname` : ShaderNodeObjectInfo
+Blender identifier: `GeometryNodeObjectInfo`
 
-### snd
+### nd
 
-``` python
-nd.object_info(cls)
-```
+- `nd.object_info(cls, object: Object=None, as_instance: Boolean=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — class method; returns `OUT`.
+
+### Object
+
+- `Object.info(self, as_instance: Boolean=None, transform_space: T_TRANSFORM_SPACE_1='ORIGINAL')` — method; returns `OUT`.
 
 ## Offset Corner in Face
 
-> `bl_idname` : GeometryNodeOffsetCornerInFace
-
-### class Mesh
-
-```python
-Mesh.offset_corner_in_face(cls, corner_index: Integer = None, offset: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.offset_in_face(cls, corner_index: Integer = None, offset: Integer = None)
-```
+Blender identifier: `GeometryNodeOffsetCornerInFace`
 
 ### nd
 
-``` python
-nd.offset_corner_in_face(cls, corner_index: Integer = None, offset: Integer = None)
-```
+- `nd.offset_corner_in_face(cls, corner_index: Integer=None, offset: Integer=None)` — class method; returns `OUT`.
 
 ## Offset Point in Curve
 
-> `bl_idname` : GeometryNodeOffsetPointInCurve
-
-### class Curve
-
-```python
-Curve.offset_point_in_curve(cls, point_index: Integer = None, offset: Integer = None)
-```
-
-### class SplinePoint
-
-```python
-Spline.points.offset_in_curve(cls, point_index: Integer = None, offset: Integer = None)
-```
+Blender identifier: `GeometryNodeOffsetPointInCurve`
 
 ### nd
 
-``` python
-nd.offset_point_in_curve(cls, point_index: Integer = None, offset: Integer = None)
-```
+- `nd.offset_point_in_curve(cls, point_index: Integer=None, offset: Integer=None)` — class method; returns `OUT`.
 
 ## Pack UV Islands
 
-> `bl_idname` : GeometryNodeUVPackIslands
-
-### class Vector
-
-```python
-Vector.pack_uv_islands(self,
-                    selection: Boolean = None,
-                    margin: Float = None,
-                    rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
-                    bottom_left: Vector = None,
-                    top_right: Vector = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.pack_uv_islands(cls,
-                    uv: Vector = None,
-                    selection: Boolean = None,
-                    margin: Float = None,
-                    rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
-                    bottom_left: Vector = None,
-                    top_right: Vector = None)
-```
+Blender identifier: `GeometryNodeUVPackIslands`
 
 ### nd
 
-``` python
-nd.pack_uv_islands(cls,
-                    uv: Vector = None,
-                    selection: Boolean = None,
-                    margin: Float = None,
-                    rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
-                    bottom_left: Vector = None,
-                    top_right: Vector = None)
-```
+- `nd.pack_uv_islands(cls, uv: Vector=None, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, bottom_left: Vector=None, top_right: Vector=None, method: Menu=None)` — class method; returns `OUT`.
 
-## Particle Info
+### Vector
 
-> `bl_idname` : ShaderNodeParticleInfo
-
-### snd
-
-``` python
-nd.particle_info(cls)
-```
-
-## Point Info
-
-> `bl_idname` : ShaderNodePointInfo
-
-### snd
-
-``` python
-nd.point_info(cls)
-```
+- `Vector.pack_uv_islands(self, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, bottom_left: Vector=None, top_right: Vector=None, method: Menu=None)` — method; returns `OUT`.
 
 ## Points
 
-> `bl_idname` : GeometryNodePoints
-
-### class Cloud
-
-```python
-Cloud.Points(cls, count: Integer = None, position: Vector = None, radius: Float = None)
-```
+Blender identifier: `GeometryNodePoints`
 
 ### nd
 
-``` python
-nd.points(cls, count: Integer = None, position: Vector = None, radius: Float = None)
-```
+- `nd.points(cls, count: Integer=None, position: Vector=None, radius: Float=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.Points(cls, count: Integer=None, position: Vector=None, radius: Float=None)` — class method; returns `OUT`.
 
 ## Points of Curve
 
-> `bl_idname` : GeometryNodePointsOfCurve
-
-### class Curve
-
-```python
-Curve.points_of_curve(cls,
-                    curve_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.points_of_curve(cls,
-                    curve_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Spline.splines.point_index(cls,
-                    curve_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
-
-```python
-Spline.splines.points_total(cls,
-                    curve_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+Blender identifier: `GeometryNodePointsOfCurve`
 
 ### nd
 
-``` python
-nd.points_of_curve(cls,
-                    curve_index: Integer = None,
-                    weights: Float = None,
-                    sort_index: Integer = None)
-```
+- `nd.points_of_curve(cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None)` — class method; returns `OUT`.
 
 ## Points to Curves
 
-> `bl_idname` : GeometryNodePointsToCurves
-
-### class Cloud
-
-```python
-Cloud.to_curves(self, curve_group_id: Integer = None, weight: Float = None)
-```
+Blender identifier: `GeometryNodePointsToCurves`
 
 ### nd
 
-``` python
-nd.points_to_curves(cls,
-                    points: Cloud = None,
-                    curve_group_id: Integer = None,
-                    weight: Float = None)
-```
+- `nd.points_to_curves(cls, points: Cloud=None, curve_group_id: Integer=None, weight: Float=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.to_curves(self, curve_group_id: Integer=None, weight: Float=None)` — method; returns `OUT`.
 
 ## Points to SDF Grid
 
-> `bl_idname` : GeometryNodePointsToSDFGrid
-
-### class Cloud
-
-```python
-Cloud.to_sdf_grid(self, radius: Float = None, voxel_size: Float = None)
-```
+Blender identifier: `GeometryNodePointsToSDFGrid`
 
 ### nd
 
-``` python
-nd.points_to_sdf_grid(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None)
-```
+- `nd.points_to_sdf_grid(cls, points: Cloud=None, radius: Float=None, voxel_size: Float=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.to_sdf_grid(self, radius: Float=None, voxel_size: Float=None)` — method; returns `OUT`.
 
 ## Points to Vertices
 
-> `bl_idname` : GeometryNodePointsToVertices
-
-### class Cloud
-
-```python
-Cloud.to_vertices(self)
-```
+Blender identifier: `GeometryNodePointsToVertices`
 
 ### nd
 
-``` python
-nd.points_to_vertices(cls, points: Cloud = None, selection: Boolean = None)
-```
+- `nd.points_to_vertices(cls, points: Cloud=None, selection: Boolean=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.to_vertices(self)` — method; returns `OUT`.
 
 ## Points to Volume
 
-> `bl_idname` : GeometryNodePointsToVolume
-
-### class Cloud
-
-```python
-Cloud.to_volume(self,
-                    density: Float = None,
-                    resolution_mode: Literal['Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    radius: Float = None)
-```
+Blender identifier: `GeometryNodePointsToVolume`
 
 ### nd
 
-``` python
-nd.points_to_volume(cls,
-                    points: Cloud = None,
-                    density: Float = None,
-                    resolution_mode: Literal['Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    radius: Float = None)
-```
+- `nd.points_to_volume(cls, points: Cloud=None, density: Float=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None, resolution_mode: Menu=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.to_volume(self, density: Float=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None, resolution_mode: Menu=None)` — method; returns `OUT`.
 
 ## Position
 
-> `bl_idname` : GeometryNodeInputPosition
-
-### class Geometry
-
-```python
-prop = Geometry.position
-```
-
-### class Point
-
-```python
-prop = Mesh.points.position
-```
+Blender identifier: `GeometryNodeInputPosition`
 
 ### nd
 
-``` python
-nd.position(self)
-```
+- `nd.position(cls)` — property; returns `OUT`.
 
-## Principled BSDF
+### Geometry
 
-> `bl_idname` : ShaderNodeBsdfPrincipled
+- `Geometry.position(self)` — property; returns `OUT`.
 
-### class Shader
+### Point
 
-```python
-Shader.Principled(cls,
-                    base_color: Color = None,
-                    metallic: Float = None,
-                    roughness: Float = None,
-                    ior: Float = None,
-                    alpha: Float = None,
-                    thin_wall: Boolean = None,
-                    normal: Vector = None,
-                    diffuse_roughness: Float = None,
-                    subsurface_weight: Float = None,
-                    subsurface_radius: Vector = None,
-                    subsurface_scale: Float = None,
-                    subsurface_anisotropy: Float = None,
-                    specular_ior_level: Float = None,
-                    specular_tint: Color = None,
-                    anisotropic: Float = None,
-                    anisotropic_rotation: Float = None,
-                    tangent: Vector = None,
-                    transmission_weight: Float = None,
-                    transmission_dispersion_scale: Float = None,
-                    transmission_dispersion_abbe_number: Float = None,
-                    coat_weight: Float = None,
-                    coat_roughness: Float = None,
-                    coat_ior: Float = None,
-                    coat_tint: Color = None,
-                    coat_normal: Vector = None,
-                    sheen_weight: Float = None,
-                    sheen_roughness: Float = None,
-                    sheen_tint: Color = None,
-                    emission_color: Color = None,
-                    emission_strength: Float = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK')
-```
-
-### snd
-
-``` python
-nd.principled_bsdf(cls,
-                    base_color: Color = None,
-                    metallic: Float = None,
-                    roughness: Float = None,
-                    ior: Float = None,
-                    alpha: Float = None,
-                    thin_wall: Boolean = None,
-                    normal: Vector = None,
-                    weight: Float = None,
-                    diffuse_roughness: Float = None,
-                    subsurface_weight: Float = None,
-                    subsurface_radius: Vector = None,
-                    subsurface_scale: Float = None,
-                    subsurface_ior: Float = None,
-                    subsurface_anisotropy: Float = None,
-                    specular_ior_level: Float = None,
-                    specular_tint: Color = None,
-                    anisotropic: Float = None,
-                    anisotropic_rotation: Float = None,
-                    tangent: Vector = None,
-                    transmission_weight: Float = None,
-                    transmission_dispersion_scale: Float = None,
-                    transmission_dispersion_abbe_number: Float = None,
-                    coat_weight: Float = None,
-                    coat_roughness: Float = None,
-                    coat_ior: Float = None,
-                    coat_tint: Color = None,
-                    coat_normal: Vector = None,
-                    sheen_weight: Float = None,
-                    sheen_roughness: Float = None,
-                    sheen_tint: Color = None,
-                    emission_color: Color = None,
-                    emission_strength: Float = None,
-                    thin_film_thickness: Float = None,
-                    thin_film_ior: Float = None,
-                    distribution: Literal['GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK')
-```
-
-## Principled Hair BSDF
-
-> `bl_idname` : ShaderNodeBsdfHairPrincipled
-
-### class Shader
-
-```python
-Shader.PrincipledHair(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    radial_roughness: Float = None,
-                    coat: Float = None,
-                    ior: Float = None,
-                    offset: Float = None,
-                    random_roughness: Float = None,
-                    random: Float = None,
-                    model: Literal['CHIANG', 'HUANG'] = 'CHIANG',
-                    parametrization: Literal['ABSORPTION', 'MELANIN', 'COLOR'] = 'COLOR')
-```
-
-### snd
-
-``` python
-nd.principled_hair_bsdf(cls,
-                    color: Color = None,
-                    melanin: Float = None,
-                    melanin_redness: Float = None,
-                    tint: Color = None,
-                    absorption_coefficient: Vector = None,
-                    aspect_ratio: Float = None,
-                    roughness: Float = None,
-                    radial_roughness: Float = None,
-                    coat: Float = None,
-                    ior: Float = None,
-                    offset: Float = None,
-                    random_color: Float = None,
-                    random_roughness: Float = None,
-                    random: Float = None,
-                    weight: Float = None,
-                    reflection: Float = None,
-                    transmission: Float = None,
-                    secondary_reflection: Float = None,
-                    model: Literal['CHIANG', 'HUANG'] = 'CHIANG',
-                    parametrization: Literal['ABSORPTION', 'MELANIN', 'COLOR'] = 'COLOR')
-```
-
-## Principled Volume
-
-> `bl_idname` : ShaderNodeVolumePrincipled
-
-### class VolumeShader
-
-```python
-VolumeShader.Principled(cls,
-                    color: Color = None,
-                    color_attribute: String = None,
-                    density: Float = None,
-                    density_attribute: String = None,
-                    anisotropy: Float = None,
-                    absorption_color: Color = None,
-                    emission_strength: Float = None,
-                    emission_color: Color = None,
-                    blackbody_intensity: Float = None,
-                    blackbody_tint: Color = None,
-                    temperature: Float = None,
-                    temperature_attribute: String = None)
-```
-
-### snd
-
-``` python
-nd.principled_volume(cls,
-                    color: Color = None,
-                    color_attribute: String = None,
-                    density: Float = None,
-                    density_attribute: String = None,
-                    anisotropy: Float = None,
-                    absorption_color: Color = None,
-                    emission_strength: Float = None,
-                    emission_color: Color = None,
-                    blackbody_intensity: Float = None,
-                    blackbody_tint: Color = None,
-                    temperature: Float = None,
-                    temperature_attribute: String = None,
-                    weight: Float = None)
-```
+- `Point.position(self)` — property; returns `OUT`.
 
 ## Project Point
 
-> `bl_idname` : FunctionNodeProjectPoint
-
-### class Matrix
-
-```python
-Matrix.project_point(self, vector: Vector = None)
-```
+Blender identifier: `FunctionNodeProjectPoint`
 
 ### nd
 
-``` python
-nd.project_point(cls, vector: Vector = None, transform: Matrix = None)
-```
+- `nd.project_point(cls, vector: Vector=None, transform: Matrix=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.project_point(self, transform: Matrix=None)` — method; returns `OUT`.
 
 ## Prune Grid
 
-> `bl_idname` : GeometryNodeGridPrune
-
-### class Float
-
-```python
-Float.prune_grid(self,
-                    mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
-                    threshold: Float = None)
-```
-
-### class Integer
-
-```python
-Integer.prune_grid(self,
-                    mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
-                    threshold: Integer = None)
-```
-
-### class Boolean
-
-```python
-Boolean.prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF'] = None)
-```
-
-### class Vector
-
-```python
-Vector.prune_grid(self,
-                    mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
-                    threshold: Vector = None)
-```
+Blender identifier: `GeometryNodeGridPrune`
 
 ### nd
 
-``` python
-nd.prune_grid(cls,
-                    grid: Float = None,
-                    mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
-                    threshold: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.prune_grid(cls, grid: Socket=None, threshold: Socket=None, mode: Menu=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.prune_grid(self, threshold: Float=None, mode: Menu=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.prune_grid(self, threshold: Integer=None, mode: Menu=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.prune_grid(self, mode: Menu=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.prune_grid(self, threshold: Vector=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Quadratic Bézier
 
-> `bl_idname` : GeometryNodeCurveQuadraticBezier
-
-### class Curve
-
-```python
-Curve.QuadraticBezier(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    middle: Vector = None,
-                    end: Vector = None)
-```
+Blender identifier: `GeometryNodeCurveQuadraticBezier`
 
 ### nd
 
-``` python
-nd.quadratic_bezier(cls,
-                    resolution: Integer = None,
-                    start: Vector = None,
-                    middle: Vector = None,
-                    end: Vector = None)
-```
+- `nd.quadratic_bezier(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.QuadraticBezier(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None)` — class method; returns `OUT`.
 
 ## Quadrilateral
 
-> `bl_idname` : GeometryNodeCurvePrimitiveQuadrilateral
-
-### class Curve
-
-```python
-Curve.QuadrilateralRectangle(cls, width: Float = None, height: Float = None)
-```
-
-```python
-Curve.QuadrilateralParallelogram(cls, width: Float = None, height: Float = None, offset: Float = None)
-```
-
-```python
-Curve.QuadrilateralTrapezoid(cls,
-                    height: Float = None,
-                    bottom_width: Float = None,
-                    top_width: Float = None,
-                    offset: Float = None)
-```
-
-```python
-Curve.QuadrilateralKite(cls,
-                    width: Float = None,
-                    bottom_height: Float = None,
-                    top_height: Float = None)
-```
-
-```python
-Curve.QuadrilateralPoints(cls,
-                    point_1: Vector = None,
-                    point_2: Vector = None,
-                    point_3: Vector = None,
-                    point_4: Vector = None)
-```
-
-```python
-Curve.Quadrilateral(cls,
-                    width: Float = None,
-                    height: Float = None,
-                    mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'] = 'RECTANGLE')
-```
+Blender identifier: `GeometryNodeCurvePrimitiveQuadrilateral`
 
 ### nd
 
-``` python
-nd.quadrilateral(cls,
-                    width: Float = None,
-                    height: Float = None,
-                    bottom_width: Float = None,
-                    top_width: Float = None,
-                    offset: Float = None,
-                    bottom_height: Float = None,
-                    top_height: Float = None,
-                    point_1: Vector = None,
-                    point_2: Vector = None,
-                    point_3: Vector = None,
-                    point_4: Vector = None,
-                    mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'] = 'RECTANGLE')
-```
+- `nd.quadrilateral(cls, width: Float=None, height: Float=None, bottom_width: Float=None, top_width: Float=None, offset: Float=None, bottom_height: Float=None, top_height: Float=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, point_4: Vector=None, mode: T_MODE_14='RECTANGLE')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.Quadrilateral(cls, width: Float=None, height: Float=None, bottom_width: Float=None, top_width: Float=None, offset: Float=None, bottom_height: Float=None, top_height: Float=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, point_4: Vector=None, mode: T_MODE_14='RECTANGLE')` — class method; returns `OUT`.
 
 ## Quaternion to Rotation
 
-> `bl_idname` : FunctionNodeQuaternionToRotation
-
-### class Rotation
-
-```python
-Rotation.FromQuaternion(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
-```
+Blender identifier: `FunctionNodeQuaternionToRotation`
 
 ### nd
 
-``` python
-nd.quaternion_to_rotation(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
-```
+- `nd.quaternion_to_rotation(cls, w: Float=None, x: Float=None, y: Float=None, z: Float=None)` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.FromQuaternion(cls, w: Float=None, x: Float=None, y: Float=None, z: Float=None)` — class method; returns `OUT`.
 
 ## RGB Curves
 
-> `bl_idname` : ShaderNodeRGBCurve
+Blender identifier: `ShaderNodeRGBCurve`
 
 ### nd
 
-``` python
-nd.rgb_curves(cls, color: Color = None, factor: Float = None)
-```
+- `nd.rgb_curves(cls, color: Color=None, factor: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.rgb_curves(cls, color: Color = None, factor: Float = None)
-```
-
-## RGB to BW
-
-> `bl_idname` : ShaderNodeRGBToBW
-
-### class Color
-
-```python
-Color.rgb_to_bw(self)
-```
-
-### snd
-
-``` python
-nd.rgb_to_bw(cls, color: Color = None)
-```
+- `Float.rgb_curves(self, color: Color=None)` — method; returns `OUT`.
 
 ## Radial Tiling
 
-> `bl_idname` : ShaderNodeRadialTiling
-
-### class Vector
-
-```python
-Vector.radial_tiling(self, sides: Float = None, roundness: Float = None, normalize = False)
-```
+Blender identifier: `ShaderNodeRadialTiling`
 
 ### nd
 
-``` python
-nd.radial_tiling(cls,
-                    vector: Vector = None,
-                    sides: Float = None,
-                    roundness: Float = None,
-                    normalize = False)
-```
+- `nd.radial_tiling(cls, vector: Vector=None, sides: Float=None, roundness: Float=None, normalize: bool=False)` — class method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.radial_tiling(cls,
-                    vector: Vector = None,
-                    sides: Float = None,
-                    roundness: Float = None,
-                    normalize = False)
-```
+- `Vector.radial_tiling(self, sides: Float=None, roundness: Float=None, normalize: bool=False)` — method; returns `OUT`.
 
 ## Radius
 
-> `bl_idname` : GeometryNodeInputRadius
-
-### class Cloud
-
-```python
-prop = Cloud.radius
-```
-
-### class CloudPoint
-
-```python
-prop = Cloud.points.radius
-```
-
-### class Curve
-
-```python
-prop = Curve.radius
-```
-
-### class SplinePoint
-
-```python
-prop = Spline.points.radius
-```
+Blender identifier: `GeometryNodeInputRadius`
 
 ### nd
 
-``` python
-nd.radius(self)
-```
+- `nd.radius(cls)` — property; returns `OUT`.
+
+### Cloud
+
+- `Cloud.radius(self)` — property; returns `OUT`.
+
+### CloudPoint
+
+- `CloudPoint.radius(self)` — property; returns `OUT`.
+
+### Curve
+
+- `Curve.radius(self)` — property; returns `OUT`.
+
+### SplinePoint
+
+- `SplinePoint.radius(self)` — property; returns `OUT`.
 
 ## Random Value
 
-> `bl_idname` : FunctionNodeRandomValue
-
-### class Float
-
-```python
-Float.Random(cls,
-                    min: Float = None,
-                    max: Float = None,
-                    id: Integer = None,
-                    seed: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.Random(cls,
-                    min: Integer = None,
-                    max: Integer = None,
-                    id: Integer = None,
-                    seed: Integer = None)
-```
-
-### class Boolean
-
-```python
-Boolean.Random(cls, probability: Float = None, id: Integer = None, seed: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.Random(cls,
-                    min: Vector = None,
-                    max: Vector = None,
-                    id: Integer = None,
-                    seed: Integer = None)
-```
+Blender identifier: `FunctionNodeRandomValue`
 
 ### nd
 
-``` python
-nd.random_value(cls,
-                    min: Float = None,
-                    max: Float = None,
-                    id: Integer = None,
-                    seed: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR'] = 'FLOAT')
-```
+- `nd.random_value(cls, min: Socket=None, probability: Float=None, max: Socket=None, id: Integer=None, seed: Integer=None, data_type: T_DATA_TYPE_12='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.Random(cls, min: Float=None, max: Float=None, id: Integer=None, seed: Integer=None)` — class method; returns `OUT`.
+
+### Integer
+
+- `Integer.Random(cls, min: Integer=None, max: Integer=None, id: Integer=None, seed: Integer=None)` — class method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.Random(cls, probability: Float=None, id: Integer=None, seed: Integer=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.Random(cls, min: Vector=None, max: Vector=None, id: Integer=None, seed: Integer=None)` — class method; returns `OUT`.
 
 ## Rasterize Points
 
-> `bl_idname` : GeometryNodeRasterizePoints
-
-### class Cloud
-
-```python
-Cloud.rasterize_points(self,
-                    named_sockets: dict = {},
-                    grid_transform_mode: Literal['Voxel Size', 'Matrix'] = None,
-                    voxel_size: Float = None,
-                    matrix: Matrix = None,
-                    kernel_type: Literal['Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline'] = None,
-                    position: Vector = None,
-                    **sockets)
-```
+Blender identifier: `GeometryNodeRasterizePoints`
 
 ### nd
 
-``` python
-nd.rasterize_points(cls,
-                    named_sockets: dict = {},
-                    points: Cloud = None,
-                    grid_transform_mode: Literal['Voxel Size', 'Matrix'] = None,
-                    voxel_size: Float = None,
-                    matrix: Matrix = None,
-                    kernel_type: Literal['Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline'] = None,
-                    position: Vector = None,
-                    **sockets)
-```
+- `nd.rasterize_points(cls, points: Cloud=None, voxel_size: Float=None, matrix: Matrix=None, position: Vector=None, named_sockets: dict={}, grid_transform_mode: Menu=None, kernel_type: Menu=None, **sockets)` — class method; returns `OUT`.
 
-## Ray Portal BSDF
+### Cloud
 
-> `bl_idname` : ShaderNodeBsdfRayPortal
-
-### class Shader
-
-```python
-Shader.RayPortal(cls, color: Color = None, position: Vector = None, direction: Vector = None)
-```
-
-### snd
-
-``` python
-nd.ray_portal_bsdf(cls,
-                    color: Color = None,
-                    position: Vector = None,
-                    direction: Vector = None,
-                    weight: Float = None)
-```
+- `Cloud.rasterize_points(self, voxel_size: Float=None, matrix: Matrix=None, position: Vector=None, named_sockets: dict={}, grid_transform_mode: Menu=None, kernel_type: Menu=None, **sockets)` — method; returns `OUT`.
 
 ## Raycast
 
-> `bl_idname` : ShaderNodeRaycast
+Blender identifier: `GeometryNodeRaycast`
 
-### class Vector
+### nd
 
-```python
-Vector.raycast(self,
-                    named_sockets: dict = {},
-                    direction: Vector = None,
-                    length: Float = None,
-                    only_local = False,
-                    **sockets)
-```
+- `nd.raycast(cls, target_geometry: Geometry=None, attribute: Socket=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None, interpolation: Menu=None, data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
 
-### snd
+### Geometry
 
-``` python
-nd.raycast(cls,
-                    named_sockets: dict = {},
-                    position: Vector = None,
-                    direction: Vector = None,
-                    length: Float = None,
-                    only_local = False,
-                    **sockets)
-```
+- `Geometry.raycast(self, attribute: Socket=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None, interpolation: Menu=None)` — method; returns `OUT`.
 
 ## Realize Instances
 
-> `bl_idname` : GeometryNodeRealizeInstances
-
-### class Geometry
-
-```python
-Geometry.realize(self,
-                    realize_all: Boolean = None,
-                    depth: Integer = None,
-                    preserve_normals: Boolean = None,
-                    realize_to_point_domain = False)
-```
+Blender identifier: `GeometryNodeRealizeInstances`
 
 ### nd
 
-``` python
-nd.realize_instances(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    realize_all: Boolean = None,
-                    depth: Integer = None,
-                    preserve_normals: Boolean = None,
-                    realize_to_point_domain = False)
-```
+- `nd.realize_instances(cls, geometry: Geometry=None, selection: Boolean=None, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False)` — class method; returns `OUT`.
 
-## Refraction BSDF
+### Geometry
 
-> `bl_idname` : ShaderNodeBsdfRefraction
-
-### class Shader
-
-```python
-Shader.Refraction(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    ior: Float = None,
-                    normal: Vector = None,
-                    distribution: Literal['BECKMANN', 'GGX'] = 'BECKMANN')
-```
-
-### snd
-
-``` python
-nd.refraction_bsdf(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    ior: Float = None,
-                    normal: Vector = None,
-                    weight: Float = None,
-                    distribution: Literal['BECKMANN', 'GGX'] = 'BECKMANN')
-```
+- `Geometry.realize(self, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False)` — method; returns `OUT`.
 
 ## Remove Named Attribute
 
-> `bl_idname` : GeometryNodeRemoveAttribute
-
-### class Geometry
-
-```python
-Geometry.remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard'] = None, name: String = None)
-```
-
-### class Attribute
-
-```python
-Attribute.remove(self, all=False)
-```
+Blender identifier: `GeometryNodeRemoveAttribute`
 
 ### nd
 
-``` python
-nd.remove_named_attribute(cls,
-                    geometry: Geometry = None,
-                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
-                    name: String = None)
-```
+- `nd.remove_named_attribute(cls, geometry: Geometry=None, name: String=None, pattern_mode: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.remove(self, name: String=None, pattern_mode: Menu=None)` — method; returns `OUT`.
+- `Geometry.remove_named_attribute(self, name: String=None, pattern_mode: Menu=None)` — method; returns `OUT`.
 
 ## Rename Attribute
 
-> `bl_idname` : GeometryNodeRenameAttribute
-
-### class Geometry
-
-```python
-Geometry.rename_attribute(self,
-                    mode: Literal['Single', 'Prefix'] = None,
-                    old: String = None,
-                    new: String = None,
-                    overwrite: Boolean = None)
-```
-
-### class Attribute
-
-```python
-Attribute.rename(self, name, prefix=False, overwrite=None)
-```
+Blender identifier: `GeometryNodeRenameAttribute`
 
 ### nd
 
-``` python
-nd.rename_attribute(cls,
-                    geometry: Geometry = None,
-                    mode: Literal['Single', 'Prefix'] = None,
-                    old: String = None,
-                    new: String = None,
-                    overwrite: Boolean = None)
-```
+- `nd.rename_attribute(cls, geometry: Geometry=None, old: String=None, new: String=None, overwrite: Boolean=None, mode: Menu=None)` — class method; returns `OUT`.
 
-## Repeat Input
+### Geometry
 
-> `bl_idname` : GeometryNodeRepeatInput
-
-### class Repeat
-
-```python
-
-with GeoNodes("Repeat Example"):
-    
-    geo = Geometry()
-    count = Integer(3, "Count")
-    move = Vector((0, 0, 2), "Move")
-    scale = Float(0.5, "Scale")
-    
-    for rep in repeat(count, geo=geo, move=move, scale=scale):
-        
-        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
-        
-        rep.move += move*rep.scale
-        rep.scale *= scale
-        
-    rep.geo.out()
-
-```
-
-## Repeat Output
-
-> `bl_idname` : GeometryNodeRepeatOutput
-
-### class Repeat
-
-```python
-
-with GeoNodes("Repeat Example"):
-    
-    geo = Geometry()
-    count = Integer(3, "Count")
-    move = Vector((0, 0, 2), "Move")
-    scale = Float(0.5, "Scale")
-    
-    for rep in repeat(count, geo=geo, move=move, scale=scale):
-        
-        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
-        
-        rep.move += move*rep.scale
-        rep.scale *= scale
-        
-    rep.geo.out()
-
-```
+- `Geometry.rename_attribute(self, old: String=None, new: String=None, overwrite: Boolean=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Replace Material
 
-> `bl_idname` : GeometryNodeReplaceMaterial
-
-### class Geometry
-
-```python
-Geometry.replace_material(self, old: Material = None, new: Material = None)
-```
+Blender identifier: `GeometryNodeReplaceMaterial`
 
 ### nd
 
-``` python
-nd.replace_material(cls, geometry: Geometry = None, old: Material = None, new: Material = None)
-```
+- `nd.replace_material(cls, geometry: Geometry=None, old: Material=None, new: Material=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.replace_material(self, old: Material=None, new: Material=None)` — method; returns `OUT`.
 
 ## Replace String
 
-> `bl_idname` : FunctionNodeReplaceString
-
-### class String
-
-```python
-String.replace(self, find: String = None, replace: String = None)
-```
+Blender identifier: `FunctionNodeReplaceString`
 
 ### nd
 
-``` python
-nd.replace_string(cls, string: String = None, find: String = None, replace: String = None)
-```
+- `nd.replace_string(cls, string: String=None, find: String=None, replace: String=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.replace_string(cls, string: String = None, find: String = None, replace: String = None)
-```
-
-## Reroute
-
-> `bl_idname` : NodeReroute
-
-### nd
-
-``` python
-nd.reroute(cls, input: Color = None, socket_idname = 'NodeSocketColor')
-```
-
-### snd
-
-``` python
-nd.reroute(cls, input: Color = None, socket_idname = 'NodeSocketColor')
-```
+- `String.replace(self, find: String=None, replace: String=None)` — method; returns `OUT`.
 
 ## Resample Curve
 
-> `bl_idname` : GeometryNodeResampleCurve
-
-### class Curve
-
-```python
-Curve.resample(self,
-                    mode: Literal['Evaluated', 'Count', 'Length'] = None,
-                    count: Integer = None,
-                    length: Float = None,
-                    keep_last_segment = True)
-```
+Blender identifier: `GeometryNodeResampleCurve`
 
 ### nd
 
-``` python
-nd.resample_curve(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    mode: Literal['Evaluated', 'Count', 'Length'] = None,
-                    count: Integer = None,
-                    length: Float = None,
-                    keep_last_segment = True)
-```
+- `nd.resample_curve(cls, curve: Curve=None, selection: Boolean=None, count: Integer=None, length: Float=None, mode: Menu=None, keep_last_segment: bool=True)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.resample(self, count: Integer=None, length: Float=None, mode: Menu=None, keep_last_segment: bool=True)` — method; returns `OUT`.
 
 ## Reverse Curve
 
-> `bl_idname` : GeometryNodeReverseCurve
-
-### class Curve
-
-```python
-Curve.reverse(self)
-```
+Blender identifier: `GeometryNodeReverseCurve`
 
 ### nd
 
-``` python
-nd.reverse_curve(cls, curve: Curve = None, selection: Boolean = None)
-```
+- `nd.reverse_curve(cls, curve: Curve=None, selection: Boolean=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.reverse(self)` — method; returns `OUT`.
 
 ## Reverse String
 
-> `bl_idname` : FunctionNodeReverseString
-
-### class String
-
-```python
-String.reverse(self)
-```
+Blender identifier: `FunctionNodeReverseString`
 
 ### nd
 
-``` python
-nd.reverse_string(cls, string: String = None)
-```
+- `nd.reverse_string(cls, string: String=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.reverse_string(cls, string: String = None)
-```
+- `String.reverse(self)` — method; returns `OUT`.
 
 ## Rotate Instances
 
-> `bl_idname` : GeometryNodeRotateInstances
-
-### class Instances
-
-```python
-Instances.rotate(self,
-                    rotation: Rotation = None,
-                    pivot_point: Vector = None,
-                    local_space: Boolean = None)
-```
+Blender identifier: `GeometryNodeRotateInstances`
 
 ### nd
 
-``` python
-nd.rotate_instances(cls,
-                    instances: Instances = None,
-                    selection: Boolean = None,
-                    rotation: Rotation = None,
-                    pivot_point: Vector = None,
-                    local_space: Boolean = None)
-```
+- `nd.rotate_instances(cls, instances: Instances=None, selection: Boolean=None, rotation: Rotation=None, pivot_point: Vector=None, local_space: Boolean=None)` — class method; returns `OUT`.
+
+### Instances
+
+- `Instances.rotate(self, rotation: Rotation=None, pivot_point: Vector=None, local_space: Boolean=None)` — method; returns `OUT`.
 
 ## Rotate Rotation
 
-> `bl_idname` : FunctionNodeRotateRotation
-
-### class Rotation
-
-```python
-Rotation.rotate(self,
-                    rotate_by: Rotation = None,
-                    rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL')
-```
-
-```python
-Rotation.rotate_global(self, rotate_by: Rotation = None)
-```
-
-```python
-Rotation.rotate_local(self, rotate_by: Rotation = None)
-```
+Blender identifier: `FunctionNodeRotateRotation`
 
 ### nd
 
-``` python
-nd.rotate_rotation(cls,
-                    rotation: Rotation = None,
-                    rotate_by: Rotation = None,
-                    rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL')
-```
+- `nd.rotate_rotation(cls, rotation: Rotation=None, rotate_by: Rotation=None, rotation_space: T_ROTATION_SPACE_1='GLOBAL')` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.rotate(self, rotate_by: Rotation=None, rotation_space: T_ROTATION_SPACE_1='GLOBAL')` — method; returns `OUT`.
 
 ## Rotate Vector
 
-> `bl_idname` : FunctionNodeRotateVector
-
-### class Rotation
-
-```python
-Rotation.rotate_vector(self, vector: Vector = None)
-```
+Blender identifier: `FunctionNodeRotateVector`
 
 ### nd
 
-``` python
-nd.rotate_vector(cls, vector: Vector = None, rotation: Rotation = None)
-```
+- `nd.rotate_vector(cls, vector: Vector=None, rotation: Rotation=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.rotate(self, rotation: Rotation=None)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.rotate_vector(self, vector: Vector=None)` — method; returns `OUT`.
 
 ## Rotation
 
-> `bl_idname` : FunctionNodeInputRotation
+Blender identifier: `FunctionNodeInputRotation`
 
 ### nd
 
-``` python
-nd.rotation(self)
-```
+- `nd.rotation(cls, rotation_euler: tuple[float, float, float]=None)` — class method; returns `OUT`.
 
 ## Rotation to Axis Angle
 
-> `bl_idname` : FunctionNodeRotationToAxisAngle
-
-### class Rotation
-
-```python
-Rotation.to_axis_angle(self)
-```
-
-```python
-prop = Rotation.axis_angle
-```
+Blender identifier: `FunctionNodeRotationToAxisAngle`
 
 ### nd
 
-``` python
-nd.rotation_to_axis_angle(cls, rotation: Rotation = None)
-```
+- `nd.rotation_to_axis_angle(cls, rotation: Rotation=None)` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.to_axis_angle(self)` — method; returns `OUT`.
 
 ## Rotation to Euler
 
-> `bl_idname` : FunctionNodeRotationToEuler
-
-### class Rotation
-
-```python
-Rotation.to_euler(self)
-```
-
-```python
-Rotation.separate_to_list(self)
-```
+Blender identifier: `FunctionNodeRotationToEuler`
 
 ### nd
 
-``` python
-nd.rotation_to_euler(cls, rotation: Rotation = None)
-```
+- `nd.rotation_to_euler(cls, rotation: Rotation=None)` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.to_euler(self)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.FromRotation(cls, rotation: Rotation=None)` — class method; returns `OUT`.
 
 ## Rotation to Quaternion
 
-> `bl_idname` : FunctionNodeRotationToQuaternion
-
-### class Rotation
-
-```python
-Rotation.to_quaternion(self)
-```
-
-```python
-prop = Rotation.wxyz
-```
+Blender identifier: `FunctionNodeRotationToQuaternion`
 
 ### nd
 
-``` python
-nd.rotation_to_quaternion(cls, rotation: Rotation = None)
-```
+- `nd.rotation_to_quaternion(cls, rotation: Rotation=None)` — class method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.to_quaternion(self)` — method; returns `OUT`.
 
 ## SDF Grid Boolean
 
-> `bl_idname` : GeometryNodeSDFGridBoolean
-
-### class Float
-
-```python
-Float.sdf_grid_boolean(self,
-                    *grid_2: Float,
-                    operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE')
-```
-
-```python
-Float.sdf_intersect(self, *grid: Float)
-```
-
-```python
-Float.sdf_union(self, *grid: Float)
-```
-
-```python
-Float.sdf_difference(self, *grid_2: Float)
-```
+Blender identifier: `GeometryNodeSDFGridBoolean`
 
 ### nd
 
-``` python
-nd.sdf_grid_boolean(cls,
-                    *grid_2: Float,
-                    grid_1: Float = None,
-                    operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE')
-```
+- `nd.sdf_grid_boolean(cls, *grid: Float, grid_1: Float=None, operation: T_OPERATION_6='DIFFERENCE')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_boolean(self, *grid: Float, operation: T_OPERATION_6='DIFFERENCE')` — method; returns `OUT`.
 
 ## SDF Grid Fillet
 
-> `bl_idname` : GeometryNodeSDFGridFillet
-
-### class Float
-
-```python
-Float.sdf_grid_fillet(self, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeSDFGridFillet`
 
 ### nd
 
-``` python
-nd.sdf_grid_fillet(cls, grid: Float = None, iterations: Integer = None)
-```
+- `nd.sdf_grid_fillet(cls, grid: Float=None, iterations: Integer=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_fillet(self, iterations: Integer=None)` — method; returns `OUT`.
 
 ## SDF Grid Laplacian
 
-> `bl_idname` : GeometryNodeSDFGridLaplacian
-
-### class Float
-
-```python
-Float.sdf_grid_laplacian(self, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeSDFGridLaplacian`
 
 ### nd
 
-``` python
-nd.sdf_grid_laplacian(cls, grid: Float = None, iterations: Integer = None)
-```
+- `nd.sdf_grid_laplacian(cls, grid: Float=None, iterations: Integer=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_laplacian(self, iterations: Integer=None)` — method; returns `OUT`.
 
 ## SDF Grid Mean
 
-> `bl_idname` : GeometryNodeSDFGridMean
-
-### class Float
-
-```python
-Float.sdf_grid_mean(self, width: Integer = None, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeSDFGridMean`
 
 ### nd
 
-``` python
-nd.sdf_grid_mean(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
-```
+- `nd.sdf_grid_mean(cls, grid: Float=None, width: Integer=None, iterations: Integer=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_mean(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
 
 ## SDF Grid Mean Curvature
 
-> `bl_idname` : GeometryNodeSDFGridMeanCurvature
-
-### class Float
-
-```python
-Float.sdf_grid_mean_curvature(self, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeSDFGridMeanCurvature`
 
 ### nd
 
-``` python
-nd.sdf_grid_mean_curvature(cls, grid: Float = None, iterations: Integer = None)
-```
+- `nd.sdf_grid_mean_curvature(cls, grid: Float=None, iterations: Integer=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_mean_curvature(self, iterations: Integer=None)` — method; returns `OUT`.
 
 ## SDF Grid Median
 
-> `bl_idname` : GeometryNodeSDFGridMedian
-
-### class Float
-
-```python
-Float.sdf_grid_median(self, width: Integer = None, iterations: Integer = None)
-```
+Blender identifier: `GeometryNodeSDFGridMedian`
 
 ### nd
 
-``` python
-nd.sdf_grid_median(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
-```
+- `nd.sdf_grid_median(cls, grid: Float=None, width: Integer=None, iterations: Integer=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_median(self, width: Integer=None, iterations: Integer=None)` — method; returns `OUT`.
 
 ## SDF Grid Offset
 
-> `bl_idname` : GeometryNodeSDFGridOffset
-
-### class Float
-
-```python
-Float.sdf_grid_offset(self, distance: Float = None)
-```
+Blender identifier: `GeometryNodeSDFGridOffset`
 
 ### nd
 
-``` python
-nd.sdf_grid_offset(cls, grid: Float = None, distance: Float = None)
-```
+- `nd.sdf_grid_offset(cls, grid: Float=None, distance: Float=None)` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sdf_grid_offset(self, distance: Float=None)` — method; returns `OUT`.
 
 ## Sample Curve
 
-> `bl_idname` : GeometryNodeSampleCurve
-
-### class Curve
-
-```python
-Curve.sample_factor(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    curve_index: Integer = None,
-                    factor: Float = None,
-                    use_all_curves = False)
-```
-
-```python
-Curve.sample_length(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    length: Float = None,
-                    curve_index: Integer = None,
-                    use_all_curves = False)
-```
-
-```python
-Curve.sample(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    curve_index: Integer = None,
-                    factor: Float = None,
-                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR',
-                    use_all_curves = False)
-```
+Blender identifier: `GeometryNodeSampleCurve`
 
 ### nd
 
-``` python
-nd.sample_curve(cls,
-                    curves: Curve = None,
-                    value: Float = None,
-                    length: Float = None,
-                    curve_index: Integer = None,
-                    factor: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
-                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR',
-                    use_all_curves = False)
-```
+- `nd.sample_curve(cls, curves: Curve=None, value: Socket=None, length: Float=None, curve_index: Integer=None, factor: Float=None, use_all_curves: bool=False, mode: T_MODE_15='FACTOR', data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.sample(self, value: Socket=None, length: Float=None, curve_index: Integer=None, factor: Float=None, use_all_curves: bool=False, mode: T_MODE_15='FACTOR')` — method; returns `OUT`.
+- `Curve.sample_factor(self, value: Socket=None, curve_index: Integer=None, factor: Float=None, use_all_curves: bool=False)` — method; returns `OUT`.
+- `Curve.sample_length(self, value: Socket=None, length: Float=None, curve_index: Integer=None, use_all_curves: bool=False)` — method; returns `OUT`.
 
 ## Sample Grid
 
-> `bl_idname` : GeometryNodeSampleGrid
-
-### class Float
-
-```python
-Float.sample_grid(self,
-                    position: Vector = None,
-                    interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic'] = None)
-```
-
-### class Integer
-
-```python
-Integer.sample_grid(self,
-                    position: Vector = None,
-                    interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic'] = None)
-```
-
-### class Boolean
-
-```python
-Boolean.sample_grid(self,
-                    position: Vector = None,
-                    interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic'] = None)
-```
-
-### class Vector
-
-```python
-Vector.sample_grid(self,
-                    position: Vector = None,
-                    interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic'] = None)
-```
+Blender identifier: `GeometryNodeSampleGrid`
 
 ### nd
 
-``` python
-nd.sample_grid(cls,
-                    grid: Float = None,
-                    position: Vector = None,
-                    interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic'] = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.sample_grid(cls, grid: Socket=None, position: Vector=None, interpolation: Menu=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sample_grid(self, position: Vector=None, interpolation: Menu=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.sample_grid(self, position: Vector=None, interpolation: Menu=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.sample_grid(self, position: Vector=None, interpolation: Menu=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.sample_grid(self, position: Vector=None, interpolation: Menu=None)` — method; returns `OUT`.
 
 ## Sample Grid Index
 
-> `bl_idname` : GeometryNodeSampleGridIndex
-
-### class Float
-
-```python
-Float.sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer = None)
-```
-
-### class Boolean
-
-```python
-Boolean.sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer = None)
-```
-
-### class Vector
-
-```python
-Vector.sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer = None)
-```
+Blender identifier: `GeometryNodeSampleGridIndex`
 
 ### nd
 
-``` python
-nd.sample_grid_index(cls,
-                    grid: Float = None,
-                    x: Integer = None,
-                    y: Integer = None,
-                    z: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.sample_grid_index(cls, grid: Socket=None, x: Integer=None, y: Integer=None, z: Integer=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None)` — method; returns `OUT`.
 
 ## Sample Index
 
-> `bl_idname` : GeometryNodeSampleIndex
-
-### class Point
-
-```python
-Mesh.points.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Edge
-
-```python
-Mesh.edges.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Face
-
-```python
-Mesh.faces.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Corner
-
-```python
-Mesh.corners.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Spline
-
-```python
-Spline.splines.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Instance
-
-```python
-Instances.insts.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.sample_index(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    index: Integer = None,
-                    clamp = False)
-```
+Blender identifier: `GeometryNodeSampleIndex`
 
 ### nd
 
-``` python
-nd.sample_index(cls,
-                    geometry: Geometry = None,
-                    value: Float = None,
-                    index: Integer = None,
-                    clamp = False,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.sample_index(cls, geometry: Geometry=None, value: Socket=None, index: Integer=None, clamp: bool=False, data_type: T_DATA_TYPE_8='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Face
+
+- `Face.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False)` — method; returns `OUT`.
 
 ## Sample Nearest
 
-> `bl_idname` : GeometryNodeSampleNearest
-
-### class Point
-
-```python
-Mesh.points.sample_nearest(self, sample_position: Vector = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.sample_nearest(self, sample_position: Vector = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.sample_nearest(self, sample_position: Vector = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.sample_nearest(self, sample_position: Vector = None)
-```
+Blender identifier: `GeometryNodeSampleNearest`
 
 ### nd
 
-``` python
-nd.sample_nearest(cls,
-                    geometry: Geometry = None,
-                    sample_position: Vector = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER'] = 'POINT')
-```
+- `nd.sample_nearest(cls, geometry: Geometry=None, sample_position: Vector=None, domain: T_DOMAIN_5='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.sample_nearest(self, sample_position: Vector=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.sample_nearest(self, sample_position: Vector=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.sample_nearest(self, sample_position: Vector=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.sample_nearest(self, sample_position: Vector=None)` — method; returns `OUT`.
 
 ## Sample Nearest Surface
 
-> `bl_idname` : GeometryNodeSampleNearestSurface
-
-### class Mesh
-
-```python
-Mesh.sample_nearest_surface(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeSampleNearestSurface`
 
 ### nd
 
-``` python
-nd.sample_nearest_surface(cls,
-                    mesh: Mesh = None,
-                    value: Float = None,
-                    group_id: Integer = None,
-                    sample_position: Vector = None,
-                    sample_group_id: Integer = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT')
-```
+- `nd.sample_nearest_surface(cls, mesh: Mesh=None, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.sample_nearest_surface(self, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None)` — method; returns `OUT`.
 
 ## Sample Sound Frequencies
 
-> `bl_idname` : GeometryNodeSampleSoundFrequencies
+Blender identifier: `GeometryNodeSampleSoundFrequencies`
 
 ### nd
 
-``` python
-nd.sample_sound_frequencies(cls,
-                    sound: Sound = None,
-                    time: Float = None,
-                    all_channels: Boolean = None,
-                    channel: Integer = None,
-                    low: Float = None,
-                    high: Float = None,
-                    fft_size: Literal['128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768'] = None,
-                    window_function: Literal['Hann', 'Hamming', 'Blackman', 'Rectangular'] = None)
-```
+- `nd.sample_sound_frequencies(cls, sound: Sound=None, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Menu=None, window_function: Menu=None)` — class method; returns `OUT`.
+
+### Sound
+
+- `Sound.sample_sound_frequencies(self, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Menu=None, window_function: Menu=None)` — method; returns `OUT`.
 
 ## Sample UV Surface
 
-> `bl_idname` : GeometryNodeSampleUVSurface
-
-### class Mesh
-
-```python
-Mesh.sample_uv_surface(self,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
-                    uv_map: Vector = None,
-                    sample_uv: Vector = None)
-```
+Blender identifier: `GeometryNodeSampleUVSurface`
 
 ### nd
 
-``` python
-nd.sample_uv_surface(cls,
-                    mesh: Mesh = None,
-                    value: Float = None,
-                    uv_map: Vector = None,
-                    sample_uv: Vector = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT')
-```
+- `nd.sample_uv_surface(cls, mesh: Mesh=None, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None, data_type: T_DATA_TYPE_8='FLOAT')` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.sample_uv_surface(self, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None)` — method; returns `OUT`.
 
 ## Scale Elements
 
-> `bl_idname` : GeometryNodeScaleElements
-
-### class Face
-
-```python
-Mesh.faces.scale(self,
-                    scale: Float = None,
-                    center: Vector = None,
-                    scale_mode: Literal['Uniform', 'Single Axis'] = None,
-                    axis: Vector = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.scale(self,
-                    scale: Float = None,
-                    center: Vector = None,
-                    scale_mode: Literal['Uniform', 'Single Axis'] = None,
-                    axis: Vector = None)
-```
+Blender identifier: `GeometryNodeScaleElements`
 
 ### nd
 
-``` python
-nd.scale_elements(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    scale: Float = None,
-                    center: Vector = None,
-                    scale_mode: Literal['Uniform', 'Single Axis'] = None,
-                    axis: Vector = None,
-                    domain: Literal['FACE', 'EDGE'] = 'FACE')
-```
+- `nd.scale_elements(cls, geometry: Geometry=None, selection: Boolean=None, scale: Float=None, center: Vector=None, axis: Vector=None, scale_mode: Menu=None, domain: T_DOMAIN_6='FACE')` — class method; returns `OUT`.
+
+### Face
+
+- `Face.scale(self, scale: Float=None, center: Vector=None, axis: Vector=None, scale_mode: Menu=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.scale(self, scale: Float=None, center: Vector=None, axis: Vector=None, scale_mode: Menu=None)` — method; returns `OUT`.
 
 ## Scale Instances
 
-> `bl_idname` : GeometryNodeScaleInstances
-
-### class Instances
-
-```python
-Instances.scale(self, scale: Vector = None, center: Vector = None, local_space: Boolean = None)
-```
+Blender identifier: `GeometryNodeScaleInstances`
 
 ### nd
 
-``` python
-nd.scale_instances(cls,
-                    instances: Instances = None,
-                    selection: Boolean = None,
-                    scale: Vector = None,
-                    center: Vector = None,
-                    local_space: Boolean = None)
-```
+- `nd.scale_instances(cls, instances: Instances=None, selection: Boolean=None, scale: Vector=None, center: Vector=None, local_space: Boolean=None)` — class method; returns `OUT`.
+
+### Instances
+
+- `Instances.scale(self, scale: Vector=None, center: Vector=None, local_space: Boolean=None)` — method; returns `OUT`.
 
 ## Scene Time
 
-> `bl_idname` : GeometryNodeInputSceneTime
-
-### class Float
-
-```python
-prop = Float.scene_time
-```
-
-```python
-prop = Float.seconds
-```
-
-```python
-prop = Float.frame
-```
+Blender identifier: `GeometryNodeInputSceneTime`
 
 ### nd
 
-``` python
-nd.scene_time(cls)
-```
-
-### snd
-
-``` python
-nd.scene_time(cls)
-```
-
-## Script
-
-> `bl_idname` : ShaderNodeScript
-
-### snd
-
-``` python
-nd.script(cls,
-                    bytecode = '',
-                    bytecode_hash = '',
-                    filepath = '',
-                    mode: Literal['INTERNAL', 'EXTERNAL'] = 'INTERNAL',
-                    script = None,
-                    use_auto_update = False)
-```
+- `nd.scene_time(cls)` — class method; returns `OUT`.
 
 ## Selection
 
-> `bl_idname` : GeometryNodeToolSelection
+Blender identifier: `GeometryNodeToolSelection`
 
 ### nd
 
-``` python
-nd.selection(cls)
-```
+- `nd.selection(cls)` — class method; returns `OUT`.
 
 ## Self Object
 
-> `bl_idname` : GeometryNodeSelfObject
-
-### class Object
-
-```python
-Object.Self(cls)
-```
+Blender identifier: `GeometryNodeSelfObject`
 
 ### nd
 
-``` python
-nd.self_object(self)
-```
+- `nd.self_object(cls)` — property; returns `OUT`.
+
+### Object
+
+- `Object.SelfObject(cls)` — class method; returns `OUT`.
 
 ## Separate Bundle
 
-> `bl_idname` : NodeSeparateBundle
-
-### class Bundle
-
-```python
-Bundle.separate_bundle(self, named_sockets: dict = {}, define_signature = False, **sockets)
-```
+Blender identifier: `NodeSeparateBundle`
 
 ### nd
 
-``` python
-nd.separate_bundle(cls,
-                    named_sockets: dict = {},
-                    bundle: Bundle = None,
-                    define_signature = False,
-                    **sockets)
-```
+- `nd.separate_bundle(cls, bundle: Bundle=None, define_signature: bool=False)` — class method; returns `OUT`.
 
-### snd
+### Bundle
 
-``` python
-nd.separate_bundle(cls,
-                    named_sockets: dict = {},
-                    bundle: Bundle = None,
-                    define_signature = False,
-                    **sockets)
-```
+- `Bundle.separate(self, define_signature: bool=False)` — method; returns `OUT`.
 
 ## Separate Color
 
-> `bl_idname` : ShaderNodeSeparateColor
+Blender identifier: `FunctionNodeSeparateColor`
 
-### class Color
+### nd
 
-```python
-Color.separate_col_RGB(self)
-```
+- `nd.separate_color(cls, color: Color=None, mode: T_MODE_3='RGB')` — class method; returns `OUT`.
 
-```python
-Color.separate_col_HSV(self)
-```
+### Color
 
-```python
-Color.separate_col_HSL(self)
-```
-
-```python
-Color.separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
-```
-
-### snd
-
-``` python
-nd.separate_color(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
-```
+- `Color.separate(self, mode: T_MODE_3='RGB')` — method; returns `OUT`.
 
 ## Separate Components
 
-> `bl_idname` : GeometryNodeSeparateComponents
-
-### class Geometry
-
-```python
-Geometry.separate_components(self)
-```
-
-```python
-prop = Geometry.mesh
-```
-
-```python
-prop = Geometry.curve
-```
-
-```python
-prop = Geometry.grease_pencil
-```
-
-```python
-prop = Geometry.point_cloud
-```
-
-```python
-prop = Geometry.volume
-```
-
-```python
-prop = Geometry.instances
-```
+Blender identifier: `GeometryNodeSeparateComponents`
 
 ### nd
 
-``` python
-nd.separate_components(cls, geometry: Geometry = None)
-```
+- `nd.separate_components(cls, geometry: Geometry=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.separate_components(self)` — method; returns `NODE`.
+- `Geometry.separate_mesh(self)` — method; returns `Mesh`.
+- `Geometry.separate_curve(self)` — method; returns `Curve`.
+- `Geometry.separate_point_cloud(self)` — method; returns `Point Cloud`.
+- `Geometry.separate_instances(self)` — method; returns `Instances`.
+- `Geometry.separate_volume(self)` — method; returns `Volume`.
+- `Geometry.separate_grease_pencil(self)` — method; returns `Grease Pencil`.
 
 ## Separate Geometry
 
-> `bl_idname` : GeometryNodeSeparateGeometry
-
-### class Point
-
-```python
-Mesh.points.separate(self)
-```
-
-### class Edge
-
-```python
-Mesh.edges.separate(self)
-```
-
-### class Face
-
-```python
-Mesh.faces.separate(self)
-```
-
-### class Spline
-
-```python
-Spline.splines.separate(self)
-```
-
-### class Instance
-
-```python
-Instances.insts.separate(self)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.separate(self)
-```
+Blender identifier: `GeometryNodeSeparateGeometry`
 
 ### nd
 
-``` python
-nd.separate_geometry(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.separate_geometry(cls, geometry: Geometry=None, selection: Boolean=None, domain: T_DOMAIN_3='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.separate(self)` — method; returns `cls`.
+
+### Edge
+
+- `Edge.separate(self)` — method; returns `cls`.
+
+### Face
+
+- `Face.separate(self)` — method; returns `cls`.
+
+### Spline
+
+- `Spline.separate(self)` — method; returns `cls`.
+
+### Instance
+
+- `Instance.separate(self)` — method; returns `cls`.
+
+### Layer
+
+- `Layer.separate(self)` — method; returns `cls`.
 
 ## Separate Matrix
 
-> `bl_idname` : FunctionNodeSeparateMatrix
-
-### class Matrix
-
-```python
-prop = Matrix.as_tuple
-```
-
-```python
-Matrix.separate(self)
-```
-
-```python
-Matrix.separate_matrix(self)
-```
-
-```python
-prop = Matrix.column_1_row_1
-```
-
-```python
-prop = Matrix.column_1_row_2
-```
-
-```python
-prop = Matrix.column_1_row_3
-```
-
-```python
-prop = Matrix.column_1_row_4
-```
-
-```python
-prop = Matrix.column_2_row_1
-```
-
-```python
-prop = Matrix.column_2_row_2
-```
-
-```python
-prop = Matrix.column_2_row_3
-```
-
-```python
-prop = Matrix.column_2_row_4
-```
-
-```python
-prop = Matrix.column_3_row_1
-```
-
-```python
-prop = Matrix.column_3_row_2
-```
-
-```python
-prop = Matrix.column_3_row_3
-```
-
-```python
-prop = Matrix.column_3_row_4
-```
-
-```python
-prop = Matrix.column_4_row_1
-```
-
-```python
-prop = Matrix.column_4_row_2
-```
-
-```python
-prop = Matrix.column_4_row_3
-```
-
-```python
-prop = Matrix.column_4_row_4
-```
-
-```python
-Matrix.separate_to_list(self)
-```
+Blender identifier: `FunctionNodeSeparateMatrix`
 
 ### nd
 
-``` python
-nd.separate_matrix(cls, matrix: Matrix = None)
-```
+- `nd.separate_matrix(cls, matrix: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.separate(self)` — method; returns `OUT`.
 
 ## Separate Transform
 
-> `bl_idname` : FunctionNodeSeparateTransform
-
-### class Matrix
-
-```python
-prop = Matrix.trs
-```
-
-```python
-Matrix.separate_transform(self)
-```
-
-```python
-prop = Matrix.translation
-```
-
-```python
-prop = Matrix.rotation
-```
-
-```python
-prop = Matrix.scale
-```
+Blender identifier: `FunctionNodeSeparateTransform`
 
 ### nd
 
-``` python
-nd.separate_transform(cls, transform: Matrix = None)
-```
+- `nd.separate_transform(cls, transform: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.separate_transform(self)` — method; returns `OUT`.
+- `Matrix.separate_translation(self)` — method; returns `Translation`.
+- `Matrix.separate_rotation(self)` — method; returns `Rotation`.
+- `Matrix.separate_scale(self)` — method; returns `Scale`.
 
 ## Separate XYZ
 
-> `bl_idname` : ShaderNodeSeparateXYZ
-
-### class Vector
-
-```python
-prop = Vector.xyz
-```
-
-```python
-Vector.separate_xyz(self)
-```
-
-```python
-prop = Vector.x
-```
-
-```python
-prop = Vector.y
-```
-
-```python
-prop = Vector.z
-```
-
-```python
-Vector.separate_to_list(self)
-```
+Blender identifier: `ShaderNodeSeparateXYZ`
 
 ### nd
 
-``` python
-nd.separate_xyz(cls, vector: Vector = None)
-```
+- `nd.separate_xyz(cls, vector: Vector=None)` — class method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.separate_xyz(cls, vector: Vector = None)
-```
+- `Vector.separate_xyz(self)` — method; returns `OUT`.
 
 ## Set Curve Normal
 
-> `bl_idname` : GeometryNodeSetCurveNormal
-
-### class Curve
-
-```python
-Curve.set_normal(self,
-                    mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
-                    normal: Vector = None)
-```
-
-```python
-Curve.set_normal_minimum_twist(self, normal: Vector = None)
-```
-
-```python
-Curve.set_normal_z_up(self, normal: Vector = None)
-```
-
-```python
-Curve.set_normal_free(self, normal: Vector = None)
-```
-
-```python
-Curve.normal = value
-```
-
-### class Spline
-
-```python
-Spline.splines.normal = value
-```
+Blender identifier: `GeometryNodeSetCurveNormal`
 
 ### nd
 
-``` python
-nd.set_curve_normal(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
-                    normal: Vector = None)
-```
+- `nd.set_curve_normal(cls, curve: Curve=None, selection: Boolean=None, normal: Vector=None, mode: Menu=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_normal(self, normal: Vector=None, mode: Menu=None)` — method; returns `OUT`.
+- `Curve.normal(self, normal: Vector=None)` — setter; returns `None`.
+
+### Spline
+
+- `Spline.normal(self, normal: Vector=None)` — setter; returns `None`.
 
 ## Set Curve Radius
 
-> `bl_idname` : GeometryNodeSetCurveRadius
-
-### class Curve
-
-```python
-Curve.set_radius(self, radius: Float = None)
-```
-
-```python
-Curve.radius = value
-```
-
-### class SplinePoint
-
-```python
-Spline.points.radius = value
-```
+Blender identifier: `GeometryNodeSetCurveRadius`
 
 ### nd
 
-``` python
-nd.set_curve_radius(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None)
-```
+- `nd.set_curve_radius(cls, curve: Curve=None, selection: Boolean=None, radius: Float=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_radius(self, radius: Float=None)` — method; returns `OUT`.
+- `Curve.radius(self, radius: Float=None)` — setter; returns `None`.
+
+### SplinePoint
+
+- `SplinePoint.radius(self, radius: Float=None)` — setter; returns `None`.
 
 ## Set Curve Tilt
 
-> `bl_idname` : GeometryNodeSetCurveTilt
-
-### class Curve
-
-```python
-Curve.set_tilt(self, tilt: Float = None)
-```
-
-```python
-Curve.tilt = value
-```
-
-### class Spline
-
-```python
-Spline.splines.tilt = value
-```
+Blender identifier: `GeometryNodeSetCurveTilt`
 
 ### nd
 
-``` python
-nd.set_curve_tilt(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None)
-```
+- `nd.set_curve_tilt(cls, curve: Curve=None, selection: Boolean=None, tilt: Float=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_tilt(self, tilt: Float=None)` — method; returns `OUT`.
+- `Curve.tilt(self, tilt: Float=None)` — setter; returns `None`.
+
+### Spline
+
+- `Spline.tilt(self, tilt: Float=None)` — setter; returns `None`.
 
 ## Set Face Set
 
-> `bl_idname` : GeometryNodeToolSetFaceSet
-
-### class Mesh
-
-```python
-Mesh.set_face_set(self, face_set: Integer = None)
-```
+Blender identifier: `GeometryNodeToolSetFaceSet`
 
 ### nd
 
-``` python
-nd.set_face_set(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None)
-```
+- `nd.set_face_set(cls, mesh: Mesh=None, selection: Boolean=None, face_set: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.set_face_set(self, face_set: Integer=None)` — method; returns `OUT`.
 
 ## Set Geometry Bundle
 
-> `bl_idname` : GeometryNodeSetGeometryBundle
-
-### class Geometry
-
-```python
-Geometry.set_bundle(self, bundle: Bundle = None)
-```
+Blender identifier: `GeometryNodeSetGeometryBundle`
 
 ### nd
 
-``` python
-nd.set_geometry_bundle(cls, geometry: Geometry = None, bundle: Bundle = None)
-```
+- `nd.set_geometry_bundle(cls, geometry: Geometry=None, bundle: Bundle=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_bundle(self, bundle: Bundle=None)` — method; returns `OUT`.
+- `Geometry.bundle(self, bundle: Bundle=None)` — setter; returns `None`.
 
 ## Set Geometry Name
 
-> `bl_idname` : GeometryNodeSetGeometryName
-
-### class Geometry
-
-```python
-Geometry.set_name(self, name: String = None)
-```
-
-```python
-Geometry.name = value
-```
+Blender identifier: `GeometryNodeSetGeometryName`
 
 ### nd
 
-``` python
-nd.set_geometry_name(cls, geometry: Geometry = None, name: String = None)
-```
+- `nd.set_geometry_name(cls, geometry: Geometry=None, name: String=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_name(self, name: String=None)` — method; returns `OUT`.
+- `Geometry.name(self, name: String=None)` — setter; returns `None`.
 
 ## Set Grease Pencil Color
 
-> `bl_idname` : GeometryNodeSetGreasePencilColor
-
-### class GreasePencil
-
-```python
-GreasePencil.set_color_stroke(self,
-                    mode: Literal['Stroke', 'Fill', 'Both'] = None,
-                    color: Color = None,
-                    opacity: Float = None)
-```
-
-```python
-GreasePencil.set_color_fill(self,
-                    mode: Literal['Stroke', 'Fill', 'Both'] = None,
-                    color: Color = None,
-                    opacity: Float = None)
-```
-
-```python
-GreasePencil.set_color_both(self,
-                    mode: Literal['Stroke', 'Fill', 'Both'] = None,
-                    color: Color = None,
-                    opacity: Float = None)
-```
-
-```python
-GreasePencil.set_color(self,
-                    mode_1: Literal['Stroke', 'Fill', 'Both'] = None,
-                    color: Color = None,
-                    opacity: Float = None,
-                    mode: Literal['STROKE', 'FILL', 'BOTH'] = 'STROKE')
-```
-
-```python
-GreasePencil.stroke_color = value
-```
-
-```python
-GreasePencil.fill_color = value
-```
+Blender identifier: `GeometryNodeSetGreasePencilColor`
 
 ### nd
 
-``` python
-nd.set_grease_pencil_color(cls,
-                    grease_pencil: GreasePencil = None,
-                    selection: Boolean = None,
-                    mode_1: Literal['Stroke', 'Fill', 'Both'] = None,
-                    color: Color = None,
-                    opacity: Float = None,
-                    mode: Literal['STROKE', 'FILL', 'BOTH'] = 'STROKE')
-```
+- `nd.set_grease_pencil_color(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, color: Color=None, opacity: Float=None, mode_1: Menu=None, mode: T_MODE_16='STROKE')` — class method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.set_grease_pencil_color(self, color: Color=None, opacity: Float=None, mode_1: Menu=None, mode: T_MODE_16='STROKE')` — method; returns `OUT`.
+- `GreasePencil.stroke_color(self, color: Color=None)` — setter; returns `None`.
+- `GreasePencil.fill_color(self, color: Color=None)` — setter; returns `None`.
 
 ## Set Grease Pencil Depth
 
-> `bl_idname` : GeometryNodeSetGreasePencilDepth
-
-### class GreasePencil
-
-```python
-GreasePencil.set_depth(self,
-                    depth_order_1: Literal['2D Layers', '3D Location'] = None,
-                    depth_order: Literal['2D', '3D'] = '2D')
-```
-
-```python
-GreasePencil.depth = value
-```
+Blender identifier: `GeometryNodeSetGreasePencilDepth`
 
 ### nd
 
-``` python
-nd.set_grease_pencil_depth(cls,
-                    grease_pencil: GreasePencil = None,
-                    depth_order_1: Literal['2D Layers', '3D Location'] = None,
-                    depth_order: Literal['2D', '3D'] = '2D')
-```
+- `nd.set_grease_pencil_depth(cls, grease_pencil: GreasePencil=None, depth_order_1: Menu=None, depth_order: T_GABOR_TYPE_1='2D')` — class method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.set_grease_pencil_depth(self, depth_order_1: Menu=None, depth_order: T_GABOR_TYPE_1='2D')` — method; returns `OUT`.
+- `GreasePencil.depth(self, depth_order: Menu=None)` — setter; returns `None`.
 
 ## Set Grease Pencil Softness
 
-> `bl_idname` : GeometryNodeSetGreasePencilSoftness
-
-### class GreasePencil
-
-```python
-GreasePencil.set_softness(self, softness: Float = None)
-```
-
-```python
-GreasePencil.softness = value
-```
+Blender identifier: `GeometryNodeSetGreasePencilSoftness`
 
 ### nd
 
-``` python
-nd.set_grease_pencil_softness(cls,
-                    grease_pencil: GreasePencil = None,
-                    selection: Boolean = None,
-                    softness: Float = None)
-```
+- `nd.set_grease_pencil_softness(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, softness: Float=None)` — class method; returns `OUT`.
+
+### GreasePencil
+
+- `GreasePencil.set_grease_pencil_softness(self, softness: Float=None)` — method; returns `OUT`.
+- `GreasePencil.softness(self, softness: Float=None)` — setter; returns `None`.
 
 ## Set Grid Background
 
-> `bl_idname` : GeometryNodeSetGridBackground
-
-### class Float
-
-```python
-Float.set_grid_background(self, background: Float = None, update_inactive: Boolean = None)
-```
-
-### class Integer
-
-```python
-Integer.set_grid_background(self, background: Integer = None, update_inactive: Boolean = None)
-```
-
-### class Boolean
-
-```python
-Boolean.set_grid_background(self, background: Boolean = None, update_inactive: Boolean = None)
-```
-
-### class Vector
-
-```python
-Vector.set_grid_background(self, background: Vector = None, update_inactive: Boolean = None)
-```
+Blender identifier: `GeometryNodeSetGridBackground`
 
 ### nd
 
-``` python
-nd.set_grid_background(cls,
-                    grid: Float = None,
-                    background: Float = None,
-                    update_inactive: Boolean = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.set_grid_background(cls, grid: Socket=None, background: Socket=None, update_inactive: Boolean=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.set_grid_background(self, background: Float=None, update_inactive: Boolean=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.set_grid_background(self, background: Integer=None, update_inactive: Boolean=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.set_grid_background(self, background: Boolean=None, update_inactive: Boolean=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.set_grid_background(self, background: Vector=None, update_inactive: Boolean=None)` — method; returns `OUT`.
 
 ## Set Grid Transform
 
-> `bl_idname` : GeometryNodeSetGridTransform
-
-### class Float
-
-```python
-Float.set_grid_transform(self, transform: Matrix = None)
-```
-
-### class Integer
-
-```python
-Integer.set_grid_transform(self, transform: Matrix = None)
-```
-
-### class Boolean
-
-```python
-Boolean.set_grid_transform(self, transform: Matrix = None)
-```
-
-### class Vector
-
-```python
-Vector.set_grid_transform(self, transform: Matrix = None)
-```
+Blender identifier: `GeometryNodeSetGridTransform`
 
 ### nd
 
-``` python
-nd.set_grid_transform(cls,
-                    grid: Float = None,
-                    transform: Matrix = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.set_grid_transform(cls, grid: Socket=None, transform: Matrix=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.set_grid_transform(self, transform: Matrix=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.set_grid_transform(self, transform: Matrix=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.set_grid_transform(self, transform: Matrix=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.set_grid_transform(self, transform: Matrix=None)` — method; returns `OUT`.
 
 ## Set Handle Positions
 
-> `bl_idname` : GeometryNodeSetCurveHandlePositions
-
-### class Curve
-
-```python
-Curve.set_handle_positions(self,
-                    position: Vector = None,
-                    offset: Vector = None,
-                    mode: Literal['LEFT', 'RIGHT'] = 'LEFT')
-```
-
-```python
-Curve.set_left_handle_positions(self, position: Vector = None, offset: Vector = None)
-```
-
-```python
-Curve.set_right_handle_positions(self, position: Vector = None, offset: Vector = None)
-```
-
-```python
-Curve.left_handle_position = value
-```
-
-```python
-Curve.right_handle_position = value
-```
-
-```python
-Curve.left_handle_offset = value
-```
-
-```python
-Curve.right_handle_offset = value
-```
+Blender identifier: `GeometryNodeSetCurveHandlePositions`
 
 ### nd
 
-``` python
-nd.set_handle_positions(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    offset: Vector = None,
-                    mode: Literal['LEFT', 'RIGHT'] = 'LEFT')
-```
+- `nd.set_handle_positions(cls, curve: Curve=None, selection: Boolean=None, position: Vector=None, offset: Vector=None, mode: T_MODE_17='LEFT')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_handle_positions(self, position: Vector=None, offset: Vector=None, mode: T_MODE_17='LEFT')` — method; returns `OUT`.
+- `Curve.left_handle_position(self, position: Vector=None)` — setter; returns `None`.
+- `Curve.left_handle_offset(self, offset: Vector=None)` — setter; returns `None`.
+- `Curve.right_handle_position(self, position: Vector=None)` — setter; returns `None`.
+- `Curve.right_handle_offset(self, offset: Vector=None)` — setter; returns `None`.
 
 ## Set Handle Type
 
-> `bl_idname` : GeometryNodeCurveSetHandles
-
-### class Curve
-
-```python
-Curve.set_handle_type(self,
-                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
-```
-
-```python
-Curve.set_left_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO')
-```
-
-```python
-Curve.set_right_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO')
-```
-
-```python
-Curve.set_both_handle_type(self, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO')
-```
-
-```python
-Curve.handle_type = value
-```
-
-```python
-Curve.left_handle_type = value
-```
-
-```python
-Curve.right_handle_type = value
-```
+Blender identifier: `GeometryNodeCurveSetHandles`
 
 ### nd
 
-``` python
-nd.set_handle_type(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
-```
+- `nd.set_handle_type(cls, curve: Curve=None, selection: Boolean=None, handle_type: T_HANDLE_TYPE_1='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'LEFT', 'RIGHT'})` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_handle_type(self, handle_type: T_HANDLE_TYPE_1='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'LEFT', 'RIGHT'})` — method; returns `OUT`.
+- `Curve.handle_type(self, handle_type: T_HANDLE_TYPE_1='AUTO')` — setter; returns `None`.
+- `Curve.left_handle_type(self, handle_type: T_HANDLE_TYPE_1='AUTO')` — setter; returns `None`.
+- `Curve.right_handle_type(self, handle_type: T_HANDLE_TYPE_1='AUTO')` — setter; returns `None`.
 
 ## Set ID
 
-> `bl_idname` : GeometryNodeSetID
-
-### class Geometry
-
-```python
-Geometry.set_id(self, id: Integer = None)
-```
-
-```python
-Geometry.id = value
-```
+Blender identifier: `GeometryNodeSetID`
 
 ### nd
 
-``` python
-nd.set_id(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None)
-```
+- `nd.set_id(cls, geometry: Geometry=None, selection: Boolean=None, id: Integer=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_id(self, id: Integer=None)` — method; returns `OUT`.
+- `Geometry.id(self, id: Integer=None)` — setter; returns `None`.
 
 ## Set Instance Transform
 
-> `bl_idname` : GeometryNodeSetInstanceTransform
-
-### class Instances
-
-```python
-Instances.set_transform(self, transform: Matrix = None)
-```
-
-```python
-Instances.transform = value
-```
+Blender identifier: `GeometryNodeSetInstanceTransform`
 
 ### nd
 
-``` python
-nd.set_instance_transform(cls,
-                    instances: Instances = None,
-                    selection: Boolean = None,
-                    transform: Matrix = None)
-```
+- `nd.set_instance_transform(cls, instances: Instances=None, selection: Boolean=None, transform: Matrix=None)` — class method; returns `OUT`.
+
+### Instances
+
+- `Instances.set_instance_transform(self, transform: Matrix=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.transform(self, transform: Matrix=None)` — setter; returns `None`.
 
 ## Set Material
 
-> `bl_idname` : GeometryNodeSetMaterial
-
-### class Geometry
-
-```python
-Geometry.set_material(self, material: Material = None)
-```
-
-```python
-Geometry.material = value
-```
-
-### class Face
-
-```python
-Mesh.faces.material = value
-```
-
-### class Edge
-
-```python
-Mesh.edges.material = value
-```
+Blender identifier: `GeometryNodeSetMaterial`
 
 ### nd
 
-``` python
-nd.set_material(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    material: Material = None)
-```
+- `nd.set_material(cls, geometry: Geometry=None, selection: Boolean=None, material: Material=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_material(self, material: Material=None)` — method; returns `OUT`.
+- `Geometry.material(self, material: Material=None)` — setter; returns `None`.
+
+### Face
+
+- `Face.material(self, material: Material=None)` — setter; returns `None`.
+
+### Edge
+
+- `Edge.material(self, material: Material=None)` — setter; returns `None`.
 
 ## Set Material Index
 
-> `bl_idname` : GeometryNodeSetMaterialIndex
-
-### class Geometry
-
-```python
-Geometry.set_material_index(self, material_index: Integer = None)
-```
-
-```python
-Geometry.material_index = value
-```
-
-### class Face
-
-```python
-Mesh.faces.material_index = value
-```
-
-### class Spline
-
-```python
-Spline.splines.material_index = value
-```
+Blender identifier: `GeometryNodeSetMaterialIndex`
 
 ### nd
 
-``` python
-nd.set_material_index(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    material_index: Integer = None)
-```
+- `nd.set_material_index(cls, geometry: Geometry=None, selection: Boolean=None, material_index: Integer=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_material_index(self, material_index: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.material_index(self, material_index: Integer=None)` — setter; returns `None`.
+
+### Mesh
+
+- `Mesh.material_index(self, material_index: Integer=None)` — setter; returns `None`.
+
+### Spline
+
+- `Spline.material_index(self, material_index: Integer=None)` — setter; returns `None`.
 
 ## Set Mesh Normal
 
-> `bl_idname` : GeometryNodeSetMeshNormal
-
-### class Mesh
-
-```python
-Mesh.set_normal_sharpness(self,
-                    remove_custom: Boolean = None,
-                    edge_sharpness: Boolean = None,
-                    face_sharpness: Boolean = None,
-                    domain: Literal['POINT', 'FACE', 'CORNER'] = 'POINT')
-```
-
-```python
-Mesh.set_normal_free(self,
-                    custom_normal: Vector = None,
-                    domain: Literal['POINT', 'FACE', 'CORNER'] = 'POINT')
-```
-
-```python
-Mesh.set_normal_tangent_space(self,
-                    custom_normal: Vector = None,
-                    domain: Literal['POINT', 'FACE', 'CORNER'] = 'POINT')
-```
-
-```python
-Mesh.set_normal(self,
-                    remove_custom: Boolean = None,
-                    edge_sharpness: Boolean = None,
-                    face_sharpness: Boolean = None,
-                    domain: Literal['POINT', 'FACE', 'CORNER'] = 'POINT',
-                    mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE'] = 'SHARPNESS')
-```
-
-```python
-Mesh.normal = value
-```
-
-### class Point
-
-```python
-Mesh.points.normal = value
-```
-
-### class Face
-
-```python
-Mesh.faces.normal = value
-```
-
-### class Corner
-
-```python
-Mesh.corners.normal = value
-```
+Blender identifier: `GeometryNodeSetMeshNormal`
 
 ### nd
 
-``` python
-nd.set_mesh_normal(cls,
-                    mesh: Mesh = None,
-                    remove_custom: Boolean = None,
-                    edge_sharpness: Boolean = None,
-                    face_sharpness: Boolean = None,
-                    domain: Literal['POINT', 'FACE', 'CORNER'] = 'POINT',
-                    mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE'] = 'SHARPNESS')
-```
+- `nd.set_mesh_normal(cls, mesh: Mesh=None, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: T_MODE_18='SHARPNESS', domain: T_DOMAIN_7='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: T_MODE_18='SHARPNESS')` — method; returns `OUT`.
+- `Point.normal(self, custom_normal: Vector=None)` — setter; returns `None`.
+
+### Face
+
+- `Face.set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: T_MODE_18='SHARPNESS')` — method; returns `OUT`.
+- `Face.normal(self, custom_normal: Vector=None)` — setter; returns `None`.
+
+### Corner
+
+- `Corner.set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: T_MODE_18='SHARPNESS')` — method; returns `OUT`.
+- `Corner.normal(self, custom_normal: Vector=None)` — setter; returns `None`.
+
+### Mesh
+
+- `Mesh.normal(self, custom_normal: Vector=None)` — setter; returns `None`.
 
 ## Set NURBS Order
 
-> `bl_idname` : GeometryNodeSetNURBSOrder
-
-### class Curve
-
-```python
-Curve.set_nurbs_order(self, order: Integer = None)
-```
+Blender identifier: `GeometryNodeSetNURBSOrder`
 
 ### nd
 
-``` python
-nd.set_nurbs_order(cls, curves: Curve = None, selection: Boolean = None, order: Integer = None)
-```
+- `nd.set_nurbs_order(cls, curves: Curve=None, selection: Boolean=None, order: Integer=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_nurbs_order(self, order: Integer=None)` — method; returns `OUT`.
 
 ## Set NURBS Weight
 
-> `bl_idname` : GeometryNodeSetNURBSWeight
-
-### class Curve
-
-```python
-Curve.set_nurbs_weight(self, weight: Float = None)
-```
+Blender identifier: `GeometryNodeSetNURBSWeight`
 
 ### nd
 
-``` python
-nd.set_nurbs_weight(cls, curves: Curve = None, selection: Boolean = None, weight: Float = None)
-```
+- `nd.set_nurbs_weight(cls, curves: Curve=None, selection: Boolean=None, weight: Float=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_nurbs_weight(self, weight: Float=None)` — method; returns `OUT`.
 
 ## Set Point Cloud Type
 
-> `bl_idname` : GeometryNodePointsSetType
+Blender identifier: `GeometryNodePointsSetType`
 
 ### nd
 
-``` python
-nd.set_point_cloud_type(cls, points: Cloud = None, type: Literal['Points', '3D Gaussian Splat'] = None)
-```
+- `nd.set_point_cloud_type(cls, points: Cloud=None, type: Menu=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.set_point_type(self, type: Menu=None)` — method; returns `OUT`.
 
 ## Set Point Radius
 
-> `bl_idname` : GeometryNodeSetPointRadius
-
-### class Point
-
-```python
-Mesh.points.set_radius(self, radius: Float = None)
-```
-
-### class Cloud
-
-```python
-Cloud.radius = value
-```
-
-### class CloudPoint
-
-```python
-Cloud.points.radius = value
-```
+Blender identifier: `GeometryNodeSetPointRadius`
 
 ### nd
 
-``` python
-nd.set_point_radius(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None)
-```
+- `nd.set_point_radius(cls, points: Cloud=None, selection: Boolean=None, radius: Float=None)` — class method; returns `OUT`.
+
+### Cloud
+
+- `Cloud.set_point_radius(self, radius: Float=None)` — method; returns `OUT`.
+- `Cloud.radius(self, radius: Float=None)` — setter; returns `None`.
+
+### CloudPoint
+
+- `CloudPoint.radius(self, radius: Float=None)` — setter; returns `None`.
 
 ## Set Position
 
-> `bl_idname` : GeometryNodeSetPosition
-
-### class Geometry
-
-```python
-Geometry.set_position(self, position: Vector = None, offset: Vector = None)
-```
-
-```python
-Geometry.position = value
-```
-
-```python
-Geometry.offset = value
-```
-
-### class Point
-
-```python
-Mesh.points.position = value
-```
-
-```python
-Mesh.points.offset = value
-```
+Blender identifier: `GeometryNodeSetPosition`
 
 ### nd
 
-``` python
-nd.set_position(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    position: Vector = None,
-                    offset: Vector = None)
-```
+- `nd.set_position(cls, geometry: Geometry=None, selection: Boolean=None, position: Vector=None, offset: Vector=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.set_position(self, position: Vector=None, offset: Vector=None)` — method; returns `OUT`.
+- `Geometry.position(self, position: Vector=None)` — setter; returns `None`.
+- `Geometry.offset(self, offset: Vector=None)` — setter; returns `None`.
+
+### Point
+
+- `Point.position(self, position: Vector=None)` — setter; returns `None`.
+- `Point.offset(self, offset: Vector=None)` — setter; returns `None`.
 
 ## Set Selection
 
-> `bl_idname` : GeometryNodeToolSetSelection
-
-### class Point
-
-```python
-Mesh.points.set_selection(self)
-```
-
-### class Edge
-
-```python
-Mesh.edges.set_selection(self)
-```
-
-### class Face
-
-```python
-Mesh.faces.set_selection(self)
-```
-
-### class Spline
-
-```python
-Spline.splines.set_selection(self)
-```
+Blender identifier: `GeometryNodeToolSetSelection`
 
 ### nd
 
-``` python
-nd.set_selection(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE'] = 'POINT',
-                    selection_type: Literal['BOOLEAN', 'FLOAT'] = 'BOOLEAN')
-```
+- `nd.set_selection(cls, geometry: Geometry=None, selection: Socket=None, domain: T_DOMAIN_8='POINT', selection_type: T_SELECTION_TYPE_1='BOOLEAN')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.set_selection(self, selection_type: T_SELECTION_TYPE_1='BOOLEAN')` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.set_selection(self, selection_type: T_SELECTION_TYPE_1='BOOLEAN')` — method; returns `OUT`.
+
+### Face
+
+- `Face.set_selection(self, selection_type: T_SELECTION_TYPE_1='BOOLEAN')` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.set_selection(self, selection_type: T_SELECTION_TYPE_1='BOOLEAN')` — method; returns `OUT`.
 
 ## Set Shade Smooth
 
-> `bl_idname` : GeometryNodeSetShadeSmooth
-
-### class Edge
-
-```python
-Mesh.edges.set_shade_smooth(self, shade_smooth: Boolean = None)
-```
-
-```python
-Mesh.edges.shade_smooth = value
-```
-
-```python
-Mesh.edges.smooth = value
-```
-
-### class Face
-
-```python
-Mesh.faces.set_shade_smooth(self, shade_smooth: Boolean = None)
-```
-
-```python
-Mesh.faces.shade_smooth = value
-```
-
-```python
-Mesh.faces.smooth = value
-```
+Blender identifier: `GeometryNodeSetShadeSmooth`
 
 ### nd
 
-``` python
-nd.set_shade_smooth(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    shade_smooth: Boolean = None,
-                    domain: Literal['EDGE', 'FACE'] = 'FACE')
-```
+- `nd.set_shade_smooth(cls, mesh: Mesh=None, selection: Boolean=None, shade_smooth: Boolean=None, domain: T_DOMAIN_6='FACE')` — class method; returns `OUT`.
+
+### Edge
+
+- `Edge.set_shade_smooth(self, shade_smooth: Boolean=None)` — method; returns `OUT`.
+- `Edge.shade_smooth(self, shade_smooth: Boolean=None)` — setter; returns `None`.
+- `Edge.smooth(self, shade_smooth: Boolean=None)` — setter; returns `None`.
+
+### Face
+
+- `Face.set_shade_smooth(self, shade_smooth: Boolean=None)` — method; returns `OUT`.
+- `Face.shade_smooth(self, shade_smooth: Boolean=None)` — setter; returns `None`.
+- `Face.smooth(self, shade_smooth: Boolean=None)` — setter; returns `None`.
 
 ## Set Spline Cyclic
 
-> `bl_idname` : GeometryNodeSetSplineCyclic
-
-### class Curve
-
-```python
-Curve.set_spline_cyclic(self, cyclic: Boolean = None)
-```
-
-```python
-Curve.is_cyclic = value
-```
-
-### class Spline
-
-```python
-Spline.splines.is_cyclic = value
-```
+Blender identifier: `GeometryNodeSetSplineCyclic`
 
 ### nd
 
-``` python
-nd.set_spline_cyclic(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None)
-```
+- `nd.set_spline_cyclic(cls, curve: Curve=None, selection: Boolean=None, cyclic: Boolean=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_spline_cyclic(self, cyclic: Boolean=None)` — method; returns `OUT`.
+- `Curve.is_cyclic(self, cyclic: Boolean=None)` — setter; returns `None`.
+
+### Spline
+
+- `Spline.is_cyclic(self, cyclic: Boolean=None)` — setter; returns `None`.
 
 ## Set Spline Resolution
 
-> `bl_idname` : GeometryNodeSetSplineResolution
-
-### class Curve
-
-```python
-Curve.set_spline_resolution(self, resolution: Integer = None)
-```
-
-```python
-Curve.resolution = value
-```
-
-### class Spline
-
-```python
-Spline.splines.resolution = value
-```
+Blender identifier: `GeometryNodeSetSplineResolution`
 
 ### nd
 
-``` python
-nd.set_spline_resolution(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    resolution: Integer = None)
-```
+- `nd.set_spline_resolution(cls, curve: Curve=None, selection: Boolean=None, resolution: Integer=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_spline_resolution(self, resolution: Integer=None)` — method; returns `OUT`.
+- `Curve.resolution(self, resolution: Integer=None)` — setter; returns `None`.
+
+### Spline
+
+- `Spline.resolution(self, resolution: Integer=None)` — setter; returns `None`.
 
 ## Set Spline Type
 
-> `bl_idname` : GeometryNodeCurveSplineType
-
-### class Curve
-
-```python
-Curve.set_spline_type(self, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY')
-```
-
-```python
-Curve.type = value
-```
-
-### class Spline
-
-```python
-Spline.splines.type = value
-```
+Blender identifier: `GeometryNodeCurveSplineType`
 
 ### nd
 
-``` python
-nd.set_spline_type(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY')
-```
+- `nd.set_spline_type(cls, curve: Curve=None, selection: Boolean=None, spline_type: T_SPLINE_TYPE_1='POLY')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.set_spline_type(self, spline_type: T_SPLINE_TYPE_1='POLY')` — method; returns `OUT`.
+- `Curve.type(self, spline_type: T_SPLINE_TYPE_1='POLY')` — setter; returns `None`.
+
+### Spline
+
+- `Spline.type(self, spline_type: T_SPLINE_TYPE_1='POLY')` — setter; returns `None`.
 
 ## Set String Case
 
-> `bl_idname` : FunctionNodeSetStringCase
-
-### class String
-
-```python
-String.set_case(self, case: Literal['Uppercase', 'Lowercase'] = None)
-```
-
-```python
-String.lower(self)
-```
-
-```python
-String.upper(self)
-```
+Blender identifier: `FunctionNodeSetStringCase`
 
 ### nd
 
-``` python
-nd.set_string_case(cls, string: String = None, case: Literal['Uppercase', 'Lowercase'] = None)
-```
+- `nd.set_string_case(cls, string: String=None, case: Menu=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.set_string_case(cls, string: String = None, case: Literal['Uppercase', 'Lowercase'] = None)
-```
-
-## Shader to RGB
-
-> `bl_idname` : ShaderNodeShaderToRGB
-
-### class Shader
-
-```python
-Shader.to_rgb(self)
-```
-
-### snd
-
-``` python
-nd.shader_to_rgb(cls, shader: Shader = None)
-```
-
-## Shadow Raycast
-
-> `bl_idname` : ShaderNodeShadowRaycast
-
-### snd
-
-``` python
-nd.shadow_raycast(cls,
-                    lightindex: Integer = None,
-                    position: Vector = None,
-                    softness: Float = None)
-```
-
-## Sheen BSDF
-
-> `bl_idname` : ShaderNodeBsdfSheen
-
-### class Shader
-
-```python
-Shader.Sheen(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    normal: Vector = None,
-                    distribution: Literal['ASHIKHMIN', 'MICROFIBER'] = 'MICROFIBER')
-```
-
-### snd
-
-``` python
-nd.sheen_bsdf(cls,
-                    color: Color = None,
-                    roughness: Float = None,
-                    normal: Vector = None,
-                    weight: Float = None,
-                    distribution: Literal['ASHIKHMIN', 'MICROFIBER'] = 'MICROFIBER')
-```
+- `String.set_string_case(self, case: Menu=None)` — method; returns `OUT`.
 
 ## Shortest Edge Paths
 
-> `bl_idname` : GeometryNodeInputShortestEdgePaths
-
-### class Mesh
-
-```python
-Mesh.shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.shortest_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None)
-```
+Blender identifier: `GeometryNodeInputShortestEdgePaths`
 
 ### nd
 
-``` python
-nd.shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None)
-```
-
-## Simulation Input
-
-> `bl_idname` : GeometryNodeSimulationInput
-
-### class Simulation
-
-```python
-
-with GeoNodes("Simulation Example"):
-    
-    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
-        
-        delta = sim.speed.scale(sim.delta_time)
-        sim.pos += delta
-        sim.geo.transform(translation=delta) 
-        
-        x, y, z = sim.pos.xyz
-        
-        sim.speed -= (0, 0, 10*sim.delta_time)
-        
-        bounce = z < 0
-        sim.speed.switch(bounce, -sim.speed)
-        sim.pos.switch(bounce, (x, y, -z))
-        
-    sim.geo.out()
-
-```
-
-## Simulation Output
-
-> `bl_idname` : GeometryNodeSimulationOutput
-
-### class Simulation
-
-```python
-
-with GeoNodes("Simulation Example"):
-    
-    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
-        
-        delta = sim.speed.scale(sim.delta_time)
-        sim.pos += delta
-        sim.geo.transform(translation=delta) 
-        
-        x, y, z = sim.pos.xyz
-        
-        sim.speed -= (0, 0, 10*sim.delta_time)
-        
-        bounce = z < 0
-        sim.speed.switch(bounce, -sim.speed)
-        sim.pos.switch(bounce, (x, y, -z))
-        
-    sim.geo.out()
-
-```
-
-## Sky Texture
-
-> `bl_idname` : ShaderNodeTexSky
-
-### class Color
-
-```python
-Color.SkyTexture(cls,
-                    aerosol_density = 1.0,
-                    air_density = 1.0,
-                    altitude = 100.0,
-                    ground_albedo = 0.30000001192092896,
-                    ozone_density = 1.0,
-                    sky_type: Literal['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE'] = 'MULTIPLE_SCATTERING',
-                    sun_disc = True,
-                    sun_elevation = 0.2617993950843811,
-                    sun_intensity = 1.0,
-                    sun_rotation = 0.0,
-                    sun_size = 0.009512044489383698,
-                    turbidity = 2.200000047683716)
-```
-
-### snd
-
-``` python
-nd.sky_texture(cls,
-                    vector: Vector = None,
-                    aerosol_density = 1.0,
-                    air_density = 1.0,
-                    altitude = 100.0,
-                    ground_albedo = 0.30000001192092896,
-                    ozone_density = 1.0,
-                    sky_type: Literal['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE'] = 'MULTIPLE_SCATTERING',
-                    sun_disc = True,
-                    sun_elevation = 0.2617993950843811,
-                    sun_intensity = 1.0,
-                    sun_rotation = 0.0,
-                    sun_size = 0.009512044489383698,
-                    turbidity = 2.200000047683716)
-```
+- `nd.shortest_edge_paths(cls, end_vertex: Boolean=None, edge_cost: Float=None)` — class method; returns `OUT`.
 
 ## Slice String
 
-> `bl_idname` : FunctionNodeSliceString
-
-### class String
-
-```python
-String.slice(self, position: Integer = None, length: Integer = None)
-```
+Blender identifier: `FunctionNodeSliceString`
 
 ### nd
 
-``` python
-nd.slice_string(cls, string: String = None, position: Integer = None, length: Integer = None)
-```
+- `nd.slice_string(cls, string: String=None, position: Integer=None, length: Integer=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.slice_string(cls, string: String = None, position: Integer = None, length: Integer = None)
-```
+- `String.slice(self, position: Integer=None, length: Integer=None)` — method; returns `OUT`.
 
 ## Sort Elements
 
-> `bl_idname` : GeometryNodeSortElements
-
-### class Point
-
-```python
-Mesh.points.sort(self, group_id: Integer = None, sort_weight: Float = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.sort(self, group_id: Integer = None, sort_weight: Float = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.sort(self, group_id: Integer = None, sort_weight: Float = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.sort(self, group_id: Integer = None, sort_weight: Float = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.sort(self, group_id: Integer = None, sort_weight: Float = None)
-```
+Blender identifier: `GeometryNodeSortElements`
 
 ### nd
 
-``` python
-nd.sort_elements(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'] = 'POINT')
-```
+- `nd.sort_elements(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, domain: T_DOMAIN_9='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.sort(self, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.sort(self, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.sort(self, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.sort(self, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.sort(self, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
 
 ## Sort List
 
-> `bl_idname` : GeometryNodeSortList
-
-### class Float
-
-```python
-Float.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Integer
-
-```python
-Integer.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Boolean
-
-```python
-Boolean.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Vector
-
-```python
-Vector.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Color
-
-```python
-Color.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Rotation
-
-```python
-Rotation.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Matrix
-
-```python
-Matrix.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class String
-
-```python
-String.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Menu
-
-```python
-Menu.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Object
-
-```python
-Object.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Image
-
-```python
-Image.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Geometry
-
-```python
-Geometry.sort_list(self, group_id: Integer = None, sort_weight: Float = None)
-```
-
-### class Collection
-
-```python
-Collection.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Material
-
-```python
-Material.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Bundle
-
-```python
-Bundle.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Closure
-
-```python
-Closure.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Font
-
-```python
-Font.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
-
-### class Sound
-
-```python
-Sound.sort_list(self,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None)
-```
+Blender identifier: `GeometryNodeSortList`
 
 ### nd
 
-``` python
-nd.sort_list(cls,
-                    list: Float = None,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    sort_weight: Float = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT')
-```
+- `nd.sort_list(cls, list: Socket=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, socket_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Color
+
+- `Color.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Rotation
+
+- `Rotation.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### String
+
+- `String.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Menu
+
+- `Menu.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Object
+
+- `Object.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Image
+
+- `Image.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Collection
+
+- `Collection.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Material
+
+- `Material.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Closure
+
+- `Closure.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Font
+
+- `Font.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
+
+### Sound
+
+- `Sound.sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None)` — method; returns `OUT`.
 
 ## Special Characters
 
-> `bl_idname` : FunctionNodeInputSpecialCharacters
-
-### class String
-
-```python
-prop = String.special_characters
-```
-
-```python
-prop = String.line_break
-```
-
-```python
-prop = String.tab
-```
+Blender identifier: `FunctionNodeInputSpecialCharacters`
 
 ### nd
 
-``` python
-nd.special_characters(cls)
-```
+- `nd.special_characters(cls)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.special_characters(cls)
-```
-
-## Specular BSDF
-
-> `bl_idname` : ShaderNodeEeveeSpecular
-
-### class Shader
-
-```python
-Shader.Specular(cls,
-                    base_color: Color = None,
-                    specular: Color = None,
-                    roughness: Float = None,
-                    emissive_color: Color = None,
-                    transparency: Float = None,
-                    normal: Vector = None,
-                    clear_coat: Float = None,
-                    clear_coat_roughness: Float = None,
-                    clear_coat_normal: Vector = None)
-```
-
-### snd
-
-``` python
-nd.specular_bsdf(cls,
-                    base_color: Color = None,
-                    specular: Color = None,
-                    roughness: Float = None,
-                    emissive_color: Color = None,
-                    transparency: Float = None,
-                    normal: Vector = None,
-                    clear_coat: Float = None,
-                    clear_coat_roughness: Float = None,
-                    clear_coat_normal: Vector = None,
-                    weight: Float = None)
-```
+- `String.line_break(cls)` — property; returns `Line Break`.
+- `String.tab(cls)` — property; returns `Tab`.
 
 ## Spiral
 
-> `bl_idname` : GeometryNodeCurveSpiral
-
-### class Curve
-
-```python
-Curve.Spiral(cls,
-                    resolution: Integer = None,
-                    rotations: Float = None,
-                    start_radius: Float = None,
-                    end_radius: Float = None,
-                    height: Float = None,
-                    reverse: Boolean = None)
-```
+Blender identifier: `GeometryNodeCurveSpiral`
 
 ### nd
 
-``` python
-nd.spiral(cls,
-                    resolution: Integer = None,
-                    rotations: Float = None,
-                    start_radius: Float = None,
-                    end_radius: Float = None,
-                    height: Float = None,
-                    reverse: Boolean = None)
-```
+- `nd.spiral(cls, resolution: Integer=None, rotations: Float=None, start_radius: Float=None, end_radius: Float=None, height: Float=None, reverse: Boolean=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.Spiral(cls, resolution: Integer=None, rotations: Float=None, start_radius: Float=None, end_radius: Float=None, height: Float=None, reverse: Boolean=None)` — class method; returns `OUT`.
 
 ## Spline Length
 
-> `bl_idname` : GeometryNodeSplineLength
-
-### class Curve
-
-```python
-Curve.spline_length(cls)
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.spline_length
-```
-
-```python
-prop = Spline.splines.length
-```
-
-```python
-prop = Spline.splines.point_count
-```
+Blender identifier: `GeometryNodeSplineLength`
 
 ### nd
 
-``` python
-nd.spline_length(cls)
-```
+- `nd.spline_length(cls)` — class method; returns `OUT`.
 
 ## Spline Parameter
 
-> `bl_idname` : GeometryNodeSplineParameter
-
-### class Curve
-
-```python
-Curve.spline_parameter(cls)
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.parameter
-```
-
-```python
-prop = Spline.splines.parameter_factor
-```
-
-```python
-prop = Spline.splines.parameter_length
-```
-
-```python
-prop = Spline.splines.parameter_index
-```
+Blender identifier: `GeometryNodeSplineParameter`
 
 ### nd
 
-``` python
-nd.spline_parameter(cls)
-```
+- `nd.spline_parameter(cls)` — class method; returns `OUT`.
 
 ## Spline Resolution
 
-> `bl_idname` : GeometryNodeInputSplineResolution
-
-### class Curve
-
-```python
-prop = Curve.resolution
-```
-
-### class Spline
-
-```python
-prop = Spline.splines.resolution
-```
+Blender identifier: `GeometryNodeInputSplineResolution`
 
 ### nd
 
-``` python
-nd.spline_resolution(self)
-```
+- `nd.spline_resolution(cls)` — property; returns `OUT`.
+
+### Spline
+
+- `Spline.resolution(self)` — property; returns `OUT`.
+
+### Curve
+
+- `Curve.resolution(self)` — property; returns `OUT`.
 
 ## Split Edges
 
-> `bl_idname` : GeometryNodeSplitEdges
-
-### class Mesh
-
-```python
-Mesh.split_edges(self)
-```
-
-### class Edge
-
-```python
-Mesh.edges.split(self)
-```
+Blender identifier: `GeometryNodeSplitEdges`
 
 ### nd
 
-``` python
-nd.split_edges(cls, mesh: Mesh = None, selection: Boolean = None)
-```
+- `nd.split_edges(cls, mesh: Mesh=None, selection: Boolean=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.split_edges(self)` — method; returns `OUT`.
 
 ## Split String
 
-> `bl_idname` : FunctionNodeSplitString
-
-### class String
-
-```python
-String.split(self, separator: String = None)
-```
+Blender identifier: `FunctionNodeSplitString`
 
 ### nd
 
-``` python
-nd.split_string(cls, string: String = None, separator: String = None)
-```
+- `nd.split_string(cls, string: String=None, separator: String=None)` — class method; returns `OUT`.
+
+### String
+
+- `String.split(self, separator: String=None)` — method; returns `OUT`.
 
 ## Split to Instances
 
-> `bl_idname` : GeometryNodeSplitToInstances
-
-### class Point
-
-```python
-Mesh.points.split_to_instances(self, group_id: Integer = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.split_to_instances(self, group_id: Integer = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.split_to_instances(self, group_id: Integer = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.split_to_instances(self, group_id: Integer = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.split_to_instances(self, group_id: Integer = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.split_to_instances(self, group_id: Integer = None)
-```
+Blender identifier: `GeometryNodeSplitToInstances`
 
 ### nd
 
-``` python
-nd.split_to_instances(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    group_id: Integer = None,
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.split_to_instances(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, domain: T_DOMAIN_3='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.split_to_instances(self, group_id: Integer=None)` — method; returns `OUT`.
 
 ## Star
 
-> `bl_idname` : GeometryNodeCurveStar
-
-### class Curve
-
-```python
-Curve.Star(cls,
-                    points: Integer = None,
-                    inner_radius: Float = None,
-                    outer_radius: Float = None,
-                    twist: Float = None)
-```
+Blender identifier: `GeometryNodeCurveStar`
 
 ### nd
 
-``` python
-nd.star(cls,
-                    points: Integer = None,
-                    inner_radius: Float = None,
-                    outer_radius: Float = None,
-                    twist: Float = None)
-```
+- `nd.star(cls, points: Integer=None, inner_radius: Float=None, outer_radius: Float=None, twist: Float=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.Star(cls, points: Integer=None, inner_radius: Float=None, outer_radius: Float=None, twist: Float=None)` — class method; returns `OUT`.
 
 ## Store Bundle Item
 
-> `bl_idname` : NodeStoreBundleItem
-
-### class Bundle
-
-```python
-Bundle.set_item(self,
-                    path: String = None,
-                    item: Float = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
-
-```python
-Bundle.store_item(self,
-                    path: String = None,
-                    item: Float = None,
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+Blender identifier: `NodeStoreBundleItem`
 
 ### nd
 
-``` python
-nd.store_bundle_item(cls,
-                    bundle: Bundle = None,
-                    path: String = None,
-                    item: Float = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
-                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO')
-```
+- `nd.store_item(cls, bundle: Bundle=None, path: String=None, item: Socket=None, socket_type: T_DATA_TYPE_6='FLOAT', shape: T_STRUCTURE_TYPE_1='AUTO')` — class method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.store_item(self, path: String=None, item: Socket=None, shape: T_STRUCTURE_TYPE_1='AUTO')` — method; returns `OUT`.
 
 ## Store Named Attribute
 
-> `bl_idname` : GeometryNodeStoreNamedAttribute
-
-### class Point
-
-```python
-Mesh.points.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Mesh.points.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Edge
-
-```python
-Mesh.edges.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Mesh.edges.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Face
-
-```python
-Mesh.faces.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Mesh.faces.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Mesh.corners.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Mesh.corners.store_uv(self, name: String = None, value: Vector = None)
-```
-
-### class Spline
-
-```python
-Spline.splines.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Spline.splines.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Instance
-
-```python
-Instances.insts.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-Instances.insts.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.store_named_attribute(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-```python
-GreasePencil.layers.store(self,
-                    name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
-```
-
-### class Domain
-
-```python
-Domain.set(self, name, value)
-```
-
-### class Geometry
-
-```python
-Geometry.set(self, name, value, domain=None)
-```
-
-### class Attribute
-
-```python
-Attribute.set(self, value=None, domain=None)
-```
-
-```python
-Attribute.value = value
-```
+Blender identifier: `GeometryNodeStoreNamedAttribute`
 
 ### nd
 
-``` python
-nd.store_named_attribute(cls,
-                    geometry: Geometry = None,
-                    selection: Boolean = None,
-                    name: String = None,
-                    value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR'] = 'FLOAT',
-                    domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
-```
+- `nd.store_named_attribute(cls, geometry: Geometry=None, selection: Boolean=None, name: String=None, value: Socket=None, data_type: T_DATA_TYPE_13='FLOAT', domain: T_DOMAIN_1='POINT')` — class method; returns `OUT`.
+
+### Point
+
+- `Point.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+
+### Edge
+
+- `Edge.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+
+### Face
+
+- `Face.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+
+### Corner
+
+- `Corner.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+- `Corner.store_uv(self, name: String=None, value: Vector=None)` — method; returns `OUT`.
+
+### Spline
+
+- `Spline.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+
+### Instance
+
+- `Instance.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
+
+### Layer
+
+- `Layer.store_named_attribute(self, name: String=None, value: Socket=None)` — method; returns `OUT`.
 
 ## Store Named Grid
 
-> `bl_idname` : GeometryNodeStoreNamedGrid
-
-### class Volume
-
-```python
-Volume.store_named_grid(self, name: String = None, grid: Boolean | Float | Integer | Vector = None)
-```
+Blender identifier: `GeometryNodeStoreNamedGrid`
 
 ### nd
 
-``` python
-nd.store_named_grid(cls,
-                    volume: Volume = None,
-                    name: String = None,
-                    grid: Float = None,
-                    data_type: Literal['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT'] = 'FLOAT')
-```
+- `nd.store_named_grid(cls, volume: Volume=None, name: String=None, grid: Socket=None, data_type: T_DATA_TYPE_14='FLOAT')` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.store_named_grid(self, name: String=None, grid: Socket=None)` — method; returns `OUT`.
 
 ## String
 
-> `bl_idname` : FunctionNodeInputString
+Blender identifier: `FunctionNodeInputString`
 
 ### nd
 
-``` python
-nd.string(cls, string = '')
-```
-
-### snd
-
-``` python
-nd.string(cls, string = '')
-```
+- `nd.string(cls, string: str='')` — class method; returns `OUT`.
 
 ## String Length
 
-> `bl_idname` : FunctionNodeStringLength
-
-### class String
-
-```python
-String.length(self)
-```
+Blender identifier: `FunctionNodeStringLength`
 
 ### nd
 
-``` python
-nd.string_length(cls, string: String = None)
-```
+- `nd.string_length(cls, string: String=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.string_length(cls, string: String = None)
-```
+- `String.length(self)` — method; returns `OUT`.
 
 ## String to Curves
 
-> `bl_idname` : GeometryNodeStringToCurves
-
-### class String
-
-```python
-String.to_curves(self,
-                    size: Float = None,
-                    font: Font = None,
-                    align_x: Literal['Left', 'Center', 'Right', 'Justify', 'Flush'] = None,
-                    align_y: Literal['Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom'] = None,
-                    pivot_point: Literal['Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right'] = None,
-                    character_spacing: Float = None,
-                    word_spacing: Float = None,
-                    line_spacing: Float = None,
-                    overflow: Literal['Overflow', 'Scale To Fit', 'Truncate'] = None,
-                    text_box_width: Float = None,
-                    text_box_height: Float = None)
-```
+Blender identifier: `GeometryNodeStringToCurves`
 
 ### nd
 
-``` python
-nd.string_to_curves(cls,
-                    string: String = None,
-                    size: Float = None,
-                    font: Font = None,
-                    align_x: Literal['Left', 'Center', 'Right', 'Justify', 'Flush'] = None,
-                    align_y: Literal['Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom'] = None,
-                    pivot_point: Literal['Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right'] = None,
-                    character_spacing: Float = None,
-                    word_spacing: Float = None,
-                    line_spacing: Float = None,
-                    overflow: Literal['Overflow', 'Scale To Fit', 'Truncate'] = None,
-                    text_box_width: Float = None,
-                    text_box_height: Float = None)
-```
+- `nd.string_to_curves(cls, string: String=None, size: Float=None, font: Font=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, text_box_width: Float=None, text_box_height: Float=None, align_x: Menu=None, align_y: Menu=None, pivot_point: Menu=None, overflow: Menu=None)` — class method; returns `OUT`.
+
+### String
+
+- `String.to_curves(self, size: Float=None, font: Font=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, text_box_width: Float=None, text_box_height: Float=None, align_x: Menu=None, align_y: Menu=None, pivot_point: Menu=None, overflow: Menu=None)` — method; returns `OUT`.
 
 ## String to Value
 
-> `bl_idname` : FunctionNodeStringToValue
-
-### class String
-
-```python
-String.to_value(self, data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
-```
-
-```python
-String.to_float(self)
-```
-
-```python
-String.to_integer(self, base: Integer = None)
-```
+Blender identifier: `FunctionNodeStringToValue`
 
 ### nd
 
-``` python
-nd.string_to_value(cls,
-                    string: String = None,
-                    base: Integer = None,
-                    data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
-```
+- `nd.string_to_value(cls, string: String=None, base: Integer=None, data_type: T_DATA_TYPE_15='FLOAT')` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.string_to_value(cls,
-                    string: String = None,
-                    base: Integer = None,
-                    data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
-```
+- `String.to_value(self, base: Integer=None, data_type: T_DATA_TYPE_15='FLOAT')` — method; returns `OUT`.
+- `String.to_float(self)` — method; returns `OUT`.
+- `String.to_integer(self, base: Integer=None)` — method; returns `OUT`.
+
+### Float
+
+- `Float.FromString(cls, string: String=None, base: Integer=None, data_type: T_DATA_TYPE_15='FLOAT')` — class method; returns `OUT`.
 
 ## Subdivide Curve
 
-> `bl_idname` : GeometryNodeSubdivideCurve
-
-### class Curve
-
-```python
-Curve.subdivide(self, cuts: Integer = None)
-```
+Blender identifier: `GeometryNodeSubdivideCurve`
 
 ### nd
 
-``` python
-nd.subdivide_curve(cls, curve: Curve = None, cuts: Integer = None)
-```
+- `nd.subdivide_curve(cls, curve: Curve=None, cuts: Integer=None)` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.subdivide(self, cuts: Integer=None)` — method; returns `OUT`.
 
 ## Subdivide Mesh
 
-> `bl_idname` : GeometryNodeSubdivideMesh
-
-### class Mesh
-
-```python
-Mesh.subdivide(self, level: Integer = None)
-```
+Blender identifier: `GeometryNodeSubdivideMesh`
 
 ### nd
 
-``` python
-nd.subdivide_mesh(cls, mesh: Mesh = None, level: Integer = None)
-```
+- `nd.subdivide_mesh(cls, mesh: Mesh=None, level: Integer=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.subdivide(self, level: Integer=None)` — method; returns `OUT`.
 
 ## Subdivision Surface
 
-> `bl_idname` : GeometryNodeSubdivisionSurface
-
-### class Mesh
-
-```python
-Mesh.subdivision_surface(self,
-                    level: Integer = None,
-                    edge_crease: Float = None,
-                    vertex_crease: Float = None,
-                    limit_surface: Boolean = None,
-                    quality: Integer = None,
-                    uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All'] = None,
-                    boundary_smooth: Literal['Keep Corners', 'All'] = None)
-```
+Blender identifier: `GeometryNodeSubdivisionSurface`
 
 ### nd
 
-``` python
-nd.subdivision_surface(cls,
-                    mesh: Mesh = None,
-                    level: Integer = None,
-                    edge_crease: Float = None,
-                    vertex_crease: Float = None,
-                    limit_surface: Boolean = None,
-                    quality: Integer = None,
-                    uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All'] = None,
-                    boundary_smooth: Literal['Keep Corners', 'All'] = None)
-```
+- `nd.subdivision_surface(cls, mesh: Mesh=None, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Menu=None, boundary_smooth: Menu=None)` — class method; returns `OUT`.
 
-## Subsurface Scattering
+### Mesh
 
-> `bl_idname` : ShaderNodeSubsurfaceScattering
-
-### class Shader
-
-```python
-Shader.SubsurfaceScattering(cls,
-                    color: Color = None,
-                    scale: Float = None,
-                    radius: Vector = None,
-                    ior: Float = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    normal: Vector = None,
-                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK')
-```
-
-### snd
-
-``` python
-nd.subsurface_scattering(cls,
-                    color: Color = None,
-                    scale: Float = None,
-                    radius: Vector = None,
-                    ior: Float = None,
-                    roughness: Float = None,
-                    anisotropy: Float = None,
-                    normal: Vector = None,
-                    weight: Float = None,
-                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK')
-```
+- `Mesh.subdivision_surface(self, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Menu=None, boundary_smooth: Menu=None)` — method; returns `OUT`.
 
 ## Switch
 
-> `bl_idname` : GeometryNodeSwitch
+Blender identifier: `GeometryNodeSwitch`
 
-### class Socket
+### nd
 
-```python
-Socket.Switch(condition=None, false=None, true=None)
-```
+- `nd.switch(cls, switch: Boolean=None, false: Socket=None, true: Socket=None, input_type: T_DATA_TYPE_6='FLOAT')` — class method; returns `OUT`.
 
-```python
-Socket.switch(condition=None, true=None)
-```
+### Float
+
+- `Float.switch(self, switch: Boolean=None, true: Float=None)` — method; returns `OUT`.
+- `Float.switch_false(self, switch: Boolean=None, false: Float=None)` — method; returns `OUT`.
+- `Float.Switch(cls, switch: Boolean=None, false: Float=None, true: Float=None)` — class method; returns `cls`.
+
+### Integer
+
+- `Integer.switch(self, switch: Boolean=None, true: Integer=None)` — method; returns `OUT`.
+- `Integer.switch_false(self, switch: Boolean=None, false: Integer=None)` — method; returns `OUT`.
+- `Integer.Switch(cls, switch: Boolean=None, false: Integer=None, true: Integer=None)` — class method; returns `cls`.
+
+### Boolean
+
+- `Boolean.switch(self, switch: Boolean=None, true: Boolean=None)` — method; returns `OUT`.
+- `Boolean.switch_false(self, switch: Boolean=None, false: Boolean=None)` — method; returns `OUT`.
+- `Boolean.Switch(cls, switch: Boolean=None, false: Boolean=None, true: Boolean=None)` — class method; returns `cls`.
+
+### Vector
+
+- `Vector.switch(self, switch: Boolean=None, true: Vector=None)` — method; returns `OUT`.
+- `Vector.switch_false(self, switch: Boolean=None, false: Vector=None)` — method; returns `OUT`.
+- `Vector.Switch(cls, switch: Boolean=None, false: Vector=None, true: Vector=None)` — class method; returns `cls`.
+
+### Color
+
+- `Color.switch(self, switch: Boolean=None, true: Color=None)` — method; returns `OUT`.
+- `Color.switch_false(self, switch: Boolean=None, false: Color=None)` — method; returns `OUT`.
+- `Color.Switch(cls, switch: Boolean=None, false: Color=None, true: Color=None)` — class method; returns `cls`.
+
+### Rotation
+
+- `Rotation.switch(self, switch: Boolean=None, true: Rotation=None)` — method; returns `OUT`.
+- `Rotation.switch_false(self, switch: Boolean=None, false: Rotation=None)` — method; returns `OUT`.
+- `Rotation.Switch(cls, switch: Boolean=None, false: Rotation=None, true: Rotation=None)` — class method; returns `cls`.
+
+### Matrix
+
+- `Matrix.switch(self, switch: Boolean=None, true: Matrix=None)` — method; returns `OUT`.
+- `Matrix.switch_false(self, switch: Boolean=None, false: Matrix=None)` — method; returns `OUT`.
+- `Matrix.Switch(cls, switch: Boolean=None, false: Matrix=None, true: Matrix=None)` — class method; returns `cls`.
+
+### String
+
+- `String.switch(self, switch: Boolean=None, true: String=None)` — method; returns `OUT`.
+- `String.switch_false(self, switch: Boolean=None, false: String=None)` — method; returns `OUT`.
+- `String.Switch(cls, switch: Boolean=None, false: String=None, true: String=None)` — class method; returns `cls`.
+
+### Menu
+
+- `Menu.switch(self, switch: Boolean=None, true: Menu=None)` — method; returns `OUT`.
+- `Menu.switch_false(self, switch: Boolean=None, false: Menu=None)` — method; returns `OUT`.
+- `Menu.Switch(cls, switch: Boolean=None, false: Menu=None, true: Menu=None)` — class method; returns `cls`.
+
+### Object
+
+- `Object.switch(self, switch: Boolean=None, true: Object=None)` — method; returns `OUT`.
+- `Object.switch_false(self, switch: Boolean=None, false: Object=None)` — method; returns `OUT`.
+- `Object.Switch(cls, switch: Boolean=None, false: Object=None, true: Object=None)` — class method; returns `cls`.
+
+### Image
+
+- `Image.switch(self, switch: Boolean=None, true: Image=None)` — method; returns `OUT`.
+- `Image.switch_false(self, switch: Boolean=None, false: Image=None)` — method; returns `OUT`.
+- `Image.Switch(cls, switch: Boolean=None, false: Image=None, true: Image=None)` — class method; returns `cls`.
+
+### Geometry
+
+- `Geometry.switch(self, switch: Boolean=None, true: Geometry=None)` — method; returns `OUT`.
+- `Geometry.switch_false(self, switch: Boolean=None, false: Geometry=None)` — method; returns `OUT`.
+- `Geometry.Switch(cls, switch: Boolean=None, false: Geometry=None, true: Geometry=None)` — class method; returns `cls`.
+
+### Collection
+
+- `Collection.switch(self, switch: Boolean=None, true: Collection=None)` — method; returns `OUT`.
+- `Collection.switch_false(self, switch: Boolean=None, false: Collection=None)` — method; returns `OUT`.
+- `Collection.Switch(cls, switch: Boolean=None, false: Collection=None, true: Collection=None)` — class method; returns `cls`.
+
+### Material
+
+- `Material.switch(self, switch: Boolean=None, true: Material=None)` — method; returns `OUT`.
+- `Material.switch_false(self, switch: Boolean=None, false: Material=None)` — method; returns `OUT`.
+- `Material.Switch(cls, switch: Boolean=None, false: Material=None, true: Material=None)` — class method; returns `cls`.
+
+### Bundle
+
+- `Bundle.switch(self, switch: Boolean=None, true: Bundle=None)` — method; returns `OUT`.
+- `Bundle.switch_false(self, switch: Boolean=None, false: Bundle=None)` — method; returns `OUT`.
+- `Bundle.Switch(cls, switch: Boolean=None, false: Bundle=None, true: Bundle=None)` — class method; returns `cls`.
+
+### Closure
+
+- `Closure.switch(self, switch: Boolean=None, true: Closure=None)` — method; returns `OUT`.
+- `Closure.switch_false(self, switch: Boolean=None, false: Closure=None)` — method; returns `OUT`.
+- `Closure.Switch(cls, switch: Boolean=None, false: Closure=None, true: Closure=None)` — class method; returns `cls`.
+
+### Font
+
+- `Font.switch(self, switch: Boolean=None, true: Font=None)` — method; returns `OUT`.
+- `Font.switch_false(self, switch: Boolean=None, false: Font=None)` — method; returns `OUT`.
+- `Font.Switch(cls, switch: Boolean=None, false: Font=None, true: Font=None)` — class method; returns `cls`.
+
+### Sound
+
+- `Sound.switch(self, switch: Boolean=None, true: Sound=None)` — method; returns `OUT`.
+- `Sound.switch_false(self, switch: Boolean=None, false: Sound=None)` — method; returns `OUT`.
+- `Sound.Switch(cls, switch: Boolean=None, false: Sound=None, true: Sound=None)` — class method; returns `cls`.
 
 ## Tag Filter
 
-> `bl_idname` : GeometryNodeTagFilter
-
-### class String
-
-```python
-String.tag_filter(self, tags: String = None)
-```
+Blender identifier: `GeometryNodeTagFilter`
 
 ### nd
 
-``` python
-nd.tag_filter(cls, tag_filter: String = None, tags: String = None)
-```
+- `nd.tag_filter(cls, tag_filter: String=None, tags: String=None)` — class method; returns `OUT`.
 
-## Tangent
+### String
 
-> `bl_idname` : ShaderNodeTangent
-
-### class Vector
-
-```python
-Vector.Tangent(cls,
-                    axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    direction_type: Literal['RADIAL', 'UV_MAP'] = 'RADIAL',
-                    uv_map = '')
-```
-
-### snd
-
-``` python
-nd.tangent(cls,
-                    axis: Literal['X', 'Y', 'Z'] = 'Z',
-                    direction_type: Literal['RADIAL', 'UV_MAP'] = 'RADIAL',
-                    uv_map = '')
-```
-
-## Texture Coordinate
-
-> `bl_idname` : ShaderNodeTexCoord
-
-### snd
-
-``` python
-nd.texture_coordinate(cls, from_instancer = False, object = None)
-```
-
-## Toon BSDF
-
-> `bl_idname` : ShaderNodeBsdfToon
-
-### class Shader
-
-```python
-Shader.Toon(cls,
-                    color: Color = None,
-                    size: Float = None,
-                    smooth: Float = None,
-                    normal: Vector = None,
-                    component: Literal['DIFFUSE', 'GLOSSY'] = 'DIFFUSE')
-```
-
-### snd
-
-``` python
-nd.toon_bsdf(cls,
-                    color: Color = None,
-                    size: Float = None,
-                    smooth: Float = None,
-                    normal: Vector = None,
-                    weight: Float = None,
-                    component: Literal['DIFFUSE', 'GLOSSY'] = 'DIFFUSE')
-```
+- `String.tag_filter(self, tags: String=None)` — method; returns `OUT`.
 
 ## Transfer Attributes
 
-> `bl_idname` : GeometryNodeTransferAttributes
-
-### class Geometry
-
-```python
-Geometry.transfer_attributes(self,
-                    target_point_id: Integer = None,
-                    target_edge_id: Integer = None,
-                    target_face_id: Integer = None,
-                    target_corner_id: Integer = None,
-                    target_curve_id: Integer = None,
-                    target_instance_id: Integer = None,
-                    source: Geometry = None,
-                    source_point_id: Integer = None,
-                    source_edge_id: Integer = None,
-                    source_face_id: Integer = None,
-                    source_corner_id: Integer = None,
-                    source_curve_id: Integer = None,
-                    source_instance_id: Integer = None,
-                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
-                    attribute_names: String = None,
-                    exclude_names: Boolean = None)
-```
+Blender identifier: `GeometryNodeTransferAttributes`
 
 ### nd
 
-``` python
-nd.transfer_attributes(cls,
-                    target: Geometry = None,
-                    target_point_id: Integer = None,
-                    target_edge_id: Integer = None,
-                    target_face_id: Integer = None,
-                    target_corner_id: Integer = None,
-                    target_curve_id: Integer = None,
-                    target_instance_id: Integer = None,
-                    source: Geometry = None,
-                    source_point_id: Integer = None,
-                    source_edge_id: Integer = None,
-                    source_face_id: Integer = None,
-                    source_corner_id: Integer = None,
-                    source_curve_id: Integer = None,
-                    source_instance_id: Integer = None,
-                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
-                    attribute_names: String = None,
-                    exclude_names: Boolean = None)
-```
+- `nd.transfer_attributes(cls, target: Geometry=None, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, attribute_names: String=None, exclude_names: Boolean=None, pattern_mode: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.transfer_attributes(self, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, attribute_names: String=None, exclude_names: Boolean=None, pattern_mode: Menu=None)` — method; returns `OUT`.
 
 ## Transform Direction
 
-> `bl_idname` : FunctionNodeTransformDirection
-
-### class Matrix
-
-```python
-Matrix.transform_direction(self, direction: Vector = None)
-```
+Blender identifier: `FunctionNodeTransformDirection`
 
 ### nd
 
-``` python
-nd.transform_direction(cls, direction: Vector = None, transform: Matrix = None)
-```
+- `nd.transform_direction(cls, direction: Vector=None, transform: Matrix=None)` — class method; returns `OUT`.
+
+### Vector
+
+- `Vector.transform_direction(self, transform: Matrix=None)` — method; returns `OUT`.
 
 ## Transform Geometry
 
-> `bl_idname` : GeometryNodeTransform
-
-### class Geometry
-
-```python
-Geometry.transform(self,
-                    mode: Literal['Components', 'Matrix'] = None,
-                    translation: Vector = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None,
-                    transform: Matrix = None)
-```
+Blender identifier: `GeometryNodeTransform`
 
 ### nd
 
-``` python
-nd.transform_geometry(cls,
-                    geometry: Geometry = None,
-                    mode: Literal['Components', 'Matrix'] = None,
-                    translation: Vector = None,
-                    rotation: Rotation = None,
-                    scale: Vector = None,
-                    transform: Matrix = None)
-```
+- `nd.transform_geometry(cls, geometry: Geometry=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None, mode: Menu=None)` — class method; returns `OUT`.
+
+### Geometry
+
+- `Geometry.transform(self, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None, mode: Menu=None)` — method; returns `OUT`.
 
 ## Transform Gizmo
 
-> `bl_idname` : GeometryNodeGizmoTransform
-
-### class Matrix
-
-```python
-Matrix.transform_gizmo(self,
-                    *value: Matrix,
-                    position: Vector = None,
-                    rotation: Rotation = None,
-                    use_rotation_x = True,
-                    use_rotation_y = True,
-                    use_rotation_z = True,
-                    use_scale_x = True,
-                    use_scale_y = True,
-                    use_scale_z = True,
-                    use_translation_x = True,
-                    use_translation_y = True,
-                    use_translation_z = True)
-```
+Blender identifier: `GeometryNodeGizmoTransform`
 
 ### nd
 
-``` python
-nd.transform_gizmo(cls,
-                    *value: Matrix,
-                    position: Vector = None,
-                    rotation: Rotation = None,
-                    use_rotation_x = True,
-                    use_rotation_y = True,
-                    use_rotation_z = True,
-                    use_scale_x = True,
-                    use_scale_y = True,
-                    use_scale_z = True,
-                    use_translation_x = True,
-                    use_translation_y = True,
-                    use_translation_z = True)
-```
+- `nd.transform_gizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x: bool=True, use_translation_y: bool=True, use_translation_z: bool=True, use_rotation_x: bool=True, use_rotation_y: bool=True, use_rotation_z: bool=True, use_scale_x: bool=True, use_scale_y: bool=True, use_scale_z: bool=True)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.transform_gizmo(self, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x: bool=True, use_translation_y: bool=True, use_translation_z: bool=True, use_rotation_x: bool=True, use_rotation_y: bool=True, use_rotation_z: bool=True, use_scale_x: bool=True, use_scale_y: bool=True, use_scale_z: bool=True)` — method; returns `OUT`.
 
 ## Transform Point
 
-> `bl_idname` : FunctionNodeTransformPoint
-
-### class Matrix
-
-```python
-Matrix.transform_point(self, vector: Vector = None)
-```
+Blender identifier: `FunctionNodeTransformPoint`
 
 ### nd
 
-``` python
-nd.transform_point(cls, vector: Vector = None, transform: Matrix = None)
-```
+- `nd.transform_point(cls, vector: Vector=None, transform: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.transform_point(self, vector: Vector=None)` — method; returns `OUT`.
 
 ## Translate Instances
 
-> `bl_idname` : GeometryNodeTranslateInstances
-
-### class Instances
-
-```python
-Instances.translate(self, translation: Vector = None, local_space: Boolean = None)
-```
+Blender identifier: `GeometryNodeTranslateInstances`
 
 ### nd
 
-``` python
-nd.translate_instances(cls,
-                    instances: Instances = None,
-                    selection: Boolean = None,
-                    translation: Vector = None,
-                    local_space: Boolean = None)
-```
+- `nd.translate_instances(cls, instances: Instances=None, selection: Boolean=None, translation: Vector=None, local_space: Boolean=None)` — class method; returns `OUT`.
 
-## Translucent BSDF
+### Instances
 
-> `bl_idname` : ShaderNodeBsdfTranslucent
-
-### class Shader
-
-```python
-Shader.Translucent(cls, color: Color = None, normal: Vector = None)
-```
-
-### snd
-
-``` python
-nd.translucent_bsdf(cls, color: Color = None, normal: Vector = None, weight: Float = None)
-```
-
-## Transparent BSDF
-
-> `bl_idname` : ShaderNodeBsdfTransparent
-
-### class Shader
-
-```python
-Shader.Transparent(cls, color: Color = None)
-```
-
-### snd
-
-``` python
-nd.transparent_bsdf(cls, color: Color = None, weight: Float = None)
-```
+- `Instances.translate(self, translation: Vector=None, local_space: Boolean=None)` — method; returns `OUT`.
 
 ## Transpose Matrix
 
-> `bl_idname` : FunctionNodeTransposeMatrix
-
-### class Matrix
-
-```python
-Matrix.transpose(self)
-```
+Blender identifier: `FunctionNodeTransposeMatrix`
 
 ### nd
 
-``` python
-nd.transpose_matrix(cls, matrix: Matrix = None)
-```
+- `nd.transpose_matrix(cls, matrix: Matrix=None)` — class method; returns `OUT`.
+
+### Matrix
+
+- `Matrix.transpose(self)` — method; returns `OUT`.
 
 ## Triangulate
 
-> `bl_idname` : GeometryNodeTriangulate
-
-### class Mesh
-
-```python
-Mesh.triangulate(self,
-                    quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal'] = None,
-                    n_gon_method: Literal['Beauty', 'Clip'] = None)
-```
+Blender identifier: `GeometryNodeTriangulate`
 
 ### nd
 
-``` python
-nd.triangulate(cls,
-                    mesh: Mesh = None,
-                    selection: Boolean = None,
-                    quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal'] = None,
-                    n_gon_method: Literal['Beauty', 'Clip'] = None)
-```
+- `nd.triangulate(cls, mesh: Mesh=None, selection: Boolean=None, quad_method: Menu=None, n_gon_method: Menu=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.triangulate(self, quad_method: Menu=None, n_gon_method: Menu=None)` — method; returns `OUT`.
 
 ## Trim Curve
 
-> `bl_idname` : GeometryNodeTrimCurve
-
-### class Curve
-
-```python
-Curve.trim_factor(self, start: Float = None, end: Float = None)
-```
-
-```python
-Curve.trim_length(self, start: Float = None, end: Float = None)
-```
-
-```python
-Curve.trim(self,
-                    start: Float = None,
-                    end: Float = None,
-                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR')
-```
+Blender identifier: `GeometryNodeTrimCurve`
 
 ### nd
 
-``` python
-nd.trim_curve(cls,
-                    curve: Curve = None,
-                    selection: Boolean = None,
-                    start: Float = None,
-                    end: Float = None,
-                    start_1: Float = None,
-                    end_1: Float = None,
-                    mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR')
-```
+- `nd.trim_curve(cls, curve: Curve=None, selection: Boolean=None, start: Socket=None, end: Socket=None, mode: T_MODE_15='FACTOR')` — class method; returns `OUT`.
+
+### Curve
+
+- `Curve.trim(self, start: Socket=None, end: Socket=None, mode: T_MODE_15='FACTOR')` — method; returns `OUT`.
+- `Curve.trim_factor(self, start: Float=None, end: Float=None)` — method; returns `OUT`.
+- `Curve.trim_length(self, start: Float=None, end: Float=None)` — method; returns `OUT`.
 
 ## Trim String
 
-> `bl_idname` : FunctionNodeTrimString
-
-### class String
-
-```python
-String.trim(self,
-                    characters: String = None,
-                    whitespace: Boolean = None,
-                    start: Boolean = None,
-                    end: Boolean = None)
-```
+Blender identifier: `FunctionNodeTrimString`
 
 ### nd
 
-``` python
-nd.trim_string(cls,
-                    string: String = None,
-                    characters: String = None,
-                    whitespace: Boolean = None,
-                    start: Boolean = None,
-                    end: Boolean = None)
-```
+- `nd.trim_string(cls, string: String=None, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None)` — class method; returns `OUT`.
 
-### snd
+### String
 
-``` python
-nd.trim_string(cls,
-                    string: String = None,
-                    characters: String = None,
-                    whitespace: Boolean = None,
-                    start: Boolean = None,
-                    end: Boolean = None)
-```
-
-## UV Along Stroke
-
-> `bl_idname` : ShaderNodeUVAlongStroke
-
-### snd
-
-``` python
-nd.uv_along_stroke(cls, use_tips = False)
-```
-
-## UV Map
-
-> `bl_idname` : ShaderNodeUVMap
-
-### class Vector
-
-```python
-Vector.UvMap(cls, from_instancer = False, uv_map = '')
-```
-
-### snd
-
-``` python
-nd.uv_map(cls, from_instancer = False, uv_map = '')
-```
+- `String.trim(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None)` — method; returns `OUT`.
 
 ## UV Sphere
 
-> `bl_idname` : GeometryNodeMeshUVSphere
-
-### class Mesh
-
-```python
-Mesh.UVSphere(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
-```
+Blender identifier: `GeometryNodeMeshUVSphere`
 
 ### nd
 
-``` python
-nd.uv_sphere(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
-```
+- `nd.uv_sphere(cls, segments: Integer=None, rings: Integer=None, radius: Float=None)` — class method; returns `OUT`.
+
+### Mesh
+
+- `Mesh.UVSphere(cls, segments: Integer=None, rings: Integer=None, radius: Float=None)` — class method; returns `OUT`.
 
 ## UV Tangent
 
-> `bl_idname` : GeometryNodeUVTangent
-
-### class Vector
-
-```python
-Vector.uv_tangent(self, method: Literal['Exact', 'Fast'] = None)
-```
+Blender identifier: `GeometryNodeUVTangent`
 
 ### nd
 
-``` python
-nd.uv_tangent(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None)
-```
+- `nd.uv_tangent(cls, uv: Vector=None, method: Menu=None)` — class method; returns `OUT`.
 
 ## UV Unwrap
 
-> `bl_idname` : GeometryNodeUVUnwrap
-
-### class Boolean
-
-```python
-Boolean.uv_unwrap(self,
-                    seam: Boolean = None,
-                    margin: Float = None,
-                    fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal', 'Minimum Stretch'] = None,
-                    iterations: Integer = None,
-                    no_flip: Boolean = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.uv_unwrap(cls,
-                    selection: Boolean = None,
-                    seam: Boolean = None,
-                    margin: Float = None,
-                    fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal', 'Minimum Stretch'] = None,
-                    iterations: Integer = None,
-                    no_flip: Boolean = None)
-```
+Blender identifier: `GeometryNodeUVUnwrap`
 
 ### nd
 
-``` python
-nd.uv_unwrap(cls,
-                    selection: Boolean = None,
-                    seam: Boolean = None,
-                    margin: Float = None,
-                    fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal', 'Minimum Stretch'] = None,
-                    iterations: Integer = None,
-                    no_flip: Boolean = None)
-```
+- `nd.uv_unwrap(cls, selection: Boolean=None, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, iterations: Integer=None, no_flip: Boolean=None, method: Menu=None)` — class method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.uv_unwrap(self, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, iterations: Integer=None, no_flip: Boolean=None, method: Menu=None)` — method; returns `OUT`.
 
 ## Value
 
-> `bl_idname` : ShaderNodeValue
+Blender identifier: `ShaderNodeValue`
 
 ### nd
 
-``` python
-nd.value(self)
-```
-
-### snd
-
-``` python
-nd.value(self)
-```
+- `nd.value(cls)` — property; returns `OUT`.
 
 ## Value to String
 
-> `bl_idname` : FunctionNodeValueToString
-
-### class Float
-
-```python
-Float.to_string(self, decimals: Integer = None)
-```
-
-### class Integer
-
-```python
-Integer.to_string(self, base: Integer = None, padding: Integer = None)
-```
+Blender identifier: `FunctionNodeValueToString`
 
 ### nd
 
-``` python
-nd.value_to_string(cls,
-                    value: Float = None,
-                    decimals: Integer = None,
-                    base: Integer = None,
-                    padding: Integer = None,
-                    data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
-```
+- `nd.value_to_string(cls, value: Socket=None, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: T_DATA_TYPE_15='FLOAT')` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.value_to_string(cls,
-                    value: Float = None,
-                    decimals: Integer = None,
-                    base: Integer = None,
-                    padding: Integer = None,
-                    data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
-```
+- `Float.to_string(self, decimals: Integer=None)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.to_string(self, base: Integer=None, padding: Integer=None)` — method; returns `OUT`.
+
+### String
+
+- `String.FromValue(cls, value: Integer=None, base: Integer=None, padding: Integer=None)` — class method; returns `OUT`.
 
 ## Vector
 
-> `bl_idname` : FunctionNodeInputVector
+Blender identifier: `FunctionNodeInputVector`
 
 ### nd
 
-``` python
-nd.vector(cls, vector_dimensions = 3)
-```
-
-### snd
-
-``` python
-nd.vector(cls, vector_dimensions = 3)
-```
+- `nd.vector(cls, vector: tuple[float, float, float]=(0.0, 0.0, 0.0), vector_dimensions: int=3)` — class method; returns `OUT`.
 
 ## Vector Curves
 
-> `bl_idname` : ShaderNodeVectorCurve
+Blender identifier: `ShaderNodeVectorCurve`
 
 ### nd
 
-``` python
-nd.vector_curves(cls, vector: Vector = None, factor: Float = None)
-```
+- `nd.vector_curves(cls, vector: Vector=None, factor: Float=None)` — class method; returns `OUT`.
 
-### snd
+### Float
 
-``` python
-nd.vector_curves(cls, vector: Vector = None, factor: Float = None)
-```
-
-## Vector Displacement
-
-> `bl_idname` : ShaderNodeVectorDisplacement
-
-### class Color
-
-```python
-Color.vector_displacement(self,
-                    midlevel: Float = None,
-                    scale: Float = None,
-                    space: Literal['TANGENT', 'OBJECT', 'WORLD'] = 'TANGENT')
-```
-
-### snd
-
-``` python
-nd.vector_displacement(cls,
-                    vector: Color = None,
-                    midlevel: Float = None,
-                    scale: Float = None,
-                    space: Literal['TANGENT', 'OBJECT', 'WORLD'] = 'TANGENT')
-```
+- `Float.vector_curves(self, vector: Vector=None)` — method; returns `OUT`.
 
 ## Vector Math
 
-> `bl_idname` : ShaderNodeVectorMath
-
-### class Vector
-
-```python
-Vector.add(self, vector: Vector = None)
-```
-
-```python
-Vector.subtract(self, vector: Vector = None)
-```
-
-```python
-Vector.multiply(self, vector: Vector = None)
-```
-
-```python
-Vector.divide(self, vector: Vector = None)
-```
-
-```python
-Vector.multiply_add(self, multiplier: Vector = None, addend: Vector = None)
-```
-
-```python
-Vector.cross(self, vector: Vector = None)
-```
-
-```python
-Vector.project(self, vector: Vector = None)
-```
-
-```python
-Vector.reflect(self, vector: Vector = None)
-```
-
-```python
-Vector.refract(self, vector: Vector = None, ior: Float = None)
-```
-
-```python
-Vector.faceforward(self, incident: Vector = None, reference: Vector = None)
-```
-
-```python
-Vector.dot(self, vector: Vector = None)
-```
-
-```python
-Vector.distance(self, vector: Vector = None)
-```
-
-```python
-Vector.length(self)
-```
-
-```python
-Vector.scale(self, scale: Float = None)
-```
-
-```python
-Vector.normalize(self)
-```
-
-```python
-Vector.abs(self)
-```
-
-```python
-Vector.power(self, exponent: Vector = None)
-```
-
-```python
-Vector.sign(self)
-```
-
-```python
-Vector.min(self, vector: Vector = None)
-```
-
-```python
-Vector.max(self, vector: Vector = None)
-```
-
-```python
-Vector.round(self)
-```
-
-```python
-Vector.floor(self)
-```
-
-```python
-Vector.ceil(self)
-```
-
-```python
-Vector.fraction(self)
-```
-
-```python
-Vector.modulo(self, vector: Vector = None)
-```
-
-```python
-Vector.wrap(self, max: Vector = None, min: Vector = None)
-```
-
-```python
-Vector.snap(self, increment: Vector = None)
-```
-
-```python
-Vector.sin(self)
-```
-
-```python
-Vector.cos(self)
-```
-
-```python
-Vector.tan(self)
-```
-
-### class gnmath
-
-```python
-gnmath.vadd(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vsubtract(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vmultiply(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vdivide(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vmultiply_add(vector: Vector = None, multiplier: Vector = None, addend: Vector = None)
-```
-
-```python
-gnmath.cross(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.project(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.reflect(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.refract(vector: Vector = None, vector_1: Vector = None, ior: Float = None)
-```
-
-```python
-gnmath.faceforward(vector: Vector = None, incident: Vector = None, reference: Vector = None)
-```
-
-```python
-gnmath.dot(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.distance(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.length(vector: Vector = None)
-```
-
-```python
-gnmath.scale(vector: Vector = None, scale: Float = None)
-```
-
-```python
-gnmath.normalize(vector: Vector = None)
-```
-
-```python
-gnmath.vabs(vector: Vector = None)
-```
-
-```python
-gnmath.vpower(base: Vector = None, exponent: Vector = None)
-```
-
-```python
-gnmath.vsign(vector: Vector = None)
-```
-
-```python
-gnmath.vmin(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vmax(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vround(vector: Vector = None)
-```
-
-```python
-gnmath.vfloor(vector: Vector = None)
-```
-
-```python
-gnmath.vceil(vector: Vector = None)
-```
-
-```python
-gnmath.vfraction(vector: Vector = None)
-```
-
-```python
-gnmath.vmodulo(vector: Vector = None, vector_1: Vector = None)
-```
-
-```python
-gnmath.vwrap(vector: Vector = None, max: Vector = None, min: Vector = None)
-```
-
-```python
-gnmath.vsnap(vector: Vector = None, increment: Vector = None)
-```
-
-```python
-gnmath.vsin(vector: Vector = None)
-```
-
-```python
-gnmath.vcos(vector: Vector = None)
-```
-
-```python
-gnmath.vtan(vector: Vector = None)
-```
+Blender identifier: `ShaderNodeVectorMath`
 
 ### nd
 
-``` python
-nd.vector_math(cls,
-                    vector: Vector = None,
-                    vector_1: Vector = None,
-                    vector_2: Vector = None,
-                    scale: Float = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'] = 'ADD')
-```
+- `nd.vector_math(cls, vector: Vector=None, vector_1: Vector=None, addend: Vector=None, ior: Float=None, *, base: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, operation: T_OPERATION_7='ADD')` — class method; returns `OUT`.
 
-### snd
+### gnmath
 
-``` python
-nd.vector_math(cls,
-                    vector: Vector = None,
-                    vector_1: Vector = None,
-                    vector_2: Vector = None,
-                    scale: Float = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'] = 'ADD')
-```
+- `gnmath.vadd(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vsubtract(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vmultiply(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vdivide(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vpower(base: Vector=None, exponent: Vector=None)` — method; returns `OUT`.
+- `gnmath.vmodulo(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vabs(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vround(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vfloor(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vceil(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.scale(vector: Vector=None, scale: Float=None)` — method; returns `OUT`.
+- `gnmath.vmultiply_add(vector: Vector=None, multiplier: Vector=None, addend: Vector=None)` — method; returns `OUT`.
+- `gnmath.cross(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.project(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.reflect(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.refract(vector: Vector=None, vector_1: Vector=None, ior: Float=None)` — method; returns `OUT`.
+- `gnmath.faceforward(vector: Vector=None, incident: Vector=None, reference: Vector=None)` — method; returns `OUT`.
+- `gnmath.dot(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.distance(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.length(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.normalize(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vsign(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vmin(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vmax(vector: Vector=None, vector_1: Vector=None)` — method; returns `OUT`.
+- `gnmath.vfraction(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vwrap(vector: Vector=None, max: Vector=None, min: Vector=None)` — method; returns `OUT`.
+- `gnmath.vsnap(vector: Vector=None, increment: Vector=None)` — method; returns `OUT`.
+- `gnmath.vsin(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vcos(vector: Vector=None)` — method; returns `OUT`.
+- `gnmath.vtan(vector: Vector=None)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.add(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.__add__(self, other)` — method; returns `OUT`.
+- `Vector.__radd__(self, other)` — method; returns `OUT`.
+- `Vector.__iadd__(self, other)` — method; returns `OUT`.
+- `Vector.subtract(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.__sub__(self, other)` — method; returns `OUT`.
+- `Vector.__rsub__(self, other)` — method; returns `OUT`.
+- `Vector.__isub__(self, other)` — method; returns `OUT`.
+- `Vector.multiply(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.__mul__(self, other)` — method; returns `OUT`.
+- `Vector.__rmul__(self, other)` — method; returns `OUT`.
+- `Vector.__imul__(self, other)` — method; returns `OUT`.
+- `Vector.divide(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.__truediv__(self, other)` — method; returns `OUT`.
+- `Vector.__rtruediv__(self, other)` — method; returns `OUT`.
+- `Vector.__itruediv__(self, other)` — method; returns `OUT`.
+- `Vector.power(self, exponent: Vector=None)` — method; returns `OUT`.
+- `Vector.__pow__(self, other)` — method; returns `OUT`.
+- `Vector.__rpow__(self, other)` — method; returns `OUT`.
+- `Vector.__ipow__(self, other)` — method; returns `OUT`.
+- `Vector.modulo(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.__mod__(self, other)` — method; returns `OUT`.
+- `Vector.__rmod__(self, other)` — method; returns `OUT`.
+- `Vector.__imod__(self, other)` — method; returns `OUT`.
+- `Vector.abs(self)` — method; returns `OUT`.
+- `Vector.__abs__(self)` — method; returns `OUT`.
+- `Vector.round(self)` — method; returns `OUT`.
+- `Vector.__round__(self)` — method; returns `OUT`.
+- `Vector.floor(self)` — method; returns `OUT`.
+- `Vector.__floor__(self)` — method; returns `OUT`.
+- `Vector.ceil(self)` — method; returns `OUT`.
+- `Vector.__ceil__(self)` — method; returns `OUT`.
+- `Vector.scale(self, scale: Float=None)` — method; returns `OUT`.
+- `Vector.__neg__(self)` — method; returns `OUT`.
+- `Vector.multiply_add(self, multiplier: Vector=None, addend: Vector=None)` — method; returns `OUT`.
+- `Vector.cross(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.project(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.reflect(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.refract(self, vector: Vector=None, ior: Float=None)` — method; returns `OUT`.
+- `Vector.faceforward(self, incident: Vector=None, reference: Vector=None)` — method; returns `OUT`.
+- `Vector.dot(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.distance(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.length(self)` — method; returns `OUT`.
+- `Vector.normalize(self)` — method; returns `OUT`.
+- `Vector.sign(self)` — method; returns `OUT`.
+- `Vector.min(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.max(self, vector: Vector=None)` — method; returns `OUT`.
+- `Vector.fraction(self)` — method; returns `OUT`.
+- `Vector.wrap(self, max: Vector=None, min: Vector=None)` — method; returns `OUT`.
+- `Vector.snap(self, increment: Vector=None)` — method; returns `OUT`.
+- `Vector.sin(self)` — method; returns `OUT`.
+- `Vector.cos(self)` — method; returns `OUT`.
+- `Vector.tan(self)` — method; returns `OUT`.
+- `Vector.vector_math(self, vector: Vector=None, addend: Vector=None, ior: Float=None, *, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, operation: T_OPERATION_7='ADD')` — method; returns `OUT`.
 
 ## Vector Rotate
 
-> `bl_idname` : ShaderNodeVectorRotate
-
-### class Vector
-
-```python
-Vector.rotate(self,
-                    center: Vector = None,
-                    axis: Vector = None,
-                    angle: Float = None,
-                    invert = False,
-                    rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'] = 'AXIS_ANGLE')
-```
-
-```python
-Vector.rotate_axis_angle(self,
-                    center: Vector = None,
-                    axis: Vector = None,
-                    angle: Float = None,
-                    invert = False)
-```
-
-```python
-Vector.rotate_x_axis(self, center: Vector = None, angle: Float = None, invert = False)
-```
-
-```python
-Vector.rotate_y_axis(self, center: Vector = None, angle: Float = None, invert = False)
-```
-
-```python
-Vector.rotate_z_axis(self, center: Vector = None, angle: Float = None, invert = False)
-```
-
-```python
-Vector.rotate_euler_xyz(self, center: Vector = None, rotation: Vector = None, invert = False)
-```
+Blender identifier: `ShaderNodeVectorRotate`
 
 ### nd
 
-``` python
-nd.vector_rotate(cls,
-                    vector: Vector = None,
-                    center: Vector = None,
-                    axis: Vector = None,
-                    angle: Float = None,
-                    rotation: Vector = None,
-                    invert = False,
-                    rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'] = 'AXIS_ANGLE')
-```
+- `nd.vector_rotate(cls, vector: Vector=None, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, invert: bool=False, rotation_type: T_ROTATION_TYPE_1='AXIS_ANGLE')` — class method; returns `OUT`.
 
-### snd
+### Vector
 
-``` python
-nd.vector_rotate(cls,
-                    vector: Vector = None,
-                    center: Vector = None,
-                    axis: Vector = None,
-                    angle: Float = None,
-                    rotation: Vector = None,
-                    invert = False,
-                    rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'] = 'AXIS_ANGLE')
-```
-
-## Vector Transform
-
-> `bl_idname` : ShaderNodeVectorTransform
-
-### class Vector
-
-```python
-Vector.vector_transform(self,
-                    convert_from: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT'] = 'WORLD',
-                    convert_to: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT'] = 'OBJECT',
-                    vector_type: Literal['POINT', 'VECTOR', 'NORMAL'] = 'VECTOR')
-```
-
-### snd
-
-``` python
-nd.vector_transform(cls,
-                    lightindex: Integer = None,
-                    vector: Vector = None,
-                    convert_from: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT'] = 'WORLD',
-                    convert_to: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT'] = 'OBJECT',
-                    vector_type: Literal['POINT', 'VECTOR', 'NORMAL'] = 'VECTOR')
-```
+- `Vector.vector_rotate(self, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, invert: bool=False, rotation_type: T_ROTATION_TYPE_1='AXIS_ANGLE')` — method; returns `OUT`.
 
 ## Vertex Neighbors
 
-> `bl_idname` : GeometryNodeInputMeshVertexNeighbors
-
-### class Mesh
-
-```python
-prop = Mesh.vertex_neighbors
-```
-
-### class Vertex
-
-```python
-prop = Mesh.points.neighbors
-```
-
-```python
-prop = Mesh.points.neighbors_vertex_count
-```
-
-```python
-prop = Mesh.points.neighbors_face_count
-```
+Blender identifier: `GeometryNodeInputMeshVertexNeighbors`
 
 ### nd
 
-``` python
-nd.vertex_neighbors(cls)
-```
+- `nd.vertex_neighbors(cls)` — class method; returns `OUT`.
 
 ## Vertex of Corner
 
-> `bl_idname` : GeometryNodeVertexOfCorner
-
-### class Mesh
-
-```python
-Mesh.vertex_of_corner(cls, corner_index: Integer = None)
-```
-
-### class Corner
-
-```python
-Mesh.corners.vertex_index(cls, corner_index: Integer = None)
-```
+Blender identifier: `GeometryNodeVertexOfCorner`
 
 ### nd
 
-``` python
-nd.vertex_of_corner(cls, corner_index: Integer = None)
-```
+- `nd.vertex_of_corner(cls, corner_index: Integer=None)` — class method; returns `OUT`.
 
 ## Viewer
 
-> `bl_idname` : GeometryNodeViewer
-
-### class Geometry
-
-```python
-Geometry.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Point
-
-```python
-Mesh.points.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Edge
-
-```python
-Mesh.edges.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Face
-
-```python
-Mesh.faces.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Corner
-
-```python
-Mesh.corners.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Spline
-
-```python
-Spline.splines.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Instance
-
-```python
-Instances.insts.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
-
-### class Layer
-
-```python
-GreasePencil.layers.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
-```
+Blender identifier: `GeometryNodeViewer`
 
 ### nd
 
-``` python
-nd.viewer(cls,
-                    named_sockets: dict = {},
-                    domain: Literal['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'AUTO',
-                    ui_shortcut = 0,
-                    **sockets)
-```
+- `nd.viewer(cls, named_sockets: dict={}, domain: T_DOMAIN_10='AUTO', **sockets)` — class method; returns `NODE`.
 
 ## Viewport Transform
 
-> `bl_idname` : GeometryNodeViewportTransform
+Blender identifier: `GeometryNodeViewportTransform`
 
 ### nd
 
-``` python
-nd.viewport_transform(cls)
-```
-
-## Volume Absorption
-
-> `bl_idname` : ShaderNodeVolumeAbsorption
-
-### class VolumeShader
-
-```python
-VolumeShader.Absorption(cls, color: Color = None, density: Float = None)
-```
-
-### snd
-
-``` python
-nd.volume_absorption(cls, color: Color = None, density: Float = None, weight: Float = None)
-```
-
-## Volume Coefficients
-
-> `bl_idname` : ShaderNodeVolumeCoefficients
-
-### snd
-
-``` python
-nd.volume_coefficients(cls,
-                    weight: Float = None,
-                    absorption_coefficients: Vector = None,
-                    scatter_coefficients: Vector = None,
-                    anisotropy: Float = None,
-                    ior: Float = None,
-                    backscatter: Float = None,
-                    alpha: Float = None,
-                    diameter: Float = None,
-                    emission_coefficients: Vector = None,
-                    phase: Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'] = 'HENYEY_GREENSTEIN')
-```
+- `nd.viewport_transform(cls)` — class method; returns `OUT`.
 
 ## Volume Cube
 
-> `bl_idname` : GeometryNodeVolumeCube
-
-### class Volume
-
-```python
-Volume.Cube(cls,
-                    density: Float = None,
-                    background: Float = None,
-                    min: Vector = None,
-                    max: Vector = None,
-                    resolution_x: Integer = None,
-                    resolution_y: Integer = None,
-                    resolution_z: Integer = None)
-```
+Blender identifier: `GeometryNodeVolumeCube`
 
 ### nd
 
-``` python
-nd.volume_cube(cls,
-                    density: Float = None,
-                    background: Float = None,
-                    min: Vector = None,
-                    max: Vector = None,
-                    resolution_x: Integer = None,
-                    resolution_y: Integer = None,
-                    resolution_z: Integer = None)
-```
+- `nd.volume_cube(cls, density: Float=None, background: Float=None, min: Vector=None, max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None)` — class method; returns `OUT`.
 
-## Volume Info
+### Volume
 
-> `bl_idname` : ShaderNodeVolumeInfo
-
-### class VolumeShader
-
-```python
-prop = VolumeShader.info
-```
-
-### snd
-
-``` python
-nd.volume_info(cls)
-```
-
-## Volume Scatter
-
-> `bl_idname` : ShaderNodeVolumeScatter
-
-### class VolumeShader
-
-```python
-VolumeShader.Scatter(cls,
-                    color: Color = None,
-                    density: Float = None,
-                    anisotropy: Float = None,
-                    phase: Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'] = 'HENYEY_GREENSTEIN')
-```
-
-### snd
-
-``` python
-nd.volume_scatter(cls,
-                    color: Color = None,
-                    density: Float = None,
-                    anisotropy: Float = None,
-                    ior: Float = None,
-                    backscatter: Float = None,
-                    alpha: Float = None,
-                    diameter: Float = None,
-                    weight: Float = None,
-                    phase: Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'] = 'HENYEY_GREENSTEIN')
-```
+- `Volume.Cube(cls, density: Float=None, background: Float=None, min: Vector=None, max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None)` — class method; returns `OUT`.
 
 ## Volume to Mesh
 
-> `bl_idname` : GeometryNodeVolumeToMesh
-
-### class Volume
-
-```python
-Volume.to_mesh(self,
-                    resolution_mode: Literal['Grid', 'Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    threshold: Float = None,
-                    adaptivity: Float = None)
-```
+Blender identifier: `GeometryNodeVolumeToMesh`
 
 ### nd
 
-``` python
-nd.volume_to_mesh(cls,
-                    volume: Volume = None,
-                    resolution_mode: Literal['Grid', 'Amount', 'Size'] = None,
-                    voxel_size: Float = None,
-                    voxel_amount: Float = None,
-                    threshold: Float = None,
-                    adaptivity: Float = None)
-```
+- `nd.volume_to_mesh(cls, volume: Volume=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None, resolution_mode: Menu=None)` — class method; returns `OUT`.
+
+### Volume
+
+- `Volume.to_mesh(self, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None, resolution_mode: Menu=None)` — method; returns `OUT`.
 
 ## Voronoi Texture
 
-> `bl_idname` : ShaderNodeTexVoronoi
-
-### class Float
-
-```python
-Float.Voronoi(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    randomness: Float = None,
-                    distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'] = 'EUCLIDEAN',
-                    feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'] = 'F1',
-                    normalize = False,
-                    voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
-
-### class Texture
-
-```python
-Texture.Voronoi(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    randomness: Float = None,
-                    distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'] = 'EUCLIDEAN',
-                    feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'] = 'F1',
-                    normalize = False,
-                    voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
+Blender identifier: `ShaderNodeTexVoronoi`
 
 ### nd
 
-``` python
-nd.voronoi_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    smoothness: Float = None,
-                    exponent: Float = None,
-                    randomness: Float = None,
-                    distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'] = 'EUCLIDEAN',
-                    feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'] = 'F1',
-                    normalize = False,
-                    voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
+- `nd.voronoi_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, normalize: bool=False, voronoi_dimensions: T_NOISE_DIMENSIONS_1='3D', distance: T_DISTANCE_1='EUCLIDEAN', feature: T_FEATURE_1='F1')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.voronoi_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    scale: Float = None,
-                    detail: Float = None,
-                    roughness: Float = None,
-                    lacunarity: Float = None,
-                    smoothness: Float = None,
-                    exponent: Float = None,
-                    randomness: Float = None,
-                    distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'] = 'EUCLIDEAN',
-                    feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'] = 'F1',
-                    normalize = False,
-                    voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
+- `Texture.Voronoi(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, normalize: bool=False, voronoi_dimensions: T_NOISE_DIMENSIONS_1='3D', distance: T_DISTANCE_1='EUCLIDEAN', feature: T_FEATURE_1='F1')` — class method; returns `OUT`.
 
 ## Voxel Index
 
-> `bl_idname` : GeometryNodeInputVoxelIndex
-
-### class Float
-
-```python
-Float.voxel_index(cls)
-```
-
-### class Integer
-
-```python
-Integer.voxel_index(cls)
-```
-
-### class Boolean
-
-```python
-Boolean.voxel_index(cls)
-```
-
-### class Vector
-
-```python
-Vector.voxel_index(cls)
-```
+Blender identifier: `GeometryNodeInputVoxelIndex`
 
 ### nd
 
-``` python
-nd.voxel_index(cls)
-```
+- `nd.voxel_index(cls)` — class method; returns `OUT`.
 
 ## Voxelize Grid
 
-> `bl_idname` : GeometryNodeGridVoxelize
-
-### class Float
-
-```python
-Float.voxelize_grid(self)
-```
-
-### class Integer
-
-```python
-Integer.voxelize_grid(self)
-```
-
-### class Boolean
-
-```python
-Boolean.voxelize_grid(self)
-```
-
-### class Vector
-
-```python
-Vector.voxelize_grid(self)
-```
+Blender identifier: `GeometryNodeGridVoxelize`
 
 ### nd
 
-``` python
-nd.voxelize_grid(cls,
-                    grid: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
-```
+- `nd.voxelize_grid(cls, grid: Socket=None, data_type: T_DATA_TYPE_5='FLOAT')` — class method; returns `OUT`.
+
+### Float
+
+- `Float.voxelize_grid(self)` — method; returns `OUT`.
+
+### Integer
+
+- `Integer.voxelize_grid(self)` — method; returns `OUT`.
+
+### Boolean
+
+- `Boolean.voxelize_grid(self)` — method; returns `OUT`.
+
+### Vector
+
+- `Vector.voxelize_grid(self)` — method; returns `OUT`.
 
 ## Warning
 
-> `bl_idname` : GeometryNodeWarning
-
-### class Boolean
-
-```python
-Boolean.error(self, message: String = None)
-```
-
-```python
-Boolean.warning(self, message: String = None)
-```
-
-```python
-Boolean.info(self, message: String = None)
-```
+Blender identifier: `GeometryNodeWarning`
 
 ### nd
 
-``` python
-nd.warning(cls,
-                    show: Boolean = None,
-                    message: String = None,
-                    warning_type: Literal['ERROR', 'WARNING', 'INFO'] = 'ERROR')
-```
+- `nd.warning(cls, show: Boolean=None, message: String=None, warning_type: T_WARNING_TYPE_1='ERROR')` — class method; returns `OUT`.
 
-### snd
+### Boolean
 
-``` python
-nd.warning(cls,
-                    show: Boolean = None,
-                    message: String = None,
-                    warning_type: Literal['ERROR', 'WARNING', 'INFO'] = 'ERROR')
-```
+- `Boolean.error(self, message: String=None)` — method; returns `OUT`.
+- `Boolean.warning(self, message: String=None)` — method; returns `OUT`.
+- `Boolean.info(self, message: String=None)` — method; returns `OUT`.
 
 ## Wave Texture
 
-> `bl_idname` : ShaderNodeTexWave
-
-### class Color
-
-```python
-Color.Wave(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    detail: Float = None,
-                    detail_scale: Float = None,
-                    detail_roughness: Float = None,
-                    phase_offset: Float = None,
-                    bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL'] = 'X',
-                    rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL'] = 'X',
-                    wave_profile: Literal['SIN', 'SAW', 'TRI'] = 'SIN',
-                    wave_type: Literal['BANDS', 'RINGS'] = 'BANDS')
-```
-
-### class Texture
-
-```python
-Texture.Wave(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    detail: Float = None,
-                    detail_scale: Float = None,
-                    detail_roughness: Float = None,
-                    phase_offset: Float = None,
-                    bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL'] = 'X',
-                    rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL'] = 'X',
-                    wave_profile: Literal['SIN', 'SAW', 'TRI'] = 'SIN',
-                    wave_type: Literal['BANDS', 'RINGS'] = 'BANDS')
-```
+Blender identifier: `ShaderNodeTexWave`
 
 ### nd
 
-``` python
-nd.wave_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    detail: Float = None,
-                    detail_scale: Float = None,
-                    detail_roughness: Float = None,
-                    phase_offset: Float = None,
-                    bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL'] = 'X',
-                    rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL'] = 'X',
-                    wave_profile: Literal['SIN', 'SAW', 'TRI'] = 'SIN',
-                    wave_type: Literal['BANDS', 'RINGS'] = 'BANDS')
-```
+- `nd.wave_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: T_WAVE_TYPE_1='BANDS', bands_direction: T_BANDS_DIRECTION_1='X', rings_direction: T_RINGS_DIRECTION_1='X', wave_profile: T_WAVE_PROFILE_1='SIN')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.wave_texture(cls,
-                    vector: Vector = None,
-                    scale: Float = None,
-                    distortion: Float = None,
-                    detail: Float = None,
-                    detail_scale: Float = None,
-                    detail_roughness: Float = None,
-                    phase_offset: Float = None,
-                    bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL'] = 'X',
-                    rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL'] = 'X',
-                    wave_profile: Literal['SIN', 'SAW', 'TRI'] = 'SIN',
-                    wave_type: Literal['BANDS', 'RINGS'] = 'BANDS')
-```
-
-## Wavelength
-
-> `bl_idname` : ShaderNodeWavelength
-
-### class Float
-
-```python
-Float.wavelength(self)
-```
-
-### snd
-
-``` python
-nd.wavelength(cls, wavelength: Float = None)
-```
+- `Texture.Wave(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: T_WAVE_TYPE_1='BANDS', bands_direction: T_BANDS_DIRECTION_1='X', rings_direction: T_RINGS_DIRECTION_1='X', wave_profile: T_WAVE_PROFILE_1='SIN')` — class method; returns `OUT`.
 
 ## White Noise Texture
 
-> `bl_idname` : ShaderNodeTexWhiteNoise
-
-### class Float
-
-```python
-Float.WhiteNoise(cls,
-                    vector: Vector = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
-
-### class Texture
-
-```python
-Texture.WhiteNoise(cls,
-                    vector: Vector = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
+Blender identifier: `ShaderNodeTexWhiteNoise`
 
 ### nd
 
-``` python
-nd.white_noise_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
+- `nd.white_noise_texture(cls, vector: Vector=None, w: Float=None, noise_dimensions: T_NOISE_DIMENSIONS_1='3D')` — class method; returns `OUT`.
 
-### snd
+### Texture
 
-``` python
-nd.white_noise_texture(cls,
-                    vector: Vector = None,
-                    w: Float = None,
-                    noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
-```
-
-## Wireframe
-
-> `bl_idname` : ShaderNodeWireframe
-
-### class Float
-
-```python
-Float.wireframe(self, use_pixel_size = False)
-```
-
-### snd
-
-``` python
-nd.wireframe(cls, size: Float = None, use_pixel_size = False)
-```
-
-## World Output
-
-> `bl_idname` : ShaderNodeOutputWorld
-
-### class Shader
-
-```python
-Shader.world_output(self,
-                    volume: VolumeShader = None,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
-
-### snd
-
-``` python
-nd.world_output(cls,
-                    surface: Shader = None,
-                    volume: VolumeShader = None,
-                    is_active_output = True,
-                    target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
-```
+- `Texture.WhiteNoise(cls, vector: Vector=None, w: Float=None, noise_dimensions: T_NOISE_DIMENSIONS_1='3D')` — class method; returns `OUT`.
 
 ## XPBD Solver
 
-> `bl_idname` : GeometryNodeXPBDSolver
-
-### class Bundle
-
-```python
-Bundle.xpbd_solver(self,
-                    delta_time: Float = None,
-                    filter: String = None,
-                    simulation_to_world: Matrix = None,
-                    substeps: Integer = None,
-                    constraint_iterations: Integer = None,
-                    solver_path: String = None,
-                    begin: Float = None,
-                    end: Float = None)
-```
+Blender identifier: `GeometryNodeXPBDSolver`
 
 ### nd
 
-``` python
-nd.xpbd_solver(cls,
-                    world: Bundle = None,
-                    delta_time: Float = None,
-                    filter: String = None,
-                    simulation_to_world: Matrix = None,
-                    substeps: Integer = None,
-                    constraint_iterations: Integer = None,
-                    solver_path: String = None,
-                    begin: Float = None,
-                    end: Float = None)
-```
+- `nd.xpbd_solver(cls, world: Bundle=None, delta_time: Float=None, filter: String=None, simulation_to_world: Matrix=None, substeps: Integer=None, constraint_iterations: Integer=None, solver_path: String=None, begin: Float=None, end: Float=None)` — class method; returns `OUT`.
+
+### Bundle
+
+- `Bundle.xpbd_solver(self, delta_time: Float=None, filter: String=None, simulation_to_world: Matrix=None, substeps: Integer=None, constraint_iterations: Integer=None, solver_path: String=None, begin: Float=None, end: Float=None)` — method; returns `OUT`.
 

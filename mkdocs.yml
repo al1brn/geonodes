@@ -18,6 +18,8 @@ nav:
     - Data Classes: getting_started/data_classes.md
     - Naming Conventions: getting_started/naming.md
     - Modifiers & Groups: getting_started/modifiers_groups.md
+    - Packages: getting_started/packages.md
+    - Migration: getting_started/migration.md
     - Creating Sockets: getting_started/creating_sockets.md
     - Linking Sockets: getting_started/linking_sockets.md
     - Zones: getting_started/zones.md
@@ -27,11 +29,13 @@ nav:
 
   - API:
     - Overview: api/index.md
+    - Builders & Packages: api/builders.md
     - Trees:
         - GeoNodes: api/geonodes.md
         - ShaderNodes: api/shadernodes.md
         - Layout: api/layout.md
         - Panel: api/panel.md
+        - ColorRamp: api/color_ramp.md
         - Break: api/break.md
         - Tree: api/tree.md
 
@@ -50,6 +54,7 @@ nav:
         - Bundle: api/bundle.md
         - Closure: api/closure.md
         - Collection : api/collection.md
+        - Texture: api/texture.md
         - Color: api/color.md
         - Float: api/float.md
         - Font: api/font.md
@@ -69,6 +74,7 @@ nav:
         - Node: api/node.md
 
     - Domains:
+        - Domain: api/domain.md
         - Vertex: api/vertex.md
         - Edge: api/edge.md
         - Face: api/face.md
@@ -83,9 +89,11 @@ nav:
         - Attribute: api/attribute.md
         - gnmath module: api/gnmath.md
         - nd module: api/nd.md
-        - snd module: api/snd.md
+        - Shader: api/shader.md
+        - VolumeShader: api/volume_shader.md
 
     - Cross Reference: api/cross_reference.md
+    - Shader Cross Reference: api/shader_cross_reference.md
 
   - Demos:
     - Overview: demos/index.md

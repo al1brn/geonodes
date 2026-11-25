@@ -63,10 +63,10 @@ def demo(rebuild=False):
     # Load Arrows groups
     # ----------------------------------------------------------------------------------------------------
 
-    from . import arrows
+    from .. import arrows
     arrows.demo()
 
-    from . import common
+    from .. import common
     common.demo()
 
     Tree._init_package('Gravity')
@@ -131,11 +131,11 @@ def demo(rebuild=False):
 
             with Layout("Sun"):
                 sun_mass = max_mass*sun_ratio
-                planets.points[0]._Mass = sun_mass
-                planets.points[0]._Speed = Vector()
-                planets.points[0]._Collision = coll_radius * sun_mass**(1/3)
-                planets.points[0].radius = vis_radius * sun_mass**(1/3)
-                planets.points[0].position = 0
+                planets.points(0)._Mass = sun_mass
+                planets.points(0)._Speed = Vector()
+                planets.points(0)._Collision = coll_radius * sun_mass**(1/3)
+                planets.points(0).radius = vis_radius * sun_mass**(1/3)
+                planets.points(0).position = 0
 
 
         # ====================================================================================================
@@ -156,7 +156,7 @@ def demo(rebuild=False):
                 v = center - nd.position
                 r = gnmath.max(v.length(), .01)
                 acc = v.scale(G_constant*M*r**(-3))
-                rep.planets.points[nd.index.not_equal(rep.iteration)].Acceleration = Vector("Acceleration") + acc
+                rep.planets.points(nd.index.not_equal(rep.iteration)).Acceleration = Vector("Acceleration") + acc
 
             planets = Cloud(rep.planets)
 
@@ -220,15 +220,15 @@ def demo(rebuild=False):
 
             with Layout("Delete merged planets and add newly created ones"):
                 planets.points._Merge = merged.points.sample_index(Boolean("Merge"), index=nd.index)
-                merged.points[nd.index.greater_than(Integer("IoN"))]._Merge = False
+                merged.points(nd.index.greater_than(Integer("IoN")))._Merge = False
 
-                planets = planets.points[Boolean("Merge")].delete()
-                planets += merged.points[-Boolean("Merge")].delete()
+                planets = planets.points(Boolean("Merge")).delete()
+                planets += merged.points(-Boolean("Merge")).delete()
 
             with Layout("Sun center"):
                 no_center = Cloud(planets)
                 sun = Cloud(planets)
-                sun.points[sun.points.attribute_statistic(Float("Mass")).max_ > 1.01*Float("Mass")].delete()
+                sun.points(sun.points.attribute_statistic(Float("Mass")).max_ > 1.01*Float("Mass")).delete()
                 planets.transform(translation=-sun.points.sample_index(nd.position, 0))
                 planets = no_center.switch(center_sun, planets)
 
@@ -592,14 +592,14 @@ def demo(rebuild=False):
         with Layout("Potential Energy Grid"):
             grid = Mesh.Grid(size_x=grid_size, size_y=grid_size, vertices_x=grid_resol, vertices_y=grid_resol)
 
-            grid.points[nd.position.length().less_than(0.01)].delete()
+            grid.points(nd.position.length().less_than(0.01)).delete()
             
             grid.offset = (0.0, 0.0, V)
             
             grid.faces.Transparency = 1 - grid_show
             grid.faces.material = grid_mat
             grid.faces.shade_smooth = True
-            grid.points[grid_cut & nd.position.y.less_than(0.0)].delete()
+            grid.points(grid_cut & nd.position.y.less_than(0.0)).delete()
             grid.switch(grid_show.equal(0.0))
 
         with Layout("Total Energy Plane"):
@@ -619,9 +619,9 @@ def demo(rebuild=False):
             total_plane.faces.Transparency = 1 - total_show
             total_plane.faces.material = total_mat
             total_plane.faces.shade_smooth = True
-            total_plane.points[
+            total_plane.points()
                 total_cut & nd.position.y.less_than(0.0)
-            ].delete()
+            ).delete()
             total_plane.switch(total_show.equal(0.0))
                     
         with Layout("Preparation"):

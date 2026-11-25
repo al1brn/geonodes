@@ -103,30 +103,30 @@ def move_selection(
     
         if axis.upper() == 'X':
             if summit is None:
-                mesh[selection].offset = (offset, 0, 0)
+                mesh(selection).offset = (offset, 0, 0)
                 
             else:
                 x, y, z = nd.position.xyz
                 slope = offset/(x - summit)
-                mesh[selection].offset = (offset, slope*y, slope*z)
+                mesh(selection).offset = (offset, slope*y, slope*z)
         
         elif axis.upper() == 'Y':
             if summit is None:
-                mesh[selection].offset = (0, offset, 0)
+                mesh(selection).offset = (0, offset, 0)
                 
             else:
                 x, y, z = nd.position.xyz
                 slope = offset/(y - summit)
-                mesh[selection].offset = (slope*x, offset, slope*z)
+                mesh(selection).offset = (slope*x, offset, slope*z)
         
         elif axis.upper() == 'Z':
             if summit is None:
-                mesh[selection].offset = (0, 0, offset)
+                mesh(selection).offset = (0, 0, offset)
                 
             else:
                 x, y, z = nd.position.xyz
                 slope = offset/(z - summit)
-                mesh[selection].offset = (slope*x, slope*y, offset)
+                mesh(selection).offset = (slope*x, slope*y, offset)
             
         else:
             raise NodeError(f"Error in macro 'move_selection'. Axis must be in ('X', 'Y', 'Z'), not '{axis}'")
@@ -215,11 +215,11 @@ def build_flat_cap(mesh: Mesh, selection: Boolean, target: Vector = None, title=
         if target is None:
             target = mesh.points.attribute_statistic(nd.position).mean
 
-        mesh = mesh.edges[selection].extrude(offset=(target-nd.position).normalize(), offset_scale=.002)
+        mesh = mesh.edges(selection).extrude(offset=(target-nd.position).normalize(), offset_scale=.002)
         top = mesh.top
-        mesh = mesh.edges[top].extrude(offset=(target-nd.position))
+        mesh = mesh.edges(top).extrude(offset=(target-nd.position))
         top = mesh.top
-        mesh[top].merge_by_distance()
+        mesh(top).merge_by_distance()
 
         return mesh
 

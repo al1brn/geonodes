@@ -1,3 +1,3 @@
 # Material
 
-::: geonodes.core.sock_material.Material
+::: geonodes.core_new.geonodes.generated.material.Material

@@ -1,16 +1,20 @@
+# Options
+
+# Use keyword only * when socket order is changed
+USE_KEYWORD_ONLY = False
+
+
 # Key words with space to avoid match with a true parrameter value
 ADD_LOOP = 'ADD LOOP'       # sample(..., mode=...), sample_factor(...), sample_length(...) for instance
 LOOP_ONLY = 'LOOP ONLY'     # sample_factor(...), sample_length(...) 
 REPLACE = 'REPLACE'         # "sample_REPLACE"
 
 # Generation configuration
-
 DOMAINS = ['Point', 'Edge', 'Corner', 'Face', 'Curve', 'Vertex', 'Vertices', 'Instance', 'Spline']
 DOMAIN_NAME = {
     'Vertex': 'Vertex',
     'Vertices': 'Vertex',
 }
-
 
 # Nodes with dynamic inputs accepting dynamic inputs
 AUTO_INPUT_TYPE_NODES = [
@@ -49,7 +53,7 @@ STATIC_IMPLEMENTATIONS = {
         'return_socket': 'Item',
     },
     'Store Bundle Item': {
-        'method_name': 'set_item',
+        'method_name': 'store_item',
         'is_jump': True,
     },
     'Switch': {
@@ -59,7 +63,12 @@ STATIC_IMPLEMENTATIONS = {
         'method_type': 'CLASS_PROPERTY',
         'method_name': ['normal', 'true_normal'],
         'return_socket': ['Normal', 'True Normal'],
-    },    
+    },  
+    # Shaders
+    'Geometry' : {
+        'return_kind': 'NODE',
+    },
+
 }
 
 # Handwritten APIs registered for documentation without emitting their source.
@@ -68,69 +77,15 @@ HANDWRITTEN_IMPLEMENTATIONS = {
     #'GeometryNodeMenuSwitch': {'Socket': ('MenuSwitch', 'menu_switch')},
 }
 
-
-DEPR = {
-    # Input Nodes
-    
-    'Offset Corner in Face' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "Face",
-        'method_name' : "offset_corner"
-        },
-    'Offset Point in Curve' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': ["Curve", "Spline"],
-        'method_name': "offset_point",
-        },
-    'Shortest Edge Paths' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "Edge",
-        'method_name': "shortest_paths",
-        },
-    'NURBS Order' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "Curve",
-        'method_name': "nurbs_order",
-        },
-    'NURBS Weight' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "Curve",
-        'method_name': "nurbs_weight",
-        },
-    'Named Layer Selection' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': ["GreasePencil", "Layer"],
-        'method_name': "named_selection",
-        },
-    'Mesh Island' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "Mesh",
-        'method_name': "island",
-        },
-    'Import Text': {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "String",
-        'method_name': "ImportText",
-        },
-    'Handle Type Selection' : {
-        'method_type': 'CLASS_METHOD',
-        'class_name': "SplinePoint",
-        'method_name': "handle_type_selection",
-        },
-        
-}
-
 # Adjustments to NodeImplementation.get_default_node_calls.
 # For residual INPUT nodes (no inferred implementation), provide a complete NodeCall spec.
 DEFAULT_IMPLEMENTATION = {
-
 
     # Geometry nodes
 
     'Domain Size': {
         'class_name': ['Geometry', 'Mesh', 'Cloud', 'Curve', 'Instances', 'GreasePencil'],
         'parameters': {'component': ADD_LOOP},
-        #'return_kind': 'NODE',
     },
     'Separate Geometry': {
         'is_jump': False,
@@ -196,7 +151,9 @@ DEFAULT_IMPLEMENTATION = {
     'Scale Elements': {
         'method_name' : 'scale',
     },
-
+    'Matrix Determinant' : {
+        'method_name' : 'determinant',
+    },
     'Linear Gizmo' : {
         'method_type' : 'METHOD',
         'method_name' : 'linear_gizmo',
@@ -221,6 +178,18 @@ DEFAULT_IMPLEMENTATION = {
     'Split to Instances' : {
         'method_name' : 'split_to_instances',
     },
+    'Transform Point' : {
+        'class_name' : 'Matrix',
+        'self_socket' : 'Transform',
+    },
+    'Sort Elements' : {
+        'method_name' : 'sort',
+    },
+    'Combine Color': {
+        'method_name' : f"Combine{REPLACE}",
+        'parameters': {'mode': ADD_LOOP},
+    },
+
         
     # Geometry output nodes
     
@@ -242,9 +211,6 @@ DEFAULT_IMPLEMENTATION = {
         'class_name': ['Vector', 'Rotation'],
         'self_socket' : ['Vector', 'Rotation'],
     },
-    #'Invert Matrix': {
-    #    'method_name': 'invert',
-    #},
 
     'Blackbody': {
         'class_name': 'Color',
@@ -266,8 +232,11 @@ DEFAULT_IMPLEMENTATION = {
     'Warning': {
         'method_name': REPLACE,
         'parameters': {'warning_type': LOOP_ONLY},
-    },    
+    },
+    'Get Vector Component' : {
+        'method_name' : 'get_component',
 
+    },
 }
 
 
@@ -601,6 +570,9 @@ STATIC_IMPLEMENTATION_ONLY = [
     'ShaderNodeUVMap',                     # UV Map
     'ShaderNodeVolumeInfo',                # Volume Info
     'ShaderNodeWireframe',                 # Wireframe
+
+    # Material output
+    'ShaderNodeOutputMaterial',
 
     # Shader nodes that are interpreted as class properties
 

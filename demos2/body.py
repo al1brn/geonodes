@@ -1,6 +1,6 @@
 from geonodes import *
 
-from geonodes.demos import common, meshutil, shaders
+from geonodes.demos2 import common, meshutil, shaders
 
 import bpy
 import math
@@ -127,7 +127,7 @@ def demo_hand(rebuild=False):
     # Required groups
     # ----------------------------------------------------------------------------------------------------
 
-    from geonodes.demos import meshutil
+    from geonodes.demos2 import meshutil
     meshutil.demo()
 
     # ----------------------------------------------------------------------------------------------------
@@ -287,19 +287,19 @@ def demo_hand(rebuild=False):
 
             vdown = (radians(30), radians(10), radians(20))
 
-            curve.points[nd.index ==  1]["Rot 1"] = vdown
-            curve.points[nd.index ==  2]["Rot 3"] = vdown
-            curve.points[nd.index ==  3]["Rot 2"] = vdown
-            curve.points[nd.index ==  4]["Rot 1"] = vdown
-            curve.points[nd.index ==  5]["Rot 4"] = vdown
-            curve.points[nd.index ==  6]["Rot 3"] = vdown
-            curve.points[nd.index ==  7]["Rot 2"] = vdown
-            curve.points[nd.index ==  8]["Rot 4"] = vdown
-            curve.points[nd.index ==  9]["Rot 2"] = vdown
-            curve.points[nd.index == 10]["Rot 1"] = vdown
-            curve.points[nd.index == 11]["Rot 3"] = vdown
-            curve.points[nd.index == 12]["Rot 1"] = vdown
-            curve.points[nd.index == 13]["Rot 2"] = vdown
+            curve.points(nd.index ==  1)["Rot 1"] = vdown
+            curve.points(nd.index ==  2)["Rot 3"] = vdown
+            curve.points(nd.index ==  3)["Rot 2"] = vdown
+            curve.points(nd.index ==  4)["Rot 1"] = vdown
+            curve.points(nd.index ==  5)["Rot 4"] = vdown
+            curve.points(nd.index ==  6)["Rot 3"] = vdown
+            curve.points(nd.index ==  7)["Rot 2"] = vdown
+            curve.points(nd.index ==  8)["Rot 4"] = vdown
+            curve.points(nd.index ==  9)["Rot 2"] = vdown
+            curve.points(nd.index == 10)["Rot 1"] = vdown
+            curve.points(nd.index == 11)["Rot 3"] = vdown
+            curve.points(nd.index == 12)["Rot 1"] = vdown
+            curve.points(nd.index == 13)["Rot 2"] = vdown
 
             closures["Typing"] = get_interpolation_closure(curve)
 
@@ -376,10 +376,10 @@ def demo_hand(rebuild=False):
                 val_type(factor).map_range(to_min=cur[name], to_max=base[name] + inputs[name]).out(name)
                 
         left_mesh_bundle = Bundle(mesh_bundle)
-        left_mesh_bundle.set_item("Left Hand", bundle)
+        left_mesh_bundle.store_item("Left Hand", bundle)
         
         right_mesh_bundle = Bundle(mesh_bundle)
-        right_mesh_bundle.set_item("Right Hand", bundle)
+        right_mesh_bundle.store_item("Right Hand", bundle)
         
         mesh.set_bundle(Bundle.Switch(is_right, left_mesh_bundle, right_mesh_bundle))
         
@@ -436,15 +436,15 @@ def demo_hand(rebuild=False):
             
             l = 0.45
             
-            profile[nd.index < RESOL].position = (l + finger_radius*ag.cos(), finger_radius*ag.sin(), 0)
-            profile[nd.index >= RESOL].position = ((N4 - nd.index)/(N4 - RESOL)*l, finger_radius, 0)
+            profile(nd.index < RESOL).position = (l + finger_radius*ag.cos(), finger_radius*ag.sin(), 0)
+            profile(nd.index >= RESOL).position = ((N4 - nd.index)/(N4 - RESOL)*l, finger_radius, 0)
             
             with Layout("Symmetry"):
                 x, y, _ = profile.points.sample_index(nd.position, index=N2 - nd.index).xyz
-                profile[nd.index >= N4].position = (-x, y, 0)
+                profile(nd.index >= N4).position = (-x, y, 0)
                 
                 x, y, _ = profile.points.sample_index(nd.position, index=N_POINTS - nd.index).xyz
-                profile[nd.index >= N2].position = (x, -y, 0)
+                profile(nd.index >= N2).position = (x, -y, 0)
                 
         # ----------------------------------------------------------------------------------------------------
         # Extrude Profile
@@ -463,14 +463,14 @@ def demo_hand(rebuild=False):
                     f = f**2
                     sel = nd.index == i
                     z = (f-1)*d
-                    bb.points[sel].radius = math.sqrt(i/4) #1.0 - Float((1 - (i/4))**2).sqrt()
-                    bb.points[sel].position = (0, 0, z)
+                    bb.points(sel).radius = math.sqrt(i/4) #1.0 - Float((1 - (i/4))**2).sqrt()
+                    bb.points(sel).position = (0, 0, z)
                     
                     
             with Layout("Palm Height"):
                 sel = nd.index >= 4
-                bb.points[sel].position = (0, 0, (nd.index - 4)*(1/6))
-                bb.points[sel].radius = 0.9 + ((nd.index - 4)/6).sqrt()*0.2
+                bb.points(sel).position = (0, 0, (nd.index - 4)*(1/6))
+                bb.points(sel).radius = 0.9 + ((nd.index - 4)/6).sqrt()*0.2
                 
                 palm = bb.to_mesh(profile_curve = profile, scale=nd.radius)
                 palm.points["Bone"] = -1
@@ -538,7 +538,7 @@ def demo_hand(rebuild=False):
             palm = OSel.to_circle(palm, "Finger 4", radius=finger_radius, default_center=True)
             
             for i in range(4):
-                palm.points[Integer(f"Finger {i+1}") > 0]["Bone"] = i
+                palm.points(Integer(f"Finger {i+1}") > 0)["Bone"] = i
                 
         # ----------------------------------------------------------------------------------------------------
         # Weld the four fingers
@@ -589,11 +589,11 @@ def demo_hand(rebuild=False):
                 
                 x = Float(i_finger).map_range(0, 3, -finger_radius*3.2, finger_radius*3.2)
                 
-                bone[nd.index == 1].position = (x, 0, 0.7*base_finger)
+                bone(nd.index == 1).position = (x, 0, 0.7*base_finger)
                 
-                bone[nd.index == 2].position = (x, 0, base_finger)
-                bone[nd.index == 3].position = (x, 0, base_finger + h_finger/2)
-                bone[nd.index == 4].position = (x, 0, base_finger + h_finger)
+                bone(nd.index == 2).position = (x, 0, base_finger)
+                bone(nd.index == 3).position = (x, 0, base_finger + h_finger/2)
+                bone(nd.index == 4).position = (x, 0, base_finger + h_finger)
                 
                 if i_finger == 0:
                     bones = bone
@@ -607,7 +607,7 @@ def demo_hand(rebuild=False):
         with Layout("Thumb"):
             
             with Layout("Delete Inside Loop"):
-                palm.points[Integer("tmp Delete")>0].delete()
+                palm.points(Integer("tmp Delete")>0).delete()
                 palm.remove_named_attribute(name="tmp Delete")
                 
             with Layout("Thumb Mesh"):
@@ -625,12 +625,12 @@ def demo_hand(rebuild=False):
                 palm += thumb
                 
                 palm = OSel.bridge(palm, name="Thumb", closed=True, to_name="Base", resolution=5, bridge_name="Thumb Bridge")
-                palm.points[Integer("Thumb Bridge") > 0]["Bone"] = 4
+                palm.points(Integer("Thumb Bridge") > 0)["Bone"] = 4
                 
             with Layout("Thumb Bone"):
                 tbone = Curve.Line(end=(0, 0, 1.3)).resample(count=4)
-                tbone[nd.index == 2].offset = 0, 0, -0.2
-                tbone[nd.index == 1].offset = 0, 0, -0.1
+                tbone(nd.index == 2).offset = 0, 0, -0.2
+                tbone(nd.index == 1).offset = 0, 0, -0.1
                 tbone.transform(translation=(-0.4, 0, 0.1), rotation=(0, -pi/3, 0))
                 bones += tbone
                 
@@ -641,7 +641,7 @@ def demo_hand(rebuild=False):
         with Layout("Link Bones"):
             bones = CBone.new(bones)
             # Make sure perpendicular along X for fingers 0 to 3 (overrides default)
-            bones.points[nd.index < 20]["Perp"] = (1, 0, 0)
+            bones.points(nd.index < 20)["Perp"] = (1, 0, 0)
             
             # Link to Mesh
             #palm.points[nd.position.z < 0.4]["Bone"] = 4
@@ -651,7 +651,7 @@ def demo_hand(rebuild=False):
             ib = Integer("Thumb Bridge")
             ring = (ib-1) // 16 
             fac = (ring+1)/4
-            palm.points[Integer("Thumb Bridge")>0]["Bone Weight"] = fac
+            palm.points(Integer("Thumb Bridge")>0)["Bone Weight"] = fac
             palm.remove_named_attribute(name="Thumb Bridge")
             
         # ----------------------------------------------------------------------------------------------------
@@ -722,7 +722,7 @@ def demo_hair(rebuild=False):
         bundle = mesh.get_bundle()
         pear_shape = bundle.get_item("Pear Shape", socket_type="CLOSURE")
         
-        scalp = Mesh(mesh.faces[Boolean(name)].separate())
+        scalp = Mesh(mesh.faces(Boolean(name)).separate())
 
         scalp = G().capture_rest_geometry(scalp)
         scalp.set_bundle(
@@ -847,7 +847,7 @@ def demo_hair(rebuild=False):
             
         with Panel("Fringe", create_layout=True):
             x, y, z = spline_root_position.xyz
-            fringe_min = curves.splines[(x > 0) & (y.abs() <= 0.1)].attribute_statistic(z).min_
+            fringe_min = curves.splines((x > 0) & (y.abs() <= 0.1)).attribute_statistic(z).min_
             theta_max = gnmath.asin(fringe_min)
             fringe_theta = Float(0.5, "Fringe", 0, 1).interpolate(pi/2, theta_max)
             fringe_width = Float(1.0, "Fringe Width", 0, 1).interpolate(0, pi/2)
@@ -891,8 +891,8 @@ def demo_hair(rebuild=False):
         
         with Layout("Hair Curves"):
             
-            zdot = pos0.z
-            hrz_dir = (pos0 - Vector((0, 0, zdot))).normalize()
+            #zdot = pos0.z
+            #hrz_dir = (pos0 - Vector((0, 0, zdot))).normalize()
             
             direction = Vector(flatness).map_range(to_min=pos0, to_max=tan0)
             direction = blur_rotation @ direction
@@ -997,7 +997,7 @@ def demo_hair(rebuild=False):
                 new_pos.switch(to_cut, rep.pos + (new_pos - rep.pos).scale(ratio))
                 new_pos.switch(rep.is_cut, rep.pos)
                 
-                rep.curves[point_index==rep.iteration+1].position = new_pos
+                rep.curves(point_index==rep.iteration+1).position = new_pos
                 
                 new_dir = (rep.direction + (0, 0, stiffness.interpolate(-10/(hair_resol-1), 0))).normalize()
 
@@ -1081,15 +1081,15 @@ def demo_hair(rebuild=False):
             
             nx = nd.normal.x
             
-            cube.faces[nx < -0.9].extrude(offset=(-2, 0, z_slope*4))
+            cube.faces(nx < -0.9).extrude(offset=(-2, 0, z_slope*4))
             
             scalp -= cube
             
-            scalp.faces[nd.face_area > 0.1].delete(mode = "Only Edges & Faces")
+            scalp.faces(nd.face_area > 0.1).delete(mode = "Only Edges & Faces")
             
             inverted = Mesh(scalp)
             
-            inverted.set_normal_free(custom_normal=nd.normal.scale(-1), domain='POINT')
+            inverted.points.set_normal(custom_normal=nd.normal.scale(-1), mode='Free')
             scalp.switch(inv_normals, inverted)
             
         with Layout("Moustache Scalp"):
@@ -1116,11 +1116,11 @@ def demo_hair(rebuild=False):
             moustache -= cube
             
             nz = nd.normal.z
-            moustache.faces[(nd.face_area > 0.01) | (nz.abs() > 0.8)].delete(mode = "Only Edges & Faces")
+            moustache.faces((nd.face_area > 0.01) | (nz.abs() > 0.8)).delete(mode = "Only Edges & Faces")
 
             inverted = Mesh(moustache)
             
-            inverted.set_normal_free(custom_normal=nd.normal.scale(-1), domain='POINT')
+            inverted.points.set_normal(custom_normal=nd.normal.scale(-1), mode='Free')
             moustache.switch(inv_normals, inverted)
             
             
@@ -1212,15 +1212,15 @@ def demo_head(rebuild=False):
             
             # Top Side
             idx = nd.index - vrt_count - 1
-            rect[nd.index >= vrt_count + 1].position = sphere_point(theta0 + idx*dtheta, phi1)
+            rect(nd.index >= vrt_count + 1).position = sphere_point(theta0 + idx*dtheta, phi1)
             
             # Right Side
             idx = nd.index - vrt_count - hrz_count
-            rect[nd.index >= vrt_count + hrz_count + 1].position = sphere_point(theta1, phi1 - idx*dphi)
+            rect(nd.index >= vrt_count + hrz_count + 1).position = sphere_point(theta1, phi1 - idx*dphi)
             
             # Bot Side
             idx = nd.index - 2*vrt_count - hrz_count - 1
-            rect[nd.index >= 2*vrt_count + hrz_count + 1].position = sphere_point(theta1 - idx*dtheta, phi0)
+            rect(nd.index >= 2*vrt_count + hrz_count + 1).position = sphere_point(theta1 - idx*dtheta, phi0)
             
             rect.points["Weld"] = nd.index + 1
 
@@ -1274,13 +1274,13 @@ def demo_head(rebuild=False):
                 circle.position = line1.points.sample_index(nd.position, index=nd.index)
                 
                 # Lower
-                circle[nd.index >= ntop].position = line0.points.sample_index(nd.position, index=nd.index - ntop + 1)
+                circle(nd.index >= ntop).position = line0.points.sample_index(nd.position, index=nd.index - ntop + 1)
                 
-                circle.points[nd.index < ntop]["tmp Upper"] = nd.index + 1
+                circle.points(nd.index < ntop)["tmp Upper"] = nd.index + 1
 
                 n_from = ntop - 1
-                circle.points[nd.index >= n_from]["tmp Lower"] = nd.index - n_from + 1
-                circle.points[nd.index == 0]["tmp Lower"] = nbot
+                circle.points(nd.index >= n_from)["tmp Lower"] = nd.index - n_from + 1
+                circle.points(nd.index == 0)["tmp Lower"] = nbot
                 
                 circle.points["Mouth" if i_line == 0 else "Bevel"] = nd.index + 1
                 if i_line == 0:
@@ -1294,20 +1294,19 @@ def demo_head(rebuild=False):
         with Layout("Lips Bevel"):
             sel = mouth.points.evaluate_on_domain(Integer("Mouth")>0)
             offset = bevel.points.sample_index(nd.position, index=nd.index).scale(0.99) - nd.position
-            mouth = mouth.edges[sel].extrude(offset=offset)
-            #mouth = mouth.faces.extrude(offset=offset)
+            mouth = mouth.edges(sel).extrude(offset=offset)
 
             side = mouth.side
             edge_top = mouth.top
             top = mouth.edges.evaluate_on_domain(edge_top)
-            mouth.points[top]["Mouth"] = 0
-            mouth.points[top]["tmp Upper"] = 0
-            mouth.points[top]["tmp Lower"] = 0
-            mouth.points[top]["tmp Weld"] = 0
+            mouth.points(top)["Mouth"] = 0
+            mouth.points(top)["tmp Upper"] = 0
+            mouth.points(top)["tmp Lower"] = 0
+            mouth.points(top)["tmp Weld"] = 0
 
-            mouth[side].flip_faces()
+            mouth(side).flip_faces()
 
-            mouth.edges[edge_top].extrude(offset = -nd.position, offset_scale=0.3)
+            mouth.edges(edge_top).extrude(offset = -nd.position, offset_scale=0.3)
             mouth = meshutil.fill_selection(mouth, mouth.top, center=(0, 0, 0))
 
         with Layout("Fill Concave Side"):
@@ -1329,16 +1328,16 @@ def demo_head(rebuild=False):
             sidea = (Integer(String.Switch(smile > 0.5, "tmp Side B", "tmp Side A")) > 0)
             sideb = (Integer(String.Switch(smile > 0.5, "tmp Side A", "tmp Side B")) > 0)
             
-            filled.points[sidea]["tmp Lower"] = nbot
-            filled.points[sideb]["tmp Lower"] = 1
-            filled.points[sidea]["tmp Upper"] = 1
-            filled.points[sideb]["tmp Upper"] = ntop
+            filled.points(sidea)["tmp Lower"] = nbot
+            filled.points(sideb)["tmp Lower"] = 1
+            filled.points(sidea)["tmp Upper"] = 1
+            filled.points(sideb)["tmp Upper"] = ntop
             
-            filled.points[sidea].merge(merge_id=1)
-            filled.points[sideb].merge(merge_id=1)
+            filled(sidea).merge_points(merge_id=1)
+            filled(sideb).merge_points(merge_id=1)
             
-            filled.points[Integer("tmp Lower")>0]["tmp Weld"] = Integer("tmp Lower") + ntop - 1
-            filled.points[Integer("tmp Upper")>0]["tmp Weld"] = Integer("tmp Upper")
+            filled.points(Integer("tmp Lower")>0)["tmp Weld"] = Integer("tmp Lower") + ntop - 1
+            filled.points(Integer("tmp Upper")>0)["tmp Weld"] = Integer("tmp Upper")
             
             mouth.switch(fill_up | fill_dn, filled)
 
@@ -1359,9 +1358,9 @@ def demo_head(rebuild=False):
             
             # Stick on the sphere
             _, y, z = nd.position.xyz
-            mouth[Integer("tmp Bridge")>0].position = gnmath.sqrt(1 - y**2 - z**2), y, z
+            mouth(Integer("tmp Bridge")>0).position = gnmath.sqrt(1 - y**2 - z**2), y, z
             
-        mouth.remove_named_attribute("Wildcard", "tmp*")
+        mouth.remove_named_attribute("tmp*", "Wildcard")
 
         mouth.out()
 
@@ -1505,18 +1504,18 @@ def demo_head(rebuild=False):
         # Create the Mouth to Patch
         # ----------------------------------------------------------------------------------------------------
             
-        with Layout("Mouth Dimensions"):
-            idx0 = ring_cut0*segments + mid_seg
+        #with Layout("Mouth Dimensions"):
+            #idx0 = ring_cut0*segments + mid_seg
             
-            hole_z0 = head.points.sample_index(nd.position.z, index=(ring_cut0-1)*segments + 1)
-            hole_z1 = head.points.sample_index(nd.position.z, index=(ring_cut1+1)*segments + 1)
-            hole_h = (hole_z1 - hole_z0)/2
+            #hole_z0 = head.points.sample_index(nd.position.z, index=(ring_cut0-1)*segments + 1)
+            #hole_z1 = head.points.sample_index(nd.position.z, index=(ring_cut1+1)*segments + 1)
+            #hole_h = (hole_z1 - hole_z0)/2
             
-            hole_w = -1.5*head.points.sample_index(nd.position.y, index=(ring_cut1+1)*segments - seg_count + 2)
+            #hole_w = -1.5*head.points.sample_index(nd.position.y, index=(ring_cut1+1)*segments - seg_count + 2)
             
         with Layout("Mouth expression"):
             
-            mw = width_fac.interpolate(0.01, hole_w)
+            #mw = width_fac.interpolate(0.01, hole_w)
             mouth = G()._body_mouth(
                 horizontal_count = 2*seg_count+1,
                 vertical_count = mouth_rings,
@@ -1533,11 +1532,11 @@ def demo_head(rebuild=False):
             no_mouth_head = Mesh(head)
             
             # Cut the mouth for patch
-            head.points[cut_sel].delete()
+            head.points(cut_sel).delete()
 
             # Patch the mouth
             head += mouth
-            head.points[Integer("Weld")>0].merge(merge_id=Integer("Weld"))
+            head(Integer("Weld")>0).merge_points(merge_id=Integer("Weld"))
             head.remove_named_attribute(name="Weld")
 
         # ----------------------------------------------------------------------------------------------------
@@ -1546,10 +1545,10 @@ def demo_head(rebuild=False):
             
         with Layout("Finalize"):
             head.switch(no_mouth, no_mouth_head)
-            head.points[Boolean("tmp Pole 0")].merge(merge_id=1)
-            head.points[Boolean("tmp Pole 1")].merge(merge_id=1)
+            head(Boolean("tmp Pole 0")).merge_points(merge_id=1)
+            head(Boolean("tmp Pole 1")).merge_points(merge_id=1)
             
-            head.remove_named_attribute("Wildcard", "tmp *")
+            head.remove_named_attribute("tmp *", "Wildcard")
             
             head.faces.shade_smooth=shade_smooth
             head.faces.material = mat
@@ -1628,7 +1627,7 @@ def demo_head(rebuild=False):
 
             head_pose.mouth.mix(mouth, factor=factor).out("Mouth")
         
-        mesh_bundle.set_item("Head", new_bundle)
+        mesh_bundle.store_item("Head", new_bundle)
         mesh.set_bundle(mesh_bundle)
         
         mesh.out()
@@ -1734,12 +1733,12 @@ def demo_head(rebuild=False):
             x, y, z = transform_head_location(x_coord(0, nose_z), 0, nose_z)
             nose.transform(rotation=(0, -pi/2, 0), translation=(x + nose_x*nose_length, y, z), scale=(nose_height, nose_width, nose_length))
             
-            mouth_z_max = nose_z - 2*nose_height
+            #mouth_z_max = nose_z - 2*nose_height
             
-            node = head.points[nd.position.z < mouth_z_max].attribute_statistic(nd.position.y).node
-            y_max = node.max
+            #node = head.points(nd.position.z < mouth_z_max).attribute_statistic(nd.position.y).node
+            #y_max = node.max
             
-            mouth_y_max = 0.9*y_max
+            #mouth_y_max = 0.9*y_max
             
         # ----------------------------------------------------------------------------------------------------
         # Eyes
@@ -1786,7 +1785,7 @@ def demo_head(rebuild=False):
 
             nsegms = segments // 2
             eyelid = Mesh.UVSphere(segments=nsegms, rings=rings//2, radius=1.0)
-            eyelid.points[nd.position.z < -0.01].delete()
+            eyelid.points(nd.position.z < -0.01).delete()
             eyelid.faces.shade_smooth = True
             disk = Mesh.Circle(vertices=nsegms, radius=1.0, fill_type='NGON').flip_faces()
 
@@ -1810,7 +1809,7 @@ def demo_head(rebuild=False):
                 fx = fx.min(blink_animation)
                 opening_angle = fx.interpolate(-pi/2, pi/2)
                 tilt_angle = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
-                lid_rotation = Rotation((0, -opening_angle, 0)).rotate_local((tilt_angle, 0, 0))
+                lid_rotation = Rotation((0, -opening_angle, 0)).rotate((tilt_angle, 0, 0), rotation_space="Local")
                 left_eyelid.transform(rotation=lid_rotation)
                 
                 left_eyelid.offset = left_loc
@@ -1822,7 +1821,7 @@ def demo_head(rebuild=False):
                 fx = fx.min(blink_animation)
                 opening_angle = fx.interpolate(-pi/2, pi/2)
                 tilt_angle = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
-                lid_rotation = Rotation((0, -opening_angle, 0)).rotate_local((-tilt_angle, 0, 0))
+                lid_rotation = Rotation((0, -opening_angle, 0)).rotate((-tilt_angle, 0, 0), rotation_space="Local")
                 right_eyelid.transform(rotation=lid_rotation)
                 
                 right_eyelid.offset = right_loc

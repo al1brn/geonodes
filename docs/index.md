@@ -34,3 +34,31 @@ It provides a clean, expressive DSL that lets you build node graphs using Python
   - Layouts to group and comment your trees
 
 
+
+## Declare, build and reuse
+
+```python
+from geonodes import *
+
+@group()
+def cube(size: Vector = (1, 1, 1)):
+    Mesh.Cube(size=size).out()
+
+@modifier()
+def my_modifier():
+    cube(size=(1, 2, 3)).out()
+
+my_modifier.build(full=True)
+```
+
+Decorators declare trees; `.build()` constructs them. Calling a decorated group
+inside a builder inserts a Group node. Function parameters become input sockets,
+and `.out()` declares outputs. Use a `Package` to organize and build a collection.
+
+- [Modifiers, groups and tools](getting_started/modifiers_groups.md)
+- [Packages](getting_started/packages.md)
+- [Migration from explicit tree contexts](getting_started/migration.md)
+- [Materials, volumes and targets](getting_started/shaders.md)
+
+These guides follow the current decorator API. Blender 5.2.0 uses the legacy
+`core`; other supported builds use `core_new`, including the latest additions.

@@ -1,9 +1,17 @@
 # geonodes : scripting Geometry Nodes
 
-## Initialize a tree
+## Declare and build trees
 
-- [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) : scripting nodes starts by instantianting a [Tree](tree.md#tree)
-- [Break](break.md#break) : exiting from a tree context can be done by raising this exception
+Use [function builders and Package](builders.md) to declare node trees:
+`@modifier()`, `@group()`, `@tool()`, `@shader_group()` and `@shader()`.
+`.build()` reconstructs a tree; `.build(full=True)` includes its dependencies.
+Function parameters declare input sockets and `.out()` declares outputs.
+
+See the [builder guide](../getting_started/modifiers_groups.md) and
+[Packages](../getting_started/packages.md). Explicit [GeoNodes](geonodes.md) and
+[ShaderNodes](shadernodes.md) contexts remain available for direct construction.
+The concrete references below describe `core_new`; examples import public names
+from `geonodes`. Blender 5.2.0 uses the legacy `core` implementation.
 
 ## Create nodes
 
@@ -20,7 +28,7 @@
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
 - [nd](nd.md) (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
-- [snd](snd.md) (for _shader nodes_) : same as [nd](nd.md) for shader node
+- `nd` also selects shader nodes automatically inside shader builders.
 
 ## Sockets
 
@@ -45,4 +53,4 @@ Geometries have specific [Domain](domain.md):
 - [Curve](curve.md) : [`Curve.points`](spline_point.md),  [`Curve.splines`](spline.md)
 - [Cloud](cloud.md) : [`Cloud.points`](cloud_point.md)
 - [Instances](instances.md) : [`Instances.insts`](instance.md)
-- [GreasePencil](grease_pencil.md) : [`GreasePencile.layers`](layer.md)
+- [GreasePencil](grease_pencil.md) : [`GreasePencil.layers`](layer.md)

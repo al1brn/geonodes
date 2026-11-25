@@ -1,3 +1,3 @@
 # Shader
 
-::: geonodes.core.sock_shader.Shader
+::: geonodes.core_new.shadernodes.generated.shader.Shader

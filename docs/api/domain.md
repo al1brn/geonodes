@@ -1,3 +1,3 @@
 # Domain
 
-::: geonodes.core.domain_class.Domain
+::: geonodes.core_new.geonodes.domains.domain.Domain

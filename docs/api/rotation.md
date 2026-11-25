@@ -1,3 +1,3 @@
 # Rotation
 
-::: geonodes.core.sock_rotation.Rotation
+::: geonodes.core_new.geonodes.generated.rotation.Rotation

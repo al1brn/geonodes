@@ -70,10 +70,6 @@ class NodeItems:
             self.anonymous_items = self.signature == 'EMPTY'
             self.single_type = self.signature in ('EMPTY', 'NAME')
             
-        #if self.create_outputs:
-        #    assert self.signature not in ('EMPTY', 'TYPE')
-        #    self.virtual_output_socket.name = 'VARIABLE'
-    
     # ---------------------------------------------------------------------------
     # Analyze the signature of 'new' method
     # ---------------------------------------------------------------------------
@@ -381,11 +377,12 @@ class NodeInfo:
                     'enums': param.enums,
                 }
 
-        # structure_type params is not directly exposed
-        # it can be set with (socket_type, shape) to set socket_type
-        if 'structure_type' in params:
-            self.has_structure_type = True
-            params.pop('structure_type')
+        if False:
+            # structure_type params is not directly exposed
+            # it can be set with (socket_type, shape) to set socket_type
+            if 'structure_type' in params:
+                self.has_structure_type = True
+                params.pop('structure_type')
 
         return params
 
@@ -773,16 +770,21 @@ class NodeInfo:
                 merged.append(socks[0])
                 continue
 
-            # Count the types
+            # Count the types and sub types
             # No variable socket_name
             types = set()
+            sub_types = set()
             has_var_names = False
             for sock in socks:
                 has_var_names |= len(sock.names) > 1
                 types.add(sock.socket_type)
+                if sock.subtype_label is not None:
+                    sub_types.add(sock.subtype_label)
 
-            # Actual group: no var_names and all types are different
-            if (len(types) == len(socks)) and (not has_var_names):
+            # Actual group: no var_names and (all types are different or all sub_types are different)
+            diff_types = len(types) == len(socks)
+            diff_sub_types = len(sub_types) == len(socks)
+            if (diff_types or diff_sub_types) and (not has_var_names):
                 socket = socks[0]
                 socket.enabled = True
 
@@ -891,10 +893,15 @@ class NodeInfo:
                          and sockets[0].socket_type == 'GEOMETRY')
         last_sockets = set(self.last_sockets if last_sockets is None else last_sockets)
 
+        keyword_only_is_set = False
         for first in (True, False):
             for index, socket in enumerate(sockets):
 
                 if first == (socket.socket_name in last_sockets):
+                    if first and not keyword_only_is_set:
+                        if config.USE_KEYWORD_ONLY:
+                            arguments.set_keyword_only()
+                        keyword_only_is_set = True
                     continue
 
                 # Fixed socket
@@ -959,8 +966,8 @@ class NodeInfo:
                 return cls.geometry_class(name)
             except ValueError:
                 return 'Geometry'
-        if socket_type == 'SHADER' and name == 'Volume':
-            return 'VolumeShader'
+        if socket_type == 'SHADER':
+            return cls.shader_class(name)
         
         return get_class_name(socket_type)
 
@@ -984,6 +991,13 @@ class NodeInfo:
                     'Component', 'Profile', 'Target', 'Source', 'Item'):
             return 'Geometry'
         raise ValueError(f"Unknown Geometry socket name: {name!r}. Update NodeInfo.geometry_class.")
+
+    @classmethod
+    def shader_class(cls, name):
+        if name in ("Volume",):
+            return "VolumeShader"
+        else:
+            return "Shader"
 
 
     @classmethod

@@ -6,12 +6,18 @@ Linking a socket is as simple as setting a python value. Here after are the ways
 - Passing argument to a class method
 - Explicitly setting a node input socket
 
-## Group outing
+Decorated builders use the same linking operations. Function parameters provide
+input sockets and `.out()` declares outputs; returning a Python value does not
+create a Group Output socket. See [Modifiers, groups and tools](modifiers_groups.md).
+For material output routing, see [Shaders](shaders.md#material-output-inputs).
+
+## Group outputs
 
 Any instance can be outed to the _Group Output_ node with the methode `out`:
 
 ``` python
-with GeoNodes("Outing to Group Output"):
+@modifier('Outing to Group Output')
+def outing_to_group_output():
 
     # Getting the group input geometry
     geo = Geometry()
@@ -21,6 +27,8 @@ with GeoNodes("Outing to Group Output"):
 
     # Outing with a name
     geo.transform(scale=2).out("Scaled by Two Geometry")
+
+outing_to_group_output.build()
 ```
 
 ## Method argument
@@ -59,85 +67,35 @@ as shown below.
 
 ![to mesh out](images/to_mesh_out.png)
 
-This alternative can be easier to read for complex nodes. It can be used with menu-like nodes:
-
-``` python
-from geonodes import *
-
-with GeoNodes("Menu Demo") as tree:
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Geometries are provided as method arguments
-    # ----------------------------------------------------------------------------------------------------
-    
-    simple = Geometry().menu_switch("Input", {
-        "Cube": Mesh.Cube(),
-        "Ico": Mesh.IcoSphere(),
-        "Cone": Mesh.Cone(), 
-        },
-        menu=Input("Simple Mesh", default="Ico"), 
-        )
-
-    # ----------------------------------------------------------------------------------------------------
-    # Here, the geometries are successfully adeed, making the source code clearer
-    # ----------------------------------------------------------------------------------------------------
-        
-    profile = Curve.Circle(radius=.1)
-        
-    with Geometry.MenuSwitch() as from_curve:
-        simple.out("Simple Mesh")
-        
-    with from_curve:
-        Curve.Spiral().to_mesh(profile_curve=profile).out("Spiral")
-        
-    with from_curve:
-        Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
-        
-    # The best is to set the menu socket once the inputs are completed
-    from_curve.node.menu = Input("From Curve", default="Simple Mesh")
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Same for Index switch
-    # ----------------------------------------------------------------------------------------------------
-
-    # Each out method feeding an Index Switch node will add an entry
-    
-    curve = Curve.IndexSwitch(index=Input("Curve Index"))
-    with curve:
-        Curve.Spiral().out()
-        
-    with curve:
-        Curve.Circle().out()
-        
-    with curve:
-        Curve.Quadrilateral().out()
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Switch
-    # ----------------------------------------------------------------------------------------------------
-    
-    curve.switch(Input("Mesh/Curve"), from_curve).out()
-```
+For dynamic input nodes, the node context directs `.out()` to that node instead
+of the tree output. The same rule applies inside a decorated builder. Use the
+current signatures in the [API reference](../api/index.md) for Menu Switch and
+Index Switch; function arguments bind the inputs of a called group.
 
 ## Setting node sockets
 
 Ultimately you can directly set input sockets of a node as shown below:
 
-``` python
-    with GeoNodes("Setting Node input sockets"):
+```python
+from geonodes import *
 
-        geo = Geometry()
+@modifier("Setting Node Input Sockets")
+def setting_node_inputs():
 
-        # Calling transform will create the node "Transform Geometry"
-        # We can get the node from node property
-        node = geo.transform().node
+    geo = Geometry()
 
-        # We can set the node with python values or geonodes classes
-        node.translation = (1, 2, 3)
-        node.scale = Vector((2, 3, 4))
-        node.rotation = Rotation(name="Rotation")
+    # Calling transform will create the node "Transform Geometry"
+    # We can get the node from node property
+    node = geo.transform().node
 
-        node.out()
+    # We can set the node with python values or geonodes classes
+    node.translation = (1, 2, 3)
+    node.scale = Vector((2, 3, 4))
+    node.rotation = Rotation(name="Rotation")
+
+    node.out()
+
+setting_node_inputs.build()
 ```
 
 

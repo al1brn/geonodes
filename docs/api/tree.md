@@ -1,3 +1,3 @@
 # Tree
 
-::: geonodes.core.treeclass.Tree
+::: geonodes.core_new.root.tree.Tree

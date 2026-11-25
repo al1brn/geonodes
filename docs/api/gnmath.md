@@ -1,3 +1,3 @@
 # gnmath module
 
-::: geonodes.core.gnmath
+::: geonodes.core_new.geonodes.generated.gnmath

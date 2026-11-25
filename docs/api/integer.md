@@ -1,3 +1,3 @@
 # Integer
 
-::: geonodes.core.sock_integer.Integer
+::: geonodes.core_new.geonodes.generated.integer.Integer

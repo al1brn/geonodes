@@ -45,7 +45,7 @@ formula.demo()
 """
 
 from .formula_data import SYMBOLS
-from . import formula as FORM
+from .. import formula as FORM
 from geonodes import *
 
 GBuild = G("Build")

@@ -159,7 +159,7 @@ class Rotation(Socket):
     def __matmul__(self, other):
         data_type = SocketType(other).type
         if data_type == 'ROTATION':
-            return self.rotate_global(other)
+            return self.rotate(other, rotation_space='Global')
         else:
             return self.rotate_vector(other)
 

@@ -18,28 +18,52 @@ All public symbols are re-exported from `geonodes/__init__.py`.
 
 ## Core concepts
 
-A **tree** is created with a `with` context manager. All nodes created inside the
-block belong to that tree. On `__exit__` the tree is finalised and written to
-`bpy.data.node_groups`.
+Declare trees with `@modifier()`, `@group()`, `@tool()`, `@shader_group()` or
+`@shader()`. Declaration alone does not execute construction. `.build()` rebuilds
+the selected tree; `.build(full=True)` also rebuilds dependencies once each.
+Calling a decorated group inside a builder inserts a Group node and builds a
+missing definition. Arguments connect sockets; the call returns the first
+output socket following G(). Materials support `.build()` only.
+
+Parameters become symbolic inputs: annotate required parameters with a socket
+class or float/int/bool/str, or use a non-None default for inference. Define
+outputs with `.out()`, not Python return. Variadic parameters are unsupported.
+
+Explicit `with GeoNodes(...)` and `with ShaderNodes(...)` remain available and
+execute immediately. All node creation needs an active builder or tree context.
 
 **Sockets** are Python objects that represent a node output wire. Arithmetic
 operators (`+`, `-`, `*`, `/`, `**`, etc.) create the corresponding math nodes
 and return new sockets. Named attributes are accessed with a bare string:
 `Float("MyAttr")`.
 
-**Domains** (`mesh.faces`, `mesh.vertices`, `cloud.points`, …) expose per-element
+**Domains** (`mesh.faces`, `mesh.points`, `cloud.points`, …) expose per-element
 operations. A domain selection is written `domain[condition]`.
 
 ---
 
 ## Top-level exports
 
-### Tree context managers
+### Builders
 
-```python
+```text
+group(name=None, **options)
+modifier(name=None, **options)
+tool(name=None, **options)
+shader_group(name=None, **options)
+shader(name=None, *, target='ALL', **options)
+Package(name, prefix="")  # instance registration, or subclass Package
+```
+
+Always use decorator parentheses: `@group()`. Builder parameters are sockets;
+options such as prefix, color_tag and target belong to the decorator.
+
+### Explicit tree context managers
+
+```text
 GeoNodes(tree_name, fake_user=False, is_group=False, prefix="")
 ShaderNodes(tree_name, *, fake_user=False, is_group=False,
-            prefix=None, replace_material=False)
+            prefix=None, rebuild=True, target='ALL')
 ```
 
 ### Socket / geometry types
@@ -66,7 +90,7 @@ Node, Group, G, ColorRamp
 
 ```python
 nd   # geometry node helpers: nd.position, nd.index, nd.radius, …
-snd  # shader node helpers:   snd.attribute(…), snd.texture_coordinate(), …
+nd   # also shader helpers inside shader builders; no separate snd needed
 gnmath  # math functions: gnmath.sin, gnmath.sqrt, …
 ```
 
@@ -185,7 +209,7 @@ mesh.transform(translation=v, rotation=r, scale=s)
 mesh.offset = vector        # set position offset
 
 # Domain access
-mesh.vertices[selection]    # masked domain
+mesh.points[selection]    # masked domain
 mesh.faces.smooth = True    # store attribute
 mesh.points._MyAttr = val   # named attribute (underscore prefix → store)
 
@@ -200,29 +224,43 @@ insts.position = center
 
 ---
 
-## Groups and reuse
+## Groups, modifiers and packages
 
 ```python
-# Define a group
-with GeoNodes("Smooth Sphere", is_group=True):
-    radius = Float(1., "Radius")
-    Mesh.UVSphere(radius=radius).out()
+from geonodes import *
 
-# Call by name
-node = Group("Smooth Sphere", radius=0.5)
-sphere = node._out
+class Project(Package):
+    prefix = "Project"
 
-# Call via G() — converts "Smooth Sphere" → smooth_sphere
-sphere = G().smooth_sphere(radius=0.5)
+    @group()
+    def shift(mesh: Mesh, offset: Vector = (0, 0, 0)):
+        mesh.set_position(offset=offset).out()
 
-# Prefix namespacing
-with GeoNodes("Smooth Sphere", is_group=True, prefix="Utils"):
-    ...
+    @modifier()
+    def cube():
+        Project.shift(Mesh.Cube(), offset=(1, 2, 3)).out()
 
-sphere = G("Utils").smooth_sphere(radius=0.5)
-# or
-node = Group.Prefix("Utils", "Smooth Sphere", radius=0.5)
+Project.cube.build(full=True)
+Project.build()  # rebuild every registered member
 ```
+
+Class packages require no instance, self, cls or staticmethod. `prefix` affects
+Blender names; Python calls use the class member. build, _build and prefix are
+reserved. All five decorator types can be mixed. Inherited builders receive the
+subclass prefix. Direct group calls use existing definitions unless full rebuild
+is requested. Cycles raise an error. Public `.build()` has no `rebuild` argument.
+
+Instance registration is also supported: `p = Package("Project", prefix="P")`,
+then `@p.group(...)`, `@p.modifier(...)`, `@p.tool(...)`, `@p.shader_group(...)`
+or `@p.shader(...)`. Use `p.build()` or an individual registered builder's build.
+Instance member aliases use unprefixed Blender names in snake_case.
+
+An omitted decorator name is title-cased from the Python name. `_helper` becomes
+`.Helper`. Explicit names are preserved. All decorators require parentheses.
+Tree options go on the decorator; is_group is set by the decorator itself.
+
+`Group("Existing Group", ...)` and `G().existing_group(...)` still call existing
+Blender groups but cannot reconstruct a missing Python builder.
 
 ---
 
@@ -250,20 +288,33 @@ with GeoNodes("My Modifier"):
 ## Shader nodes
 
 ```python
-with ShaderNodes("My Material"):
-    ped = Shader.Principled(
-        base_color = Color("#884422"),
-        roughness  = 0.4,
-        metallic   = 0.0,
-    )
-    ped.out()
+from geonodes import *
 
-with ShaderNodes("Fade Shader", is_group=True):
-    shader = Shader(name="Shader")
-    fade   = snd.attribute("Fade").factor    # socket name is 'factor' not 'fac'
-    transp = Shader.Transparent()
-    shader.mix(transp, factor=fade).out("Shader")
+@shader("My Material", target='CYCLES')
+def my_material():
+    tree = Tree.current_tree()
+    Shader.Principled(base_color=(0.5, 0.2, 0.1), roughness=0.4).out()
+    VolumeShader.Absorption(density=0.01).out()
+    tree.displacement = Vector((0, 0, 0))
+    tree.thickness = 0.1
+
+my_material.build()
 ```
+
+Use @shader_group() for reusable shader groups. `nd` and socket classes select
+the current tree environment. Shader.out() selects Surface, VolumeShader.out()
+selects Volume; use tree.displacement and tree.thickness for the other inputs.
+Inside a shader group .out(name) creates a group output instead.
+
+The target defaults to ALL; EEVEE and CYCLES are also supported. The decorator's
+target applies to .out(), tree.surface/volume/displacement/thickness and set_*
+calls without an explicit target. Explicit set_surface(..., target='EEVEE'),
+set_volume, set_displacement and set_thickness can address other targets.
+
+API materials are identified by the geonodes_api custom property. Builds rebuild
+owned materials and preserve unmarked user materials, creating suffixed names
+when needed. Remove the marker to take ownership. Building a material does not
+assign it to an object.
 
 ---
 
@@ -271,7 +322,7 @@ with ShaderNodes("Fade Shader", is_group=True):
 
 | Wrong | Correct | Reason |
 |---|---|---|
-| `snd.attribute("X").fac` | `.factor` | Socket renamed in Blender 5.x |
+| `nd.attribute("X").fac` | `.factor` | Socket renamed in Blender 5.x |
 | `shader.mix(s, fac=f)` | `factor=f` | Same rename |
 | `Repeat(n, x=v)` | `repeat(n, x=v)` | `Repeat` (capital) is removed; use lowercase `repeat` |
 | `Simulation(x=v)` | `simulation(x=v)` | Same |
@@ -287,7 +338,8 @@ with ShaderNodes("Fade Shader", is_group=True):
 ```python
 from geonodes import *
 
-with GeoNodes("Wave Grid"):
+@modifier("Wave Grid")
+def wave_grid():
     with Panel("Wave"):
         height = Float(2.0, "Height", 0, 10)
         omega  = Float(2.0, "Frequency", 0.1, 20)
@@ -301,28 +353,26 @@ with GeoNodes("Wave Grid"):
     grid.offset = (0, 0, z)
     grid.faces.smooth = True
     grid.out()
+
+wave_grid.build()
 ```
 
 ---
 
-## File structure
+## Source and documentation
 
-```
-geonodes/
-  __init__.py              public API re-exports
-  core/
-    nodeclass.py           Node, Group, G, Layout, Panel, MenuNode, ZoneNode
-    socket_class.py        Socket base + all typed socket classes
-    treeclass.py           Tree, GeoNodes, ShaderNodes
-    nodezone.py            repeat(), simulation(), ZoneIterator, for_each()
-    treearrange.py         auto-layout of nodes
-    scripterror.py         NodeError with Blender-aware tracebacks
-    sockettype.py          SocketType — Blender↔Python type mapping
-    geometries.py          Mesh, Curve, Cloud, Instances, … geometry methods
-    shadernodes.py         ShaderNodes tree class
-    generated/             auto-generated wrappers (do not edit)
-  generation/
-    gen_auto.py            code generator (run inside Blender to regenerate)
-    node_explore.py        NodeInfo — introspects live Blender node catalogue
-  demos/                   working examples
-```
+The public geonodes module selects legacy core on Blender 5.2.0 and core_new on
+other supported builds. Current additions such as material target use core_new.
+
+- core_new/decorators.py: function builders, dependency builds, Package.
+- core_new/root/: common socket roots, nodes and tree context.
+- core_new/geonodes/: Geometry Nodes classes, domains and generated methods.
+- core_new/shadernodes/: shader classes and generated methods.
+- generation2/: current standard NodeImplementation generator.
+- docs/: MkDocs source, guides and API reference.
+- doc/: legacy documentation snapshots; prefer docs/ for current usage.
+- demos/ and demos2/: demonstration scripts; check their imports and builder API
+  against the selected core before reuse.
+
+Guides: docs/getting_started/modifiers_groups.md, packages.md, migration.md,
+shaders.md. Full builder reference: docs/api/builders.md.

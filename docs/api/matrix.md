@@ -1,3 +1,3 @@
 # Matrix
 
-::: geonodes.core.sock_matrix.Matrix
+::: geonodes.core_new.geonodes.generated.matrix.Matrix

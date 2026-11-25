@@ -91,7 +91,7 @@ def uv_cylinder():
             final = curve.to_mesh(profile_curve=profile, fill_caps=fill_caps)
             uv_map = mesh.corners.sample_index(uv, index=nd.index)
             uv_map = uv_map.switch(true_length, uv_map*(profile.length(), curve.length(), 1))
-            final.corners[:mesh.corners.count].store_uv("UV Map", uv_map)
+            final.corners(nd.index < mesh.corners.count).store_uv("UV Map", uv_map)
 
         with Layout("Cap faces if any"):
             final.faces._Cap = Boolean.Switch(fill_caps, False, nd.index >= final.faces.count - 2)
@@ -420,13 +420,13 @@ def demo(rebuild=False):
                 x3, y3 = l, 0.0
 
                 circle = Mesh.Circle(vertices=7, fill_type="N-Gon")
-                circle[0].position = (x0,  y0, 0)
-                circle[1].position = (x1,  y1, 0)
-                circle[2].position = (x2,  y2, 0)
-                circle[3].position = (x3,  y3, 0)
-                circle[4].position = (x2, -y2, 0)
-                circle[5].position = (x1, -y1, 0)
-                circle[6].position = (x0, -y0, 0)
+                circle(0).position = (x0,  y0, 0)
+                circle(1).position = (x1,  y1, 0)
+                circle(2).position = (x2,  y2, 0)
+                circle(3).position = (x3,  y3, 0)
+                circle(4).position = (x2, -y2, 0)
+                circle(5).position = (x1, -y1, 0)
+                circle(6).position = (x0, -y0, 0)
 
                 circle.out("True")
 

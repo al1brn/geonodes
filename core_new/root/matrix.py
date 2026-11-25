@@ -60,7 +60,7 @@ class Matrix(Socket):
     You can decompose a Matrix directly to a 16-tuple with the property `as_tuple`:
 
     ``` python
-    m = Matrix().as_tuple
+    m = Matrix().as_tuple()
     ```
 
     ``` python
@@ -76,7 +76,7 @@ class Matrix(Socket):
             
         with Layout("Combine"):
             M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-            vals = M0.as_tuple
+            vals = M0.as_tuple()
             M1 = Matrix(vals)
             
             M @= M1
@@ -164,7 +164,10 @@ class Matrix(Socket):
             List containing the sixteen matrix components.
         """
         with Layout("Matrix.separate_to_list"):
-            return self.separate_matrix()._outputs_to_list()
+            return self.separate()._outputs_to_list()
+
+    def as_tuple(self):
+        return self.separate().node.as_tuple()
 
     # ====================================================================================================
     # Operations
@@ -189,23 +192,23 @@ class Matrix(Socket):
     # ====================================================================================================
 
     def get_col(self, index=0):
-        m = self.as_tuple
+        m = self.as_tuple()
         return tuple(m[index*4:(index+1)*4])
     
     def get_row(self, index=0):
-        m = self.as_tuple
+        m = self.as_tuple()
         return (m[index], m[4+index], m[8+index], m[12 + index])
     
     def set_col(self, index, col):
         with Layout(f"Set Column {index}", color='MACRO'):
-            m = list(self.as_tuple)
+            m = list(self.as_tuple())
             m[index*4:(index+1)*4] = col
             M = Matrix(m)
             return self._jump(M)
 
     def set_row(self, index, row):
         with Layout(f"Set Row {index}", color='MACRO'):
-            m = list(self.as_tuple)
+            m = list(self.as_tuple())
             m[index], m[4+index], m[8+index], m[12 + index] = row    
             M = Matrix(m)
             return self._jump(M)
@@ -233,7 +236,7 @@ class Matrix(Socket):
                 
             with Layout("Combine"):
                 M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-                vals = M0.as_tuple
+                vals = M0.as_tuple()
                 M1 = Matrix(vals)
                 
                 M @= M1

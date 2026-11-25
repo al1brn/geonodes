@@ -93,12 +93,12 @@ def impulsion(value, from_min=0, from_max=1, amplitude=1., increase=.5, decrease
             fmin_dn = (fmax_dn - decrease)._lc("From Max Down")
 
         with Layout("Two map ranges in smooth / linear version"):
-            a0 = Float(value).map_range_smooth_step(from_min = fmin_up, from_max = fmax_up)
-            b0 = Float(value).map_range_smooth_step(from_min = fmin_dn, from_max = fmax_dn, to_min=1, to_max=0)
+            a0 = Float(value).map_range(from_min = fmin_up, from_max = fmax_up, interpolation_type='Smooth Step')
+            b0 = Float(value).map_range(from_min = fmin_dn, from_max = fmax_dn, to_min=1, to_max=0, interpolation_type="Smooth Step")
             v0 = a0*b0
 
-            a1 = Float(value).map_range_linear(from_min = fmin_up, from_max = fmax_up)
-            b1 = Float(value).map_range_linear(from_min = fmin_dn, from_max = fmax_dn, to_min=1, to_max=0)
+            a1 = Float(value).map_range(from_min = fmin_up, from_max = fmax_up)
+            b1 = Float(value).map_range(from_min = fmin_dn, from_max = fmax_dn, to_min=1, to_max=0)
             v1 = a1*b1
             v = v1.switch(smooth, v0)._lc("Factor")
 

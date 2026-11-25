@@ -11,7 +11,7 @@ import re
 from dataclasses import dataclass, field, fields
 from typing import TYPE_CHECKING, Any, Literal, get_type_hints
 
-from ..kernel import snake_case
+from ..kernel import snake_case, get_param_ui_name
 from .sourcewriter import SourceWriter, TAB, R0
 
 if TYPE_CHECKING:
@@ -94,6 +94,9 @@ class NodeArguments:
     param_keywords      : list[str] = field(default_factory=list)
     enum_param_keywords : list[str] = field(default_factory=list)
     header_kwargs       : list[str] = field(default_factory=list)
+    # socket aliases are placed after socket_keywords to preserve actual order
+    # -> Color.Combine(red, green, blue, hue, saturation, value, lightning)
+    socket_aliases      : list[str] = field(default_factory=list)
 
     arg_names           : NameSolver = field(default_factory=NameSolver)
 
@@ -122,17 +125,10 @@ class NodeArguments:
     def set_positional(self, name, typing=""):
         if name != 'self':
             self.header_positionals.append(f"*{name}{typing}")
-        return
 
-        count = 0
-        for s in self.header_positionals:
-            if s[0] == '*':
-                count += 1
-        if count > 1:
-            raise ValueError(f"More than one positional argument for the header: {self.header_positionals}")
-
-    def set_socket_keyword(self, name, typing="", default='None'):
-        self.socket_keywords.append(f"{name}{typing} = {default}")
+    def set_socket_keyword(self, name, typing="", default='None', is_alias=False):
+        a = self.socket_aliases if is_alias else self.socket_keywords
+        a.append(f"{name}{typing} = {default}")
 
     def set_param_keyword(self, name, typing="", default='None', *, is_enum=False):
         keywords = self.enum_param_keywords if is_enum else self.param_keywords
@@ -140,10 +136,12 @@ class NodeArguments:
 
     def set_kwargs(self, name):
         self.header_kwargs.append(f"**{name}")
-        return
-    
-        if len(self.header_kwargs) > 1:
-            raise ValueError(f"More than one kwargs argument for the header: {self.header_kwargs}")
+
+    def set_keyword_only(self, index=None):
+        if index is None:
+            self.socket_keywords.append("*")
+        else:
+            self.socket_keywords.insert(index, "*")
 
     # ====================================================================================================
     # Feeding the node call lists
@@ -202,14 +200,15 @@ class NodeArguments:
 
     def add_parameter(self, node_param: NodeParam, type_aliases=None):
         name = node_param.name
+        ui_name = get_param_ui_name(name)
         typing = node_param.typing
         if isinstance(typing, list):
             typing = (type_aliases.literal(typing, prefix=f'T_{name.upper()}')
                       if type_aliases is not None else
                       'Literal[' + ', '.join(repr(v) for v in typing) + ']')
-        self.set_param_keyword(name, f": {typing}" if typing else "", repr(node_param.value),
+        self.set_param_keyword(ui_name, f": {typing}" if typing else "", repr(node_param.value),
                                is_enum=node_param.param_type in ('ENUM', 'ENUM_FLAG'))
-        self.set_node_parameter(name, name)
+        self.set_node_parameter(name, ui_name)
         self.reserved_names.add(name)
 
         if node_param.param_type in ('ENUM', 'ENUM_FLAG'):
@@ -256,7 +255,6 @@ class NodeArguments:
 
                 self.set_args_doc("sockets", "dict[str, Any]", _NO_DEFAULT, f"Dynamic sockets to create passed as keyword arguments")
 
-
             elif node_socket.name == 'ANONYMOUS':
                 self.set_positional("items")
                 if is_self:
@@ -301,15 +299,17 @@ class NodeArguments:
 
         # General case
         if len(node_socket.names) > 1:
-            names = sorted(node_socket.names)
+            #names = sorted(node_socket.names)
+            names = node_socket.names
         else:
-            names = (node_socket.socket_name,)
+            names = [node_socket.socket_name]
 
         has_aliases = len(names) > 1
         aliases = []
-        for name in names:
+        for i_name, name in enumerate(names):
             name = self.arg_names(snake_case(name))
-            self.set_socket_keyword(name, f": {node_socket.class_name or 'Socket'}", 'None')
+            self.set_socket_keyword(name, f": {node_socket.class_name or 'Socket'}", 'None',
+                        is_alias = i_name > 0)
 
             if has_aliases:
                 aliases.append(name)
@@ -330,14 +330,12 @@ class NodeArguments:
 
         self.set_fixed_doc(node_socket.socket_name, value, "Socket")
 
-
     def add_computed_socket(self, node_socket: NodeSocket, value_name: str, computation: str):
         socket_id = node_socket.group_name or f"ID_{node_socket.identifier}"
         self.set_named_socket(socket_id, value_name)
         self.computations.append(computation)
 
         self.computed_doc.append(f"- Socket {node_socket.socket_name!r} = {value_name}")
-
 
     # ====================================================================================================
     # Consolidation
@@ -359,7 +357,32 @@ class NodeArguments:
         self.arg_names.clear()
 
     def get_header(self):
-        header = (self.header_positionals + self.socket_keywords + self.param_keywords
+
+        # Combine socket keywords and their aliases
+        if len(self.socket_aliases):
+            socket_keywords = self.socket_keywords + ["*"] + self.socket_aliases
+        else:
+            socket_keywords = self.socket_keywords
+
+        # Delete keyword only * if *positional arguments
+        has_star = False
+        for a in self.header_positionals:
+            if a.startswith("*"):
+                has_star = True
+                break
+
+        if has_star:
+            for index in range(len(socket_keywords)):
+                if socket_keywords[index] == "*":
+                    socket_keywords.remove("*")
+
+        # Delete keyword only if last argument
+        if len(socket_keywords) and not bool(len(self.param_keywords)):
+            if socket_keywords[-1] == "*":
+                socket_keywords.remove("*")
+
+        # Header
+        header = (self.header_positionals + socket_keywords + self.param_keywords
                   + self.enum_param_keywords)
         if len(self.header_kwargs) > 1:
             print(f"CAUTION two **kwargs in header: {self.header_kwargs}")

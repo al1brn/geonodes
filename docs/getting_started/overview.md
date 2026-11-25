@@ -1,8 +1,8 @@
 # Scripting nodes overview
 
 All nodes belong to a tree. Two tree types are available:
-- <!geonodes>
-- <!shadernodes>
+- [Geometry Nodes](modifiers_groups.md), declared with `@modifier()`, `@group()` or `@tool()`
+- [Shader Nodes](shaders.md), declared with `@shader()` or `@shader_group()`
 
 !!! note
     To get the maximum benefit of **geonodes**, you must be familiar with both **python** and Blender **Geometry Nodes**.
@@ -21,7 +21,8 @@ The method returns a class refering to one of its output socket, or, rarely, to 
 ``` python
 from geonodes import *
 
-with GeoNodes("Socket Init"):
+@modifier('Socket Init')
+def socket_init():
 
     # Get the Group Input geometry
     geometry = Geometry()
@@ -64,6 +65,8 @@ with GeoNodes("Socket Init"):
     with Layout("Creating geometries"):
         cube = Mesh.Cube()
         curve = Curve.Spiral()
+
+socket_init.build()
 ```
 
 ## Blender Setup
@@ -77,7 +80,7 @@ Create a new script in _Scripting_ tab in **Blender**. You can setup this tab in
 
 Here after is an example of the recommanded setup:
 
-<img src="../images/blender_setup.png" width="600" class="center">
+<img src="images/blender_setup.png" width="600" class="center">
 
 ## 'Do Nothing' Modifier
 
@@ -86,22 +89,38 @@ Copy / paste the following piece of code to check that everything is properly se
 ``` python
 from geonodes import *
 
-with GeoNodes("Do Nothing"):
+@modifier('Do Nothing')
+def do_nothing():
     Geometry().out()
+
+do_nothing.build()
 ```
 
 A Geometry Nodes modifier has been created with the name "Do Nothing". You can use it on any object.
 
-!!! note
+## Tutorial execution model
 
-    All scripts are supposed to start with ``` from geonodes import * ```.
-    Then, nodes must be created only in the sccope of **with** context.
+Examples import the public API with `from geonodes import *`. Nodes are created
+while a decorated builder runs. Declare the builder, then call `.build()`:
 
-All the code samples must be placed after the following lines:
-
-``` python
+```python
 from geonodes import *
 
-with GeoNodes("Tutorial"):
-    pass
+@modifier("Tutorial")
+def tutorial():
+    Mesh.Cube().out()
+
+tutorial.build()
 ```
+
+A decorated declaration waits for construction; `.build()` creates or rebuilds
+the selected tree. The generated tree can then be selected in Blender. Reusable
+groups are called inside other builders; use `.build(full=True)` to also refresh
+their existing dependencies.
+
+Some focused examples show only a function body. Put these fragments inside a
+builder. Explicit `with GeoNodes(...)` and `with ShaderNodes(...)` contexts are
+still supported and execute immediately.
+
+Next: [Modifiers, groups and tools](modifiers_groups.md),
+[Packages](packages.md), and [Creating Sockets](creating_sockets.md).

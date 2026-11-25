@@ -42,7 +42,9 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 import bpy
-from .constants import DATA_TYPE_HOMONYMS, CLASS_NAMES
+from .constants import DATA_TYPE_HOMONYMS, CLASS_NAMES, PARAMETER_RENAME, PLURAL_NAMES
+
+_PARAMETER_RENAME_INV = {v: k for k, v in PARAMETER_RENAME.items()}
 
 SOCKETS = {}
 
@@ -135,6 +137,23 @@ def snake_case(s: str, test_keyword=True) -> str:
         sc += '_'
 
     return sc
+
+# ====================================================================================================
+# Plural name
+# ====================================================================================================
+
+def get_singular(plural_name):
+    return PLURAL_NAMES.get(plural_name, plural_name)
+
+# ====================================================================================================
+# Parameter renaming
+# ====================================================================================================
+
+def get_param_ui_name(name):
+    return PARAMETER_RENAME.get(name, name)
+
+def get_param_name(ui_name):
+    return _PARAMETER_RENAME_INV.get(ui_name, ui_name)
 
 # ====================================================================================================
 # Create / delete tree

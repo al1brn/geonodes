@@ -19,6 +19,9 @@ def current_environment():
 def concrete_class(name):
     return getattr(import_module('.' + current_environment() + '.generated', __package__), name)
 
+def get_environment_class(environment_name, name):
+    return getattr(import_module('.' + environment_name + '.generated', __package__), name)
+
 
 class EnvironmentType(type):
     """Shared roots also act as context-aware public constructors."""

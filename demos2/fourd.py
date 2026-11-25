@@ -44,11 +44,20 @@ fourd.demo()
 
 import bpy
 
-from geonodes import *
 from geonodes import core_module
+from geonodes import *
 
 utils = core_module.utils
 
+
+def get_environment_class(environment_name, name):
+    return getattr(import_module('.' + environment_name + '.generated', __package__), name)
+
+Matrix = core_module.environment.get_environment_class('geonodes', 'Matrix')
+Geometry = core_module.environment.get_environment_class('geonodes', 'Geometry')
+Mesh = core_module.environment.get_environment_class('geonodes', 'Mesh')
+Curve = core_module.environment.get_environment_class('geonodes', 'Curve')
+Cloud = core_module.environment.get_environment_class('geonodes', 'Cloud')
 
 ZERO = 0.0001
 
@@ -66,12 +75,7 @@ op_     = G("4D G")
 # =============================================================================================================================
 # Build the 4D engine
 
-def demo(full=False):
-
-    D4Shaders.build(full=full)
-
-    return
-
+def demo(clear=False, *, rebuild=False):
 
     Tree._init_package('4D Engine')
     build_shaders(rebuild=rebuild)
@@ -81,20 +85,18 @@ def demo(full=False):
 
     Tree._display_counter('4D Engine built')
 
+
 # ====================================================================================================
 # Shaders
 # ====================================================================================================
 
-class D4Shaders(Package):
-
-    prefix = "4D"
+def build_shaders(rebuild=False):
 
     # ----------------------------------------------------------------------------------------------------
     # Grid shader group
     # ----------------------------------------------------------------------------------------------------
 
-    @shader_group()
-    def grid():
+    with ShaderNodes("Grid", is_group=True, rebuild=rebuild):
 
         USE_GRID = False
 
@@ -137,8 +139,7 @@ class D4Shaders(Package):
     # Axis Shader
     # ----------------------------------------------------------------------------------------------------
 
-    @shader()
-    def axis():
+    with ShaderNodes("4 Axis"):
 
         col = nd.attribute(attribute_name="Color").color
 
@@ -150,8 +151,7 @@ class D4Shaders(Package):
     # GROUP - Reading 4D Shading Attributes
     # ----------------------------------------------------------------------------------------------------
 
-    @shader_group()
-    def attributes():
+    with ShaderNodes("4D Attributes", is_group=True, rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Interior
@@ -202,8 +202,7 @@ class D4Shaders(Package):
     # SHADER - Default Material
     # ----------------------------------------------------------------------------------------------------
 
-    @shader()
-    def surface():
+    with ShaderNodes("4D Surface"):
 
         node = Group("4D Attributes")
 
@@ -225,19 +224,13 @@ class D4Shaders(Package):
     # SHADER - Wire
     # ----------------------------------------------------------------------------------------------------
 
-    @shader()
-    def wire():
+    with ShaderNodes("4D Wire"):
 
         ped = Shader.Principled(
             base_color = (0., .05, .9),
             roughness  = 0.,
             )
         ped.out()
-
-# ====================================================================================================
-# 4D Vectors
-# ====================================================================================================
-
 
 
 # ====================================================================================================
@@ -279,9 +272,9 @@ def draw_normals(domain, u, v, scale=1.0):
         verts.points.V = domain.sample_index(v, index=nd.index)
 
         verts = verts.points.extrude(offset=Vector("U"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=Vector("V"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=-Vector("U"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=-Vector("V"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=Vector("V"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=-Vector("U"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=-Vector("V"), offset_scale=scale)
         
         return verts
     
@@ -298,18 +291,18 @@ def vis_normals(geo, scale=1.0):
     def draw(mesh, sel, order, v):
 
         with Layout("Base"):
-            msh = mesh.points[sel].extrude(v, offset_scale=scale)
+            msh = mesh.points(sel).extrude(v, offset_scale=scale)
 
         return msh
         
         with Layout("First"):
             if order >= 1:
                 top = msh.top
-                msh.points[top].extrude(-v + .3, offset_scale=.3*scale)
+                msh.points(top).extrude(-v + .3, offset_scale=.3*scale)
             
         with Layout("Second"):
             if order == 2:
-                msh.points[top & msh.top.bnot()].extrude(-v - .3, offset_scale=.3*scale)
+                msh.points(top & msh.top.bnot()).extrude(-v - .3, offset_scale=.3*scale)
 
         return msh
     
@@ -764,10 +757,10 @@ class Vector4:
             
             grid = Mesh.Grid(vertices_x=4, vertices_y=4, size_x=3, size_y=3).to_points()
             grid.transform(scale=(1, -1, 1))
-            m = M.as_tuple
+            m = M.as_tuple()
             
             for i, v in enumerate(m):
-                grid.points[nd.index.equal(i)].Value = m[i]
+                grid.points(nd.index.equal(i)).Value = m[i]
                 
             for feel in grid.points.for_each(value=Float("Value"), pos=nd.position):
                 s = feel.value.to_string(decimals=3).to_curves(size=.3)
@@ -976,7 +969,7 @@ class Vector4:
 # ====================================================================================================
 
 class Matrix4(Matrix):
-        
+
     @classmethod
     def FromVectors(cls, V0=None, V1=None, V2=None, V3=None):
         m = [0]*16
@@ -994,7 +987,7 @@ class Matrix4(Matrix):
         return self.set_col(index, Vector4(V))
                                
     def get_vectors(self):
-        m = self.as_tuple
+        m = self.as_tuple()
         return Vector4(m[:4]), Vector4(m[4:8]), Vector4(m[8:12]), Vector4(m[12:])
     
     @classmethod
@@ -1109,7 +1102,7 @@ class Matrix4(Matrix):
             M = Matrix4(name="Matrix")
             V = Vector4.Input()
 
-            m = M.as_tuple
+            m = M.as_tuple()
             x, y, z, w = V.xyzw
 
             Vector4((
@@ -1218,7 +1211,7 @@ class Matrix4(Matrix):
             matrix = Matrix4(None, "Matrix")
             index  = Integer(0, "Count")
 
-            m = matrix.as_tuple
+            m = matrix.as_tuple()
 
             m0 = m
             m1 = m[4:] + m[:4]
@@ -1268,16 +1261,13 @@ class Cloud4(Cloud, G4Interface):
 # Build nodes
 # ====================================================================================================
 
-class D4Main(Package):
-
-    prefix = "4"
+def build_geometry_nodes(rebuild=False):
 
     # ====================================================================================================
     # MODIFIER - Plunge a Geometry into 4D
     # ====================================================================================================
 
-    @modifier()
-    def plunge():
+    with GeoNodes("Plunge", prefix=main_, rebuild=rebuild) as tree:
         """ Plunge an object into 4D Space.
 
         Do nothing if already plunged
@@ -1367,21 +1357,16 @@ class D4Main(Package):
 
         new_geo.out("Geometry")
 
-    #tree.add_method(Geometry4,  self_attr="self", ret_class=Geometry4)
-    #tree.add_method(Mesh4,      self_attr="self", ret_class=Mesh4)
-    #tree.add_method(Curve4,     self_attr="self", ret_class=Curve4)
-    #tree.add_method(Cloud4,     self_attr="self", ret_class=Cloud4)
-
-
-class D4Geometry(Package):
-
-    prefix = "4D Geometry"
+    tree.add_method(Geometry4,  self_attr="self", ret_class=Geometry4)
+    tree.add_method(Mesh4,      self_attr="self", ret_class=Mesh4)
+    tree.add_method(Curve4,     self_attr="self", ret_class=Curve4)
+    tree.add_method(Cloud4,     self_attr="self", ret_class=Cloud4)
 
     # ====================================================================================================
     # MODIFIER - Show Normals
     # ====================================================================================================
-    @modifier()
-    def normals():
+
+    with GeoNodes("Normals", prefix=geo_, rebuild=rebuild) as tree:
 
         # Projected geometry
         geo = Geometry(tip="Projected Geometry")
@@ -1426,22 +1411,16 @@ class D4Geometry(Package):
         m_lines.out("Faces")
         c_lines.out("Curves")
 
-    #tree.add_method(Geometry4, self_attr="self", ret_class=Mesh)
+    tree.add_method(Geometry4, self_attr="self", ret_class=Mesh)
 
-
-class D4Op(Package):
-
-    prefix = "4D Op"
 
     # ====================================================================================================
     # GROUP - Compute faces UV Indices
     # ====================================================================================================
 
-    @group("Compute UV indices")
-    def compute_uv_indices():
-
-        mesh = D4Main.plunge(Geometry())
-        #mesh = Mesh4.Plunge()
+    with GeoNodes("Compute UV Indices", is_group=True, prefix=op_, rebuild=rebuild) as tree:
+        
+        mesh = Mesh4.Plunge()
         keep = Mesh(mesh)
         
         with Layout("4 Vertex indices for a Face Corner"):
@@ -1499,7 +1478,7 @@ class D4Op(Package):
             
         mesh.out()
 
-    #tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
 
     # ====================================================================================================
     # GROUP - Compute faces UV 4-Vectors
@@ -1695,7 +1674,7 @@ class D4Op(Package):
 
                 with Layout("Light info"):
 
-                    light = Mesh(lights[nd.index.equal(rep.iteration)].realize())
+                    light = Mesh(lights(nd.index.equal(rep.iteration)).realize())
 
                     S4_v  = light.faces.sample_index(Vector("P4 v"), index=0)
                     S4_w  = light.faces.sample_index(Float("P4 w"), index=0)
@@ -1744,7 +1723,7 @@ class D4Op(Package):
                     lines.points.Out_Dir = out_dir
 
                     lines = lines.points.extrude(offset=face_pos - light_pos)
-                    lines.points[lines.top].extrude(offset=Vector("Out Dir"), offset_scale=3)
+                    lines.points(lines.top).extrude(offset=Vector("Out Dir"), offset_scale=3)
 
                     rep.rays = rep.rays + lines
 
@@ -1835,8 +1814,8 @@ class D4Op(Package):
             N4 = Vector4("N4")
             exists = N4.v.exists
             N4 = Matrix4(R) @ N4
-            mesh.faces[exists].N4_v = N4.v
-            mesh.faces[exists].N4_w = N4.w
+            mesh.faces(exists).N4_v = N4.v
+            mesh.faces(exists).N4_w = N4.w
 
         with Layout("Curve Matrices"):
             curve.points.TNNN = R @ Matrix("TNNN")
@@ -2082,7 +2061,7 @@ class D4Op(Package):
 
             mesh.offset = vmax + P4.w - wmin
 
-            mesh = mesh[sel].merge_by_distance()
+            mesh = mesh(sel).merge_by_distance()
 
             mesh.position = P4.v
 
@@ -2168,7 +2147,7 @@ class D4Op(Package):
         line.position = Vector("P4 v")
 
         T = (V1 - V0).normalize()
-        line.points.TNNN = Matrix4(DEFAULT).align_axis_to_vector(axis=0, V4=T)
+        line.points.TNNN = Matrix4.AlignAxisToVector(axis=0, V4=T)
         
         finalize(line).out("Curve'")
 
@@ -2334,7 +2313,7 @@ class D4Op(Package):
             M = Matrix4.perp_planes(**V1.args(), **V2.args(rank=1))
                 
             with Layout("Perpendicular Plane"):
-                m = M.as_tuple
+                m = M.as_tuple()
                 m2 = [0]*16
                 m2[:8] = m[8:]
                 m2[8:] = m[:8]
@@ -2611,17 +2590,17 @@ class D4Op(Package):
         second.points.New = True
         
         extr = mesh.edges.extrude(offset=Temp.v)
-        extr.points[extr.top].New = True
+        extr.points(extr.top).New = True
         
-        extr.points[Boolean("New")].P4_v = Vector("P4 v") + Temp.v
-        extr.points[Boolean("New")].P4_w = Float("P4 w") + Temp.w
+        extr.points(Boolean("New")).P4_v = Vector("P4 v") + Temp.v
+        extr.points(Boolean("New")).P4_w = Float("P4 w") + Temp.w
         
         mesh = Mesh4(extr + second)
         
         mesh = mesh.merge_points(True)
 
-        mesh.points[Boolean("New")].P4_v = mesh.points.sample_index(Vector("Ref v"), index=nd.index) + Dir.v
-        mesh.points[Boolean("New")].P4_w = mesh.points.sample_index(Float("Ref w"), index=nd.index) + Dir.w
+        mesh.points(Boolean("New")).P4_v = mesh.points.sample_index(Vector("Ref v"), index=nd.index) + Dir.v
+        mesh.points(Boolean("New")).P4_w = mesh.points.sample_index(Float("Ref w"), index=nd.index) + Dir.w
         mesh.position = Vector("P4 v")
 
         mesh.remove_named_attribute(name="Ref v")
@@ -3226,8 +3205,8 @@ def build_engine():
         geo = Cloud(Geometry())
         T = Vector4.Input()
         
-        m = list(Matrix("M4D").as_tuple)
-        x, y, z, w = T.as_tuple
+        m = list(Matrix("M4D").as_tuple())
+        x, y, z, w = T.as_tuple()
         m[0] += x
         m[1] += y
         m[2] += z
@@ -3276,8 +3255,8 @@ def build_engine():
         with Panel("Pivot"):
             P = Vector4.Input()
 
-        p = P.as_tuple
-        m = list(Matrix("M4D").as_tuple)
+        p = P.as_tuple()
+        m = list(Matrix("M4D").as_tuple())
         for i in range(4):
             m[i] = p[i] + (m[i] - p[i])*scale
 
@@ -3298,7 +3277,7 @@ def build_engine():
 
 
         with Layout("Vectors from Matrix"):
-            m = M4D.as_tuple
+            m = M4D.as_tuple()
             V1 = Vector4.FromMatrix(m, 1)
             V2 = Vector4.FromMatrix(m, 2)
             V3 = Vector4.FromMatrix(m, 3)
@@ -3307,31 +3286,31 @@ def build_engine():
         m = [0]*16
 
         with Matrix.IndexSwitch(index=tg_axis) as M:
-            m[:4]   = V0.as_tuple
-            m[4:8]  = V1.as_tuple
-            m[8:12] = V2.as_tuple
-            m[12:]  = V3.as_tuple
+            m[:4]   = V0.as_tuple()
+            m[4:8]  = V1.as_tuple()
+            m[8:12] = V2.as_tuple()
+            m[12:]  = V3.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V3.as_tuple
-            m[4:8]  = V0.as_tuple
-            m[8:12] = V1.as_tuple
-            m[12:]  = V2.as_tuple
+            m[:4]   = V3.as_tuple()
+            m[4:8]  = V0.as_tuple()
+            m[8:12] = V1.as_tuple()
+            m[12:]  = V2.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V2.as_tuple
-            m[4:8]  = V3.as_tuple
-            m[8:12] = V0.as_tuple
-            m[12:]  = V1.as_tuple
+            m[:4]   = V2.as_tuple()
+            m[4:8]  = V3.as_tuple()
+            m[8:12] = V0.as_tuple()
+            m[12:]  = V1.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V1.as_tuple
-            m[4:8]  = V2.as_tuple
-            m[8:12] = V3.as_tuple
-            m[12:]  = V0.as_tuple
+            m[:4]   = V1.as_tuple()
+            m[4:8]  = V2.as_tuple()
+            m[8:12] = V3.as_tuple()
+            m[12:]  = V0.as_tuple()
             Matrix(m).out()
 
         M.out("Matrix")
@@ -3803,11 +3782,11 @@ def build_matrices():
             arrow = Vector(a[4:7])
             ar_length = arrow.length()
 
-            rot = Rotation(DEFAULT).align_z_to_vector(arrow)
+            rot = Rotation.AlignZToVector(arrow)
 
         with Layout("Arrow Shaft"):
             line = Curve.LineDirection()
-            lines = cloud.instance_on_points(instance=line, scale=ar_length, rotation=rot)
+            lines = cloud.instance_on(instance=line, scale=ar_length, rotation=rot)
             lines = Curve(lines.realize())
 
             arrows = lines.to_mesh(profile_curve=Curve.Circle(radius=radius, resolution=resol))
@@ -3818,7 +3797,7 @@ def build_matrices():
             cone = Mesh.Cone(radius_bottom=3.5*radius, depth=9*radius, vertices=resol)
             cone.corners.store_uv = cone.uv_map_
 
-            cones = cloud.instance_on_points(instance=cone)
+            cones = cloud.instance_on(instance=cone)
             cones.translate(arrow)
             cones.rotate(rot)
 
@@ -4019,27 +3998,27 @@ def build_matrices():
         line = Curve.LineDirection(length=vect_length)
 
         with Layout("Mesh Normals"):
-            visA = mesh.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[4:7]))
-            visB = mesh.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[8:11]))
+            visA = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
+            visB = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
 
         with Layout("Curve Normals & Tangents"):
             curve.points._Tangent = a[4:7]
 
-            visA += curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[ 4:7]))
-            visB += curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[ 8:11]))
-            visC  = curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[12:15]))
+            visA += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
+            visB += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
+            visC  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
 
             visualization = visA.switch_false(show_nrm_A) + visB.switch_false(show_nrm_B) + visC.switch_false(show_nrm_C)
 
             tg = Vector4.FromNode(matrix_.cross_product(M).node)
             tg = tg.matmul(M_proj)
 
-            vis = curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(tg[:3]))
+            vis = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(tg[:3]))
 
             visualization = visualization.switch(show_tangents, visualization + vis)
 
         with Layout("Points"):
-            spheres = Cloud(geo).instance_on_points(instance=Mesh.UVSphere(radius=point_radius))
+            spheres = Cloud(geo).points.instance_on(instance=Mesh.UVSphere(radius=point_radius))
             spheres = Mesh(spheres.realize())
             spheres.faces.smooth = True
             spheres.faces.material = point_mat
@@ -4054,7 +4033,7 @@ def build_matrices():
             visualization = visualization.switch(edge_radius > ZERO, visualization + edges)
 
         with Layout("No Faces"):
-            no_faces = Mesh(mesh).faces.delete(mode="Only Faces")
+            no_faces = Mesh(mesh).faces.delete_only_face()
 
         with Layout("With Faces"):
 
@@ -4483,7 +4462,7 @@ def build_primitives_OLD():
         with If(Mesh, mode, tip="Slice instance at each backbone point") as mesh:
 
             # Instantiate the slice on each backbone point
-            insts = backbone.instance_on_points(slice)
+            insts = backbone.points.instance_on(slice)
 
             # Delete where scale is null
             insts.insts[Float("BB Scale") < ZERO].delete()
@@ -4514,7 +4493,7 @@ def build_primitives_OLD():
                 iterations = (count - 1).switch(is_cyclic, count)
                 backbone.position = (nd.index*size, 0, 0)
                 # The first one will also be create be created in Repeat loop
-                insts = backbone.instance_on_points(instance=mesh_slice)
+                insts = backbone.points.instance_on(instance=mesh_slice)
                 mesh_insts = Mesh(insts.realize())
 
                 edges = mesh_insts

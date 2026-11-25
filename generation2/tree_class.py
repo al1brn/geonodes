@@ -225,8 +225,8 @@ class TreeClass:
             implementation = self.implementation(node)
             node_calls = NodeCalls(node_call).overrides(
                 implementation.expand_spec(STATIC_IMPLEMENTATIONS.get(node.name, {})))
-            
-            source = implementation.gen_source_code(node_calls, self.register_source)
+
+            _ = implementation.gen_source_code(node_calls, self.register_source)
 
         NodeInfo.loop_on_nodes(generate, tree_type=self.tree_type)
 
@@ -359,7 +359,7 @@ class TreeClass:
             ('XOR', 'xor', 'xor',   ['xor', 'sub']),
 
             # Methods width unary operator
-            ('NOT', 'bnot', 'bnot', 'neg'),
+            ('NOT', 'bnot', 'bnot', ['neg', 'invert']),
 
             # Other methods
             ('NAND', 'not_and'), ('NOR', 'nor'), ('XNOR', 'xnor'),

@@ -94,7 +94,7 @@ def demo(rebuild=False):
 
         count = mesh.faces.attribute_statistic(Integer("char_index")).max_.to_integer()+1
         for rep in repeat(count, labels=None):
-            node = mesh.points[Integer("char_index") == rep.iteration].attribute_statistic(nd.position).node
+            node = mesh.points(Integer("char_index") == rep.iteration).attribute_statistic(nd.position).node
             center = (node.min + node.max).scale(0.5)
             label = Curve(rep.iteration.to_string().to_curves(
                 size=size,
@@ -124,7 +124,7 @@ def demo(rebuild=False):
 
         idx = Integer("char_index")
         sel = (idx >= index) & (idx < index + count)
-        mesh.faces[sel].store_named_attribute("char_index", index)
+        mesh.faces(sel).store_named_attribute("char_index", index)
 
         mesh.out()
 
@@ -138,7 +138,7 @@ def demo(rebuild=False):
         mesh = Mesh()
         sel = Boolean(True, "Selection",hide=True)
         
-        node = mesh.points[sel].attribute_statistic(nd.position).node
+        node = mesh.points(sel).attribute_statistic(nd.position).node
         
         vmin = node.min
         vmax = node.max + (get_char_space(), 0, 0)
@@ -174,14 +174,14 @@ def demo(rebuild=False):
         for rep in repeat(count, mesh=mesh, merge=merge, not_excluded=exclude.bnot()):
             
             sel = Integer("char_index") == rep.iteration
-            xmin = rep.mesh.points[sel].attribute_statistic(nd.position.x).mean_
-            rep.mesh.points[sel].SEL = (rep.merge | (xmin >= x_from)) & rep.not_excluded
+            xmin = rep.mesh.points(sel).attribute_statistic(nd.position.x).mean_
+            rep.mesh.points(sel).SEL = (rep.merge | (xmin >= x_from)) & rep.not_excluded
             
         mesh = rep.mesh
             
         selection = Boolean("SEL")
         
-        mesh[selection].offset = ((x_to - x_from)*fac, 0.0, 0.0)
+        mesh(selection).offset = ((x_to - x_from)*fac, 0.0, 0.0)
         
         sel = mesh.points.capture_attribute(selection)
         mesh.remove_named_attribute("Exact", "SEL")
@@ -213,7 +213,7 @@ def demo(rebuild=False):
         
         with Layout("Separate"):
             
-            sel_mesh = Mesh(mesh.points[sel].separate().selection)
+            sel_mesh = Mesh(mesh.points(sel).separate().selection)
             rem_mesh = Mesh(sel_mesh.inverted)
             
             dims = G().frm_dims(sel_mesh)
@@ -384,10 +384,10 @@ def demo(rebuild=False):
         with Mesh.Switch(use_index) as start_mesh:
 
             mesh_after = G().frm_shift_after(mesh, after_x=to_x, shift_to_x=to_x)
-            mesh_after.points[mesh_after.after].separate().inverted.out("False")
+            mesh_after.points(mesh_after.after).separate().inverted.out("False")
 
         with start_mesh:
-            Mesh(mesh).faces[Integer("char_index") > to_index].delete().out("True")
+            Mesh(mesh).faces(Integer("char_index") > to_index).delete().out("True")
 
         Mesh(start_mesh.switch_false(show)).out()
 

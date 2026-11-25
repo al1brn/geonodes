@@ -1,3 +1,3 @@
 # Collection
 
-::: geonodes.core.sock_collection.Collection
+::: geonodes.core_new.geonodes.generated.collection.Collection

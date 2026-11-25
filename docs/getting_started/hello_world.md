@@ -13,17 +13,15 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the vertex distance to the center.
 
-<img src="../images/hello_world_black.png" width="600" class="center">
+<img src="images/hello_world_black.png" width="600" class="center">
 
 ```python
 from geonodes import *
 
 # Create the Geometry Nodes named "Hello World"
 
-with GeoNodes("Hello World"):
-    
-    height = 3
-    omega  = 2
+@modifier('Hello World')
+def hello_world(height: float = 3.0, omega: float = 2.0):
 
     # The surface is basically a grid 20 x 20 with a resolution 200 x 200
     grid = Mesh.Grid(vertices_x=200, vertices_y=200, size_x=20, size_y=20)
@@ -33,7 +31,7 @@ with GeoNodes("Hello World"):
     with Layout("Computing the wave"):
         pos = nd.position
         distance = gnmath.sqrt(pos.x**2 + pos.y**2)
-        z = height*gnmath.sin(distance*omega)/distance
+        z = height*gnmath.sin(distance*omega)/(distance + 0.001)
 
     # Let's change the z coordinate of our vertices
     with Layout("Point offset and smoothness"):
@@ -42,8 +40,17 @@ with GeoNodes("Hello World"):
 
     # We are done: plugging the deformed grid as the modified geometry
     grid.out()
+
+hello_world.build()
 ```
+
+Declaration does not execute the function. `hello_world.build()` constructs the
+modifier tree; select **Hello World** in a Geometry Nodes modifier on an object.
+The function parameters become adjustable inputs in Blender.
+
+Continue with [Modifiers, groups and tools](modifiers_groups.md) and
+[Packages](packages.md) to reuse and organize builders.
 
 The generated nodes are shown below:
 
-<img src="../images/hello_world_nodes.png" width="600" class="center">
+<img src="images/hello_world_nodes.png" width="600" class="center">

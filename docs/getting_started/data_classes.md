@@ -1,5 +1,12 @@
 # Data Classes
 
+The code fragments on this page run inside a decorated builder. For example,
+put them in `@modifier()` followed by a function definition, then call that
+builder's `.build()` outside the function. See
+[Modifiers, groups and tools](modifiers_groups.md) and
+[Packages](packages.md) for complete declarations.
+
+
 **geonodes** classes are named after their name in Geometry Nodes, for instance: **Integer** socket -> `Integer` class.
 
 Blender **Nodes** are implemented as methods, properties and operators working on these classes.

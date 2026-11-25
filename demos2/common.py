@@ -364,7 +364,7 @@ def demo(rebuild=False):
         text = Curve(curves.realize()).fill()
             
         text.faces.material = mat
-        text.faces.store_named_attribute("face_color", color)
+        text.faces["face_color"] = color
 
         with Layout("Orientation"):
             track_to = Boolean(False, "Track to")
@@ -419,7 +419,7 @@ def demo(rebuild=False):
             transformed.points["Hidden"] = visible.bnot()
             
             ratio = -focal/z
-            transformed[visible].position = (x*ratio, y*ratio, -focal)
+            transformed(visible).position = (x*ratio, y*ratio, -focal)
             
         
         with Layout("To Delete"):
@@ -427,11 +427,11 @@ def demo(rebuild=False):
             sx, sy, _ = size.scale(focal/100*margin).xyz
             x, y, z  = nd.position.abs().xyz
             
-            delete = Attribute("Hidden", Boolean).value | (x >= sx) | (y >= sy)
+            delete = Boolean("Hidden") | (x >= sx) | (y >= sy)
             
             delete = transformed.points.sample_index(delete, index=nd.index)
 
-            pts.points[delete].delete()        
+            pts.points(delete).delete()        
             
         Geometry(pts).out() 
         delete.bnot().out("Visible")
@@ -548,12 +548,12 @@ def demo(rebuild=False):
             pts.points['Speed'] = v
             
         for sim in simulation(pts=pts):
-            v = sim.pts.get('Speed', Vector).value
+            v = Vector("Speed")
             pos = nd.position + v.scale(sim.delta_time)
             pos = G().bounce_box(position=pos, speed=v, min=box_min, max=box_max, energy_factor=efac)
             
             sim.pts.position = pos
-            sim.pts.points['Speed'] = pos.speed
+            sim.pts.points["Speed"] = pos.speed
             
 
         sim.pts.out()

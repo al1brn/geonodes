@@ -211,7 +211,7 @@ class SocketType:
     # ====================================================================================================
 
     @classmethod
-    def socket_type_and_shape(cls, socket_type):
+    def socket_type_and_shape_DEPRECATED(cls, socket_type):
 
         if isinstance(socket_type, tuple) & len(socket_type) == 2:
 

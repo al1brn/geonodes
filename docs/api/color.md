@@ -1,3 +1,3 @@
 # Color
 
-::: geonodes.core.sock_color.Color
+::: geonodes.core_new.geonodes.generated.color.Color

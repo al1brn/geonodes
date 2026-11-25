@@ -1,0 +1,3280 @@
+# Comparaison Blender (5, 2, 0) → (5, 3, 0)
+
+## GeometryNodeTree
+
+### Nœuds supprimés (3)
+
+- **Align Euler to Vector** (`FunctionNodeAlignEulerToVector`)
+- **Integer Vector** (`FunctionNodeInputIntVector`)
+- **Rotate Euler** (`FunctionNodeRotateEuler`)
+
+### Nœuds ajoutés (20)
+
+- **Get Vector Component** (`FunctionNodeGetVectorComponent`)
+- **Combine List** (`GeometryNodeCombineList`)
+- **Construct Curves** (`GeometryNodeConstructCurves`)
+- **Geometry Materials** (`GeometryNodeGeometryMaterials`)
+- **Get Grid Names** (`GeometryNodeGetGridNames`)
+- **Grease Pencil Color** (`GeometryNodeGreasePencilColor`)
+- **Grease Pencil Draw Time** (`GeometryNodeGreasePencilDrawTime`)
+- **Grease Pencil Fill ID** (`GeometryNodeGreasePencilFillID`)
+- **Grease Pencil Opacity** (`GeometryNodeGreasePencilOpacity`)
+- **Grease Pencil Stroke Softness** (`GeometryNodeGreasePencilStrokeSoftness`)
+- **Grease Pencil Stroke Visibility** (`GeometryNodeGreasePencilStrokeVisibility`)
+- **Deactivate Voxels** (`GeometryNodeGridDeactivateVoxels`)
+- **Grid Solve Poisson** (`GeometryNodeGridSolvePoisson`)
+- **Grid Topology Boolean** (`GeometryNodeGridTopologyBoolean`)
+- **Import SPZ** (`GeometryNodeImportSPZ`)
+- **NURBS Order** (`GeometryNodeNURBSOrder`)
+- **NURBS Weight** (`GeometryNodeNURBSWeight`)
+- **Set Point Cloud Type** (`GeometryNodePointsSetType`)
+- **Rasterize Points** (`GeometryNodeRasterizePoints`)
+- **Comment** (`NodeComment`)
+
+### Nœuds modifiés (357)
+
+- **Align Rotation to Vector** (`FunctionNodeAlignRotationToVector`)
+  - info / inputs / Factor / aliases (added) : nouveau: ['Factor']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / params / axis / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / pivot_axis / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Axes to Rotation** (`FunctionNodeAxesToRotation`)
+  - info / inputs / Primary Axis / aliases (added) : nouveau: ['Primary Axis']
+  - info / inputs / Secondary Axis / aliases (added) : nouveau: ['Secondary Axis']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / params / primary_axis / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / secondary_axis / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Axis Angle to Rotation** (`FunctionNodeAxisAngleToRotation`)
+  - info / inputs / Angle / aliases (added) : nouveau: ['Angle']
+  - info / inputs / Axis / aliases (added) : nouveau: ['Axis']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Bit Math** (`FunctionNodeBitMath`)
+  - info / inputs / A / aliases (added) : nouveau: ['A']
+  - info / inputs / B / aliases (added) : nouveau: ['B']
+  - info / inputs / Shift / aliases (added) : nouveau: ['Shift']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Boolean Math** (`FunctionNodeBooleanMath`)
+  - info / inputs / Boolean / aliases (added) : nouveau: ['Boolean']
+  - info / inputs / Boolean_001 (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'Boolean', 'name': 'Boolean', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Boolean / aliases (added) : nouveau: ['Boolean']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Combine Color** (`FunctionNodeCombineColor`)
+  - info / inputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / inputs / Blue / aliases (added) : nouveau: ['Blue', 'Value', 'Lightness']
+  - info / inputs / Green / aliases (added) : nouveau: ['Green', 'Saturation']
+  - info / inputs / Red / aliases (added) : nouveau: ['Red', 'Hue']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Combine Matrix** (`FunctionNodeCombineMatrix`)
+  - info / inputs / Column 1 Row 1 / aliases (added) : nouveau: ['Column 1 Row 1']
+  - info / inputs / Column 1 Row 2 / aliases (added) : nouveau: ['Column 1 Row 2']
+  - info / inputs / Column 1 Row 3 / aliases (added) : nouveau: ['Column 1 Row 3']
+  - info / inputs / Column 1 Row 4 / aliases (added) : nouveau: ['Column 1 Row 4']
+  - info / inputs / Column 2 Row 1 / aliases (added) : nouveau: ['Column 2 Row 1']
+  - info / inputs / Column 2 Row 2 / aliases (added) : nouveau: ['Column 2 Row 2']
+  - info / inputs / Column 2 Row 3 / aliases (added) : nouveau: ['Column 2 Row 3']
+  - info / inputs / Column 2 Row 4 / aliases (added) : nouveau: ['Column 2 Row 4']
+  - info / inputs / Column 3 Row 1 / aliases (added) : nouveau: ['Column 3 Row 1']
+  - info / inputs / Column 3 Row 2 / aliases (added) : nouveau: ['Column 3 Row 2']
+  - info / inputs / Column 3 Row 3 / aliases (added) : nouveau: ['Column 3 Row 3']
+  - info / inputs / Column 3 Row 4 / aliases (added) : nouveau: ['Column 3 Row 4']
+  - info / inputs / Column 4 Row 1 / aliases (added) : nouveau: ['Column 4 Row 1']
+  - info / inputs / Column 4 Row 2 / aliases (added) : nouveau: ['Column 4 Row 2']
+  - info / inputs / Column 4 Row 3 / aliases (added) : nouveau: ['Column 4 Row 3']
+  - info / inputs / Column 4 Row 4 / aliases (added) : nouveau: ['Column 4 Row 4']
+  - info / outputs / Matrix / aliases (added) : nouveau: ['Matrix']
+- **Combine Transform** (`FunctionNodeCombineTransform`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Translation / aliases (added) : nouveau: ['Translation']
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+- **Compare** (`FunctionNodeCompare`)
+  - info / data_type (removed) : ancien: {'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / A / aliases (added) : nouveau: ['A']
+  - info / inputs / A / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Angle (added) : nouveau: {'aliases': ['Angle'], 'bl_idname': 'NodeSocketFloatAngle', 'label': 'Angle', 'name': 'Angle', 'socket_type': 'VALUE'}
+  - info / inputs / B / aliases (added) : nouveau: ['B']
+  - info / inputs / B / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / C (added) : nouveau: {'aliases': ['C'], 'bl_idname': 'NodeSocketFloat', 'label': 'C', 'name': 'C', 'socket_type': 'VALUE'}
+  - info / inputs / Epsilon (added) : nouveau: {'aliases': ['Epsilon'], 'bl_idname': 'NodeSocketFloat', 'label': 'Epsilon', 'name': 'Epsilon', 'socket_type': 'VALUE'}
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Euler to Rotation** (`FunctionNodeEulerToRotation`)
+  - info / inputs / Euler / aliases (added) : nouveau: ['Euler']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Find in String** (`FunctionNodeFindInString`)
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Search / aliases (added) : nouveau: ['Search']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / Count / aliases (added) : nouveau: ['Count']
+  - info / outputs / First Found / aliases (added) : nouveau: ['First Found']
+- **Float to Integer** (`FunctionNodeFloatToInt`)
+  - info / inputs / Float / aliases (added) : nouveau: ['Float']
+  - info / outputs / Integer / aliases (added) : nouveau: ['Integer']
+  - info / params / rounding_mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Format String** (`FunctionNodeFormatString`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Format / aliases (added) : nouveau: ['Format']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Hash Value** (`FunctionNodeHashValue`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'MATRIX': 'MATRIX', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Seed / aliases (added) : nouveau: ['Seed']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / bl_idname (modified) : ancien: 'NodeSocketInt' → nouveau: 'NodeSocketFloat'
+  - info / inputs / Value / socket_type (modified) : ancien: 'INT' → nouveau: 'SOCKET'
+  - info / outputs / Hash / aliases (added) : nouveau: ['Hash']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Boolean** (`FunctionNodeInputBool`)
+  - info / outputs / Boolean / aliases (added) : nouveau: ['Boolean']
+  - info / params / boolean / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Color** (`FunctionNodeInputColor`)
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / value / default (modified) : ancien: None → nouveau: (0.5, 0.5, 0.5, 1.0)
+  - info / params / value / type (modified) : ancien: 'bpy_prop_array' → nouveau: 'Color'
+- **Integer** (`FunctionNodeInputInt`)
+  - info / outputs / Integer / aliases (added) : nouveau: ['Integer']
+  - info / params / integer / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Menu** (`FunctionNodeInputMenu`)
+  - info / outputs / Menu / aliases (added) : nouveau: ['Menu']
+  - info / params / value (added) : nouveau: {'default': '', 'enum': (), 'type': 'ENUM'}
+- **Rotation** (`FunctionNodeInputRotation`)
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Special Characters** (`FunctionNodeInputSpecialCharacters`)
+  - info / outputs / Line Break / aliases (added) : nouveau: ['Line Break']
+  - info / outputs / Tab / aliases (added) : nouveau: ['Tab']
+- **String** (`FunctionNodeInputString`)
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+  - info / params / string / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Vector** (`FunctionNodeInputVector`)
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / vector / default (modified) : ancien: None → nouveau: (0.0, 0.0, 0.0)
+  - info / params / vector / type (modified) : ancien: 'bpy_prop_array' → nouveau: 'Vector'
+  - info / params / vector_dimensions / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Integer Math** (`FunctionNodeIntegerMath`)
+  - info / inputs / Addend (added) : nouveau: {'aliases': ['Addend'], 'bl_idname': 'NodeSocketInt', 'label': 'Addend', 'name': 'Value', 'socket_type': 'INT'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value', 'Multiplier', 'Exponent']
+  - info / inputs / Value_001 (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Value', 'name': 'Value', 'socket_type': 'INT'}
+  - info / inputs / Value_002 (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Value', 'name': 'Value', 'socket_type': 'INT'}
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Invert Matrix** (`FunctionNodeInvertMatrix`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / outputs / Invertible / aliases (added) : nouveau: ['Invertible']
+  - info / outputs / Matrix / aliases (added) : nouveau: ['Matrix']
+- **Invert Rotation** (`FunctionNodeInvertRotation`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Match String** (`FunctionNodeMatchString`)
+  - info / inputs / Key / aliases (added) : nouveau: ['Key']
+  - info / inputs / Operation / aliases (added) : nouveau: ['Operation']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+- **Matrix Determinant** (`FunctionNodeMatrixDeterminant`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / outputs / Determinant / aliases (added) : nouveau: ['Determinant']
+- **Multiply Matrices** (`FunctionNodeMatrixMultiply`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / inputs / Matrix_001 (removed) : ancien: {'bl_idname': 'NodeSocketMatrix', 'label': 'Matrix', 'name': 'Matrix', 'socket_type': 'MATRIX'}
+  - info / outputs / Matrix / aliases (added) : nouveau: ['Matrix']
+- **Matrix SVD** (`FunctionNodeMatrixSVD`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / outputs / S / aliases (added) : nouveau: ['S']
+  - info / outputs / U / aliases (added) : nouveau: ['U']
+  - info / outputs / V / aliases (added) : nouveau: ['V']
+- **Project Point** (`FunctionNodeProjectPoint`)
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Quaternion to Rotation** (`FunctionNodeQuaternionToRotation`)
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / inputs / X / aliases (added) : nouveau: ['X']
+  - info / inputs / Y / aliases (added) : nouveau: ['Y']
+  - info / inputs / Z / aliases (added) : nouveau: ['Z']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Random Value** (`FunctionNodeRandomValue`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / ID / aliases (added) : nouveau: ['ID']
+  - info / inputs / Max / aliases (added) : nouveau: ['Max']
+  - info / inputs / Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Min / aliases (added) : nouveau: ['Min']
+  - info / inputs / Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Probability (added) : nouveau: {'aliases': ['Probability'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Probability', 'name': 'Probability', 'socket_type': 'VALUE'}
+  - info / inputs / Seed / aliases (added) : nouveau: ['Seed']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Replace String** (`FunctionNodeReplaceString`)
+  - info / inputs / Find / aliases (added) : nouveau: ['Find']
+  - info / inputs / Replace / aliases (added) : nouveau: ['Replace']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Reverse String** (`FunctionNodeReverseString`)
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Rotate Rotation** (`FunctionNodeRotateRotation`)
+  - info / inputs / Rotate By / aliases (added) : nouveau: ['Rotate By']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / params / rotation_space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Rotate Vector** (`FunctionNodeRotateVector`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Rotation to Axis Angle** (`FunctionNodeRotationToAxisAngle`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Angle / aliases (added) : nouveau: ['Angle']
+  - info / outputs / Axis / aliases (added) : nouveau: ['Axis']
+- **Rotation to Euler** (`FunctionNodeRotationToEuler`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Euler / aliases (added) : nouveau: ['Euler']
+- **Rotation to Quaternion** (`FunctionNodeRotationToQuaternion`)
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / X / aliases (added) : nouveau: ['X']
+  - info / outputs / Y / aliases (added) : nouveau: ['Y']
+  - info / outputs / Z / aliases (added) : nouveau: ['Z']
+- **Separate Color** (`FunctionNodeSeparateColor`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Blue / aliases (added) : nouveau: ['Blue', 'Value', 'Lightness']
+  - info / outputs / Green / aliases (added) : nouveau: ['Green', 'Saturation']
+  - info / outputs / Red / aliases (added) : nouveau: ['Red', 'Hue']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Separate Matrix** (`FunctionNodeSeparateMatrix`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / outputs / Column 1 Row 1 / aliases (added) : nouveau: ['Column 1 Row 1']
+  - info / outputs / Column 1 Row 2 / aliases (added) : nouveau: ['Column 1 Row 2']
+  - info / outputs / Column 1 Row 3 / aliases (added) : nouveau: ['Column 1 Row 3']
+  - info / outputs / Column 1 Row 4 / aliases (added) : nouveau: ['Column 1 Row 4']
+  - info / outputs / Column 2 Row 1 / aliases (added) : nouveau: ['Column 2 Row 1']
+  - info / outputs / Column 2 Row 2 / aliases (added) : nouveau: ['Column 2 Row 2']
+  - info / outputs / Column 2 Row 3 / aliases (added) : nouveau: ['Column 2 Row 3']
+  - info / outputs / Column 2 Row 4 / aliases (added) : nouveau: ['Column 2 Row 4']
+  - info / outputs / Column 3 Row 1 / aliases (added) : nouveau: ['Column 3 Row 1']
+  - info / outputs / Column 3 Row 2 / aliases (added) : nouveau: ['Column 3 Row 2']
+  - info / outputs / Column 3 Row 3 / aliases (added) : nouveau: ['Column 3 Row 3']
+  - info / outputs / Column 3 Row 4 / aliases (added) : nouveau: ['Column 3 Row 4']
+  - info / outputs / Column 4 Row 1 / aliases (added) : nouveau: ['Column 4 Row 1']
+  - info / outputs / Column 4 Row 2 / aliases (added) : nouveau: ['Column 4 Row 2']
+  - info / outputs / Column 4 Row 3 / aliases (added) : nouveau: ['Column 4 Row 3']
+  - info / outputs / Column 4 Row 4 / aliases (added) : nouveau: ['Column 4 Row 4']
+- **Separate Transform** (`FunctionNodeSeparateTransform`)
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / outputs / Translation / aliases (added) : nouveau: ['Translation']
+- **Set String Case** (`FunctionNodeSetStringCase`)
+  - info / inputs / Case / aliases (added) : nouveau: ['Case']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Slice String** (`FunctionNodeSliceString`)
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Split String** (`FunctionNodeSplitString`)
+  - info / inputs / Separator / aliases (added) : nouveau: ['Separator']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / List / aliases (added) : nouveau: ['List']
+- **String Length** (`FunctionNodeStringLength`)
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+- **String to Value** (`FunctionNodeStringToValue`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT'}
+  - info / inputs / Base / aliases (added) : nouveau: ['Base']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Transform Direction** (`FunctionNodeTransformDirection`)
+  - info / inputs / Direction / aliases (added) : nouveau: ['Direction']
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / outputs / Direction / aliases (added) : nouveau: ['Direction']
+- **Transform Point** (`FunctionNodeTransformPoint`)
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Transpose Matrix** (`FunctionNodeTransposeMatrix`)
+  - info / inputs / Matrix / aliases (added) : nouveau: ['Matrix']
+  - info / outputs / Matrix / aliases (added) : nouveau: ['Matrix']
+- **Trim String** (`FunctionNodeTrimString`)
+  - info / inputs / Characters / aliases (added) : nouveau: ['Characters']
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / inputs / Whitespace / aliases (added) : nouveau: ['Whitespace']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Value to String** (`FunctionNodeValueToString`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT'}
+  - info / inputs / Base / aliases (added) : nouveau: ['Base']
+  - info / inputs / Decimals / aliases (added) : nouveau: ['Decimals']
+  - info / inputs / Padding / aliases (added) : nouveau: ['Padding']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Accumulate Field** (`GeometryNodeAccumulateField`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'MATRIX': 'TRANSFORM', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Group ID (added) : nouveau: {'aliases': ['Group ID'], 'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Group Index (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Leading / aliases (added) : nouveau: ['Leading']
+  - info / outputs / Leading / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+  - info / outputs / Total / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Trailing / aliases (added) : nouveau: ['Trailing']
+  - info / outputs / Trailing / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Domain Size** (`GeometryNodeAttributeDomainSize`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Edge Count / aliases (added) : nouveau: ['Edge Count']
+  - info / outputs / Face Corner Count / aliases (added) : nouveau: ['Face Corner Count']
+  - info / outputs / Face Count / aliases (added) : nouveau: ['Face Count']
+  - info / outputs / Instance Count / aliases (added) : nouveau: ['Instance Count']
+  - info / outputs / Layer Count / aliases (added) : nouveau: ['Layer Count']
+  - info / outputs / Point Count / aliases (added) : nouveau: ['Point Count']
+  - info / outputs / Spline Count / aliases (added) : nouveau: ['Spline Count']
+  - info / params / component / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Attribute Statistic** (`GeometryNodeAttributeStatistic`)
+  - info / data_type (removed) : ancien: {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Attribute / aliases (added) : nouveau: ['Attribute']
+  - info / inputs / Attribute / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Max / aliases (added) : nouveau: ['Max']
+  - info / outputs / Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Mean / aliases (added) : nouveau: ['Mean']
+  - info / outputs / Mean / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Median / aliases (added) : nouveau: ['Median']
+  - info / outputs / Median / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Min / aliases (added) : nouveau: ['Min']
+  - info / outputs / Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Range / aliases (added) : nouveau: ['Range']
+  - info / outputs / Range / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Standard Deviation / aliases (added) : nouveau: ['Standard Deviation']
+  - info / outputs / Standard Deviation / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Sum / aliases (added) : nouveau: ['Sum']
+  - info / outputs / Sum / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Variance / aliases (added) : nouveau: ['Variance']
+  - info / outputs / Variance / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Bake** (`GeometryNodeBake`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Blur Attribute** (`GeometryNodeBlurAttribute`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'RGBA': 'FLOAT_COLOR', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Weight / aliases (added) : nouveau: ['Weight']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Bone Info** (`GeometryNodeBoneInfo`)
+  - info / inputs / Armature / aliases (added) : nouveau: ['Armature']
+  - info / inputs / Bone Name / aliases (added) : nouveau: ['Bone Name']
+  - info / outputs / Envelope Distance (added) : nouveau: {'aliases': ['Envelope Distance'], 'bl_idname': 'NodeSocketFloat', 'label': 'Envelope Distance', 'name': 'Envelope Distance', 'socket_type': 'VALUE'}
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / outputs / Local Pose / aliases (added) : nouveau: ['Local Pose']
+  - info / outputs / Pose / aliases (added) : nouveau: ['Pose']
+  - info / outputs / Radius Head (added) : nouveau: {'aliases': ['Radius Head'], 'bl_idname': 'NodeSocketFloat', 'label': 'Radius Head', 'name': 'Radius Head', 'socket_type': 'VALUE'}
+  - info / outputs / Radius Tail (added) : nouveau: {'aliases': ['Radius Tail'], 'bl_idname': 'NodeSocketFloat', 'label': 'Radius Tail', 'name': 'Radius Tail', 'socket_type': 'VALUE'}
+  - info / outputs / Rest Length / aliases (added) : nouveau: ['Rest Length']
+  - info / outputs / Rest Pose / aliases (added) : nouveau: ['Rest Pose']
+  - info / outputs / Transform Pose / aliases (added) : nouveau: ['Transform Pose']
+  - info / params / transform_space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Bounding Box** (`GeometryNodeBoundBox`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Use Radius / aliases (added) : nouveau: ['Use Radius']
+  - info / outputs / Bounding Box / aliases (added) : nouveau: ['Bounding Box']
+  - info / outputs / Max / aliases (added) : nouveau: ['Max']
+  - info / outputs / Min / aliases (added) : nouveau: ['Min']
+- **Camera Info** (`GeometryNodeCameraInfo`)
+  - info / inputs / Camera / aliases (added) : nouveau: ['Camera']
+  - info / outputs / Clip End / aliases (added) : nouveau: ['Clip End']
+  - info / outputs / Clip Start / aliases (added) : nouveau: ['Clip Start']
+  - info / outputs / Focal Length / aliases (added) : nouveau: ['Focal Length']
+  - info / outputs / Focus Distance / aliases (added) : nouveau: ['Focus Distance']
+  - info / outputs / Is Orthographic / aliases (added) : nouveau: ['Is Orthographic']
+  - info / outputs / Orthographic Scale / aliases (added) : nouveau: ['Orthographic Scale']
+  - info / outputs / Projection Matrix / aliases (added) : nouveau: ['Projection Matrix']
+  - info / outputs / Sensor / aliases (added) : nouveau: ['Sensor']
+  - info / outputs / Shift / aliases (added) : nouveau: ['Shift']
+- **Capture Attribute** (`GeometryNodeCaptureAttribute`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Closure to List** (`GeometryNodeClosureToList`)
+  - info / inputs / Closure / aliases (added) : nouveau: ['Closure']
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Cluster by Connected** (`GeometryNodeClusterByConnected`)
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Cluster ID / aliases (added) : nouveau: ['Cluster ID']
+- **Cluster by Distance** (`GeometryNodeClusterByDistance`)
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Cluster ID / aliases (added) : nouveau: ['Cluster ID']
+- **Collection Children** (`GeometryNodeCollectionChildren`)
+  - info / inputs / Collection / aliases (added) : nouveau: ['Collection']
+  - info / inputs / Recursive / aliases (added) : nouveau: ['Recursive']
+  - info / outputs / Collections / aliases (added) : nouveau: ['Collections']
+  - info / outputs / Objects / aliases (added) : nouveau: ['Objects']
+- **Collection Info** (`GeometryNodeCollectionInfo`)
+  - info / inputs / Collection / aliases (added) : nouveau: ['Collection']
+  - info / inputs / Reset Children / aliases (added) : nouveau: ['Reset Children']
+  - info / inputs / Separate Children / aliases (added) : nouveau: ['Separate Children']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / params / transform_space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Convex Hull** (`GeometryNodeConvexHull`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Convex Hull / aliases (added) : nouveau: ['Convex Hull']
+- **Corners of Edge** (`GeometryNodeCornersOfEdge`)
+  - info / inputs / Edge Index / aliases (added) : nouveau: ['Edge Index']
+  - info / inputs / Sort Index / aliases (added) : nouveau: ['Sort Index']
+  - info / inputs / Weights / aliases (added) : nouveau: ['Weights']
+  - info / outputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+- **Corners of Face** (`GeometryNodeCornersOfFace`)
+  - info / inputs / Face Index / aliases (added) : nouveau: ['Face Index']
+  - info / inputs / Sort Index / aliases (added) : nouveau: ['Sort Index']
+  - info / inputs / Weights / aliases (added) : nouveau: ['Weights']
+  - info / outputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+- **Corners of Vertex** (`GeometryNodeCornersOfVertex`)
+  - info / inputs / Sort Index / aliases (added) : nouveau: ['Sort Index']
+  - info / inputs / Vertex Index / aliases (added) : nouveau: ['Vertex Index']
+  - info / inputs / Weights / aliases (added) : nouveau: ['Weights']
+  - info / outputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+- **Cube Grid Topology** (`GeometryNodeCubeGridTopology`)
+  - info / inputs / Bounds Max / aliases (added) : nouveau: ['Bounds Max']
+  - info / inputs / Bounds Min / aliases (added) : nouveau: ['Bounds Min']
+  - info / inputs / Min X / aliases (added) : nouveau: ['Min X']
+  - info / inputs / Min Y / aliases (added) : nouveau: ['Min Y']
+  - info / inputs / Min Z / aliases (added) : nouveau: ['Min Z']
+  - info / inputs / Resolution X / aliases (added) : nouveau: ['Resolution X']
+  - info / inputs / Resolution Y / aliases (added) : nouveau: ['Resolution Y']
+  - info / inputs / Resolution Z / aliases (added) : nouveau: ['Resolution Z']
+  - info / outputs / Topology / aliases (added) : nouveau: ['Topology']
+- **Arc** (`GeometryNodeCurveArc`)
+  - info / inputs / Connect Center / aliases (added) : nouveau: ['Connect Center']
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / Invert Arc / aliases (added) : nouveau: ['Invert Arc']
+  - info / inputs / Middle / aliases (added) : nouveau: ['Middle']
+  - info / inputs / Offset Angle / aliases (added) : nouveau: ['Offset Angle']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / inputs / Start Angle / aliases (added) : nouveau: ['Start Angle']
+  - info / inputs / Sweep Angle / aliases (added) : nouveau: ['Sweep Angle']
+  - info / outputs / Center / aliases (added) : nouveau: ['Center']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Endpoint Selection** (`GeometryNodeCurveEndpointSelection`)
+  - info / inputs / End Size / aliases (added) : nouveau: ['End Size']
+  - info / inputs / Start Size / aliases (added) : nouveau: ['Start Size']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+- **Handle Type Selection** (`GeometryNodeCurveHandleTypeSelection`)
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / params / handle_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / default (modified) : ancien: None → nouveau: {'LEFT', 'RIGHT'}
+  - info / params / mode / enum (modified) : ancien: None → nouveau: ('LEFT', 'RIGHT')
+  - info / params / mode / type (modified) : ancien: 'set' → nouveau: 'ENUM_FLAG'
+- **Curve Length** (`GeometryNodeCurveLength`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+- **Curve of Point** (`GeometryNodeCurveOfPoint`)
+  - info / inputs / Point Index / aliases (added) : nouveau: ['Point Index']
+  - info / outputs / Curve Index / aliases (added) : nouveau: ['Curve Index']
+  - info / outputs / Index in Curve / aliases (added) : nouveau: ['Index in Curve']
+- **Bézier Segment** (`GeometryNodeCurvePrimitiveBezierSegment`)
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / End Handle / aliases (added) : nouveau: ['End Handle']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / inputs / Start Handle / aliases (added) : nouveau: ['Start Handle']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Curve Circle** (`GeometryNodeCurvePrimitiveCircle`)
+  - info / inputs / Point 1 / aliases (added) : nouveau: ['Point 1']
+  - info / inputs / Point 2 / aliases (added) : nouveau: ['Point 2']
+  - info / inputs / Point 3 / aliases (added) : nouveau: ['Point 3']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / outputs / Center / aliases (added) : nouveau: ['Center']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Curve Line** (`GeometryNodeCurvePrimitiveLine`)
+  - info / inputs / Direction / aliases (added) : nouveau: ['Direction']
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Quadrilateral** (`GeometryNodeCurvePrimitiveQuadrilateral`)
+  - info / inputs / Bottom Height / aliases (added) : nouveau: ['Bottom Height']
+  - info / inputs / Bottom Width / aliases (added) : nouveau: ['Bottom Width']
+  - info / inputs / Height / aliases (added) : nouveau: ['Height']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Point 1 / aliases (added) : nouveau: ['Point 1']
+  - info / inputs / Point 2 / aliases (added) : nouveau: ['Point 2']
+  - info / inputs / Point 3 / aliases (added) : nouveau: ['Point 3']
+  - info / inputs / Point 4 / aliases (added) : nouveau: ['Point 4']
+  - info / inputs / Top Height / aliases (added) : nouveau: ['Top Height']
+  - info / inputs / Top Width / aliases (added) : nouveau: ['Top Width']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Quadratic Bézier** (`GeometryNodeCurveQuadraticBezier`)
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / Middle / aliases (added) : nouveau: ['Middle']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Set Handle Type** (`GeometryNodeCurveSetHandles`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / handle_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / default (modified) : ancien: None → nouveau: {'LEFT', 'RIGHT'}
+  - info / params / mode / enum (modified) : ancien: None → nouveau: ('LEFT', 'RIGHT')
+  - info / params / mode / type (modified) : ancien: 'set' → nouveau: 'ENUM_FLAG'
+- **Spiral** (`GeometryNodeCurveSpiral`)
+  - info / inputs / End Radius / aliases (added) : nouveau: ['End Radius']
+  - info / inputs / Height / aliases (added) : nouveau: ['Height']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Reverse / aliases (added) : nouveau: ['Reverse']
+  - info / inputs / Rotations / aliases (added) : nouveau: ['Rotations']
+  - info / inputs / Start Radius / aliases (added) : nouveau: ['Start Radius']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Set Spline Type** (`GeometryNodeCurveSplineType`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / spline_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Star** (`GeometryNodeCurveStar`)
+  - info / inputs / Inner Radius / aliases (added) : nouveau: ['Inner Radius']
+  - info / inputs / Outer Radius / aliases (added) : nouveau: ['Outer Radius']
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Twist / aliases (added) : nouveau: ['Twist']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / outputs / Outer Points / aliases (added) : nouveau: ['Outer Points']
+- **Curve to Mesh** (`GeometryNodeCurveToMesh`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Fill Caps / aliases (added) : nouveau: ['Fill Caps']
+  - info / inputs / Miter Scale (added) : nouveau: {'aliases': ['Miter Scale'], 'bl_idname': 'NodeSocketBool', 'label': 'Miter Scale', 'name': 'Miter Scale', 'socket_type': 'BOOLEAN'}
+  - info / inputs / Miter Scale Limit (added) : nouveau: {'aliases': ['Miter Scale Limit'], 'bl_idname': 'NodeSocketFloatAngle', 'label': 'Miter Scale Limit', 'name': 'Miter Scale Limit', 'socket_type': 'VALUE'}
+  - info / inputs / Profile Curve / aliases (added) : nouveau: ['Profile Curve']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Curve to Points** (`GeometryNodeCurveToPoints`)
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Curves to Grease Pencil** (`GeometryNodeCurvesToGreasePencil`)
+  - info / inputs / Curves / aliases (added) : nouveau: ['Curves']
+  - info / inputs / Instances as Layers / aliases (added) : nouveau: ['Instances as Layers']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+- **Deform Curves on Surface** (`GeometryNodeDeformCurvesOnSurface`)
+  - info / inputs / Curves / aliases (added) : nouveau: ['Curves']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Delete Geometry** (`GeometryNodeDeleteGeometry`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Distribute Points in Grid** (`GeometryNodeDistributePointsInGrid`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Seed / aliases (added) : nouveau: ['Seed']
+  - info / inputs / Spacing / aliases (added) : nouveau: ['Spacing']
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Distribute Points in Volume** (`GeometryNodeDistributePointsInVolume`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Seed / aliases (added) : nouveau: ['Seed']
+  - info / inputs / Spacing / aliases (added) : nouveau: ['Spacing']
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+- **Distribute Points on Faces** (`GeometryNodeDistributePointsOnFaces`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Density Factor / aliases (added) : nouveau: ['Density Factor']
+  - info / inputs / Density Max / aliases (added) : nouveau: ['Density Max']
+  - info / inputs / Distance Min / aliases (added) : nouveau: ['Distance Min']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Seed / aliases (added) : nouveau: ['Seed']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / params / distribute_method / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Dual Mesh** (`GeometryNodeDualMesh`)
+  - info / inputs / Keep Boundaries / aliases (added) : nouveau: ['Keep Boundaries']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Dual Mesh / aliases (added) : nouveau: ['Dual Mesh']
+- **Duplicate Elements** (`GeometryNodeDuplicateElements`)
+  - info / inputs / Amount / aliases (added) : nouveau: ['Amount']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Duplicate Index / aliases (added) : nouveau: ['Duplicate Index']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Edge Paths to Curves** (`GeometryNodeEdgePathsToCurves`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Next Vertex Index / aliases (added) : nouveau: ['Next Vertex Index']
+  - info / inputs / Start Vertices / aliases (added) : nouveau: ['Start Vertices']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Edge Paths to Selection** (`GeometryNodeEdgePathsToSelection`)
+  - info / inputs / Next Vertex Index / aliases (added) : nouveau: ['Next Vertex Index']
+  - info / inputs / Start Vertices / aliases (added) : nouveau: ['Start Vertices']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+- **Edges of Corner** (`GeometryNodeEdgesOfCorner`)
+  - info / inputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Next Edge Index / aliases (added) : nouveau: ['Next Edge Index']
+  - info / outputs / Previous Edge Index / aliases (added) : nouveau: ['Previous Edge Index']
+- **Edges of Vertex** (`GeometryNodeEdgesOfVertex`)
+  - info / inputs / Sort Index / aliases (added) : nouveau: ['Sort Index']
+  - info / inputs / Vertex Index / aliases (added) : nouveau: ['Vertex Index']
+  - info / inputs / Weights / aliases (added) : nouveau: ['Weights']
+  - info / outputs / Edge Index / aliases (added) : nouveau: ['Edge Index']
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+- **Edges to Face Groups** (`GeometryNodeEdgesToFaceGroups`)
+  - info / inputs / Boundary Edges / aliases (added) : nouveau: ['Boundary Edges']
+  - info / outputs / Face Group ID / aliases (added) : nouveau: ['Face Group ID']
+- **Extrude Mesh** (`GeometryNodeExtrudeMesh`)
+  - info / inputs / Individual / aliases (added) : nouveau: ['Individual']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Offset Scale / aliases (added) : nouveau: ['Offset Scale']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Side / aliases (added) : nouveau: ['Side']
+  - info / outputs / Top / aliases (added) : nouveau: ['Top']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Face of Corner** (`GeometryNodeFaceOfCorner`)
+  - info / inputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Face Index / aliases (added) : nouveau: ['Face Index']
+  - info / outputs / Index in Face / aliases (added) : nouveau: ['Index in Face']
+- **Evaluate at Index** (`GeometryNodeFieldAtIndex`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Index / aliases (added) : nouveau: ['Index']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Field Average** (`GeometryNodeFieldAverage`)
+  - info / data_type (removed) : ancien: {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Group ID (added) : nouveau: {'aliases': ['Group ID'], 'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Group Index (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Mean / aliases (added) : nouveau: ['Mean']
+  - info / outputs / Mean / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Median / aliases (added) : nouveau: ['Median']
+  - info / outputs / Median / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Field Min & Max** (`GeometryNodeFieldMinAndMax`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Group ID (added) : nouveau: {'aliases': ['Group ID'], 'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Group Index (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Max / aliases (added) : nouveau: ['Max']
+  - info / outputs / Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Min / aliases (added) : nouveau: ['Min']
+  - info / outputs / Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Evaluate on Domain** (`GeometryNodeFieldOnDomain`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Field to Grid** (`GeometryNodeFieldToGrid`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Topology / aliases (added) : nouveau: ['Topology']
+  - info / inputs / Topology / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Field to List** (`GeometryNodeFieldToList`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Field Variance** (`GeometryNodeFieldVariance`)
+  - info / data_type (removed) : ancien: {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Group ID (added) : nouveau: {'aliases': ['Group ID'], 'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Group Index (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Group ID', 'name': 'Group ID', 'socket_type': 'INT'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Standard Deviation / aliases (added) : nouveau: ['Standard Deviation']
+  - info / outputs / Standard Deviation / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Variance / aliases (added) : nouveau: ['Variance']
+  - info / outputs / Variance / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Fill Curve** (`GeometryNodeFillCurve`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Fill Rule / aliases (added) : nouveau: ['Fill Rule']
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Fillet Curve** (`GeometryNodeFilletCurve`)
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Limit Radius / aliases (added) : nouveau: ['Limit Radius']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Filter List** (`GeometryNodeFilterList`)
+  - info / inputs / List / aliases (added) : nouveau: ['List']
+  - info / inputs / List / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Inverted / aliases (added) : nouveau: ['Inverted']
+  - info / outputs / Inverted / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Selection / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / socket_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Flip Faces** (`GeometryNodeFlipFaces`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **For Each Geometry Element Input** (`GeometryNodeForeachGeometryElementInput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Element (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Element', 'name': 'Element', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+- **For Each Geometry Element Output** (`GeometryNodeForeachGeometryElementOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Generation_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Generation_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / active_generation_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_input_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_main_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / inspection_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+- **Geometry to Instance** (`GeometryNodeGeometryToInstance`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Get Attribute Names** (`GeometryNodeGetAttributeNames`)
+  - info / inputs / Data Type / aliases (added) : nouveau: ['Data Type']
+  - info / inputs / Domain / aliases (added) : nouveau: ['Domain']
+  - info / inputs / Filter Data Type / aliases (added) : nouveau: ['Filter Data Type']
+  - info / inputs / Filter Domain / aliases (added) : nouveau: ['Filter Domain']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Names / aliases (added) : nouveau: ['Names']
+- **Get Geometry Bundle** (`GeometryNodeGetGeometryBundle`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Remove / aliases (added) : nouveau: ['Remove']
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Get Geometry Component** (`GeometryNodeGetGeometryComponent`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Remove / aliases (added) : nouveau: ['Remove']
+  - info / inputs / Type / aliases (added) : nouveau: ['Type']
+  - info / outputs / Component / aliases (added) : nouveau: ['Component']
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Get Named Grid** (`GeometryNodeGetNamedGrid`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / inputs / Remove / aliases (added) : nouveau: ['Remove']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Dial Gizmo** (`GeometryNodeGizmoDial`)
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Screen Space / aliases (added) : nouveau: ['Screen Space']
+  - info / inputs / Up / aliases (added) : nouveau: ['Up']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / params / color_id / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Linear Gizmo** (`GeometryNodeGizmoLinear`)
+  - info / inputs / Direction / aliases (added) : nouveau: ['Direction']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / params / color_id / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / draw_style / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Transform Gizmo** (`GeometryNodeGizmoTransform`)
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / params / use_rotation_x / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_rotation_y / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_rotation_z / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_scale_x / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_scale_y / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_scale_z / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_translation_x / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_translation_y / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_translation_z / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Grease Pencil to Curves** (`GeometryNodeGreasePencilToCurves`)
+  - info / inputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / inputs / Layers as Instances / aliases (added) : nouveau: ['Layers as Instances']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Advect Grid** (`GeometryNodeGridAdvect`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Integration Scheme / aliases (added) : nouveau: ['Integration Scheme']
+  - info / inputs / Limiter / aliases (added) : nouveau: ['Limiter']
+  - info / inputs / Time Step / aliases (added) : nouveau: ['Time Step']
+  - info / inputs / Velocity / aliases (added) : nouveau: ['Velocity']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Clip Grid** (`GeometryNodeGridClip`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Max X / aliases (added) : nouveau: ['Max X']
+  - info / inputs / Max Y / aliases (added) : nouveau: ['Max Y']
+  - info / inputs / Max Z / aliases (added) : nouveau: ['Max Z']
+  - info / inputs / Min X / aliases (added) : nouveau: ['Min X']
+  - info / inputs / Min Y / aliases (added) : nouveau: ['Min Y']
+  - info / inputs / Min Z / aliases (added) : nouveau: ['Min Z']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Grid Curl** (`GeometryNodeGridCurl`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Curl / aliases (added) : nouveau: ['Curl']
+- **Grid Dilate & Erode** (`GeometryNodeGridDilateAndErode`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Connectivity / aliases (added) : nouveau: ['Connectivity']
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Steps / aliases (added) : nouveau: ['Steps']
+  - info / inputs / Tiles / aliases (added) : nouveau: ['Tiles']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Grid Divergence** (`GeometryNodeGridDivergence`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Divergence / aliases (added) : nouveau: ['Divergence']
+- **Grid Gradient** (`GeometryNodeGridGradient`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Gradient / aliases (added) : nouveau: ['Gradient']
+- **Grid Info** (`GeometryNodeGridInfo`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Background Value / aliases (added) : nouveau: ['Background Value']
+  - info / outputs / Background Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Grid Laplacian** (`GeometryNodeGridLaplacian`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Laplacian / aliases (added) : nouveau: ['Laplacian']
+- **Grid Mean** (`GeometryNodeGridMean`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Grid Median** (`GeometryNodeGridMedian`)
+  - info / data_type (removed) : ancien: {'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Prune Grid** (`GeometryNodeGridPrune`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / inputs / Threshold / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Grid to Mesh** (`GeometryNodeGridToMesh`)
+  - info / inputs / Adaptivity / aliases (added) : nouveau: ['Adaptivity']
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Grid to Points** (`GeometryNodeGridToPoints`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Extent / aliases (added) : nouveau: ['Extent']
+  - info / outputs / Is Tile / aliases (added) : nouveau: ['Is Tile']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / X / aliases (added) : nouveau: ['X']
+  - info / outputs / Y / aliases (added) : nouveau: ['Y']
+  - info / outputs / Z / aliases (added) : nouveau: ['Z']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Voxelize Grid** (`GeometryNodeGridVoxelize`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Group** (`GeometryNodeGroup`)
+  - info / params / node_tree / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Image Info** (`GeometryNodeImageInfo`)
+  - info / inputs / Frame / aliases (added) : nouveau: ['Frame']
+  - info / inputs / Image / aliases (added) : nouveau: ['Image']
+  - info / outputs / FPS / aliases (added) : nouveau: ['FPS']
+  - info / outputs / Frame Count / aliases (added) : nouveau: ['Frame Count']
+  - info / outputs / Has Alpha / aliases (added) : nouveau: ['Has Alpha']
+  - info / outputs / Height / aliases (added) : nouveau: ['Height']
+  - info / outputs / Width / aliases (added) : nouveau: ['Width']
+- **Image Texture** (`GeometryNodeImageTexture`)
+  - info / inputs / Frame / aliases (added) : nouveau: ['Frame']
+  - info / inputs / Image / aliases (added) : nouveau: ['Image']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / extension / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / interpolation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Import CSV** (`GeometryNodeImportCSV`)
+  - info / inputs / Delimiter / aliases (added) : nouveau: ['Delimiter']
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Point Cloud / aliases (added) : nouveau: ['Point Cloud']
+- **Import OBJ** (`GeometryNodeImportOBJ`)
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Import PLY** (`GeometryNodeImportPLY`)
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Geometry (added) : nouveau: {'aliases': ['Geometry'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Mesh (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+- **Import STL** (`GeometryNodeImportSTL`)
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Import Text** (`GeometryNodeImportText`)
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **Import VDB** (`GeometryNodeImportVDB`)
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Index of Nearest** (`GeometryNodeIndexOfNearest`)
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Has Neighbor / aliases (added) : nouveau: ['Has Neighbor']
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+- **Index Switch** (`GeometryNodeIndexSwitch`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'ANONYMOUS', 'socket_type': 'CUSTOM'}
+  - info / inputs / Index / aliases (added) : nouveau: ['Index']
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': '0', 'name': '0', 'socket_type': 'VALUE'}
+  - info / inputs / Item_1 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': '1', 'name': '1', 'socket_type': 'VALUE'}
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / outputs / Output / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Active Camera** (`GeometryNodeInputActiveCamera`)
+  - info / outputs / Active Camera / aliases (added) : nouveau: ['Active Camera']
+- **Collection** (`GeometryNodeInputCollection`)
+  - info / outputs / Collection / aliases (added) : nouveau: ['Collection']
+  - info / params / collection / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Curve Handle Positions** (`GeometryNodeInputCurveHandlePositions`)
+  - info / inputs / Relative / aliases (added) : nouveau: ['Relative']
+  - info / outputs / Left / aliases (added) : nouveau: ['Left']
+  - info / outputs / Right / aliases (added) : nouveau: ['Right']
+- **Curve Tilt** (`GeometryNodeInputCurveTilt`)
+  - info / outputs / Tilt / aliases (added) : nouveau: ['Tilt']
+- **Is Edge Smooth** (`GeometryNodeInputEdgeSmooth`)
+  - info / outputs / Smooth / aliases (added) : nouveau: ['Smooth']
+- **Font** (`GeometryNodeInputFont`)
+  - info / outputs / Font / aliases (added) : nouveau: ['Font']
+  - info / params / font / type (modified) : ancien: 'VectorFont' → nouveau: 'FONT'
+- **ID** (`GeometryNodeInputID`)
+  - info / outputs / ID / aliases (added) : nouveau: ['ID']
+- **Image** (`GeometryNodeInputImage`)
+  - info / outputs / Image / aliases (added) : nouveau: ['Image']
+  - info / params / image / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Index** (`GeometryNodeInputIndex`)
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+- **Instance Bounds** (`GeometryNodeInputInstanceBounds`)
+  - info / inputs / Use Radius / aliases (added) : nouveau: ['Use Radius']
+  - info / outputs / Max / aliases (added) : nouveau: ['Max']
+  - info / outputs / Min / aliases (added) : nouveau: ['Min']
+- **Instance Reference** (`GeometryNodeInputInstanceReference`)
+  - info / outputs / Reference Index / aliases (added) : nouveau: ['Reference Index']
+- **Instance Rotation** (`GeometryNodeInputInstanceRotation`)
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Instance Scale** (`GeometryNodeInputInstanceScale`)
+  - info / outputs / Scale / aliases (added) : nouveau: ['Scale']
+- **Material** (`GeometryNodeInputMaterial`)
+  - info / outputs / Material / aliases (added) : nouveau: ['Material']
+  - info / params / material / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Material Index** (`GeometryNodeInputMaterialIndex`)
+  - info / outputs / Material Index / aliases (added) : nouveau: ['Material Index']
+- **Edge Angle** (`GeometryNodeInputMeshEdgeAngle`)
+  - info / outputs / Signed Angle / aliases (added) : nouveau: ['Signed Angle']
+  - info / outputs / Unsigned Angle / aliases (added) : nouveau: ['Unsigned Angle']
+- **Edge Neighbors** (`GeometryNodeInputMeshEdgeNeighbors`)
+  - info / outputs / Face Count / aliases (added) : nouveau: ['Face Count']
+- **Edge Vertices** (`GeometryNodeInputMeshEdgeVertices`)
+  - info / outputs / Position 1 / aliases (added) : nouveau: ['Position 1']
+  - info / outputs / Position 2 / aliases (added) : nouveau: ['Position 2']
+  - info / outputs / Vertex Index 1 / aliases (added) : nouveau: ['Vertex Index 1']
+  - info / outputs / Vertex Index 2 / aliases (added) : nouveau: ['Vertex Index 2']
+- **Face Area** (`GeometryNodeInputMeshFaceArea`)
+  - info / outputs / Area / aliases (added) : nouveau: ['Area']
+- **Is Face Planar** (`GeometryNodeInputMeshFaceIsPlanar`)
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / outputs / Planar / aliases (added) : nouveau: ['Planar']
+- **Face Neighbors** (`GeometryNodeInputMeshFaceNeighbors`)
+  - info / outputs / Face Count / aliases (added) : nouveau: ['Face Count']
+  - info / outputs / Vertex Count / aliases (added) : nouveau: ['Vertex Count']
+- **Mesh Island** (`GeometryNodeInputMeshIsland`)
+  - info / outputs / Island Count / aliases (added) : nouveau: ['Island Count']
+  - info / outputs / Island Index / aliases (added) : nouveau: ['Island Index']
+- **Vertex Neighbors** (`GeometryNodeInputMeshVertexNeighbors`)
+  - info / outputs / Face Count / aliases (added) : nouveau: ['Face Count']
+  - info / outputs / Vertex Count / aliases (added) : nouveau: ['Vertex Count']
+- **Named Attribute** (`GeometryNodeInputNamedAttribute`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / outputs / Attribute / aliases (added) : nouveau: ['Attribute']
+  - info / outputs / Attribute / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Named Layer Selection** (`GeometryNodeInputNamedLayerSelection`)
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+- **Normal** (`GeometryNodeInputNormal`)
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / True Normal / aliases (added) : nouveau: ['True Normal']
+- **Object** (`GeometryNodeInputObject`)
+  - info / outputs / Object / aliases (added) : nouveau: ['Object']
+  - info / params / object / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Position** (`GeometryNodeInputPosition`)
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+- **Radius** (`GeometryNodeInputRadius`)
+  - info / outputs / Radius / aliases (added) : nouveau: ['Radius']
+- **Scene Time** (`GeometryNodeInputSceneTime`)
+  - info / outputs / Frame / aliases (added) : nouveau: ['Frame']
+  - info / outputs / Seconds / aliases (added) : nouveau: ['Seconds']
+- **Is Face Smooth** (`GeometryNodeInputShadeSmooth`)
+  - info / outputs / Smooth / aliases (added) : nouveau: ['Smooth']
+- **Shortest Edge Paths** (`GeometryNodeInputShortestEdgePaths`)
+  - info / inputs / Edge Cost / aliases (added) : nouveau: ['Edge Cost']
+  - info / inputs / End Vertex / aliases (added) : nouveau: ['End Vertex']
+  - info / outputs / Next Vertex Index / aliases (added) : nouveau: ['Next Vertex Index']
+  - info / outputs / Total Cost / aliases (added) : nouveau: ['Total Cost']
+- **Is Spline Cyclic** (`GeometryNodeInputSplineCyclic`)
+  - info / outputs / Cyclic / aliases (added) : nouveau: ['Cyclic']
+- **Spline Resolution** (`GeometryNodeInputSplineResolution`)
+  - info / outputs / Resolution / aliases (added) : nouveau: ['Resolution']
+- **Curve Tangent** (`GeometryNodeInputTangent`)
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+- **Voxel Index** (`GeometryNodeInputVoxelIndex`)
+  - info / outputs / Extent X / aliases (added) : nouveau: ['Extent X']
+  - info / outputs / Extent Y / aliases (added) : nouveau: ['Extent Y']
+  - info / outputs / Extent Z / aliases (added) : nouveau: ['Extent Z']
+  - info / outputs / Is Tile / aliases (added) : nouveau: ['Is Tile']
+  - info / outputs / X / aliases (added) : nouveau: ['X']
+  - info / outputs / Y / aliases (added) : nouveau: ['Y']
+  - info / outputs / Z / aliases (added) : nouveau: ['Z']
+- **Instance on Points** (`GeometryNodeInstanceOnPoints`)
+  - info / inputs / Instance / aliases (added) : nouveau: ['Instance']
+  - info / inputs / Instance Index / aliases (added) : nouveau: ['Instance Index']
+  - info / inputs / Pick Instance / aliases (added) : nouveau: ['Pick Instance']
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Instance Transform** (`GeometryNodeInstanceTransform`)
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+- **Instances to Points** (`GeometryNodeInstancesToPoints`)
+  - info / inputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+- **Interpolate Curves** (`GeometryNodeInterpolateCurves`)
+  - info / inputs / Guide Curves / aliases (added) : nouveau: ['Guide Curves']
+  - info / inputs / Guide Group ID / aliases (added) : nouveau: ['Guide Group ID']
+  - info / inputs / Guide Up / aliases (added) : nouveau: ['Guide Up']
+  - info / inputs / Max Neighbors / aliases (added) : nouveau: ['Max Neighbors']
+  - info / inputs / Point Group ID / aliases (added) : nouveau: ['Point Group ID']
+  - info / inputs / Point Up / aliases (added) : nouveau: ['Point Up']
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / outputs / Closest Index / aliases (added) : nouveau: ['Closest Index']
+  - info / outputs / Closest Weight / aliases (added) : nouveau: ['Closest Weight']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Is Viewport** (`GeometryNodeIsViewport`)
+  - info / outputs / Is Viewport / aliases (added) : nouveau: ['Is Viewport']
+- **Join Geometry** (`GeometryNodeJoinGeometry`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Get List Item** (`GeometryNodeListGetItem`)
+  - info / inputs / Index / aliases (added) : nouveau: ['Index']
+  - info / inputs / List / aliases (added) : nouveau: ['List']
+  - info / inputs / List / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / socket_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / structure_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **List Length** (`GeometryNodeListLength`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / List / aliases (added) : nouveau: ['List']
+  - info / inputs / List / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Material Selection** (`GeometryNodeMaterialSelection`)
+  - info / inputs / Material / aliases (added) : nouveau: ['Material']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+- **Menu Switch** (`GeometryNodeMenuSwitch`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'A', 'name': 'A', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Item_1 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'B', 'name': 'B', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Menu / aliases (added) : nouveau: ['Menu']
+  - info / menu_sockets / Menu / default (modified) : ancien: 'A' → nouveau: ''
+  - info / menu_sockets / Menu / values (modified) : ancien: ('A', 'B') → nouveau: ()
+  - info / outputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'A', 'name': 'A', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Item_1 (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'B', 'name': 'B', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / outputs / Output / bl_idname (modified) : ancien: 'NodeSocketGeometry' → nouveau: 'NodeSocketFloat'
+  - info / outputs / Output / socket_type (modified) : ancien: 'GEOMETRY' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Merge by Distance** (`GeometryNodeMergeByDistance`)
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Merge Layers** (`GeometryNodeMergeLayers`)
+  - info / inputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Mode (added) : nouveau: {'aliases': ['Mode'], 'bl_idname': 'NodeSocketMenu', 'label': 'Mode', 'name': 'Mode', 'socket_type': 'MENU'}
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / menu_sockets / Mode (added) : nouveau: {'default': 'By Name', 'values': ('By Name', 'By Group ID')}
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Merge Points** (`GeometryNodeMergePoints`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Merge ID / aliases (added) : nouveau: ['Merge ID']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Mesh Bevel** (`GeometryNodeMeshBevel`)
+  - info / inputs / Affect Kind / aliases (added) : nouveau: ['Affect Kind']
+  - info / inputs / End Left Offset / aliases (added) : nouveau: ['End Left Offset']
+  - info / inputs / End Right Offset / aliases (added) : nouveau: ['End Right Offset']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Miter / aliases (added) : nouveau: ['Miter']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Profile / aliases (added) : nouveau: ['Profile']
+  - info / inputs / Segments / aliases (added) : nouveau: ['Segments']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Shape / aliases (added) : nouveau: ['Shape']
+  - info / inputs / Spread / aliases (added) : nouveau: ['Spread']
+  - info / inputs / Start Left Offset / aliases (added) : nouveau: ['Start Left Offset']
+  - info / inputs / Start Right Offset / aliases (added) : nouveau: ['Start Right Offset']
+  - info / outputs / Edge Face / aliases (added) : nouveau: ['Edge Face']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Mid Edge / aliases (added) : nouveau: ['Mid Edge']
+  - info / outputs / Outer Edge / aliases (added) : nouveau: ['Outer Edge']
+  - info / outputs / Vertex Face / aliases (added) : nouveau: ['Vertex Face']
+- **Mesh Boolean** (`GeometryNodeMeshBoolean`)
+  - info / inputs / Hole Tolerant / aliases (added) : nouveau: ['Hole Tolerant']
+  - info / inputs / Mesh (added) : nouveau: {'aliases': ['Mesh', 'Mesh 2'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Mesh 1 / aliases (added) : nouveau: ['Mesh 1']
+  - info / inputs / Mesh 2 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh 2', 'name': 'Mesh 2', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Self Intersection / aliases (added) : nouveau: ['Self Intersection']
+  - info / outputs / Intersecting Edges / aliases (added) : nouveau: ['Intersecting Edges']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / solver / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mesh Circle** (`GeometryNodeMeshCircle`)
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Vertices / aliases (added) : nouveau: ['Vertices']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / params / fill_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Cone** (`GeometryNodeMeshCone`)
+  - info / inputs / Depth / aliases (added) : nouveau: ['Depth']
+  - info / inputs / Fill Segments / aliases (added) : nouveau: ['Fill Segments']
+  - info / inputs / Radius Bottom / aliases (added) : nouveau: ['Radius Bottom']
+  - info / inputs / Radius Top / aliases (added) : nouveau: ['Radius Top']
+  - info / inputs / Side Segments / aliases (added) : nouveau: ['Side Segments']
+  - info / inputs / Vertices / aliases (added) : nouveau: ['Vertices']
+  - info / outputs / Bottom / aliases (added) : nouveau: ['Bottom']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Side / aliases (added) : nouveau: ['Side']
+  - info / outputs / Top / aliases (added) : nouveau: ['Top']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+  - info / params / fill_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Cube** (`GeometryNodeMeshCube`)
+  - info / inputs / Size / aliases (added) : nouveau: ['Size']
+  - info / inputs / Vertices X / aliases (added) : nouveau: ['Vertices X']
+  - info / inputs / Vertices Y / aliases (added) : nouveau: ['Vertices Y']
+  - info / inputs / Vertices Z / aliases (added) : nouveau: ['Vertices Z']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+- **Cylinder** (`GeometryNodeMeshCylinder`)
+  - info / inputs / Depth / aliases (added) : nouveau: ['Depth']
+  - info / inputs / Fill Segments / aliases (added) : nouveau: ['Fill Segments']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Side Segments / aliases (added) : nouveau: ['Side Segments']
+  - info / inputs / Vertices / aliases (added) : nouveau: ['Vertices']
+  - info / outputs / Bottom / aliases (added) : nouveau: ['Bottom']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Side / aliases (added) : nouveau: ['Side']
+  - info / outputs / Top / aliases (added) : nouveau: ['Top']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+  - info / params / fill_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Face Group Boundaries** (`GeometryNodeMeshFaceSetBoundaries`)
+  - info / inputs / Face Group ID (added) : nouveau: {'aliases': ['Face Group ID'], 'bl_idname': 'NodeSocketInt', 'label': 'Face Group ID', 'name': 'Face Group ID', 'socket_type': 'INT'}
+  - info / inputs / Face Set (removed) : ancien: {'bl_idname': 'NodeSocketInt', 'label': 'Face Group ID', 'name': 'Face Group ID', 'socket_type': 'INT'}
+  - info / outputs / Boundary Edges / aliases (added) : nouveau: ['Boundary Edges']
+- **Grid** (`GeometryNodeMeshGrid`)
+  - info / inputs / Size X / aliases (added) : nouveau: ['Size X']
+  - info / inputs / Size Y / aliases (added) : nouveau: ['Size Y']
+  - info / inputs / Vertices X / aliases (added) : nouveau: ['Vertices X']
+  - info / inputs / Vertices Y / aliases (added) : nouveau: ['Vertices Y']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+- **Ico Sphere** (`GeometryNodeMeshIcoSphere`)
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Subdivisions / aliases (added) : nouveau: ['Subdivisions']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+- **Mesh Line** (`GeometryNodeMeshLine`)
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset', 'End Location']
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Start Location / aliases (added) : nouveau: ['Start Location']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / params / count_mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mesh to Curve** (`GeometryNodeMeshToCurve`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mesh to Density Grid** (`GeometryNodeMeshToDensityGrid`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Gradient Width / aliases (added) : nouveau: ['Gradient Width']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / Density Grid / aliases (added) : nouveau: ['Density Grid']
+- **Mesh to Points** (`GeometryNodeMeshToPoints`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mesh to SDF Grid** (`GeometryNodeMeshToSDFGrid`)
+  - info / inputs / Band Width / aliases (added) : nouveau: ['Band Width']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / SDF Grid / aliases (added) : nouveau: ['SDF Grid']
+- **Mesh to Volume** (`GeometryNodeMeshToVolume`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Interior Band Width / aliases (added) : nouveau: ['Interior Band Width']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Resolution Mode / aliases (added) : nouveau: ['Resolution Mode']
+  - info / inputs / Voxel Amount / aliases (added) : nouveau: ['Voxel Amount']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **UV Sphere** (`GeometryNodeMeshUVSphere`)
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Rings / aliases (added) : nouveau: ['Rings']
+  - info / inputs / Segments / aliases (added) : nouveau: ['Segments']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / UV Map / aliases (added) : nouveau: ['UV Map']
+- **Object Info** (`GeometryNodeObjectInfo`)
+  - info / inputs / As Instance / aliases (added) : nouveau: ['As Instance']
+  - info / inputs / Object / aliases (added) : nouveau: ['Object']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Location / aliases (added) : nouveau: ['Location']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / outputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / outputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / params / transform_space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Offset Corner in Face** (`GeometryNodeOffsetCornerInFace`)
+  - info / inputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / outputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+- **Offset Point in Curve** (`GeometryNodeOffsetPointInCurve`)
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Point Index / aliases (added) : nouveau: ['Point Index']
+  - info / outputs / Is Valid Offset / aliases (added) : nouveau: ['Is Valid Offset']
+  - info / outputs / Point Index / aliases (added) : nouveau: ['Point Index']
+- **Points** (`GeometryNodePoints`)
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Points', 'name': 'Points', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Points (added) : nouveau: {'aliases': ['Points'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Points', 'name': 'Points', 'socket_type': 'GEOMETRY'}
+- **Points of Curve** (`GeometryNodePointsOfCurve`)
+  - info / inputs / Curve Index / aliases (added) : nouveau: ['Curve Index']
+  - info / inputs / Sort Index / aliases (added) : nouveau: ['Sort Index']
+  - info / inputs / Weights / aliases (added) : nouveau: ['Weights']
+  - info / outputs / Point Index / aliases (added) : nouveau: ['Point Index']
+  - info / outputs / Total / aliases (added) : nouveau: ['Total']
+- **Points to Curves** (`GeometryNodePointsToCurves`)
+  - info / inputs / Curve Group ID / aliases (added) : nouveau: ['Curve Group ID']
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Weight / aliases (added) : nouveau: ['Weight']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Points to SDF Grid** (`GeometryNodePointsToSDFGrid`)
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / SDF Grid / aliases (added) : nouveau: ['SDF Grid']
+- **Points to Vertices** (`GeometryNodePointsToVertices`)
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Points to Volume** (`GeometryNodePointsToVolume`)
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Resolution Mode / aliases (added) : nouveau: ['Resolution Mode']
+  - info / inputs / Voxel Amount / aliases (added) : nouveau: ['Voxel Amount']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Geometry Proximity** (`GeometryNodeProximity`)
+  - info / inputs / Geometry (added) : nouveau: {'aliases': ['Geometry'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Sample Group ID / aliases (added) : nouveau: ['Sample Group ID']
+  - info / inputs / Sample Position (added) : nouveau: {'aliases': ['Sample Position'], 'bl_idname': 'NodeSocketVector', 'label': 'Sample Position', 'name': 'Sample Position', 'socket_type': 'VECTOR'}
+  - info / inputs / Source Position (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Sample Position', 'name': 'Sample Position', 'socket_type': 'VECTOR'}
+  - info / inputs / Target (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / outputs / Is Valid / aliases (added) : nouveau: ['Is Valid']
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / params / target_element / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Raycast** (`GeometryNodeRaycast`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Attribute / aliases (added) : nouveau: ['Attribute']
+  - info / inputs / Attribute / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Interpolation / aliases (added) : nouveau: ['Interpolation']
+  - info / inputs / Ray Direction / aliases (added) : nouveau: ['Ray Direction']
+  - info / inputs / Ray Length / aliases (added) : nouveau: ['Ray Length']
+  - info / inputs / Source Position / aliases (added) : nouveau: ['Source Position']
+  - info / inputs / Target Geometry / aliases (added) : nouveau: ['Target Geometry']
+  - info / outputs / Attribute / aliases (added) : nouveau: ['Attribute']
+  - info / outputs / Attribute / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Hit Distance / aliases (added) : nouveau: ['Hit Distance']
+  - info / outputs / Hit Normal / aliases (added) : nouveau: ['Hit Normal']
+  - info / outputs / Hit Position / aliases (added) : nouveau: ['Hit Position']
+  - info / outputs / Is Hit / aliases (added) : nouveau: ['Is Hit']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Realize Instances** (`GeometryNodeRealizeInstances`)
+  - info / inputs / Depth / aliases (added) : nouveau: ['Depth']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Preserve Normals (added) : nouveau: {'aliases': ['Preserve Normals'], 'bl_idname': 'NodeSocketBool', 'label': 'Preserve Normals', 'name': 'Preserve Normals', 'socket_type': 'BOOLEAN'}
+  - info / inputs / Realize All / aliases (added) : nouveau: ['Realize All']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / realize_to_point_domain / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Remove Named Attribute** (`GeometryNodeRemoveAttribute`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / inputs / Pattern Mode / aliases (added) : nouveau: ['Pattern Mode']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Rename Attribute** (`GeometryNodeRenameAttribute`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / New / aliases (added) : nouveau: ['New']
+  - info / inputs / Old / aliases (added) : nouveau: ['Old']
+  - info / inputs / Overwrite / aliases (added) : nouveau: ['Overwrite']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Repeat Input** (`GeometryNodeRepeatInput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Iteration / aliases (added) : nouveau: ['Iteration']
+- **Repeat Output** (`GeometryNodeRepeatOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / params / inspection_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+- **Replace Material** (`GeometryNodeReplaceMaterial`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / New / aliases (added) : nouveau: ['New']
+  - info / inputs / Old / aliases (added) : nouveau: ['Old']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Resample Curve** (`GeometryNodeResampleCurve`)
+  - info / inputs / Count / aliases (added) : nouveau: ['Count']
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / keep_last_segment / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Reverse Curve** (`GeometryNodeReverseCurve`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Rotate Instances** (`GeometryNodeRotateInstances`)
+  - info / inputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / inputs / Local Space / aliases (added) : nouveau: ['Local Space']
+  - info / inputs / Pivot Point / aliases (added) : nouveau: ['Pivot Point']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **SDF Grid Boolean** (`GeometryNodeSDFGridBoolean`)
+  - info / inputs / Grid (added) : nouveau: {'aliases': ['Grid', 'Grid 2'], 'bl_idname': 'NodeSocketFloat', 'label': 'Grid', 'name': 'Grid', 'socket_type': 'VALUE'}
+  - info / inputs / Grid 1 / aliases (added) : nouveau: ['Grid 1']
+  - info / inputs / Grid 2 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Grid 2', 'name': 'Grid 2', 'socket_type': 'VALUE'}
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **SDF Grid Fillet** (`GeometryNodeSDFGridFillet`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **SDF Grid Laplacian** (`GeometryNodeSDFGridLaplacian`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **SDF Grid Mean** (`GeometryNodeSDFGridMean`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **SDF Grid Mean Curvature** (`GeometryNodeSDFGridMeanCurvature`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **SDF Grid Median** (`GeometryNodeSDFGridMedian`)
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **SDF Grid Offset** (`GeometryNodeSDFGridOffset`)
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+- **Sample Curve** (`GeometryNodeSampleCurve`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Curve Index / aliases (added) : nouveau: ['Curve Index']
+  - info / inputs / Curves / aliases (added) : nouveau: ['Curves']
+  - info / inputs / Factor / aliases (added) : nouveau: ['Factor']
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / use_all_curves / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Sample Grid** (`GeometryNodeSampleGrid`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Interpolation / aliases (added) : nouveau: ['Interpolation']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / menu_sockets / Interpolation / values (modified) : ancien: ('Nearest Neighbor', 'Trilinear', 'Triquadratic') → nouveau: ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sample Grid Index** (`GeometryNodeSampleGridIndex`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / X / aliases (added) : nouveau: ['X']
+  - info / inputs / Y / aliases (added) : nouveau: ['Y']
+  - info / inputs / Z / aliases (added) : nouveau: ['Z']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sample Index** (`GeometryNodeSampleIndex`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Index / aliases (added) : nouveau: ['Index']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sample Nearest** (`GeometryNodeSampleNearest`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Sample Position / aliases (added) : nouveau: ['Sample Position']
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sample Nearest Surface** (`GeometryNodeSampleNearestSurface`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Sample Group ID / aliases (added) : nouveau: ['Sample Group ID']
+  - info / inputs / Sample Position / aliases (added) : nouveau: ['Sample Position']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Is Valid / aliases (added) : nouveau: ['Is Valid']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sample Sound Frequencies** (`GeometryNodeSampleSoundFrequencies`)
+  - info / inputs / All Channels / aliases (added) : nouveau: ['All Channels']
+  - info / inputs / Channel / aliases (added) : nouveau: ['Channel']
+  - info / inputs / FFT Size / aliases (added) : nouveau: ['FFT Size']
+  - info / inputs / High / aliases (added) : nouveau: ['High']
+  - info / inputs / Low / aliases (added) : nouveau: ['Low']
+  - info / inputs / Sound / aliases (added) : nouveau: ['Sound']
+  - info / inputs / Time / aliases (added) : nouveau: ['Time']
+  - info / inputs / Window Function / aliases (added) : nouveau: ['Window Function']
+  - info / outputs / Amplitude / aliases (added) : nouveau: ['Amplitude']
+- **Sample UV Surface** (`GeometryNodeSampleUVSurface`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Sample UV / aliases (added) : nouveau: ['Sample UV']
+  - info / inputs / Source UV Map (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'UV Map', 'name': 'UV Map', 'socket_type': 'VECTOR'}
+  - info / inputs / UV Map (added) : nouveau: {'aliases': ['UV Map'], 'bl_idname': 'NodeSocketVector', 'label': 'UV Map', 'name': 'UV Map', 'socket_type': 'VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Is Valid / aliases (added) : nouveau: ['Is Valid']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Scale Elements** (`GeometryNodeScaleElements`)
+  - info / inputs / Axis / aliases (added) : nouveau: ['Axis']
+  - info / inputs / Center / aliases (added) : nouveau: ['Center']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Scale Mode / aliases (added) : nouveau: ['Scale Mode']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Scale Instances** (`GeometryNodeScaleInstances`)
+  - info / inputs / Center / aliases (added) : nouveau: ['Center']
+  - info / inputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / inputs / Local Space / aliases (added) : nouveau: ['Local Space']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Self Object** (`GeometryNodeSelfObject`)
+  - info / outputs / Self Object / aliases (added) : nouveau: ['Self Object']
+- **Separate Components** (`GeometryNodeSeparateComponents`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Point Cloud / aliases (added) : nouveau: ['Point Cloud']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Separate Geometry** (`GeometryNodeSeparateGeometry`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Inverted / aliases (added) : nouveau: ['Inverted']
+  - info / outputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Handle Positions** (`GeometryNodeSetCurveHandlePositions`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Curve Normal** (`GeometryNodeSetCurveNormal`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Set Curve Radius** (`GeometryNodeSetCurveRadius`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Set Curve Tilt** (`GeometryNodeSetCurveTilt`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Tilt / aliases (added) : nouveau: ['Tilt']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Set Geometry Bundle** (`GeometryNodeSetGeometryBundle`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Geometry Name** (`GeometryNodeSetGeometryName`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Grease Pencil Color** (`GeometryNodeSetGreasePencilColor`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / inputs / Mode (added) : nouveau: {'aliases': ['Mode'], 'bl_idname': 'NodeSocketMenu', 'label': 'Mode', 'name': 'Mode', 'socket_type': 'MENU'}
+  - info / inputs / Opacity / aliases (added) : nouveau: ['Opacity']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / menu_sockets / Mode (added) : nouveau: {'default': 'Stroke', 'values': ('Stroke', 'Fill', 'Both')}
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / params / mode / enum (modified) : ancien: ('STROKE', 'FILL') → nouveau: ('STROKE', 'FILL', 'BOTH')
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Grease Pencil Depth** (`GeometryNodeSetGreasePencilDepth`)
+  - info / inputs / Depth Order (added) : nouveau: {'aliases': ['Depth Order'], 'bl_idname': 'NodeSocketMenu', 'label': 'Depth Order', 'name': 'Depth Order', 'socket_type': 'MENU'}
+  - info / inputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / menu_sockets / Depth Order (added) : nouveau: {'default': '2D Layers', 'values': ('2D Layers', '3D Location')}
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / params / depth_order / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Grease Pencil Softness** (`GeometryNodeSetGreasePencilSoftness`)
+  - info / inputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Softness / aliases (added) : nouveau: ['Softness']
+  - info / outputs / Grease Pencil / aliases (added) : nouveau: ['Grease Pencil']
+- **Set Grid Background** (`GeometryNodeSetGridBackground`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Background / aliases (added) : nouveau: ['Background']
+  - info / inputs / Background / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Update Inactive / aliases (added) : nouveau: ['Update Inactive']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Grid Transform** (`GeometryNodeSetGridTransform`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / outputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / outputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Is Valid / aliases (added) : nouveau: ['Is Valid']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set ID** (`GeometryNodeSetID`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / ID / aliases (added) : nouveau: ['ID']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Instance Transform** (`GeometryNodeSetInstanceTransform`)
+  - info / inputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Set Material** (`GeometryNodeSetMaterial`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Material / aliases (added) : nouveau: ['Material']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Material Index** (`GeometryNodeSetMaterialIndex`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Material Index / aliases (added) : nouveau: ['Material Index']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Mesh Normal** (`GeometryNodeSetMeshNormal`)
+  - info / inputs / Custom Normal (added) : nouveau: {'aliases': ['Custom Normal'], 'bl_idname': 'NodeSocketVectorXYZ', 'label': 'Custom Normal', 'name': 'Custom Normal', 'socket_type': 'VECTOR'}
+  - info / inputs / Edge Sharpness / aliases (added) : nouveau: ['Edge Sharpness']
+  - info / inputs / Face Sharpness / aliases (added) : nouveau: ['Face Sharpness']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Remove Custom / aliases (added) : nouveau: ['Remove Custom']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set NURBS Order** (`GeometryNodeSetNURBSOrder`)
+  - info / inputs / Curves / aliases (added) : nouveau: ['Curves']
+  - info / inputs / Order / aliases (added) : nouveau: ['Order']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Set NURBS Weight** (`GeometryNodeSetNURBSWeight`)
+  - info / inputs / Curves / aliases (added) : nouveau: ['Curves']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Weight / aliases (added) : nouveau: ['Weight']
+  - info / outputs / Curves / aliases (added) : nouveau: ['Curves']
+- **Set Point Radius** (`GeometryNodeSetPointRadius`)
+  - info / inputs / Points / aliases (added) : nouveau: ['Points']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Points / aliases (added) : nouveau: ['Points']
+- **Set Position** (`GeometryNodeSetPosition`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Set Shade Smooth** (`GeometryNodeSetShadeSmooth`)
+  - info / inputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Mesh (added) : nouveau: {'aliases': ['Mesh'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Shade Smooth / aliases (added) : nouveau: ['Shade Smooth']
+  - info / outputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Mesh (added) : nouveau: {'aliases': ['Mesh'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Mesh', 'name': 'Mesh', 'socket_type': 'GEOMETRY'}
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Set Spline Cyclic** (`GeometryNodeSetSplineCyclic`)
+  - info / inputs / Curve (added) : nouveau: {'aliases': ['Curve'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Cyclic / aliases (added) : nouveau: ['Cyclic']
+  - info / inputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve (added) : nouveau: {'aliases': ['Curve'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+- **Set Spline Resolution** (`GeometryNodeSetSplineResolution`)
+  - info / inputs / Curve (added) : nouveau: {'aliases': ['Curve'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Resolution / aliases (added) : nouveau: ['Resolution']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Curve (added) : nouveau: {'aliases': ['Curve'], 'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+  - info / outputs / Geometry (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Curve', 'name': 'Curve', 'socket_type': 'GEOMETRY'}
+- **Simulation Input** (`GeometryNodeSimulationInput`)
+  - info / outputs / Delta Time / aliases (added) : nouveau: ['Delta Time']
+- **Simulation Output** (`GeometryNodeSimulationOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Skip / aliases (added) : nouveau: ['Skip']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+- **Sort Elements** (`GeometryNodeSortElements`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Sort Weight / aliases (added) : nouveau: ['Sort Weight']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sort List** (`GeometryNodeSortList`)
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / List / aliases (added) : nouveau: ['List']
+  - info / inputs / List / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Sort Weight / aliases (added) : nouveau: ['Sort Weight']
+  - info / outputs / List / aliases (added) : nouveau: ['List']
+  - info / outputs / List / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / socket_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Spline Length** (`GeometryNodeSplineLength`)
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+  - info / outputs / Point Count / aliases (added) : nouveau: ['Point Count']
+- **Spline Parameter** (`GeometryNodeSplineParameter`)
+  - info / outputs / Factor / aliases (added) : nouveau: ['Factor']
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+- **Split Edges** (`GeometryNodeSplitEdges`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Split to Instances** (`GeometryNodeSplitToInstances`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Group ID / aliases (added) : nouveau: ['Group ID']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Store Named Attribute** (`GeometryNodeStoreNamedAttribute`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BYTE_COLOR': 'BYTE_COLOR', 'FLOAT2': 'FLOAT2', 'INT': 'INT', 'INT8': 'INT8', 'MATRIX': 'FLOAT4X4', 'RGBA': 'FLOAT_COLOR', 'ROTATION': 'QUATERNION', 'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Store Named Grid** (`GeometryNodeStoreNamedGrid`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'INT': 'INT', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR_FLOAT'}
+  - info / inputs / Grid / aliases (added) : nouveau: ['Grid']
+  - info / inputs / Grid / bl_idname (modified) : ancien: 'NodeSocketFloat' → nouveau: 'NodeSocketBool'
+  - info / inputs / Grid / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Name / aliases (added) : nouveau: ['Name']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Join Strings** (`GeometryNodeStringJoin`)
+  - info / inputs / Delimiter / aliases (added) : nouveau: ['Delimiter']
+  - info / inputs / Strings / aliases (added) : nouveau: ['Strings']
+  - info / outputs / String / aliases (added) : nouveau: ['String']
+- **String to Curves** (`GeometryNodeStringToCurves`)
+  - info / inputs / Align X / aliases (added) : nouveau: ['Align X']
+  - info / inputs / Align Y / aliases (added) : nouveau: ['Align Y']
+  - info / inputs / Character Spacing / aliases (added) : nouveau: ['Character Spacing']
+  - info / inputs / Font / aliases (added) : nouveau: ['Font']
+  - info / inputs / Line Spacing / aliases (added) : nouveau: ['Line Spacing']
+  - info / inputs / Overflow / aliases (added) : nouveau: ['Overflow']
+  - info / inputs / Pivot Point / aliases (added) : nouveau: ['Pivot Point']
+  - info / inputs / Size / aliases (added) : nouveau: ['Size']
+  - info / inputs / String / aliases (added) : nouveau: ['String']
+  - info / inputs / Text Box Height / aliases (added) : nouveau: ['Text Box Height']
+  - info / inputs / Text Box Width / aliases (added) : nouveau: ['Text Box Width']
+  - info / inputs / Word Spacing / aliases (added) : nouveau: ['Word Spacing']
+  - info / outputs / Curve Instances / aliases (added) : nouveau: ['Curve Instances']
+  - info / outputs / Line / aliases (added) : nouveau: ['Line']
+  - info / outputs / Pivot Point / aliases (added) : nouveau: ['Pivot Point']
+  - info / outputs / Remainder / aliases (added) : nouveau: ['Remainder']
+  - info / outputs / Word / aliases (added) : nouveau: ['Word']
+- **Subdivide Curve** (`GeometryNodeSubdivideCurve`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / Cuts / aliases (added) : nouveau: ['Cuts']
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+- **Subdivide Mesh** (`GeometryNodeSubdivideMesh`)
+  - info / inputs / Level / aliases (added) : nouveau: ['Level']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Subdivision Surface** (`GeometryNodeSubdivisionSurface`)
+  - info / inputs / Boundary Smooth / aliases (added) : nouveau: ['Boundary Smooth']
+  - info / inputs / Edge Crease / aliases (added) : nouveau: ['Edge Crease']
+  - info / inputs / Level / aliases (added) : nouveau: ['Level']
+  - info / inputs / Limit Surface / aliases (added) : nouveau: ['Limit Surface']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Quality / aliases (added) : nouveau: ['Quality']
+  - info / inputs / UV Smooth / aliases (added) : nouveau: ['UV Smooth']
+  - info / inputs / Vertex Crease / aliases (added) : nouveau: ['Vertex Crease']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Switch** (`GeometryNodeSwitch`)
+  - info / inputs / False / aliases (added) : nouveau: ['False']
+  - info / inputs / False / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Switch / aliases (added) : nouveau: ['Switch']
+  - info / inputs / True / aliases (added) : nouveau: ['True']
+  - info / inputs / True / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / outputs / Output / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / input_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Tag Filter** (`GeometryNodeTagFilter`)
+  - info / inputs / Tag Filter / aliases (added) : nouveau: ['Tag Filter']
+  - info / inputs / Tags / aliases (added) : nouveau: ['Tags']
+  - info / outputs / Match / aliases (added) : nouveau: ['Match']
+- **3D Cursor** (`GeometryNodeTool3DCursor`)
+  - info / outputs / Location / aliases (added) : nouveau: ['Location']
+  - info / outputs / Rotation / aliases (added) : nouveau: ['Rotation']
+- **Active Element** (`GeometryNodeToolActiveElement`)
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Face Set** (`GeometryNodeToolFaceSet`)
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / outputs / Face Set / aliases (added) : nouveau: ['Face Set']
+- **Mouse Position** (`GeometryNodeToolMousePosition`)
+  - info / outputs / Mouse X / aliases (added) : nouveau: ['Mouse X']
+  - info / outputs / Mouse Y / aliases (added) : nouveau: ['Mouse Y']
+  - info / outputs / Region Height / aliases (added) : nouveau: ['Region Height']
+  - info / outputs / Region Width / aliases (added) : nouveau: ['Region Width']
+- **Selection** (`GeometryNodeToolSelection`)
+  - info / outputs / Boolean (added) : nouveau: {'aliases': ['Boolean'], 'bl_idname': 'NodeSocketBool', 'label': 'Boolean', 'name': 'Boolean', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Float / aliases (added) : nouveau: ['Float']
+  - info / outputs / Selection (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'Boolean', 'name': 'Boolean', 'socket_type': 'BOOLEAN'}
+- **Set Face Set** (`GeometryNodeToolSetFaceSet`)
+  - info / inputs / Face Set / aliases (added) : nouveau: ['Face Set']
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Set Selection** (`GeometryNodeToolSetSelection`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Selection / socket_type (modified) : ancien: 'BOOLEAN' → nouveau: 'SOCKET'
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / selection_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Transfer Attributes** (`GeometryNodeTransferAttributes`)
+  - info / inputs / Attribute Names / aliases (added) : nouveau: ['Attribute Names']
+  - info / inputs / Exclude Names / aliases (added) : nouveau: ['Exclude Names']
+  - info / inputs / Pattern Mode / aliases (added) : nouveau: ['Pattern Mode']
+  - info / inputs / Source / aliases (added) : nouveau: ['Source']
+  - info / inputs / Source Corner ID / aliases (added) : nouveau: ['Source Corner ID']
+  - info / inputs / Source Curve ID / aliases (added) : nouveau: ['Source Curve ID']
+  - info / inputs / Source Edge ID / aliases (added) : nouveau: ['Source Edge ID']
+  - info / inputs / Source Face ID / aliases (added) : nouveau: ['Source Face ID']
+  - info / inputs / Source Instance ID / aliases (added) : nouveau: ['Source Instance ID']
+  - info / inputs / Source Point ID / aliases (added) : nouveau: ['Source Point ID']
+  - info / inputs / Target / aliases (added) : nouveau: ['Target']
+  - info / inputs / Target Corner ID / aliases (added) : nouveau: ['Target Corner ID']
+  - info / inputs / Target Curve ID / aliases (added) : nouveau: ['Target Curve ID']
+  - info / inputs / Target Edge ID / aliases (added) : nouveau: ['Target Edge ID']
+  - info / inputs / Target Face ID / aliases (added) : nouveau: ['Target Face ID']
+  - info / inputs / Target Instance ID / aliases (added) : nouveau: ['Target Instance ID']
+  - info / inputs / Target Point ID / aliases (added) : nouveau: ['Target Point ID']
+  - info / outputs / Target / aliases (added) : nouveau: ['Target']
+  - info / outputs / Transferred Names / aliases (added) : nouveau: ['Transferred Names']
+- **Transform Geometry** (`GeometryNodeTransform`)
+  - info / inputs / Geometry / aliases (added) : nouveau: ['Geometry']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Transform / aliases (added) : nouveau: ['Transform']
+  - info / inputs / Translation / aliases (added) : nouveau: ['Translation']
+  - info / outputs / Geometry / aliases (added) : nouveau: ['Geometry']
+- **Translate Instances** (`GeometryNodeTranslateInstances`)
+  - info / inputs / Instances / aliases (added) : nouveau: ['Instances']
+  - info / inputs / Local Space / aliases (added) : nouveau: ['Local Space']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Translation / aliases (added) : nouveau: ['Translation']
+  - info / outputs / Instances / aliases (added) : nouveau: ['Instances']
+- **Triangulate** (`GeometryNodeTriangulate`)
+  - info / inputs / Mesh / aliases (added) : nouveau: ['Mesh']
+  - info / inputs / N-gon Method / aliases (added) : nouveau: ['N-gon Method']
+  - info / inputs / Quad Method / aliases (added) : nouveau: ['Quad Method']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Trim Curve** (`GeometryNodeTrimCurve`)
+  - info / inputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / End / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / End_001 (removed) : ancien: {'bl_idname': 'NodeSocketFloatDistance', 'label': 'End', 'name': 'End', 'socket_type': 'VALUE'}
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Start / aliases (added) : nouveau: ['Start']
+  - info / inputs / Start / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Start_001 (removed) : ancien: {'bl_idname': 'NodeSocketFloatDistance', 'label': 'Start', 'name': 'Start', 'socket_type': 'VALUE'}
+  - info / outputs / Curve / aliases (added) : nouveau: ['Curve']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Pack UV Islands** (`GeometryNodeUVPackIslands`)
+  - info / inputs / Bottom Left / aliases (added) : nouveau: ['Bottom Left']
+  - info / inputs / Margin / aliases (added) : nouveau: ['Margin']
+  - info / inputs / Method / aliases (added) : nouveau: ['Method']
+  - info / inputs / Rotate / aliases (added) : nouveau: ['Rotate']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / inputs / Top Right / aliases (added) : nouveau: ['Top Right']
+  - info / inputs / UV / aliases (added) : nouveau: ['UV']
+  - info / outputs / UV / aliases (added) : nouveau: ['UV']
+- **UV Tangent** (`GeometryNodeUVTangent`)
+  - info / inputs / Method / aliases (added) : nouveau: ['Method']
+  - info / inputs / UV / aliases (added) : nouveau: ['UV']
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+- **UV Unwrap** (`GeometryNodeUVUnwrap`)
+  - info / inputs / Fill Holes / aliases (added) : nouveau: ['Fill Holes']
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / inputs / Margin / aliases (added) : nouveau: ['Margin']
+  - info / inputs / Method / aliases (added) : nouveau: ['Method']
+  - info / inputs / No Flip / aliases (added) : nouveau: ['No Flip']
+  - info / inputs / Seam / aliases (added) : nouveau: ['Seam']
+  - info / inputs / Selection / aliases (added) : nouveau: ['Selection']
+  - info / outputs / UV / aliases (added) : nouveau: ['UV']
+- **Vertex of Corner** (`GeometryNodeVertexOfCorner`)
+  - info / inputs / Corner Index / aliases (added) : nouveau: ['Corner Index']
+  - info / outputs / Vertex Index / aliases (added) : nouveau: ['Vertex Index']
+- **Viewer** (`GeometryNodeViewer`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / domain / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / ui_shortcut (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+- **Viewport Transform** (`GeometryNodeViewportTransform`)
+  - info / outputs / Is Orthographic / aliases (added) : nouveau: ['Is Orthographic']
+  - info / outputs / Projection / aliases (added) : nouveau: ['Projection']
+  - info / outputs / View / aliases (added) : nouveau: ['View']
+- **Volume Cube** (`GeometryNodeVolumeCube`)
+  - info / inputs / Background / aliases (added) : nouveau: ['Background']
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Max / aliases (added) : nouveau: ['Max']
+  - info / inputs / Min / aliases (added) : nouveau: ['Min']
+  - info / inputs / Resolution X / aliases (added) : nouveau: ['Resolution X']
+  - info / inputs / Resolution Y / aliases (added) : nouveau: ['Resolution Y']
+  - info / inputs / Resolution Z / aliases (added) : nouveau: ['Resolution Z']
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Volume to Mesh** (`GeometryNodeVolumeToMesh`)
+  - info / inputs / Adaptivity / aliases (added) : nouveau: ['Adaptivity']
+  - info / inputs / Resolution Mode / aliases (added) : nouveau: ['Resolution Mode']
+  - info / inputs / Threshold / aliases (added) : nouveau: ['Threshold']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / inputs / Voxel Amount / aliases (added) : nouveau: ['Voxel Amount']
+  - info / inputs / Voxel Size / aliases (added) : nouveau: ['Voxel Size']
+  - info / outputs / Mesh / aliases (added) : nouveau: ['Mesh']
+- **Warning** (`GeometryNodeWarning`)
+  - info / inputs / Message / aliases (added) : nouveau: ['Message']
+  - info / inputs / Show / aliases (added) : nouveau: ['Show']
+  - info / outputs / Show / aliases (added) : nouveau: ['Show']
+  - info / params / warning_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **XPBD Solver** (`GeometryNodeXPBDSolver`)
+  - info / inputs / Begin / aliases (added) : nouveau: ['Begin']
+  - info / inputs / Constraint Iterations / aliases (added) : nouveau: ['Constraint Iterations']
+  - info / inputs / Delta Time / aliases (added) : nouveau: ['Delta Time']
+  - info / inputs / End / aliases (added) : nouveau: ['End']
+  - info / inputs / Filter / aliases (added) : nouveau: ['Filter']
+  - info / inputs / Simulation to World / aliases (added) : nouveau: ['Simulation to World']
+  - info / inputs / Solver Path / aliases (added) : nouveau: ['Solver Path']
+  - info / inputs / Substeps / aliases (added) : nouveau: ['Substeps']
+  - info / inputs / World / aliases (added) : nouveau: ['World']
+  - info / outputs / World / aliases (added) : nouveau: ['World']
+- **Closure Input** (`NodeClosureInput`)
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Closure Output** (`NodeClosureOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Closure / aliases (added) : nouveau: ['Closure']
+  - info / params / active_input_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_output_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Combine Bundle** (`NodeCombineBundle`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Enable Output** (`NodeEnableOutput`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Enable / aliases (added) : nouveau: ['Enable']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Evaluate Closure** (`NodeEvaluateClosure`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Closure / aliases (added) : nouveau: ['Closure']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / active_input_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_output_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Frame** (`NodeFrame`)
+  - info / params / label_size / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+  - info / params / shrink / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / text / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Get Bundle Item** (`NodeGetBundleItem`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / inputs / Remove / aliases (added) : nouveau: ['Remove']
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs / Exists / aliases (added) : nouveau: ['Exists']
+  - info / outputs / Item / aliases (added) : nouveau: ['Item']
+  - info / outputs / Item / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / params / socket_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / structure_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Get Nested Bundle Paths** (`NodeGetNestedBundlePaths`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / inputs / Bundle Type / aliases (added) : nouveau: ['Bundle Type']
+  - info / inputs / Data Type / aliases (added) : nouveau: ['Data Type']
+  - info / inputs / Mode / aliases (added) : nouveau: ['Mode']
+  - info / inputs / Pattern Mode / aliases (added) : nouveau: ['Pattern Mode']
+  - info / outputs / Paths / aliases (added) : nouveau: ['Paths']
+- **Group Input** (`NodeGroupInput`)
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Group Output** (`NodeGroupOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / is_active_output / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Implicit Conversion** (`NodeImplicitConversion`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / bl_idname (modified) : ancien: 'NodeSocketColor' → nouveau: 'NodeSocketFloat'
+  - info / inputs / Value / socket_type (modified) : ancien: 'RGBA' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / bl_idname (modified) : ancien: 'NodeSocketColor' → nouveau: 'NodeSocketFloat'
+  - info / outputs / Value / socket_type (modified) : ancien: 'RGBA' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / socket_idname / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Join Bundle** (`NodeJoinBundle`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+- **Reroute** (`NodeReroute`)
+  - info / inputs / Input / aliases (added) : nouveau: ['Input']
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / params / socket_idname / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Separate Bundle** (`NodeSeparateBundle`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Store Bundle Item** (`NodeStoreBundleItem`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / inputs / Item / aliases (added) : nouveau: ['Item']
+  - info / inputs / Item / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Path / aliases (added) : nouveau: ['Path']
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / params / socket_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / structure_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Blackbody** (`ShaderNodeBlackbody`)
+  - info / inputs / Temperature / aliases (added) : nouveau: ['Temperature']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Clamp** (`ShaderNodeClamp`)
+  - info / inputs / Max / aliases (added) : nouveau: ['Max']
+  - info / inputs / Min / aliases (added) : nouveau: ['Min']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+  - info / params / clamp_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Combine XYZ** (`ShaderNodeCombineXYZ`)
+  - info / inputs / X / aliases (added) : nouveau: ['X']
+  - info / inputs / Y / aliases (added) : nouveau: ['Y']
+  - info / inputs / Z / aliases (added) : nouveau: ['Z']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Float Curve** (`ShaderNodeFloatCurve`)
+  - info / inputs / Factor / aliases (added) : nouveau: ['Factor']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+- **Gamma** (`ShaderNodeGamma`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Gamma / aliases (added) : nouveau: ['Gamma']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Map Range** (`ShaderNodeMapRange`)
+  - info / data_type (removed) : ancien: {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / From Max / aliases (added) : nouveau: ['From Max']
+  - info / inputs / From Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / From Min / aliases (added) : nouveau: ['From Min']
+  - info / inputs / From Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / From_Max_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'From Max', 'name': 'From Max', 'socket_type': 'VECTOR'}
+  - info / inputs / From_Min_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'From Min', 'name': 'From Min', 'socket_type': 'VECTOR'}
+  - info / inputs / Steps / aliases (added) : nouveau: ['Steps']
+  - info / inputs / Steps / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Steps_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Steps', 'name': 'Steps', 'socket_type': 'VECTOR'}
+  - info / inputs / To Max / aliases (added) : nouveau: ['To Max']
+  - info / inputs / To Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / To Min / aliases (added) : nouveau: ['To Min']
+  - info / inputs / To Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / To_Max_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'To Max', 'name': 'To Max', 'socket_type': 'VECTOR'}
+  - info / inputs / To_Min_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'To Min', 'name': 'To Min', 'socket_type': 'VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / interpolation_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Math** (`ShaderNodeMath`)
+  - info / inputs / Addend (added) : nouveau: {'aliases': ['Addend', 'Epsilon', 'Distance', 'Min'], 'bl_idname': 'NodeSocketFloat', 'label': 'Addend', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value', 'Multiplier', 'Exponent', 'Base', 'Threshold', 'Max', 'Increment', 'Scale']
+  - info / inputs / Value_001 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Value', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / inputs / Value_002 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Value', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / use_clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Mix** (`ShaderNodeMix`)
+  - info / data_type (removed) : ancien: {'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / A (added) : nouveau: {'aliases': ['A'], 'bl_idname': 'NodeSocketFloat', 'label': 'A', 'name': 'A', 'socket_type': 'SOCKET'}
+  - info / inputs / A_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'A', 'name': 'A', 'socket_type': 'RGBA'}
+  - info / inputs / A_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'A', 'name': 'A', 'socket_type': 'VALUE'}
+  - info / inputs / A_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'A', 'name': 'A', 'socket_type': 'ROTATION'}
+  - info / inputs / A_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'A', 'name': 'A', 'socket_type': 'VECTOR'}
+  - info / inputs / B (added) : nouveau: {'aliases': ['B'], 'bl_idname': 'NodeSocketFloat', 'label': 'B', 'name': 'B', 'socket_type': 'SOCKET'}
+  - info / inputs / B_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'B', 'name': 'B', 'socket_type': 'RGBA'}
+  - info / inputs / B_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'B', 'name': 'B', 'socket_type': 'VALUE'}
+  - info / inputs / B_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'B', 'name': 'B', 'socket_type': 'ROTATION'}
+  - info / inputs / B_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'B', 'name': 'B', 'socket_type': 'VECTOR'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'SOCKET'}
+  - info / inputs / Factor_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVectorFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VECTOR'}
+  - info / outputs / Result (added) : nouveau: {'aliases': ['Result'], 'bl_idname': 'NodeSocketFloat', 'label': 'Result', 'name': 'Result', 'socket_type': 'SOCKET'}
+  - info / outputs / Result_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'Result', 'name': 'Result', 'socket_type': 'RGBA'}
+  - info / outputs / Result_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Result', 'name': 'Result', 'socket_type': 'VALUE'}
+  - info / outputs / Result_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'Result', 'name': 'Result', 'socket_type': 'ROTATION'}
+  - info / outputs / Result_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Result', 'name': 'Result', 'socket_type': 'VECTOR'}
+  - info / params / blend_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / clamp_factor / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / clamp_result / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / factor_mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mix (Legacy)** (`ShaderNodeMixRGB`)
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / blend_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / use_alpha / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **RGB Curves** (`ShaderNodeRGBCurve`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Radial Tiling** (`ShaderNodeRadialTiling`)
+  - info / inputs / Roundness / aliases (added) : nouveau: ['Roundness']
+  - info / inputs / Sides / aliases (added) : nouveau: ['Sides']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Segment Coordinates / aliases (added) : nouveau: ['Segment Coordinates']
+  - info / outputs / Segment ID / aliases (added) : nouveau: ['Segment ID']
+  - info / outputs / Segment Rotation / aliases (added) : nouveau: ['Segment Rotation']
+  - info / outputs / Segment Width / aliases (added) : nouveau: ['Segment Width']
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Separate XYZ** (`ShaderNodeSeparateXYZ`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / X / aliases (added) : nouveau: ['X']
+  - info / outputs / Y / aliases (added) : nouveau: ['Y']
+  - info / outputs / Z / aliases (added) : nouveau: ['Z']
+- **Brick Texture** (`ShaderNodeTexBrick`)
+  - info / inputs / Bias / aliases (added) : nouveau: ['Bias']
+  - info / inputs / Brick Width / aliases (added) : nouveau: ['Brick Width']
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Mortar / aliases (added) : nouveau: ['Mortar']
+  - info / inputs / Mortar Size / aliases (added) : nouveau: ['Mortar Size']
+  - info / inputs / Mortar Smooth / aliases (added) : nouveau: ['Mortar Smooth']
+  - info / inputs / Row Height / aliases (added) : nouveau: ['Row Height']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / offset / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / offset_frequency / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+  - info / params / squash / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / squash_frequency / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Checker Texture** (`ShaderNodeTexChecker`)
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+- **Gabor Texture** (`ShaderNodeTexGabor`)
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Frequency / aliases (added) : nouveau: ['Frequency']
+  - info / inputs / Orientation (added) : nouveau: {'aliases': ['Orientation'], 'bl_idname': 'NodeSocketFloatAngle', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'SOCKET'}
+  - info / inputs / Orientation 2D (removed) : ancien: {'bl_idname': 'NodeSocketFloatAngle', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'VALUE'}
+  - info / inputs / Orientation 3D (removed) : ancien: {'bl_idname': 'NodeSocketVectorDirection', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'VECTOR'}
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Intensity / aliases (added) : nouveau: ['Intensity']
+  - info / outputs / Phase / aliases (added) : nouveau: ['Phase']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / gabor_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Gradient Texture** (`ShaderNodeTexGradient`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / gradient_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Magic Texture** (`ShaderNodeTexMagic`)
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / turbulence_depth / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Noise Texture** (`ShaderNodeTexNoise`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Gain / aliases (added) : nouveau: ['Gain']
+  - info / inputs / Lacunarity / aliases (added) : nouveau: ['Lacunarity']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / noise_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / noise_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Voronoi Texture** (`ShaderNodeTexVoronoi`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Exponent / aliases (added) : nouveau: ['Exponent']
+  - info / inputs / Lacunarity / aliases (added) : nouveau: ['Lacunarity']
+  - info / inputs / Randomness / aliases (added) : nouveau: ['Randomness']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Smoothness / aliases (added) : nouveau: ['Smoothness']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / W / aliases (added) : nouveau: ['W']
+  - info / params / distance / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / feature / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / voronoi_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Wave Texture** (`ShaderNodeTexWave`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Detail Roughness / aliases (added) : nouveau: ['Detail Roughness']
+  - info / inputs / Detail Scale / aliases (added) : nouveau: ['Detail Scale']
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Phase Offset / aliases (added) : nouveau: ['Phase Offset']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / bands_direction / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / rings_direction / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / wave_profile / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / wave_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **White Noise Texture** (`ShaderNodeTexWhiteNoise`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / noise_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Color Ramp** (`ShaderNodeValToRGB`)
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Value** (`ShaderNodeValue`)
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+- **Vector Curves** (`ShaderNodeVectorCurve`)
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Vector Math** (`ShaderNodeVectorMath`)
+  - info / inputs / Addend (added) : nouveau: {'aliases': ['Addend', 'Reference', 'Min'], 'bl_idname': 'NodeSocketVector', 'label': 'Addend', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / inputs / IOR (added) : nouveau: {'aliases': ['IOR', 'Scale'], 'bl_idname': 'NodeSocketFloat', 'label': 'IOR', 'name': 'Scale', 'socket_type': 'VALUE'}
+  - info / inputs / Scale (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Scale', 'name': 'Scale', 'socket_type': 'VALUE'}
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector', 'Multiplier', 'Incident', 'Exponent', 'Max', 'Increment']
+  - info / inputs / Vector_001 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Vector', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / inputs / Vector_002 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Vector', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Vector Rotate** (`ShaderNodeVectorRotate`)
+  - info / inputs / Angle / aliases (added) : nouveau: ['Angle']
+  - info / inputs / Axis / aliases (added) : nouveau: ['Axis']
+  - info / inputs / Center / aliases (added) : nouveau: ['Center']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / invert / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / rotation_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+
+## ShaderNodeTree
+
+### Nœuds supprimés (1)
+
+- **Line Style Output** (`ShaderNodeOutputLineStyle`)
+
+### Nœuds ajoutés (27)
+
+- **Boolean Math** (`FunctionNodeBooleanMath`)
+- **Find in String** (`FunctionNodeFindInString`)
+- **Format String** (`FunctionNodeFormatString`)
+- **Get Vector Component** (`FunctionNodeGetVectorComponent`)
+- **Special Characters** (`FunctionNodeInputSpecialCharacters`)
+- **String** (`FunctionNodeInputString`)
+- **Integer Math** (`FunctionNodeIntegerMath`)
+- **Match String** (`FunctionNodeMatchString`)
+- **Replace String** (`FunctionNodeReplaceString`)
+- **Reverse String** (`FunctionNodeReverseString`)
+- **Set String Case** (`FunctionNodeSetStringCase`)
+- **Slice String** (`FunctionNodeSliceString`)
+- **String Length** (`FunctionNodeStringLength`)
+- **String to Value** (`FunctionNodeStringToValue`)
+- **Trim String** (`FunctionNodeTrimString`)
+- **Value to String** (`FunctionNodeValueToString`)
+- **Index Switch** (`GeometryNodeIndexSwitch`)
+- **Switch** (`GeometryNodeSwitch`)
+- **Warning** (`GeometryNodeWarning`)
+- **Comment** (`NodeComment`)
+- **Enable Output** (`NodeEnableOutput`)
+- **Light Accumulation** (`ShaderNodeLightAccumulation`)
+- **Light Evaluation** (`ShaderNodeLightEvaluation`)
+- **Light Info** (`ShaderNodeLightInfo`)
+- **Light Iter Internal Input** (`ShaderNodeLightIterInternalInput`)
+- **Light Iter Internal Output** (`ShaderNodeLightIterInternalOutput`)
+- **Shadow Raycast** (`ShaderNodeShadowRaycast`)
+
+### Nœuds modifiés (117)
+
+- **Boolean** (`FunctionNodeInputBool`)
+  - info / outputs / Boolean / aliases (added) : nouveau: ['Boolean']
+  - info / params / boolean / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Integer** (`FunctionNodeInputInt`)
+  - info / outputs / Integer / aliases (added) : nouveau: ['Integer']
+  - info / params / integer / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Menu** (`FunctionNodeInputMenu`)
+  - info / outputs / Menu / aliases (added) : nouveau: ['Menu']
+  - info / params / value (added) : nouveau: {'default': '', 'enum': (), 'type': 'ENUM'}
+- **Vector** (`FunctionNodeInputVector`)
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / vector / default (modified) : ancien: None → nouveau: (0.0, 0.0, 0.0)
+  - info / params / vector / type (modified) : ancien: 'bpy_prop_array' → nouveau: 'Vector'
+  - info / params / vector_dimensions / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Scene Time** (`GeometryNodeInputSceneTime`)
+  - info / outputs / Frame / aliases (added) : nouveau: ['Frame']
+  - info / outputs / Seconds / aliases (added) : nouveau: ['Seconds']
+- **Menu Switch** (`GeometryNodeMenuSwitch`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'A', 'name': 'A', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Item_1 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'B', 'name': 'B', 'socket_type': 'GEOMETRY'}
+  - info / inputs / Menu / aliases (added) : nouveau: ['Menu']
+  - info / menu_sockets / Menu / default (modified) : ancien: 'A' → nouveau: ''
+  - info / menu_sockets / Menu / values (modified) : ancien: ('A', 'B') → nouveau: ()
+  - info / outputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'A', 'name': 'A', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Item_1 (removed) : ancien: {'bl_idname': 'NodeSocketBool', 'label': 'B', 'name': 'B', 'socket_type': 'BOOLEAN'}
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / outputs / Output / bl_idname (modified) : ancien: 'NodeSocketGeometry' → nouveau: 'NodeSocketFloat'
+  - info / outputs / Output / socket_type (modified) : ancien: 'GEOMETRY' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Repeat Input** (`GeometryNodeRepeatInput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Iterations / aliases (added) : nouveau: ['Iterations']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Iteration / aliases (added) : nouveau: ['Iteration']
+- **Repeat Output** (`GeometryNodeRepeatOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Item_0 (removed) : ancien: {'bl_idname': 'NodeSocketGeometry', 'label': 'Geometry', 'name': 'Geometry', 'socket_type': 'GEOMETRY'}
+  - info / params / inspection_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+- **Closure Input** (`NodeClosureInput`)
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Closure Output** (`NodeClosureOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Closure / aliases (added) : nouveau: ['Closure']
+  - info / params / active_input_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_output_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Combine Bundle** (`NodeCombineBundle`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Evaluate Closure** (`NodeEvaluateClosure`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Closure / aliases (added) : nouveau: ['Closure']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / active_input_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / active_output_index (removed) : ancien: {'default': 0, 'enum': None, 'type': 'int'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Frame** (`NodeFrame`)
+  - info / params / label_size / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+  - info / params / shrink / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / text / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Group Input** (`NodeGroupInput`)
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+- **Group Output** (`NodeGroupOutput`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / is_active_output / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Implicit Conversion** (`NodeImplicitConversion`)
+  - info / data_type (removed) : ancien: {'BOOLEAN': 'BOOLEAN', 'BUNDLE': 'BUNDLE', 'CLOSURE': 'CLOSURE', 'COLLECTION': 'COLLECTION', 'FONT': 'FONT', 'GEOMETRY': 'GEOMETRY', 'IMAGE': 'IMAGE', 'INT': 'INT', 'MATERIAL': 'MATERIAL', 'MATRIX': 'MATRIX', 'MENU': 'MENU', 'OBJECT': 'OBJECT', 'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'SOUND': 'SOUND', 'STRING': 'STRING', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Value / bl_idname (modified) : ancien: 'NodeSocketColor' → nouveau: 'NodeSocketFloat'
+  - info / inputs / Value / socket_type (modified) : ancien: 'RGBA' → nouveau: 'SOCKET'
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / bl_idname (modified) : ancien: 'NodeSocketColor' → nouveau: 'NodeSocketFloat'
+  - info / outputs / Value / socket_type (modified) : ancien: 'RGBA' → nouveau: 'SOCKET'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / socket_idname / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Join Bundle** (`NodeJoinBundle`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs / Bundle / aliases (added) : nouveau: ['Bundle']
+- **Reroute** (`NodeReroute`)
+  - info / inputs / Input / aliases (added) : nouveau: ['Input']
+  - info / outputs / Output / aliases (added) : nouveau: ['Output']
+  - info / params / socket_idname / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Separate Bundle** (`NodeSeparateBundle`)
+  - info / inputs / Bundle / aliases (added) : nouveau: ['Bundle']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / params / define_signature / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Add Shader** (`ShaderNodeAddShader`)
+  - info / inputs / Shader / aliases (added) : nouveau: ['Shader']
+  - info / inputs / Shader_001 (removed) : ancien: {'bl_idname': 'NodeSocketShader', 'label': 'Shader', 'name': 'Shader', 'socket_type': 'SHADER'}
+  - info / outputs / Shader / aliases (added) : nouveau: ['Shader']
+- **Ambient Occlusion** (`ShaderNodeAmbientOcclusion`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / AO / aliases (added) : nouveau: ['AO']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / inside / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / only_local / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / samples / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Attribute** (`ShaderNodeAttribute`)
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / attribute_name / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+  - info / params / attribute_type / enum (modified) : ancien: ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER') → nouveau: ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER', 'LIGHT')
+  - info / params / attribute_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Background** (`ShaderNodeBackground`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Background / aliases (added) : nouveau: ['Background']
+- **Bevel** (`ShaderNodeBevel`)
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / params / samples / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Blackbody** (`ShaderNodeBlackbody`)
+  - info / inputs / Temperature / aliases (added) : nouveau: ['Temperature']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Brightness/Contrast** (`ShaderNodeBrightContrast`)
+  - info / inputs / Bright (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Brightness', 'name': 'Brightness', 'socket_type': 'VALUE'}
+  - info / inputs / Brightness (added) : nouveau: {'aliases': ['Brightness'], 'bl_idname': 'NodeSocketFloat', 'label': 'Brightness', 'name': 'Brightness', 'socket_type': 'VALUE'}
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Contrast / aliases (added) : nouveau: ['Contrast']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Glossy BSDF** (`ShaderNodeBsdfAnisotropic`)
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Diffuse BSDF** (`ShaderNodeBsdfDiffuse`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+- **Glass BSDF** (`ShaderNodeBsdfGlass`)
+  - info / inputs / Anisotropy (added) : nouveau: {'aliases': ['Anisotropy'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Anisotropy', 'name': 'Anisotropy', 'socket_type': 'VALUE'}
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Rotation (added) : nouveau: {'aliases': ['Rotation'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Rotation', 'name': 'Rotation', 'socket_type': 'VALUE'}
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Tangent (added) : nouveau: {'aliases': ['Tangent'], 'bl_idname': 'NodeSocketVector', 'label': 'Tangent', 'name': 'Tangent', 'socket_type': 'VECTOR'}
+  - info / inputs / Thin Film IOR / aliases (added) : nouveau: ['Thin Film IOR']
+  - info / inputs / Thin Film Thickness / aliases (added) : nouveau: ['Thin Film Thickness']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Hair BSDF** (`ShaderNodeBsdfHair`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / RoughnessU / aliases (added) : nouveau: ['RoughnessU']
+  - info / inputs / RoughnessV / aliases (added) : nouveau: ['RoughnessV']
+  - info / inputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / component / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Principled Hair BSDF** (`ShaderNodeBsdfHairPrincipled`)
+  - info / inputs / Absorption Coefficient / aliases (added) : nouveau: ['Absorption Coefficient']
+  - info / inputs / Aspect Ratio / aliases (added) : nouveau: ['Aspect Ratio']
+  - info / inputs / Coat / aliases (added) : nouveau: ['Coat']
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Melanin / aliases (added) : nouveau: ['Melanin']
+  - info / inputs / Melanin Redness / aliases (added) : nouveau: ['Melanin Redness']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / R lobe (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Reflection', 'name': 'Reflection', 'socket_type': 'VALUE'}
+  - info / inputs / Radial Roughness / aliases (added) : nouveau: ['Radial Roughness']
+  - info / inputs / Random / aliases (added) : nouveau: ['Random']
+  - info / inputs / Random Color / aliases (added) : nouveau: ['Random Color']
+  - info / inputs / Random Roughness / aliases (added) : nouveau: ['Random Roughness']
+  - info / inputs / Reflection (added) : nouveau: {'aliases': ['Reflection'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Reflection', 'name': 'Reflection', 'socket_type': 'VALUE'}
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Secondary Reflection (added) : nouveau: {'aliases': ['Secondary Reflection'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Secondary Reflection', 'name': 'Secondary Reflection', 'socket_type': 'VALUE'}
+  - info / inputs / TRT lobe (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Secondary Reflection', 'name': 'Secondary Reflection', 'socket_type': 'VALUE'}
+  - info / inputs / TT lobe (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Transmission', 'name': 'Transmission', 'socket_type': 'VALUE'}
+  - info / inputs / Tint / aliases (added) : nouveau: ['Tint']
+  - info / inputs / Transmission (added) : nouveau: {'aliases': ['Transmission'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Transmission', 'name': 'Transmission', 'socket_type': 'VALUE'}
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / model / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / parametrization / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Metallic BSDF** (`ShaderNodeBsdfMetallic`)
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Base Color / aliases (added) : nouveau: ['Base Color']
+  - info / inputs / Edge Tint / aliases (added) : nouveau: ['Edge Tint']
+  - info / inputs / Extinction / aliases (added) : nouveau: ['Extinction']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / inputs / Thin Film IOR / aliases (added) : nouveau: ['Thin Film IOR']
+  - info / inputs / Thin Film Thickness / aliases (added) : nouveau: ['Thin Film Thickness']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / fresnel_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Principled BSDF** (`ShaderNodeBsdfPrincipled`)
+  - info / inputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / inputs / Anisotropic / aliases (added) : nouveau: ['Anisotropic']
+  - info / inputs / Anisotropic Rotation / aliases (added) : nouveau: ['Anisotropic Rotation']
+  - info / inputs / Base Color / aliases (added) : nouveau: ['Base Color']
+  - info / inputs / Coat IOR / aliases (added) : nouveau: ['Coat IOR']
+  - info / inputs / Coat Normal / aliases (added) : nouveau: ['Coat Normal']
+  - info / inputs / Coat Roughness / aliases (added) : nouveau: ['Coat Roughness']
+  - info / inputs / Coat Tint / aliases (added) : nouveau: ['Coat Tint']
+  - info / inputs / Coat Weight / aliases (added) : nouveau: ['Coat Weight']
+  - info / inputs / Diffuse Roughness / aliases (added) : nouveau: ['Diffuse Roughness']
+  - info / inputs / Emission Color / aliases (added) : nouveau: ['Emission Color']
+  - info / inputs / Emission Strength / aliases (added) : nouveau: ['Emission Strength']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Metallic / aliases (added) : nouveau: ['Metallic']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Sheen Roughness / aliases (added) : nouveau: ['Sheen Roughness']
+  - info / inputs / Sheen Tint / aliases (added) : nouveau: ['Sheen Tint']
+  - info / inputs / Sheen Weight / aliases (added) : nouveau: ['Sheen Weight']
+  - info / inputs / Specular IOR Level / aliases (added) : nouveau: ['Specular IOR Level']
+  - info / inputs / Specular Tint / aliases (added) : nouveau: ['Specular Tint']
+  - info / inputs / Subsurface Anisotropy / aliases (added) : nouveau: ['Subsurface Anisotropy']
+  - info / inputs / Subsurface IOR / aliases (added) : nouveau: ['Subsurface IOR']
+  - info / inputs / Subsurface Radius / aliases (added) : nouveau: ['Subsurface Radius']
+  - info / inputs / Subsurface Scale / aliases (added) : nouveau: ['Subsurface Scale']
+  - info / inputs / Subsurface Weight / aliases (added) : nouveau: ['Subsurface Weight']
+  - info / inputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / inputs / Thin Film IOR / aliases (added) : nouveau: ['Thin Film IOR']
+  - info / inputs / Thin Film Thickness / aliases (added) : nouveau: ['Thin Film Thickness']
+  - info / inputs / Thin Wall / aliases (added) : nouveau: ['Thin Wall']
+  - info / inputs / Transmission Dispersion Abbe Number (added) : nouveau: {'aliases': ['Transmission Dispersion Abbe Number'], 'bl_idname': 'NodeSocketFloat', 'label': 'Transmission Dispersion Abbe Number', 'name': 'Transmission Dispersion Abbe Number', 'socket_type': 'VALUE'}
+  - info / inputs / Transmission Dispersion Scale (added) : nouveau: {'aliases': ['Transmission Dispersion Scale'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Transmission Dispersion Scale', 'name': 'Transmission Dispersion Scale', 'socket_type': 'VALUE'}
+  - info / inputs / Transmission Weight / aliases (added) : nouveau: ['Transmission Weight']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / subsurface_method / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Ray Portal BSDF** (`ShaderNodeBsdfRayPortal`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Direction / aliases (added) : nouveau: ['Direction']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+- **Refraction BSDF** (`ShaderNodeBsdfRefraction`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Sheen BSDF** (`ShaderNodeBsdfSheen`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / distribution / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Toon BSDF** (`ShaderNodeBsdfToon`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Size / aliases (added) : nouveau: ['Size']
+  - info / inputs / Smooth / aliases (added) : nouveau: ['Smooth']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+  - info / params / component / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Translucent BSDF** (`ShaderNodeBsdfTranslucent`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+- **Transparent BSDF** (`ShaderNodeBsdfTransparent`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+- **Bump** (`ShaderNodeBump`)
+  - info / inputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / inputs / Filter Width / aliases (added) : nouveau: ['Filter Width']
+  - info / inputs / Height / aliases (added) : nouveau: ['Height']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / params / invert / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Camera Data** (`ShaderNodeCameraData`)
+  - info / outputs / View Distance / aliases (added) : nouveau: ['View Distance']
+  - info / outputs / View Vector / aliases (added) : nouveau: ['View Vector']
+  - info / outputs / View Z Depth / aliases (added) : nouveau: ['View Z Depth']
+- **Clamp** (`ShaderNodeClamp`)
+  - info / inputs / Max / aliases (added) : nouveau: ['Max']
+  - info / inputs / Min / aliases (added) : nouveau: ['Min']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+  - info / params / clamp_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Combine Color** (`ShaderNodeCombineColor`)
+  - info / inputs / Blue / aliases (added) : nouveau: ['Blue', 'Value', 'Lightness']
+  - info / inputs / Green / aliases (added) : nouveau: ['Green', 'Saturation']
+  - info / inputs / Red / aliases (added) : nouveau: ['Red', 'Hue']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Combine XYZ** (`ShaderNodeCombineXYZ`)
+  - info / inputs / X / aliases (added) : nouveau: ['X']
+  - info / inputs / Y / aliases (added) : nouveau: ['Y']
+  - info / inputs / Z / aliases (added) : nouveau: ['Z']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Displacement** (`ShaderNodeDisplacement`)
+  - info / inputs / Height / aliases (added) : nouveau: ['Height']
+  - info / inputs / Midlevel / aliases (added) : nouveau: ['Midlevel']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / outputs / Displacement / aliases (added) : nouveau: ['Displacement']
+  - info / params / space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Specular BSDF** (`ShaderNodeEeveeSpecular`)
+  - info / inputs / Base Color / aliases (added) : nouveau: ['Base Color']
+  - info / inputs / Clear Coat / aliases (added) : nouveau: ['Clear Coat']
+  - info / inputs / Clear Coat Normal / aliases (added) : nouveau: ['Clear Coat Normal']
+  - info / inputs / Clear Coat Roughness / aliases (added) : nouveau: ['Clear Coat Roughness']
+  - info / inputs / Emissive Color / aliases (added) : nouveau: ['Emissive Color']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Specular / aliases (added) : nouveau: ['Specular']
+  - info / inputs / Transparency / aliases (added) : nouveau: ['Transparency']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSDF / aliases (added) : nouveau: ['BSDF']
+- **Emission** (`ShaderNodeEmission`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Emission / aliases (added) : nouveau: ['Emission']
+- **Float Curve** (`ShaderNodeFloatCurve`)
+  - info / inputs / Factor / aliases (added) : nouveau: ['Factor']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+- **Fresnel** (`ShaderNodeFresnel`)
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+- **Gamma** (`ShaderNodeGamma`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Gamma / aliases (added) : nouveau: ['Gamma']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Group** (`ShaderNodeGroup`)
+  - info / params / node_tree / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Curves Info** (`ShaderNodeHairInfo`)
+  - info / outputs / Intercept / aliases (added) : nouveau: ['Intercept']
+  - info / outputs / Is Strand / aliases (added) : nouveau: ['Is Strand']
+  - info / outputs / Length / aliases (added) : nouveau: ['Length']
+  - info / outputs / Random / aliases (added) : nouveau: ['Random']
+  - info / outputs / Tangent Normal / aliases (added) : nouveau: ['Tangent Normal']
+  - info / outputs / Thickness / aliases (added) : nouveau: ['Thickness']
+- **Holdout** (`ShaderNodeHoldout`)
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Holdout / aliases (added) : nouveau: ['Holdout']
+- **Hue/Saturation/Value** (`ShaderNodeHueSaturation`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Hue / aliases (added) : nouveau: ['Hue']
+  - info / inputs / Saturation / aliases (added) : nouveau: ['Saturation']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Invert Color** (`ShaderNodeInvert`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Layer Weight** (`ShaderNodeLayerWeight`)
+  - info / inputs / Blend / aliases (added) : nouveau: ['Blend']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Facing / aliases (added) : nouveau: ['Facing']
+  - info / outputs / Fresnel / aliases (added) : nouveau: ['Fresnel']
+- **Light Falloff** (`ShaderNodeLightFalloff`)
+  - info / inputs / Smooth / aliases (added) : nouveau: ['Smooth']
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / outputs / Constant / aliases (added) : nouveau: ['Constant']
+  - info / outputs / Linear / aliases (added) : nouveau: ['Linear']
+  - info / outputs / Quadratic / aliases (added) : nouveau: ['Quadratic']
+- **Light Path** (`ShaderNodeLightPath`)
+  - info / outputs / Diffuse Depth / aliases (added) : nouveau: ['Diffuse Depth']
+  - info / outputs / Glossy Depth / aliases (added) : nouveau: ['Glossy Depth']
+  - info / outputs / Is Camera Ray / aliases (added) : nouveau: ['Is Camera Ray']
+  - info / outputs / Is Diffuse Ray / aliases (added) : nouveau: ['Is Diffuse Ray']
+  - info / outputs / Is Glossy Ray / aliases (added) : nouveau: ['Is Glossy Ray']
+  - info / outputs / Is Reflection Ray / aliases (added) : nouveau: ['Is Reflection Ray']
+  - info / outputs / Is Shadow Ray / aliases (added) : nouveau: ['Is Shadow Ray']
+  - info / outputs / Is Singular Ray / aliases (added) : nouveau: ['Is Singular Ray']
+  - info / outputs / Is Transmission Ray / aliases (added) : nouveau: ['Is Transmission Ray']
+  - info / outputs / Is Volume Scatter Ray / aliases (added) : nouveau: ['Is Volume Scatter Ray']
+  - info / outputs / Portal Depth / aliases (added) : nouveau: ['Portal Depth']
+  - info / outputs / Ray Depth / aliases (added) : nouveau: ['Ray Depth']
+  - info / outputs / Ray Length / aliases (added) : nouveau: ['Ray Length']
+  - info / outputs / Transmission Depth / aliases (added) : nouveau: ['Transmission Depth']
+  - info / outputs / Transparent Depth / aliases (added) : nouveau: ['Transparent Depth']
+- **Map Range** (`ShaderNodeMapRange`)
+  - info / data_type (removed) : ancien: {'VALUE': 'FLOAT', 'VECTOR': 'FLOAT_VECTOR'}
+  - info / inputs / From Max / aliases (added) : nouveau: ['From Max']
+  - info / inputs / From Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / From Min / aliases (added) : nouveau: ['From Min']
+  - info / inputs / From Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / From_Max_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'From Max', 'name': 'From Max', 'socket_type': 'VECTOR'}
+  - info / inputs / From_Min_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'From Min', 'name': 'From Min', 'socket_type': 'VECTOR'}
+  - info / inputs / Steps / aliases (added) : nouveau: ['Steps']
+  - info / inputs / Steps / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / Steps_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Steps', 'name': 'Steps', 'socket_type': 'VECTOR'}
+  - info / inputs / To Max / aliases (added) : nouveau: ['To Max']
+  - info / inputs / To Max / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / To Min / aliases (added) : nouveau: ['To Min']
+  - info / inputs / To Min / socket_type (modified) : ancien: 'VALUE' → nouveau: 'SOCKET'
+  - info / inputs / To_Max_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'To Max', 'name': 'To Max', 'socket_type': 'VECTOR'}
+  - info / inputs / To_Min_FLOAT3 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'To Min', 'name': 'To Min', 'socket_type': 'VECTOR'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Result / aliases (added) : nouveau: ['Result']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / interpolation_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mapping** (`ShaderNodeMapping`)
+  - info / inputs / Location / aliases (added) : nouveau: ['Location']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / vector_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Math** (`ShaderNodeMath`)
+  - info / inputs / Addend (added) : nouveau: {'aliases': ['Addend', 'Epsilon', 'Distance', 'Min'], 'bl_idname': 'NodeSocketFloat', 'label': 'Addend', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / inputs / Value / aliases (added) : nouveau: ['Value', 'Multiplier', 'Exponent', 'Base', 'Threshold', 'Max', 'Increment', 'Scale']
+  - info / inputs / Value_001 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Value', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / inputs / Value_002 (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Value', 'name': 'Value', 'socket_type': 'VALUE'}
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / use_clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Mix** (`ShaderNodeMix`)
+  - info / data_type (removed) : ancien: {'RGBA': 'RGBA', 'ROTATION': 'ROTATION', 'VALUE': 'FLOAT', 'VECTOR': 'VECTOR'}
+  - info / inputs / A (added) : nouveau: {'aliases': ['A'], 'bl_idname': 'NodeSocketFloat', 'label': 'A', 'name': 'A', 'socket_type': 'SOCKET'}
+  - info / inputs / A_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'A', 'name': 'A', 'socket_type': 'RGBA'}
+  - info / inputs / A_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'A', 'name': 'A', 'socket_type': 'VALUE'}
+  - info / inputs / A_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'A', 'name': 'A', 'socket_type': 'ROTATION'}
+  - info / inputs / A_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'A', 'name': 'A', 'socket_type': 'VECTOR'}
+  - info / inputs / B (added) : nouveau: {'aliases': ['B'], 'bl_idname': 'NodeSocketFloat', 'label': 'B', 'name': 'B', 'socket_type': 'SOCKET'}
+  - info / inputs / B_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'B', 'name': 'B', 'socket_type': 'RGBA'}
+  - info / inputs / B_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'B', 'name': 'B', 'socket_type': 'VALUE'}
+  - info / inputs / B_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'B', 'name': 'B', 'socket_type': 'ROTATION'}
+  - info / inputs / B_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'B', 'name': 'B', 'socket_type': 'VECTOR'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'SOCKET'}
+  - info / inputs / Factor_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVectorFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VECTOR'}
+  - info / outputs / Result (added) : nouveau: {'aliases': ['Result'], 'bl_idname': 'NodeSocketFloat', 'label': 'Result', 'name': 'Result', 'socket_type': 'SOCKET'}
+  - info / outputs / Result_Color (removed) : ancien: {'bl_idname': 'NodeSocketColor', 'label': 'Result', 'name': 'Result', 'socket_type': 'RGBA'}
+  - info / outputs / Result_Float (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Result', 'name': 'Result', 'socket_type': 'VALUE'}
+  - info / outputs / Result_Rotation (removed) : ancien: {'bl_idname': 'NodeSocketRotation', 'label': 'Result', 'name': 'Result', 'socket_type': 'ROTATION'}
+  - info / outputs / Result_Vector (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Result', 'name': 'Result', 'socket_type': 'VECTOR'}
+  - info / params / blend_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / clamp_factor / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / clamp_result / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / data_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / factor_mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Mix (Legacy)** (`ShaderNodeMixRGB`)
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / blend_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / use_alpha / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / use_clamp / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Mix Shader** (`ShaderNodeMixShader`)
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Shader / aliases (added) : nouveau: ['Shader']
+  - info / inputs / Shader_001 (removed) : ancien: {'bl_idname': 'NodeSocketShader', 'label': 'Shader', 'name': 'Shader', 'socket_type': 'SHADER'}
+  - info / outputs / Shader / aliases (added) : nouveau: ['Shader']
+- **Geometry** (`ShaderNodeNewGeometry`)
+  - info / outputs / Backfacing / aliases (added) : nouveau: ['Backfacing']
+  - info / outputs / Incoming / aliases (added) : nouveau: ['Incoming']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Parametric / aliases (added) : nouveau: ['Parametric']
+  - info / outputs / Pointiness / aliases (added) : nouveau: ['Pointiness']
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Random Per Island / aliases (added) : nouveau: ['Random Per Island']
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / outputs / True Normal / aliases (added) : nouveau: ['True Normal']
+- **Normal** (`ShaderNodeNormal`)
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Dot / aliases (added) : nouveau: ['Dot']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+- **Normal Map** (`ShaderNodeNormalMap`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / params / base / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / convention / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / uv_map / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Object Info** (`ShaderNodeObjectInfo`)
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Location / aliases (added) : nouveau: ['Location']
+  - info / outputs / Material Index / aliases (added) : nouveau: ['Material Index']
+  - info / outputs / Object Index / aliases (added) : nouveau: ['Object Index']
+  - info / outputs / Random / aliases (added) : nouveau: ['Random']
+- **AOV Output** (`ShaderNodeOutputAOV`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / aov_name / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Light Output** (`ShaderNodeOutputLight`)
+  - info / inputs / Surface / aliases (added) : nouveau: ['Surface']
+  - info / params / is_active_output / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / target / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Material Output** (`ShaderNodeOutputMaterial`)
+  - info / inputs / Displacement / aliases (added) : nouveau: ['Displacement']
+  - info / inputs / Surface / aliases (added) : nouveau: ['Surface']
+  - info / inputs / Thickness / aliases (added) : nouveau: ['Thickness']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / is_active_output / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / target / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **World Output** (`ShaderNodeOutputWorld`)
+  - info / inputs / Surface / aliases (added) : nouveau: ['Surface']
+  - info / inputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / is_active_output / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / target / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Particle Info** (`ShaderNodeParticleInfo`)
+  - info / outputs / Age / aliases (added) : nouveau: ['Age']
+  - info / outputs / Angular Velocity / aliases (added) : nouveau: ['Angular Velocity']
+  - info / outputs / Index / aliases (added) : nouveau: ['Index']
+  - info / outputs / Lifetime / aliases (added) : nouveau: ['Lifetime']
+  - info / outputs / Location / aliases (added) : nouveau: ['Location']
+  - info / outputs / Random / aliases (added) : nouveau: ['Random']
+  - info / outputs / Size / aliases (added) : nouveau: ['Size']
+  - info / outputs / Velocity / aliases (added) : nouveau: ['Velocity']
+- **Point Info** (`ShaderNodePointInfo`)
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / Random / aliases (added) : nouveau: ['Random']
+- **Color** (`ShaderNodeRGB`)
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **RGB Curves** (`ShaderNodeRGBCurve`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **RGB to BW** (`ShaderNodeRGBToBW`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Val / aliases (added) : nouveau: ['Val']
+- **Radial Tiling** (`ShaderNodeRadialTiling`)
+  - info / inputs / Roundness / aliases (added) : nouveau: ['Roundness']
+  - info / inputs / Sides / aliases (added) : nouveau: ['Sides']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Segment Coordinates / aliases (added) : nouveau: ['Segment Coordinates']
+  - info / outputs / Segment ID / aliases (added) : nouveau: ['Segment ID']
+  - info / outputs / Segment Rotation / aliases (added) : nouveau: ['Segment Rotation']
+  - info / outputs / Segment Width / aliases (added) : nouveau: ['Segment Width']
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Raycast** (`ShaderNodeRaycast`)
+  - info / inputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / inputs / Direction / aliases (added) : nouveau: ['Direction']
+  - info / inputs / Length / aliases (added) : nouveau: ['Length']
+  - info / inputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs /  (added) : nouveau: {'aliases': [''], 'bl_idname': 'NodeSocketVirtual', 'label': '', 'name': 'NAMED', 'socket_type': 'CUSTOM'}
+  - info / outputs / Hit Distance / aliases (added) : nouveau: ['Hit Distance']
+  - info / outputs / Hit Normal / aliases (added) : nouveau: ['Hit Normal']
+  - info / outputs / Hit Position / aliases (added) : nouveau: ['Hit Position']
+  - info / outputs / Is Hit / aliases (added) : nouveau: ['Is Hit']
+  - info / outputs / Self Hit / aliases (added) : nouveau: ['Self Hit']
+  - info / params / only_local / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Script** (`ShaderNodeScript`)
+  - info / params / bytecode / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+  - info / params / bytecode_hash / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+  - info / params / filepath / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / script / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+  - info / params / use_auto_update / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Separate Color** (`ShaderNodeSeparateColor`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Blue / aliases (added) : nouveau: ['Blue', 'Value', 'Lightness']
+  - info / outputs / Green / aliases (added) : nouveau: ['Green', 'Saturation']
+  - info / outputs / Red / aliases (added) : nouveau: ['Red', 'Hue']
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Separate XYZ** (`ShaderNodeSeparateXYZ`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / X / aliases (added) : nouveau: ['X']
+  - info / outputs / Y / aliases (added) : nouveau: ['Y']
+  - info / outputs / Z / aliases (added) : nouveau: ['Z']
+- **Shader to RGB** (`ShaderNodeShaderToRGB`)
+  - info / inputs / Shader / aliases (added) : nouveau: ['Shader']
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Squeeze Value (Legacy)** (`ShaderNodeSqueeze`)
+  - info / inputs / Center / aliases (added) : nouveau: ['Center']
+  - info / inputs / Value / aliases (added) : nouveau: ['Value']
+  - info / inputs / Width / aliases (added) : nouveau: ['Width']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+- **Subsurface Scattering** (`ShaderNodeSubsurfaceScattering`)
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / inputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / BSSRDF / aliases (added) : nouveau: ['BSSRDF']
+  - info / params / falloff / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Tangent** (`ShaderNodeTangent`)
+  - info / outputs / Tangent / aliases (added) : nouveau: ['Tangent']
+  - info / params / axis / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / direction_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / uv_map / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Brick Texture** (`ShaderNodeTexBrick`)
+  - info / inputs / Bias / aliases (added) : nouveau: ['Bias']
+  - info / inputs / Brick Width / aliases (added) : nouveau: ['Brick Width']
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Mortar / aliases (added) : nouveau: ['Mortar']
+  - info / inputs / Mortar Size / aliases (added) : nouveau: ['Mortar Size']
+  - info / inputs / Mortar Smooth / aliases (added) : nouveau: ['Mortar Smooth']
+  - info / inputs / Row Height / aliases (added) : nouveau: ['Row Height']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / offset / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / offset_frequency / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+  - info / params / squash / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / squash_frequency / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Checker Texture** (`ShaderNodeTexChecker`)
+  - info / inputs / Color1 / aliases (added) : nouveau: ['Color1']
+  - info / inputs / Color2 / aliases (added) : nouveau: ['Color2']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+- **Texture Coordinate** (`ShaderNodeTexCoord`)
+  - info / outputs / Camera / aliases (added) : nouveau: ['Camera']
+  - info / outputs / Generated / aliases (added) : nouveau: ['Generated']
+  - info / outputs / Normal / aliases (added) : nouveau: ['Normal']
+  - info / outputs / Object / aliases (added) : nouveau: ['Object']
+  - info / outputs / Reflection / aliases (added) : nouveau: ['Reflection']
+  - info / outputs / UV / aliases (added) : nouveau: ['UV']
+  - info / outputs / Window / aliases (added) : nouveau: ['Window']
+  - info / params / from_instancer / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / object / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+- **Environment Texture** (`ShaderNodeTexEnvironment`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / image / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+  - info / params / interpolation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / projection / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Gabor Texture** (`ShaderNodeTexGabor`)
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Frequency / aliases (added) : nouveau: ['Frequency']
+  - info / inputs / Orientation (added) : nouveau: {'aliases': ['Orientation'], 'bl_idname': 'NodeSocketFloatAngle', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'SOCKET'}
+  - info / inputs / Orientation 2D (removed) : ancien: {'bl_idname': 'NodeSocketFloatAngle', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'VALUE'}
+  - info / inputs / Orientation 3D (removed) : ancien: {'bl_idname': 'NodeSocketVectorDirection', 'label': 'Orientation', 'name': 'Orientation', 'socket_type': 'VECTOR'}
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Intensity / aliases (added) : nouveau: ['Intensity']
+  - info / outputs / Phase / aliases (added) : nouveau: ['Phase']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / gabor_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Gradient Texture** (`ShaderNodeTexGradient`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / gradient_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **IES Texture** (`ShaderNodeTexIES`)
+  - info / inputs / Strength / aliases (added) : nouveau: ['Strength']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / filepath / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+  - info / params / ies / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+  - info / params / mode / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Image Texture** (`ShaderNodeTexImage`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / extension / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / image / type (modified) : ancien: 'NoneType' → nouveau: 'VALUE'
+  - info / params / interpolation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / projection / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / projection_blend / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+- **Magic Texture** (`ShaderNodeTexMagic`)
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / turbulence_depth / type (modified) : ancien: 'int' → nouveau: 'VALUE'
+- **Noise Texture** (`ShaderNodeTexNoise`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Gain / aliases (added) : nouveau: ['Gain']
+  - info / inputs / Lacunarity / aliases (added) : nouveau: ['Lacunarity']
+  - info / inputs / Offset / aliases (added) : nouveau: ['Offset']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / noise_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / noise_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **Sky Texture** (`ShaderNodeTexSky`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / aerosol_density / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / air_density / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / altitude / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / ground_albedo / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / ozone_density / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / sky_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / sun_direction (removed) : ancien: {'default': None, 'enum': None, 'type': 'Vector'}
+  - info / params / sun_disc / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / sun_elevation / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / sun_intensity / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / sun_rotation / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / sun_size / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+  - info / params / turbidity / type (modified) : ancien: 'float' → nouveau: 'VALUE'
+- **Voronoi Texture** (`ShaderNodeTexVoronoi`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Exponent / aliases (added) : nouveau: ['Exponent']
+  - info / inputs / Lacunarity / aliases (added) : nouveau: ['Lacunarity']
+  - info / inputs / Randomness / aliases (added) : nouveau: ['Randomness']
+  - info / inputs / Roughness / aliases (added) : nouveau: ['Roughness']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Smoothness / aliases (added) : nouveau: ['Smoothness']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Distance / aliases (added) : nouveau: ['Distance']
+  - info / outputs / Position / aliases (added) : nouveau: ['Position']
+  - info / outputs / Radius / aliases (added) : nouveau: ['Radius']
+  - info / outputs / W / aliases (added) : nouveau: ['W']
+  - info / params / distance / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / feature / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / normalize / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / voronoi_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Wave Texture** (`ShaderNodeTexWave`)
+  - info / inputs / Detail / aliases (added) : nouveau: ['Detail']
+  - info / inputs / Detail Roughness / aliases (added) : nouveau: ['Detail Roughness']
+  - info / inputs / Detail Scale / aliases (added) : nouveau: ['Detail Scale']
+  - info / inputs / Distortion / aliases (added) : nouveau: ['Distortion']
+  - info / inputs / Phase Offset / aliases (added) : nouveau: ['Phase Offset']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / bands_direction / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / rings_direction / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / wave_profile / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / wave_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **White Noise Texture** (`ShaderNodeTexWhiteNoise`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / inputs / W / aliases (added) : nouveau: ['W']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / params / noise_dimensions / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **UV Along Stroke** (`ShaderNodeUVAlongStroke`)
+  - info / outputs / UV / aliases (added) : nouveau: ['UV']
+  - info / params / use_tips / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+- **UV Map** (`ShaderNodeUVMap`)
+  - info / outputs / UV / aliases (added) : nouveau: ['UV']
+  - info / params / from_instancer / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / uv_map / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Color Ramp** (`ShaderNodeValToRGB`)
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Value** (`ShaderNodeValue`)
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+- **Vector Curves** (`ShaderNodeVectorCurve`)
+  - info / inputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloatFactor', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+- **Vector Displacement** (`ShaderNodeVectorDisplacement`)
+  - info / inputs / Midlevel / aliases (added) : nouveau: ['Midlevel']
+  - info / inputs / Scale / aliases (added) : nouveau: ['Scale']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Displacement / aliases (added) : nouveau: ['Displacement']
+  - info / params / space / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Vector Math** (`ShaderNodeVectorMath`)
+  - info / inputs / Addend (added) : nouveau: {'aliases': ['Addend', 'Reference', 'Min'], 'bl_idname': 'NodeSocketVector', 'label': 'Addend', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / inputs / IOR (added) : nouveau: {'aliases': ['IOR', 'Scale'], 'bl_idname': 'NodeSocketFloat', 'label': 'IOR', 'name': 'Scale', 'socket_type': 'VALUE'}
+  - info / inputs / Scale (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Scale', 'name': 'Scale', 'socket_type': 'VALUE'}
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector', 'Multiplier', 'Incident', 'Exponent', 'Max', 'Increment']
+  - info / inputs / Vector_001 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Vector', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / inputs / Vector_002 (removed) : ancien: {'bl_idname': 'NodeSocketVector', 'label': 'Vector', 'name': 'Vector', 'socket_type': 'VECTOR'}
+  - info / outputs / Value / aliases (added) : nouveau: ['Value']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / operation / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Vector Rotate** (`ShaderNodeVectorRotate`)
+  - info / inputs / Angle / aliases (added) : nouveau: ['Angle']
+  - info / inputs / Axis / aliases (added) : nouveau: ['Axis']
+  - info / inputs / Center / aliases (added) : nouveau: ['Center']
+  - info / inputs / Rotation / aliases (added) : nouveau: ['Rotation']
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / invert / type (modified) : ancien: 'bool' → nouveau: 'VALUE'
+  - info / params / rotation_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Vector Transform** (`ShaderNodeVectorTransform`)
+  - info / inputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / outputs / Vector / aliases (added) : nouveau: ['Vector']
+  - info / params / convert_from / enum (modified) : ancien: ('WORLD', 'OBJECT', 'CAMERA') → nouveau: ('WORLD', 'OBJECT', 'CAMERA', 'LIGHT')
+  - info / params / convert_from / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / convert_to / enum (modified) : ancien: ('WORLD', 'OBJECT', 'CAMERA') → nouveau: ('WORLD', 'OBJECT', 'CAMERA', 'LIGHT')
+  - info / params / convert_to / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+  - info / params / vector_type / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Color Attribute** (`ShaderNodeVertexColor`)
+  - info / outputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / params / layer_name / type (modified) : ancien: 'str' → nouveau: 'VALUE'
+- **Volume Absorption** (`ShaderNodeVolumeAbsorption`)
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Volume Coefficients** (`ShaderNodeVolumeCoefficients`)
+  - info / inputs / Absorption Coefficients / aliases (added) : nouveau: ['Absorption Coefficients']
+  - info / inputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Backscatter / aliases (added) : nouveau: ['Backscatter']
+  - info / inputs / Diameter / aliases (added) : nouveau: ['Diameter']
+  - info / inputs / Emission Coefficients / aliases (added) : nouveau: ['Emission Coefficients']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Scatter Coefficients / aliases (added) : nouveau: ['Scatter Coefficients']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / phase / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Volume Info** (`ShaderNodeVolumeInfo`)
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+  - info / outputs / Density / aliases (added) : nouveau: ['Density']
+  - info / outputs / Flame / aliases (added) : nouveau: ['Flame']
+  - info / outputs / Temperature / aliases (added) : nouveau: ['Temperature']
+- **Principled Volume** (`ShaderNodeVolumePrincipled`)
+  - info / inputs / Absorption Color / aliases (added) : nouveau: ['Absorption Color']
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Blackbody Intensity / aliases (added) : nouveau: ['Blackbody Intensity']
+  - info / inputs / Blackbody Tint / aliases (added) : nouveau: ['Blackbody Tint']
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Color Attribute / aliases (added) : nouveau: ['Color Attribute']
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Density Attribute / aliases (added) : nouveau: ['Density Attribute']
+  - info / inputs / Emission Color / aliases (added) : nouveau: ['Emission Color']
+  - info / inputs / Emission Strength / aliases (added) : nouveau: ['Emission Strength']
+  - info / inputs / Temperature / aliases (added) : nouveau: ['Temperature']
+  - info / inputs / Temperature Attribute / aliases (added) : nouveau: ['Temperature Attribute']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+- **Volume Scatter** (`ShaderNodeVolumeScatter`)
+  - info / inputs / Alpha / aliases (added) : nouveau: ['Alpha']
+  - info / inputs / Anisotropy / aliases (added) : nouveau: ['Anisotropy']
+  - info / inputs / Backscatter / aliases (added) : nouveau: ['Backscatter']
+  - info / inputs / Color / aliases (added) : nouveau: ['Color']
+  - info / inputs / Density / aliases (added) : nouveau: ['Density']
+  - info / inputs / Diameter / aliases (added) : nouveau: ['Diameter']
+  - info / inputs / IOR / aliases (added) : nouveau: ['IOR']
+  - info / inputs / Weight (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Weight', 'name': 'Weight', 'socket_type': 'VALUE'}
+  - info / outputs / Volume / aliases (added) : nouveau: ['Volume']
+  - info / params / phase / type (modified) : ancien: 'str' → nouveau: 'ENUM'
+- **Wavelength** (`ShaderNodeWavelength`)
+  - info / inputs / Wavelength / aliases (added) : nouveau: ['Wavelength']
+  - info / outputs / Color / aliases (added) : nouveau: ['Color']
+- **Wireframe** (`ShaderNodeWireframe`)
+  - info / inputs / Size / aliases (added) : nouveau: ['Size']
+  - info / outputs / Fac (removed) : ancien: {'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / outputs / Factor (added) : nouveau: {'aliases': ['Factor'], 'bl_idname': 'NodeSocketFloat', 'label': 'Factor', 'name': 'Factor', 'socket_type': 'VALUE'}
+  - info / params / use_pixel_size / type (modified) : ancien: 'bool' → nouveau: 'VALUE'

@@ -1,3 +1,3 @@
 # VolumeShader
 
-::: geonodes.core.sock_shader.VolumeShader
+::: geonodes.core_new.shadernodes.generated.volumeshader.VolumeShader

@@ -50,24 +50,24 @@ from .socket import Socket
 
 class ShaderRoot:
 
-    def surface_out(self, target='ALL'):
+    def surface_out(self, target=None):
         """ Connect the shader to the Surface socket of Material Output
 
         Parameters
         ----------
         target : str, optional
-            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default='ALL'.
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default=None uses the tree target.
 
         """
         self._tree.set_surface(self, target=target)
 
-    def volume_out(self, target='ALL'):
+    def volume_out(self, target=None):
         """ Connect the shader to the Volume socket of Material Output
 
         Parameters
         ----------
         target : str, optional
-            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default='ALL'.
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default=None uses the tree target.
 
         """
         self._tree.set_volume(self, target=target)

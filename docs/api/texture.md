@@ -1,3 +1,3 @@
 # Texture
 
-::: geonodes.core.sock_texture.Texture
+::: geonodes.core_new.geonodes.generated.texture.Texture

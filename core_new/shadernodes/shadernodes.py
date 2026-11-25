@@ -83,6 +83,7 @@ class ShaderNodes(Tree):
             prefix           : Optional[str] = None,
             rebuild          : bool = True,
             color_tag        : str = 'NONE',
+            target           : str = 'ALL',
             ):
         """ > ShaderNodes
 
@@ -104,9 +105,15 @@ class ShaderNodes(Tree):
             rebuild an existing API material or group; missing ones are always built.
             Unmarked materials are preserved; a new API material gets a unique name.
 
+        target : str, default='ALL'
+            Default Material Output target: ALL, EEVEE or CYCLES.
+
         color_tag : str, default='NONE'
             group or modifier color_tag attribute (groups only)
         """
+        if target not in ('ALL', 'EEVEE', 'CYCLES'):
+            raise ValueError(f"Invalid material output target: {target!r}")
+        self._target = target
         super().__init__(
             tree_name, 
             tree_type='ShaderNodeTree', 
@@ -134,13 +141,9 @@ class ShaderNodes(Tree):
         if self._is_group:
             return super().output_node
 
-        for node in self._nodes.values():
-            if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':
-                return node
-            
-        return Node('ShaderNodeOutputMaterial')
+        return self.get_output_node()
 
-    def get_output_node(self, target: str = 'ALL') -> Node:
+    def get_output_node(self, target: Optional[str] = None) -> Node:
         """ Output node
 
         Standard behavior if Group or within a zone
@@ -160,6 +163,9 @@ class ShaderNodes(Tree):
         # Output to shader outpout
         # ---------------------------------------------------------------------------
 
+        if target is None:
+            target = self._target
+
         for node in self._nodes.values():
             if node._bnode.bl_idname == 'ShaderNodeOutputMaterial' and node._bnode.target == target:
                 return node
@@ -167,19 +173,19 @@ class ShaderNodes(Tree):
         node._bnode.target = target
         return node
 
-    def set_surface(self, value: Any, target: str ='ALL') -> None:
+    def set_surface(self, value: Any, target: Optional[str] = None) -> None:
         node = self.get_output_node(target=target)
         node.set_input_socket('Surface', value)
 
-    def set_volume(self, value: Any, target: str ='ALL') -> None:
+    def set_volume(self, value: Any, target: Optional[str] = None) -> None:
         node = self.get_output_node(target=target)
         node.set_input_socket('Volume', value)
 
-    def set_displacement(self, value: Any, target: str ='ALL') -> None:
+    def set_displacement(self, value: Any, target: Optional[str] = None) -> None:
         node = self.get_output_node(target=target)
         node.set_input_socket('Displacement', value)
 
-    def set_thickness(self, value: Any, target: str ='ALL') -> None:
+    def set_thickness(self, value: Any, target: Optional[str] = None) -> None:
         node = self.get_output_node(target=target)
         node.set_input_socket('Thickness', value)
 

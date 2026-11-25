@@ -1,3 +1,3 @@
 # Closure
 
-::: geonodes.core.sock_closure.Closure
+::: geonodes.core_new.geonodes.generated.closure.Closure

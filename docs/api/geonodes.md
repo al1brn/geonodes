@@ -1,3 +1,3 @@
 # GeoNodes
 
-::: geonodes.core.geonodes.GeoNodes
+::: geonodes.core_new.geonodes.geonodes.GeoNodes

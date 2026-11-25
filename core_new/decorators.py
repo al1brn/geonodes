@@ -255,12 +255,13 @@ def shader_group(name=None, **options):
     return _tree_decorator(ShaderNodes, name, True, options)
 
 
-def shader(name=None, **options):
+def shader(name=None, *, target='ALL', **options):
     """Declare a material, with ShaderNodes options and is_group=False.
 
+    target selects the default Material Output target: ALL, EEVEE or CYCLES.
     Rebuilding a material replaces its node tree.
     """
-    return _tree_decorator(ShaderNodes, name, False, options)
+    return _tree_decorator(ShaderNodes, name, False, dict(options, target=target))
 
 
 class Package:
@@ -389,9 +390,9 @@ class Package:
         """Register a shader group, with the options of shader_group."""
         return self._register(shader_group(name, **options))
 
-    def shader(self, name=None, **options):
+    def shader(self, name=None, *, target='ALL', **options):
         """Register a material, with the options of shader."""
-        return self._register(shader(name, **options))
+        return self._register(shader(name, target=target, **options))
 
     def _build(self, rebuild: bool = False, full: bool = False):
         """Build registered trees and display their cumulative statistics."""

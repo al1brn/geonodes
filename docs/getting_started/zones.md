@@ -28,7 +28,8 @@ The closure evaluation is made using the **evaluate** method. This method
 takes a **signature** argument which is a dict describing the closure inputs and outputs.
 
 ``` python
-with GeoNodes("Closure"):
+@modifier('Closure')
+def closure():
 
     # Create a closure adding to two entries 
     with Closure() as cl0:
@@ -68,6 +69,8 @@ with GeoNodes("Closure"):
     cl.node.menu = Input(default_value="Closure 0")
 
     cl.out()
+
+closure.build()
 ```
 
 ## Loops
@@ -112,7 +115,8 @@ The object returned by the iterator exposes the input and output sockets.
 ### Simulation
 
 ``` python
-with GeoNodes("Simulation"):
+@modifier('Simulation')
+def simulation_demo():
     
     # Two input parameters
     count  = Integer(10, "Count", 1, 100)
@@ -145,16 +149,19 @@ with GeoNodes("Simulation"):
 
     with Layout("Instantiate the balls"):
         mesh = Mesh.Grid(20, 20)
-        mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
+        mesh += cloud.instance_on_points(instance=Mesh.UVSphere(radius=radius))
         
     # Outside de the loop, out to Group Output Node
     mesh.out()
+
+simulation_demo.build()
 ```
 
 ### Repeat
 
 ``` python
-with GeoNodes("Repeat"):
+@modifier('Repeat')
+def repeat_demo():
 
     # Parameters
     levels = Integer(5, "Levels", 1, 10)
@@ -173,12 +180,15 @@ with GeoNodes("Repeat"):
         cube += floor
         
     cube.out()
+
+repeat_demo.build()
 ```
 
 ### For Each Element
 
 ``` python
-with GeoNodes("For Eeach"):
+@modifier('For Each')
+def for_each_demo():
     
     # Let's assume the input geometry is a mesh
     mesh = Mesh()
@@ -201,4 +211,6 @@ with GeoNodes("For Eeach"):
     mesh += feel.generated
     
     mesh.out()
+
+for_each_demo.build()
 ```

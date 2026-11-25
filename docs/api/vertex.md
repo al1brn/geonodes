@@ -1,3 +1,3 @@
 # Vertex
 
-::: geonodes.core.domains.Vertex
+::: geonodes.core_new.geonodes.generated.dom_vertex.Vertex

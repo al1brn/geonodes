@@ -139,7 +139,8 @@ class Vector(Socket):
         """
         return self.separate_xyz().z
 
-
+    def __getitem__(self, index):
+        return self.get_component(index)
 
     @classmethod
     def FromList(cls, value):

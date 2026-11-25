@@ -23,6 +23,7 @@ class NodeSocket:
     group_sockets   : Any = None
     bl_idname       : str = ""
     socket_type     : str | None = None
+    subtype_label   : str | None = None
     enabled         : bool = True
     is_output       : bool = False
     is_multi_input  : bool = False
@@ -32,7 +33,7 @@ class NodeSocket:
     default_value   : Any = None
     is_menu         : bool = False
     enums           : Any = None
-    names           : set[str] = field(default_factory=set)
+    names           : list[str] = field(default_factory=list)
     class_name      : str = ""
     is_attribute    : bool = False
 
@@ -68,6 +69,7 @@ class NodeSocket:
             socket_name     = socket_name,
             bl_idname       = bsocket.bl_idname,
             socket_type     = socket_type,
+            subtype_label   = getattr(bsocket, 'bl_subtype_label', None),
             enabled         = bsocket.enabled,
             is_output       = bsocket.is_output,
             is_multi_input  = bsocket.is_multi_input,
@@ -77,7 +79,7 @@ class NodeSocket:
             default_value   = getattr(bsocket, 'default_value', None),
             is_menu         = is_menu,
             enums           = cls.get_enum_list(bsocket) if is_menu else None,
-            names           = {socket_name},
+            names           = [socket_name],
             class_name      = class_name,
             is_attribute    = socket_type in ATTR_SOCKETS,
         )
@@ -104,7 +106,9 @@ class NodeSocket:
             if node_socket.identifier == self.identifier:
                 if node_socket.enabled:
                     self.enabled = True
-                    self.names = self.names.union((node_socket.socket_name,))
+                    #self.names = self.names.union((node_socket.socket_name,))
+                    if node_socket.socket_name not in self.names:
+                        self.names.append(node_socket.socket_name)
 
                     if node_socket.socket_type != self.socket_type:
                         #assert False, "Shouldn't exist ?"

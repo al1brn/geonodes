@@ -1,3 +1,3 @@
 # Layout
 
-::: geonodes.core.treeclass.Layout
+::: geonodes.core_new.root.tree.Layout

@@ -1,3 +1,3 @@
 # Boolean
 
-::: geonodes.core.sock_boolean.Boolean
+::: geonodes.core_new.geonodes.generated.boolean.Boolean

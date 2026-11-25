@@ -4,7 +4,7 @@ from geonodes import *
 def stretch(geo, delta, selection=True):
     with Layout("Stretch"):
         x, y, _ = nd.position.normalize().xyz
-        geo[selection].offset = x*delta, y*delta, 0.0
+        geo(selection).offset = x*delta, y*delta, 0.0
         return geo
 
 def demo(rebuild=False):
@@ -24,15 +24,12 @@ def demo(rebuild=False):
 
             n = mesh.points.count
             cyl = Mesh.Cylinder(vertices=n, radius=1.0, depth=thickness, side_segments=1)
-            circ_index = nd.index // 2
 
             pos = mesh.points.sample_index(nd.position, index=nd.index % n)
             x, y, _ = pos.xyz
             z = nd.position.z
 
             cyl.points.position = (x, y, z)
-
-        #cyl.bevel().link_inputs(from_panel="Bevel")
 
         cyl.out()
 
@@ -76,8 +73,9 @@ def demo(rebuild=False):
             hcyl = 1. + depth
 
         with Layout("Mark Initial vertices"):
-            init_sel = mesh.points.get("Initial", 'Boolean')
-            init_sel.value = True
+            mesh.points["Initial"] = True
+            #init_sel = mesh.points.get("Initial", 'Boolean')
+            #init_sel.value = True
 
         with Mesh.IndexSwitch(index=shape_index - 1) as digger:
 
@@ -118,7 +116,8 @@ def demo(rebuild=False):
             mesh.switch(use_bot, diff)
 
         with Layout("Bevel"):
-            beveled = Mesh(mesh)[init_sel.value.bnot()].bevel(
+            #beveled = Mesh(mesh)(init_sel.value.bnot()).bevel(
+            beveled = Mesh(mesh)(Boolean("Initial").bnot()).bevel(
                 affect_kind = 'Edges',
                 start_left_offset = bev_offset,
                 start_right_offset = bev_offset,
@@ -267,7 +266,7 @@ def demo(rebuild=False):
             inner_length = gear.points.sample_index(seg_length, index=0)
             outer_length = gear.points.sample_index(seg_length, index=2)
 
-            gear[sel_outer].position = seg_center + (nd.position - seg_center).scale(inner_length/outer_length)
+            gear(sel_outer).position = seg_center + (nd.position - seg_center).scale(inner_length/outer_length)
 
         with Layout("Tooth Width"):
             gear.position = seg_center + (nd.position - seg_center).scale(width_fac*4)
@@ -278,10 +277,10 @@ def demo(rebuild=False):
 
             seg_dir = seg_vector.normalize()
 
-            gear[sel_inner0].left_handle_offset = seg_dir.scale(round_fac0*teeth_scale)
-            gear[sel_inner1].right_handle_offset = seg_dir.scale(round_fac0*teeth_scale)
-            gear[sel_outer0].left_handle_offset = seg_dir.scale(round_fac1*teeth_scale)
-            gear[sel_outer1].right_handle_offset = seg_dir.scale(round_fac1*teeth_scale)
+            gear(sel_inner0).left_handle_offset = seg_dir.scale(round_fac0*teeth_scale)
+            gear(sel_inner1).right_handle_offset = seg_dir.scale(round_fac0*teeth_scale)
+            gear(sel_outer0).left_handle_offset = seg_dir.scale(round_fac1*teeth_scale)
+            gear(sel_outer1).right_handle_offset = seg_dir.scale(round_fac1*teeth_scale)
 
         with Layout("To Mesh"):
 
@@ -298,7 +297,7 @@ def demo(rebuild=False):
             beveled = Mesh(gear)
             for i in range(2):
                 sel = nd.position.z > thickness/4 if i == 0 else nd.position.z < -thickness/4
-                beveled[sel].bevel(
+                beveled(sel).bevel(
                     affect_kind = 'Edges',
                     start_left_offset = bev_offset,
                     start_right_offset = bev_offset,

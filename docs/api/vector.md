@@ -1,3 +1,3 @@
 # Vector
 
-::: geonodes.core.sock_vector.Vector
+::: geonodes.core_new.geonodes.generated.vector.Vector

@@ -1,5 +1,11 @@
 # counters demo
 
+This page describes a demonstration scene. For current tree declarations and
+build calls, see [Modifiers, groups and tools](../getting_started/modifiers_groups.md)
+and [Packages](../getting_started/packages.md). Older module-level `demo(...)`
+entry points are specific to each demo and do not define the builder API.
+
+
 ![counters](images/counters_render_01.png)
 
 This demo builds several modifiers:

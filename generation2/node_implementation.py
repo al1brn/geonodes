@@ -2,9 +2,8 @@
 
 from dataclasses import replace as dataclass_replace
 
-from ..kernel import snake_case, CamelCase, get_class_name, CLASS_NAMES
-
-from ..kernel import GEOMETRY_CLASSES 
+from ..kernel import CLASS_NAMES, GEOMETRY_CLASSES
+from ..kernel import snake_case, CamelCase, get_class_name, get_singular
 from .config import ADD_LOOP, LOOP_ONLY, NO_STATIC_CODE
 from .config import STATIC_IMPLEMENTATION_ONLY, DEFAULT_IMPLEMENTATION
 from .config import STATIC_IMPLEMENTATIONS
@@ -112,6 +111,9 @@ class NodeImplementation:
                     'auto_data_type': None,
                     'parameters': {parameter.name: data_type},
                 }
+
+                #if self.node.name == 'Map Range':
+                #    print(f"DEBUG: {self.node.name=}, {self.node.data_type_drives_inputs=}, {node_call.has_self=}, {node_call.self_socket=}")
 
                 if (self.node.data_type_drives_inputs and node_call.has_self
                         and node_call.self_socket is None):
@@ -252,7 +254,7 @@ class NodeImplementation:
         over_spec = self.expand_spec(over_spec)
 
         # Debug option
-        if False and self.node.name in ('Combine List'):
+        if False and self.node.name in ('Geometry'):
             print(f"DEBUG get_default_node_calls '{self.node.name} ({self.node.bl_idname})")
             print(f"- inputs          :", [socket.name for socket in inputs])
             print(f"- outputs         :", [socket.name for socket in outputs])
@@ -332,16 +334,15 @@ class NodeImplementation:
         # ---------------------------------------------------------------------------
 
         if node.is_shader:
-            if name_tokens[-1] == 'BSDF':
-                method_name = CamelCase(' '.join(name_tokens[:-1]))
-
-                return NodeCalls.class_method(
-                    category = "Shader",
-                    class_name = "Shader",
-                    method_name = method_name,
-                    rules = "Ends with BSDF -> Shader constructor",
-                ).overrides(over_spec)
-
+            if (first_input is not None) and (first_output is not None):
+                if first_input.socket_type != 'SHADER' and first_output.socket_type == 'SHADER':
+                    method_name = CamelCase(' '.join(tk for tk in name_tokens if tk not in ('BSDF', 'Volume')))
+                    return NodeCalls.class_method(
+                        category = "Shader",
+                        class_name = first_output.class_name,
+                        method_name = method_name,
+                        rules = "Shader constructor",
+                    ).overrides(over_spec)
 
         # ---------------------------------------------------------------------------
         # Nodes with input geometry
@@ -581,7 +582,7 @@ class NodeImplementation:
                 category = 'Data type driven',
                 class_name = None,
                 method_name = snake_case(node.name),
-                self_socket = data_type_input,
+                self_socket = None,
                 rules = "'data_type' parameter drives first input as method, no domain",
             ).overrides(over_spec)
             return self.get_data_type_calls(node_calls)
@@ -612,13 +613,13 @@ class NodeImplementation:
         # Name is "xxx class_name"
         # ---------------------------------------------------------------------------
 
-        if ( (len(name_tokens) == 2) and 
-            (name_tokens[-1] in CLASS_NAMES.values()) and
-             len(node.bnode.inputs)):
-            if CLASS_NAMES[node.bnode.inputs[0].type] == name_tokens[-1]:
+        if (len(name_tokens) == 2) and len(node.bnode.inputs):
+            singular = get_singular(name_tokens[-1])
+            if ((singular in CLASS_NAMES.values()) and
+                (singular == CLASS_NAMES[node.bnode.inputs[0].type])):
                 return NodeCalls.method(
                     category = "Transformations",
-                    class_name = name_tokens[-1],
+                    class_name = singular,
                     method_name = snake_case(name_tokens[0]),
                     self_socket = first_input.socket_name,
                     rules = "Name template is 'key_word class_name'",

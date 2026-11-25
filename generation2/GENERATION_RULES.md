@@ -283,6 +283,7 @@ Procédure opératoire : [préparation, dimensions, génération et comparaison 
 - [node_socket.py](node_socket.py) : snapshots des sockets et ordre physique.
 - [node_implementation.py](node_implementation.py) : orchestration, génération du code et écriture.
 - [output.py](output.py) : héritage, filtre des méthodes manuscrites, rendu et validation des modules.
+  - La classe générée `VolumeShader` hérite de `BaseVolumeShader` puis du `Shader` généré, sur le modèle des spécialisations géométriques. Elle conserve sa sortie Volume et récupère les méthodes communes de Shader.
 - [tests/test_contexts.py](tests/test_contexts.py) : tests des règles de génération.
 - [../core_new/tests/test_environments.py](../core_new/tests/test_environments.py) : tests du comportement produit dans Blender.
 

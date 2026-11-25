@@ -18,7 +18,7 @@ def demo(rebuild=False):
         iterations = Integer(10, "Iterations", 1)
         f = Closure(None, "Function")
 
-        line = Mesh.Line(start_location=pos).points[nd.index.greater_than(0)].delete()
+        line = Mesh.Line(start_location=pos).points(nd.index.greater_than(0)).delete()
         for sim in simulation(mesh=line, pos=pos, t=0.):
 
             dt = sim.delta_time/iterations
@@ -32,7 +32,7 @@ def demo(rebuild=False):
                 rep.t += dt
 
             count = sim.mesh.points.count
-            sim.mesh = sim.mesh.points[nd.index.equal(count-1)].extrude(rep.pos - sim.pos)
+            sim.mesh = sim.mesh.points(nd.index.equal(count-1)).extrude(rep.pos - sim.pos)
             sim.pos = rep.pos
             sim.t = rep.t
 

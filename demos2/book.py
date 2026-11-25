@@ -599,7 +599,7 @@ def demo(rebuild=False):
             last_vec = last_pos - prev_pos
             last_length = last_vec.length()
             new_last_length = new_length - current_length + last_length
-            curve.points[nd.index == last_index].position = prev_pos + last_vec.normalize().scale(new_last_length)
+            curve.points(nd.index == last_index).position = prev_pos + last_vec.normalize().scale(new_last_length)
             curve.out("True")
 
         with res:
@@ -675,7 +675,7 @@ def demo(rebuild=False):
             
             
             shifted = Curve(smooth_curve(sheet_over))
-            shifted.points[raycast.is_hit & (nd.index != 0)].position = raycast.hit_position
+            shifted.points(raycast.is_hit & (nd.index != 0)).position = raycast.hit_position
             shifted = G().sheet_length(shifted, width)
             shifted = shifted.resample(count=count)
             
@@ -699,7 +699,7 @@ def demo(rebuild=False):
 
         with Layout("Book parameters"):
 
-            curve = Curve(sheets.splines[Integer("Index")==index].separate())
+            curve = Curve(sheets.splines(Integer("Index")==index).separate())
             width.switch(width < 0.1, curve.length())
 
             sheet_count, thickness = get_binding_params(binding, True)
@@ -914,7 +914,7 @@ def demo(rebuild=False):
             x, _, z = seg0.xyz
             ag = gnmath.atan2(z, x)
 
-            curve.points[nd.index==0].Angle = ag
+            curve.points(nd.index==0).Angle = ag
 
         curve.out()
 
@@ -941,7 +941,7 @@ def demo(rebuild=False):
             end_sheet = G().curve_to_chain(end_sheet)
 
         with Layout("Move initial point"):
-            sheet.points[use_start & (nd.index == 0)].position = start_position
+            sheet.points(use_start & (nd.index == 0)).position = start_position
             start_position = sheet.points.sample_index(nd.position, index=0)
 
         with Layout("Rotate initial segment"):
@@ -953,7 +953,7 @@ def demo(rebuild=False):
             seg = Vector((ag.cos(), 0, ag.sin()))
             pos1 = start_position + seg.scale(rho)
 
-            sheet.points[nd.index == 1].position = pos1
+            sheet.points(nd.index == 1).position = pos1
 
         for rep in repeat(sheet.points.count - 2, sheet=sheet, pos=pos1, seg=seg):
 
@@ -968,7 +968,7 @@ def demo(rebuild=False):
             seg = Rotation((0, ag, 0)) @ rep.seg
             pos = rep.pos + seg.scale(rho)
 
-            rep.sheet.points[nd.index==index + 1].position = pos
+            rep.sheet.points(nd.index==index + 1).position = pos
 
             rep.pos = pos
             rep.seg = seg
@@ -1077,8 +1077,8 @@ def demo(rebuild=False):
             cur_start = (rep.iteration - left_count0) * spacing
             cur_fac = factor.map_range(from_min=cur_start, from_max=cur_start + duration)
 
-            sheet0 = Curve(from_sheets.sheets).splines[Integer("Index")==cur_index].separate()
-            sheet1 = Curve(to_sheets.sheets).splines[Integer("Index")==cur_index].separate()
+            sheet0 = Curve(from_sheets.sheets).splines(Integer("Index")==cur_index).separate()
+            sheet1 = Curve(to_sheets.sheets).splines(Integer("Index")==cur_index).separate()
 
             sheet = G().sheet_interpolate(
                 start = sheet0,
@@ -1188,9 +1188,9 @@ def demo(rebuild=False):
                             line_range._lc("Line Range")
                             curve_idx._lc("Curve Idx")
                                 
-                            line.points[line_range].position = c.points.sample_index(nd.position, index=curve_idx)
-                            line.points[line_range].Normal = c.points.sample_index(Vector("Normal"), index=curve_idx)
-                            line.points[line_range].U_Pos = c.points.sample_index(Float("U Pos"), index=curve_idx)
+                            line.points(line_range).position = c.points.sample_index(nd.position, index=curve_idx)
+                            line.points(line_range).Normal = c.points.sample_index(Vector("Normal"), index=curve_idx)
+                            line.points(line_range).U_Pos = c.points.sample_index(Float("U Pos"), index=curve_idx)
                                 
                 return line, curves
 
@@ -1211,9 +1211,9 @@ def demo(rebuild=False):
         
         nsplines = sheets.splines.count
         
-        cover = Curve(sheets.splines[Integer("Index")==0].separate().selection)
+        cover = Curve(sheets.splines(Integer("Index")==0).separate().selection)
         cover.reverse()
-        back = Curve(sheets.splines[Integer("Index")==nsplines - 1].separate().selection)
+        back = Curve(sheets.splines(Integer("Index")==nsplines - 1).separate().selection)
         
         line1, curves = merge_curves([cover, binding, back])
         cover = curves[0]
@@ -1251,9 +1251,9 @@ def demo(rebuild=False):
                 pos = line2.points.sample_index(nd.position, index=idx)
                 upos = line2.points.sample_index(Float("U Pos"), index=idx)
                 
-                thick_line.points[sel].position =  pos
-                thick_line.points[sel].U_Pos =  1 - upos
-                thick_line.points[sel].VBack = True
+                thick_line.points(sel).position =  pos
+                thick_line.points(sel).U_Pos =  1 - upos
+                thick_line.points(sel).VBack = True
                 
         with Layout("Extrude Page"):
 
@@ -1263,21 +1263,21 @@ def demo(rebuild=False):
             mesh = Mesh(thick_line).extrude((0, length, 0))
             top = mesh.top
             side = mesh.side
-            mesh.points[top].V_Pos = 1.0
+            mesh.points(top).V_Pos = 1.0
             
         with Layout("Side"):
             
             nfaces = mesh.faces.count
-            mesh.faces[side].Side = 0.0
-            mesh.faces[(nd.index==nfaces-1) | (nd.index==nfaces//2)].Side = 2.0
+            mesh.faces(side).Side = 0.0
+            mesh.faces((nd.index==nfaces-1) | (nd.index==nfaces//2)).Side = 2.0
             
             mesh += thick_line.flip_faces()
             mesh = Mesh(mesh).merge_by_distance(distance=thickness/10)
             
             
-            mesh.faces[Float("Side") == 0.0].shade_smooth=True
+            mesh.faces(Float("Side") == 0.0).shade_smooth=True
             mesh.faces.material = mat
-            mesh.faces[Boolean("VBack")].Side = 1.0
+            mesh.faces(Boolean("VBack")).Side = 1.0
             
         with Layout("UV Map"):
             mesh.corners.store_uv("UV Map", (Float("U Pos"), Float("V Pos"), 0))
@@ -1314,7 +1314,7 @@ def demo(rebuild=False):
         with Layout("Internal Sheets"):
             count = sheets.splines.count
             internal = (Integer("Index") > 0) & (Integer("Index") < count - 1)
-            page_curves = Curve(sheets.splines[internal].separate())
+            page_curves = Curve(sheets.splines(internal).separate())
             internal_count = count - 2
             point_count = page_curves.points.count/internal_count
             page_curves = page_curves.resample(count=point_count)
@@ -1380,7 +1380,7 @@ def demo(rebuild=False):
 
         with Layout("Material"):
             new_mesh = Mesh(mesh)
-            new_mesh.faces[selection].material_index = material_index + local_index
+            new_mesh.faces(selection).material_index = material_index + local_index
             new_mesh.switch(ignore, mesh)
             
         new_mesh.out()

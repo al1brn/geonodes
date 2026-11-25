@@ -108,17 +108,19 @@ class Geometry(RootGeometry, Geom):
     # get item is ambiguous since V5.2
     # ====================================================================================================
 
+    """
     def __getitem__(self, index):
         if self._is_list:
             return Socket.__getitem__(self, index)
         else:
             return Geom.__getitem__(self, index)
+    """
         
     # ====================================================================================================
     # Attributes
     # ====================================================================================================
 
-    def get(self, name, data_type=None, domain=None):
+    def get_DEPRECATED(self, name, data_type=None, domain=None):
         """Return a helper for a named attribute on this geometry.
 
         > Node <&Node Named Attribute>
@@ -148,13 +150,17 @@ class Geometry(RootGeometry, Geom):
         Attribute
             Named-attribute helper attached to this geometry.
         """
+        pass
+        """
         from ..domains.attribute import Attribute
+
 
         attr = Attribute(name, data_type=data_type, domain=domain)
         attr.geometry = self
         return attr
+        """
     
-    def set(self, name, value, domain=None):
+    def set_DEPRECATED(self, name, value, domain=None):
         """Store a named attribute on this geometry.
 
         > Node <&Node Store Named Attribute>
@@ -182,6 +188,8 @@ class Geometry(RootGeometry, Geom):
         Attribute
             Helper representing the stored attribute.
         """
+        pass
+        """
         from ..domains.attribute import Attribute
 
         if isinstance(name, Attribute):
@@ -195,9 +203,10 @@ class Geometry(RootGeometry, Geom):
             
         attr.set(value)
         return attr
+        """
 
     
-    def get_attribute_names(self, data_type=None, domain=None):
+    def get_attribute_names_DEPRECATED(self, data_type=None, domain=None):
         """Return the names of attributes available on this geometry.
 
         > Node <&Node Get Attribute Names>
@@ -225,6 +234,8 @@ class Geometry(RootGeometry, Geom):
         String
             String socket containing the matching attribute names.
         """
+
+        """
         from ..domains.attribute import Attribute
 
         _, dn = Attribute._get_geo_domain(domain)
@@ -232,6 +243,7 @@ class Geometry(RootGeometry, Geom):
 
         ok_dt = dt is not None
         ok_dn = dn is not None
+        """
 
         return Node("Get Attribute Names", named_sockets={
             "Geometry": self,

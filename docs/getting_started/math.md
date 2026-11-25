@@ -1,5 +1,12 @@
 # Math
 
+The code fragments on this page run inside a decorated builder. For example,
+put them in `@modifier()` followed by a function definition, then call that
+builder's `.build()` outside the function. See
+[Modifiers, groups and tools](modifiers_groups.md) and
+[Packages](packages.md) for complete declarations.
+
+
 Maths are performed as in pure python. Use `gnmath` module rather than standard `math`
 
 ``` python

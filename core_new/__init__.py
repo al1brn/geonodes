@@ -26,9 +26,6 @@ if PRODUCTION:
     from .environment import ModuleFacade
     gnmath = ModuleFacade('gnmath')
 
-
-    from .geonodes.domains.attribute import Attribute
-
     from .root.socket import Socket, DEFAULT
     from .root.input import Input
 

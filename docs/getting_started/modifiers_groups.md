@@ -1,277 +1,185 @@
-# Modifiers and Groups
+# Modifiers, groups and tools
 
-## Function builders and packages
+Declare node trees with a decorated Python function. The decorator selects the
+kind of tree and its options; the function constructs its nodes. Declaration
+alone does not build anything in Blender.
 
-Use `group`, `modifier`, `tool`, `shader_group`, or `shader` to build
-a tree inside a function with its own local variables. Options such as `prefix`
-and `color_tag` belong to the decorator; `is_group` is set by the
-decorator type. Use `.build()` to construct the tree. Calling the decorated
-object inside another tree inserts a Group node and connects its input sockets,
-using the same implementation and return convention as `G()`.
+| Decorator | Creates | Construction |
+| --- | --- | --- |
+| `@modifier()` | Geometry Nodes modifier tree | `.build()` |
+| `@group()` | Reusable Geometry Nodes group | `.build()` or a call inside a tree |
+| `@tool()` | Geometry Nodes tool | `.build()` |
+| `@shader()` | Material | `.build()` |
+| `@shader_group()` | Reusable shader group | `.build()` or a call inside a shader tree |
 
-The tree name is optional: `@group()` on `def my_group()` creates **My Group**.
-A leading underscore creates a leading dot: `_extract_items` becomes
-**.Extract Items**. An explicit name, such as `@group("My /// ?? Name")`,
-is preserved exactly. This convention applies to all five decorators, including
-their package variants.
+Use parentheses even when no options are needed: `@group()`, not `@group`.
+See [Packages](packages.md) to organize related builders and
+[Migration](migration.md) to convert scripts using explicit tree contexts.
 
-`group` creates a Geometry Nodes group, `modifier` creates a modifier, `tool`
-creates a Geometry Nodes tool, `shader` creates a material, and `shader_group`
-creates a reusable shader group. A package can mix all five types.
-
-Tool options are forwarded to `GeoNodes.Tool`, for example:
+## Declare a modifier
 
 ```python
-from geonodes import tool
+from geonodes import *
+
+@modifier("Move Geometry")
+def move_geometry(geometry: Geometry, offset: Vector = (0, 0, 1)):
+    """Move the input geometry by an adjustable offset."""
+    geometry.set_position(offset=offset).out()
+
+move_geometry.build()
+```
+
+Run the script in Blender, then select **Move Geometry** as the node group of a
+Geometry Nodes modifier. Function parameters become Group Input sockets, so the
+offset can be changed in the modifier interface. `.out()` connects the result to
+Group Output. A Python `return` does not declare a Blender output.
+
+The function runs inside an automatically managed tree context. Do not open
+another `with GeoNodes(...)` inside the builder to create its own tree.
+
+## Inputs and outputs
+
+Annotations select socket types. You can use socket classes (`Mesh`, `Vector`,
+`Float`, etc.) or the Python scalar types `float`, `int`, `bool` and `str`.
+Without an annotation, a non-`None` default determines the socket type. A required
+parameter needs an annotation. Defaults set Blender socket defaults.
+
+```python
+from geonodes import *
+
+@group()
+def add_values(a: float = 1.0, b: float = 2.0):
+    (a + b).out("Sum")
+
+@modifier()
+def use_values():
+    height = add_values(a=2.0, b=3.0)
+    Mesh.Cube(size=(1, 1, height)).out()
+
+use_values.build()
+```
+
+These arguments are symbolic sockets during construction, not ordinary Python
+build-time settings. Use node operations for calculations depending on them.
+Configure naming, target and tree options on the decorator. Keep other Python
+construction settings in constants or in a factory that declares a builder.
+
+Positional-only and keyword-only parameters are supported. `*args` and
+`**kwargs` parameters on the construction function are not supported.
+For interface details such as limits, descriptions and panels, create named
+sockets explicitly inside the function; see [Creating Sockets](creating_sockets.md).
+
+Declare each output with `.out("Name")`. Calling a decorated group uses the same
+input binding and output convention as `G()`: the call returns the first output
+socket, not the construction function's Python return value. Peer outputs can
+be read from that result using their socket names in snake_case.
+
+## Call a reusable group
+
+Call the decorated builder inside another tree to insert a Group node:
+
+```python
+from geonodes import *
+
+@group("Shift Mesh")
+def shift_mesh(mesh: Mesh, offset: Vector = (0, 0, 0)):
+    mesh.set_position(offset=offset).out()
+
+@modifier("Shifted Cube")
+def shifted_cube():
+    shift_mesh(Mesh.Cube(), offset=(1, 2, 3)).out()
+
+shifted_cube.build(full=True)
+```
+
+A missing group is built automatically before insertion. Existing dependencies
+are reused unless `full=True` is requested. Import the decorated Python builder
+to benefit from this behavior. `Group("Shift Mesh", ...)` and
+`G().shift_mesh(...)` remain available for calling an already existing Blender
+group by name; they cannot reconstruct a missing Python definition.
+
+Calling a builder outside an active tree raises an error: use `.build()` there.
+Material builders cannot be inserted as Group nodes; use their `.build()` method.
+Modifiers and tools also expose the group-call interface, but prefer `@group()`
+for trees intended to be reusable dependencies.
+
+## Names and options
+
+Without an explicit name, `def shift_mesh(...)` becomes **Shift Mesh**.
+A leading underscore becomes a leading dot: `_shift_mesh` becomes
+**.Shift Mesh**. An explicit decorator name is kept unchanged.
+
+Options such as `prefix`, `fake_user` and `color_tag` are forwarded to the tree
+constructor. `is_group` is selected by the decorator; do not pass it yourself.
+
+```python
+from geonodes import *
+
+@group(prefix="Utils", color_tag='GEOMETRY')
+def _cube():
+    Mesh.Cube().out()
+
+_cube.build()  # Blender name: .Utils Cube
+```
+
+## Rebuilding
+
+| Operation | Selected tree | Dependencies |
+| --- | --- | --- |
+| `.build()` | Rebuilt | Existing trees reused; missing trees built |
+| `.build(full=True)` | Rebuilt | Rebuilt once per build operation |
+| Direct call inside a tree | Built if missing, then inserted | Existing trees reused |
+
+`full` must be a boolean. Full builds propagate through dependencies in other
+packages too. Circular dependencies raise an error. `.build()` does not accept
+socket values or a `rebuild` argument: `builder.build(rebuild=True)` is invalid.
+The internal `._build(rebuild=False, full=False)` creates missing trees while
+preserving existing ones; normal scripts should use the public `.build()` API.
+
+## Tools
+
+```python
+from geonodes import *
 
 @tool("Edit Mesh", object_mode=False, edit_mode=True, mesh=True)
-def edit_mesh():
-    """Description displayed in a Comment node."""
-    # Construct the tool here.
+def edit_mesh(geometry: Geometry):
+    geometry.set_position(offset=(0, 0, 1)).out()
 
 edit_mesh.build()
 ```
 
-Use `@package.tool(...)` to register a tool in a package. Tools also support
-the package/decorator name prefix and the usual rebuild policy. The old
-decorator names have been replaced, without compatibility aliases.
+Tool-specific options are forwarded to `GeoNodes.Tool`. A tool is configured for
+Blender's tool workflow rather than the modifier stack.
 
-A nonempty builder docstring creates a Comment node when its tree is built.
-A `:color:` line sets the comment's custom color using the strings supported
-by `kernel.colors`, such as `red`, `blue`, or `#405A80`; this metadata
-line is removed from the displayed text. Without it, the default color is kept.
-Invalid color directives raise a `ValueError`.
-An optional `:width: 200` line sets the Comment node's width. The value must be
-a positive finite number. This metadata is also removed from the displayed text;
-without it, Blender's default width is kept.
+## Documentation in the node editor
 
-`:horizontal:` accepts `outer_left`, `left`, `mid`, `right`, or `outer_right`;
-`:vertical:` accepts `outer_top`, `top`, `mid`, `bottom`, or `outer_bottom`.
-Docstring comments default to `left` and `outer_top`. These lines are removed
-from the displayed text and stored as Blender custom properties
-`arrange_horizontal` and `arrange_vertical`. Arrangement does not use these
-hints yet; positioning will be implemented separately.
-
-The same hints can be set on manually created nodes:
+A nonempty function docstring creates a Comment node when the tree is built.
+Optional directives configure that comment and are removed from its text:
 
 ```python
-nd.comment("Another comment")._set_arrange(horizontal="left", vertical="outer_top")
-```
-
-`Node._custom_property(name, value)` creates or updates any Blender custom
-property. Both methods return the node for chaining. In `_set_arrange`, an
-omitted axis (`None`) keeps its current value; invalid positions raise
-`ValueError` before either axis is changed.
-
-```python
-@group("My Group")
-def my_group():
-    """
-    :color: #405A80
-    :width: 200
-    :horizontal: left
-    :vertical: outer_top
-
-    Description of the group.
-    """
-    # Construct the group here.
-```
-
-A `Package` automatically registers its decorated functions, so a demo does not
-need to maintain a separate list of calls:
-
-### Static class packages
-
-```python
-from geonodes import Package, group, modifier, Mesh, Vector
-
-class Project(Package):
-    prefix = "Body"
-
-    @group()
-    def move(mesh: Mesh, position: Vector = (0, 0, 0)):
-        mesh.set_position(offset=position).out()
-
-    @modifier()
-    def demo():
-        Project.move(Mesh.Cube(), position=(1, 2, 3)).out()
-
-Project.demo.build(full=True)
-```
-
-No instance, `self`, `cls`, or explicit `@staticmethod` is needed. Builders are
-collected in declaration order. The class prefix only changes Blender names:
-`Project.move` builds **Body Move**. Inherited builders receive their subclass's
-prefix without changing the parent class. Python member names `_build`, `build`
-and `prefix` are reserved for package control/configuration.
-
-Function parameters are the Python signature of the input sockets. During a
-build, they receive symbolic inputs. Socket classes (such as `Mesh`, `Vector`,
-or `Float`) and Python types (`float`, `int`, `bool`, `str`) can be annotations;
-otherwise a non-None default determines the type. A required input needs an
-annotation. Positional-only and keyword-only parameters are supported; variadic
-parameters are not. Outputs still use `.out()`.
-
-Inside an active tree, both `Project.move(mesh, position=...)` and a free
-decorated function call build a missing group before inserting its Group node.
-The supplied arguments connect to sockets and are never used as build-time
-Python options. Calling a builder outside a tree requires `.build()`.
-
-| Call | Existing target | Existing dependencies |
-| --- | --- | --- |
-| `._build()` (internal) | Kept | Kept |
-| `.build()` | Rebuilt | Kept |
-| `.build(full=True)` | Rebuilt | Rebuilt once per operation |
-
-`full` accepts only a boolean; strings and other types are rejected. Missing dependencies are
-always built. Full mode propagates across free builders and different packages,
-and dependency cycles raise an error. Build state is discarded after the
-operation, including after failure.
-
-`Project.build(full=False)` rebuilds all package members;
-`Project.move.build(full=False)` targets one member. Pass `full=True` to include
-dependencies. Internal `._build(rebuild=False, full=False)` builds missing trees.
-
-### Instance registration
-
-The existing registration syntax also remains available:
-
-```python
-from geonodes import Package, Mesh
-
-furniture = Package("Furniture")
-
-@furniture.group("Create Plank")
-def create_plank():
-    Mesh.Cube().out()
-
-@furniture.modifier("Add Plank")
-def add_plank():
-    create_plank().out()
-
-def demo():
-    furniture.build()
-```
-
-Declare the package and builders at module level. Registration does not execute
-the functions. `build()` invokes each builder's `.build()` in declaration order
-and displays a package heading and final build statistics. Declare dependencies
-before their callers. Construction functions should have no required Python
-arguments when used in a package.
-
-When a decorated group is called inside another tree and its Blender node group
-is missing, it is built automatically before insertion. Its own missing
-dependencies are built the same way. Existing groups are kept unchanged, even
-outside a full rebuild operation. This allows a targeted
-rebuild after unused groups have disappeared on reloading a `.blend` file.
-Circular build dependencies raise an error. `G()` retains its existing behavior;
-automatic construction requires the imported decorated builder.
-
-Use `Package("Furniture", prefix="Furn")` to prefix all its tree names:
-`Add Plank` becomes `Furn Add Plank`, and `.Extract Items` becomes
-`.Furn Extract Items`. With the default `prefix=""`, names are unchanged.
-Private names keep their leading dot before all prefixes: `_extract_items`
-with package prefix `Furn` becomes `.Furn Extract Items`.
-An additional decorator prefix is placed after the package prefix. Both
-`.build()` and direct group calls use the same full name.
-
-Registered builders are also accessible through their package using the
-unprefixed tree name in snake_case. For example:
-
-```python
-from geonodes.demos.meshutil import ordered_selection
-
-# Inside a tree: calls the Blender group "OSel Count".
-count = ordered_selection.count(mesh)
-
-# Outside a tree: rebuild just that group.
-ordered_selection.count.build()
-```
-
-Likewise,
-`ordered_selection.build()` forces a build of the entire package.
-
-Use the package's declared Python name (`ordered_selection` or `curve_bones` in
-`meshutil`); the prefix remains internal to its Blender tree names.
-
-`build()` forces all registered trees to rebuild; `build(full=True)` also
-rebuilds dependencies once per operation. Internally, `_build()` keeps existing
-trees and creates missing ones. Both `rebuild` and `full` must be booleans.
-To reconstruct just one tree, use `create_plank.build()`.
-Arguments to a direct
-call such as `create_plank(width=0.4)` are group input sockets. A prefixed group keeps its full
-Blender name when called from another module. Materials expose `.build()` only,
-because a material cannot be inserted as a Group node.
-
-## Creating a Group
-
-When creating a new tree, the argument **is_group** is used to specify to create a **group of nodes** rather
-than a **modifier**:
-
-``` python
-with GeoNodes("A Function", is_group=True):
-
-    a = Float(name="Value 1")
-    b = Float(name="Value 2")
-
-    (a + b).out("Sum")
-```
-
-This creates the following group:
-
-<img src="doc/images/group_sample.png" width="300" class="center">
-
-## Calling a Group
-
-Calling a group is made by instantiating a **Group** class.
-The first parameter of the **Group** instantiation is the name of the _Group_ to call.
-The sockets to plug th the input sockets of the group can be passed in two ways:
-- as a dict
-- as keyword arguments using their _snake_case_ name
-
-The output sockets of the group are read as properties of the **Group** instance,
-using their _snake_case_ name.
-
-
-``` python
 from geonodes import *
 
-with GeoNodes("A Function", is_group=True):
-    (Float(0, "Value 1") + Float(0, "Value 2")).out("Sum")
+@group()
+def documented_cube():
+    """Create a unit cube.
 
-with GeoNodes("A Function is called"):
-
-    a, b = 1, 2
-
-    # ---------------------------------------------------------------------------
-    # Standard method
-    # ---------------------------------------------------------------------------
-
-    # dict syntax
-
-    val1 = Group("A Function", {'Value 1': a, 'Value 2': b}).sum
-
-    # snake_case syntax
-
-    val2 = Group("A Function", value_1=a, value_2=b).sum
-
-    # ---------------------------------------------------------------------------
-    # Alternative method
-    # ---------------------------------------------------------------------------
-    
-    # For big projects, one can prefer the python syntax
-    # Class G makes it possible
-
-    val3 = G().a_function(val1, val2)
-    
-    geo = Geometry()
-    geo.offset = (val1, val2, val3)
-    geo.out()        
+    :color: #405A80
+    :width: 240
+    :horizontal: left
+    :vertical: outer_top
+    """
+    Mesh.Cube().out()
 ```
 
+Colors accept the names and hexadecimal strings supported by the API. Width
+must be positive and finite. Horizontal hints are `outer_left`, `left`, `mid`,
+`right`, `outer_right`; vertical hints are `outer_top`, `top`, `mid`, `bottom`,
+`outer_bottom`. The defaults are `left` and `outer_top`. These hints are stored
+as custom properties; they do not yet control automatic placement.
 
-Materials created by shader builders store their root name in the custom property
-`geonodes_api`. Unmarked materials are preserved; a new API material receives a
-Blender suffix and is reused on later builds via its marker. Removing the marker
-transfers ownership to the user. API material references by root name resolve to
-the owned material, including its suffix.
+## Explicit tree contexts
+
+`with GeoNodes(...)` and `with ShaderNodes(...)` remain available for scripts
+that need direct control of tree construction. Most tutorials use decorators;
+focused examples elsewhere may still use these equivalent contexts. A context
+executes immediately, whereas a decorator waits for `.build()` or a group call.

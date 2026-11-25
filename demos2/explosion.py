@@ -80,7 +80,7 @@ def demo(rebuild=False):
 
         gid.switch(use_islands, nd.mesh_island().island_index)
         
-        instances = mesh.faces.to_instances(group_id=gid)
+        instances = mesh.faces.split_to_instances(group_id=gid)
         
         for rep in instances.insts.for_each():
 
@@ -104,7 +104,7 @@ def demo(rebuild=False):
                 area = m.faces.attribute_statistic(nd.face_area)
 
             with Layout("To Instance"):
-                cell = m.points.to_instances()
+                cell = m.points.split_to_instances()
                 cell.position = c
                 cell.insts.Volume = vol
                 cell.insts.Size = size
@@ -154,7 +154,7 @@ def demo(rebuild=False):
             splitted.transform(rotation=Rotation(rot).invert())
             
         splitted.switch(small, Mesh())
-        insts = splitted.points.to_instances(group_id=nd.mesh_island().island_index)
+        insts = splitted.points.split_to_instances(group_id=nd.mesh_island().island_index)
         
         insts.out()
     
@@ -169,7 +169,7 @@ def demo(rebuild=False):
         min_size = Float(.1, "Min Size")
         seed = Integer(0, "Seed")
         
-        cells = mesh.points.to_instances()
+        cells = mesh.points.split_to_instances()
         for rep in repeat(count, cells=cells):
             
             rep_seed = seed.hash_value(rep.iteration)
@@ -243,7 +243,7 @@ def demo(rebuild=False):
                 
                 new_index = rep.mesh.faces.sample_index(Integer("Cell ID"), index=face0)
                 mesh = Mesh(rep.mesh)
-                mesh.faces[nd.index == face1].Cell_ID = new_index
+                mesh.faces(nd.index == face1).Cell_ID = new_index
                     
                 rep.mesh.switch(do_merge, mesh)
                 
@@ -383,7 +383,7 @@ def demo(rebuild=False):
 
                 # Add contributions
                 sel = nd.index == rep.iteration
-                acc = rep.cloud.points[sel.bnot()].attribute_statistic(Vector("V")).node.sum
+                acc = rep.cloud.points(sel.bnot()).attribute_statistic(Vector("V")).node.sum
 
                 # Max acceleration
                 lacc = gnmath.max(max_acc, acc.length())
@@ -391,7 +391,7 @@ def demo(rebuild=False):
                 acc.switch(use_max_acc, bounded_acc)
 
                 # Set acceleration
-                rep.cloud.points[sel].Acceleration = acc
+                rep.cloud.points(sel).Acceleration = acc
                 
             cloud = rep.cloud
             
@@ -467,13 +467,13 @@ def demo(rebuild=False):
 
                 # New position and speed
                 new_speed = speed + acc*dt
-                rep.cloud.points[active].Speed = new_speed
-                rep.cloud[active].offset = (speed + new_speed).scale(dt/2)
+                rep.cloud.points(active).Speed = new_speed
+                rep.cloud(active).offset = (speed + new_speed).scale(dt/2)
 
                 # Rotation            
                 angle = Float("Angle") + Float("Omega")*dt
-                rep.cloud.points[active].Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
-                rep.cloud.points[active].Angle = angle
+                rep.cloud.points(active).Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
+                rep.cloud.points(active).Angle = angle
 
             rep.cloud.out()
 
@@ -534,7 +534,7 @@ def demo(rebuild=False):
 
         with Layout("Solidify"):
             solidified = Mesh(mesh).faces.extrude(nd.position*(-0.1), individual=False)
-            solidified[solidified.top].flip_faces()
+            solidified(solidified.top).flip_faces()
             mesh.faces.Ext = 1.
             solidified.faces.Ext = 0.
             solidified += mesh
@@ -586,10 +586,10 @@ def demo(rebuild=False):
         cloud.points.radius = Float("Mass")*.3
 
         sun_sel = nd.index == 0
-        cloud.points[sun_sel].position = Vector()
-        cloud.points[sun_sel].Speed = Vector()
-        cloud.points[sun_sel].Mass = 1000.0
-        cloud.points[sun_sel].radius = 3.0
+        cloud.points(sun_sel).position = Vector()
+        cloud.points(sun_sel).Speed = Vector()
+        cloud.points(sun_sel).Mass = 1000.0
+        cloud.points(sun_sel).radius = 3.0
 
         law = G().newton_law_interaction(g=G_)
         interaction = G().interaction_closure(

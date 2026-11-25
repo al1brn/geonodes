@@ -1,3 +1,3 @@
 # ColorRamp
 
-::: geonodes.core.nodeclass.ColorRamp
+::: geonodes.core_new.root.node.ColorRamp

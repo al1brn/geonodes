@@ -25,20 +25,20 @@ def demo(rebuild=False):
         c.transform(rotation=(0, 0, pi/4))
 
         sel = nd.index == 0
-        c[sel].set_left_handle_positions(position=(  0.552125, 1, 0))
-        c[sel].set_right_handle_positions(position=(-0.552125, 1, 0))
+        c(sel).set_left_handle_positions(position=(  0.552125, 1, 0))
+        c(sel).set_right_handle_positions(position=(-0.552125, 1, 0))
 
         sel = nd.index == 2
-        c[sel].set_left_handle_positions(position=( -0.552125,-1, 0))
-        c[sel].set_right_handle_positions(position=( 0.552125,-1, 0))
+        c(sel).set_left_handle_positions(position=( -0.552125,-1, 0))
+        c(sel).set_right_handle_positions(position=( 0.552125,-1, 0))
 
         sel = nd.index == 1
-        c[sel].set_left_handle_positions(position=( -1,  0.552125, 0))
-        c[sel].set_right_handle_positions(position=(-1, -0.552125, 0))
+        c(sel).set_left_handle_positions(position=( -1,  0.552125, 0))
+        c(sel).set_right_handle_positions(position=(-1, -0.552125, 0))
 
         sel = nd.index == 3
-        c[sel].set_left_handle_positions(position=(  1, -0.552125, 0))
-        c[sel].set_right_handle_positions(position=( 1,  0.552125, 0))
+        c(sel).set_left_handle_positions(position=(  1, -0.552125, 0))
+        c(sel).set_right_handle_positions(position=( 1,  0.552125, 0))
 
         Curve(c).out()
 
@@ -80,14 +80,14 @@ def demo(rebuild=False):
 
         with curve:
             c = Curve.Circle(resolution=8)
-            c.points[nd.index==0].position = (sx2 - radius, -sy2, 0)
-            c.points[nd.index==1].position = (sx2, -sy2 + radius, 0)
-            c.points[nd.index==2].position = (sx2, sy2 - radius, 0)
-            c.points[nd.index==3].position = (sx2 - radius, sy2, 0)
-            c.points[nd.index==4].position = (-sx2 + radius, sy2, 0)
-            c.points[nd.index==5].position = (-sx2, sy2 - radius, 0)
-            c.points[nd.index==6].position = (-sx2, -sy2 + radius, 0)
-            c.points[nd.index==7].position = (-sx2 + radius, -sy2, 0)
+            c.points(nd.index==0).position = (sx2 - radius, -sy2, 0)
+            c.points(nd.index==1).position = (sx2, -sy2 + radius, 0)
+            c.points(nd.index==2).position = (sx2, sy2 - radius, 0)
+            c.points(nd.index==3).position = (sx2 - radius, sy2, 0)
+            c.points(nd.index==4).position = (-sx2 + radius, sy2, 0)
+            c.points(nd.index==5).position = (-sx2, sy2 - radius, 0)
+            c.points(nd.index==6).position = (-sx2, -sy2 + radius, 0)
+            c.points(nd.index==7).position = (-sx2 + radius, -sy2, 0)
 
             c.switch(lod > 2*radius, preview_prof)
 

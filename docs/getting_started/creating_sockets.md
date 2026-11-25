@@ -1,11 +1,36 @@
 # Creating Sockets
 
-## Basic classes
+## Function parameters
+
+The parameters of a decorated builder define its Group Input sockets:
+
+```python
+from geonodes import *
+
+@group()
+def move(mesh: Mesh, offset: Vector = (0, 0, 1), enabled: bool = True):
+    mesh.set_position(offset=offset).out()
+
+move.build()
+```
+
+Use annotations for required inputs and defaults for initial values. Supported
+Python scalar annotations are `float`, `int`, `bool` and `str`; socket classes
+such as `Mesh` and `Vector` can also be used. Without an annotation, a non-`None`
+default determines the type. Parameters receive symbolic socket objects while
+the function builds the tree. Calls inside another builder supply connections,
+not construction settings.
+
+For panels, limits, descriptions and exact Blender socket names, create inputs
+explicitly inside the builder as shown below. Avoid declaring the same input
+both as a parameter and as an explicit named socket.
+
+## Explicit socket constructors
 
 Basically the **geonodes** classes are instantiated using the default constructor.
 The optional **name** argument is used to create a Group Input socket.
 
-See the examples in [How it works](#how_it_works)
+See [How it works](overview.md#how-it-works).
 
 Additional parameters can be passed depending on the type of input:
 
@@ -17,11 +42,10 @@ Additional parameters can be passed depending on the type of input:
 - ***hide_in_modifier***
 - ***single_value***
 
-<img src="../images/input_parameters.png" width="600" class="center">
+<img src="images/input_parameters.png" width="600" class="center">
 
 Rather than giving the subtype as a parameter, you can use the dedicated constructors
 as shown below:
-b types can be defined by using dedicated constructor as shown below:
 
 ``` python
 # An integer between 2 and 10
@@ -36,7 +60,8 @@ factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
 The special class **Input** can be used as function argument to get the argument value from Group input as shown below:
 
 ``` python
-with GeoNodes("Input"):
+@modifier('Input')
+def input():
 
     # ---------------------------------------------------------------------------
     # Initial creation
@@ -81,9 +106,11 @@ with GeoNodes("Input"):
     # Link all the inputs but the height
     spiral.node.link_inputs(None, "Spiral", exclude=["Height"])
     # The height is fixed
-    spiral.height = Float.Input("Height")
+    spiral.node.height = Float.Input("Height")
 
-    Geometry.join(helix, spiral, cube).out()
+    Geometry.Join(helix, spiral, cube).out()
+
+input.build()
 ```
 
 ## Panels
@@ -96,7 +123,8 @@ Inputs can be placed into a panel in two ways:
 ``` python
 from geonodes import *
 
-with GeoNodes("Panels"):
+@modifier('Panels')
+def panels():
     
     # Create two options in a panel named Options
     with Panel("Options"):
@@ -119,6 +147,8 @@ with GeoNodes("Panels"):
     sph.points.Factor = fac
 
     sph.out()
+
+panels.build()
 ```
 
 ## Blender resources
@@ -144,7 +174,8 @@ If the name is not passed as key word argument, the default name is used.
 import bpy
 from geonodes import *
 
-with GeoNodes("Creating Geometries"):
+@modifier('Creating Geometries')
+def creating_geometries():
 
     # Geometry group input node is used if it exists,
     # Otherwise a group input node named 'Mesh' is created
@@ -163,6 +194,8 @@ with GeoNodes("Creating Geometries"):
     cube_vol = Volume.Cube()
     
     (cube + mesh + curve + spiral + cube_vol).out()
+
+creating_geometries.build()
 ```
 
 ## Named Attributes
@@ -178,7 +211,7 @@ letter: `Mesh.points.A_Named_Int = 1` is equivalent to `Mesh.points.store("A Nam
     To avoid names collision, the named attribute ***MUST*** start with a capital letter.
     Underscore chars are replaced by spaces in the stored name.
 
-Reading a named attribute is done using the class constructor `NamedAttribute`, or its short version `Named`.
+Reading a named attribute is done using the class constructor `Named`.
 For instance, reading a Vector named "Direction" is done with `Vector.Named("Direction")`.
 
 One can even further shorten the syntax by instantating a new class with an attribute name rather than with a value:
@@ -187,7 +220,8 @@ One can even further shorten the syntax by instantating a new class with an attr
 ``` python
 from geonodes import *
 
-with GeoNodes("Named Attributes"):
+@modifier('Named Attributes')
+def named_attributes():
     
     cube = Mesh.Cube()
     
@@ -205,11 +239,13 @@ with GeoNodes("Named Attributes"):
     weight = nd.named_attribute("Weight", data_type='FLOAT')
     
     # A better way is to use a class constructor
-    weight = Float.NamedAttribute("Weight")
+    weight = Float.Named("Weight")
     # or the short name
     weight = Float.Named("Weight")
     # or even shorter, using a string as constructor value
     weight = Float("Weight")
     
     cube.out()
+
+named_attributes.build()
 ``` 

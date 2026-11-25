@@ -267,7 +267,7 @@ def demo(rebuild=False):
         # Don't write:
         # sphere.set_position(selection=nd.index < 5, position=(1, 2, 3))
 
-        sphere[nd.index < 5].set_position(position=(1, 2, 3))
+        sphere(nd.index < 5).set_position(position=(1, 2, 3))
 
         # ----------------------------------------------------------------------------------------------------
         # RULE D : parameter arguments take the parameter name
@@ -379,25 +379,25 @@ def demo(rebuild=False):
         ico = Mesh.IcoSphere(subdivisions=2)
 
         # Extrude 30% of the faces
-        ico.faces[Boolean.Random(probability=.3)].extrude(offset_scale=.4)
+        ico.faces(Boolean.Random(probability=.3)).extrude(offset_scale=.4)
 
         # Duplicate extruded faces with a 0 scale extrusion
-        ico.faces[ico.top_].extrude(offset_scale=0)
+        ico.faces(ico.top_).extrude(offset_scale=0)
 
         # --- ico.top_ is needed twice, let's use an intermediary variable
 
         top = ico.top
-        ico.faces[top].scale(scale=.5)
+        ico.faces(top).scale(scale=.5)
 
         # Another extrusion
-        ico.faces[top].extrude(offset_scale=1)
+        ico.faces(top).extrude(offset_scale=1)
 
         # --- Let's now dig the sides
 
-        ico.faces[ico.side].extrude(offset_scale=0)
+        ico.faces(ico.side).extrude(offset_scale=0)
         top = ico.top
-        ico.faces[top].scale(.8)
-        ico.faces[top].extrude(offset_scale=-.01)
+        ico.faces(top).scale(.8)
+        ico.faces(top).extrude(offset_scale=-.01)
 
         # Output
         (ico + cube.set_position(offset=(5, 0, 0))).out()  

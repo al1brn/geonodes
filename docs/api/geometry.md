@@ -1,3 +1,3 @@
 # Geometry
 
-::: geonodes.core.geometry_class.Geometry
+::: geonodes.core_new.geonodes.generated.geometry.Geometry

@@ -55,6 +55,10 @@ from ...root.socket import NodeCache, Socket
 from ...root.geom import Geom
 from ...root.geometry import Geometry
 
+from ...common.logging_utils import get_logger
+
+logger = get_logger()
+
 class Domain(Geom, NodeCache, metaclass=EnvironmentType):
 
     __slots__ = NodeCache.__slots__ + ('_geo', '_selection')
@@ -186,11 +190,67 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
     # Named attributes
     # ====================================================================================================
 
+    def __getitem__(self, name_type):
+
+        from ...import SOCKET_CLASSES
+
+        is_tuple = isinstance(name_type, tuple)
+        item_name = name_type[0] if is_tuple and name_type else name_type
+
+        # ----- name_type is selection (legacy)
+        if (isinstance(name_type, slice) or (is_tuple and not name_type)
+                or SocketType(item_name).type != 'STRING'):
+            logger.warning(
+                "Geometry[selection] is deprecated. Use Geometry(selection) instead.",
+                extra={'geonodes_origin': NodeError.stack_lines()},
+                stacklevel=2,
+            )
+            return self(name_type)
+
+        # name & type
+        if is_tuple:
+            if len(name_type) != 2:
+                raise ValueError(f"Named attribute access expects (name, socket_type), not {name_type!r}.")
+            socket_type = SocketType.from_type(name_type[1]).type
+
+        # default is Float
+        else:
+            socket_type = 'VALUE'
+
+        klass = SOCKET_CLASSES.get(socket_type)
+        if klass is None:
+            raise AttributeError(f"Unknown class for named attribute {item_name!r}: {socket_type!r}.")
+
+        # Return Named constructor
+        return klass.Named(item_name)
+
+    def __setitem__(self, name_type, value):
+
+        from ...import SOCKET_CLASSES
+
+        if isinstance(name_type, tuple):
+            if len(name_type) != 2:
+                raise NodeError(f"Domain attribute setter accepts domain[name] or domain[name, type], not domain[{name_type!r}]")
+
+            name = name_type[0]
+            socket_type = SocketType.from_type(name_type[1]).type
+
+        else:
+            name = name_type
+            socket_type = SocketType(value).type
+
+        klass = SOCKET_CLASSES.get(socket_type)
+        if klass is None:
+            raise AttributeError(f"Unknown class for named attribute {name!r}: {socket_type!r}.")
+
+        return self.store_named_attribute(name, klass(value))
+
+
     # ====================================================================================================
     # Attributes
     # ====================================================================================================
 
-    def get(self, name, data_type=None):
+    def get_DEPRECATED(self, name, data_type=None):
         """Return a helper for a named attribute on this domain.
 
         > Node <&Node Named Attribute>
@@ -218,11 +278,14 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
         Attribute
             Named-attribute helper attached to this domain and its geometry.
         """
+        pass
+        """
         from .attribute import Attribute
 
         attr = Attribute(name, data_type=data_type, domain=self)
 
         return attr
+        """
     
     def store(self, name, value):
         """Store a named attribute on this domain.
@@ -250,19 +313,8 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
         Attribute
             Helper representing the stored attribute.
         """
-        from .attribute import Attribute
+        return self.store_named_attribute(name, value)
 
-        if isinstance(name, Attribute):
-            if name.data_type is None:
-                attr = Attribute(name.name, value, domain=self)
-            else:
-                attr = Attribute(name.name, name.data_type, domain=self)
-        else:
-            attr = self.get(name, value)
-
-        attr.set(value)
-
-        return attr
     
     def get_attribute_names(self, data_type=None):
         """Return the attribute names available on this domain.

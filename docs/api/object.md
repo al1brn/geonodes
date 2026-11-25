@@ -1,3 +1,3 @@
 # Object
 
-::: geonodes.core.sock_object.Object
+::: geonodes.core_new.geonodes.generated.object.Object

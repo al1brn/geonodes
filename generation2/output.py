@@ -157,6 +157,9 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
                 if class_name in GEOMETRY_CLASSES and class_name != 'Geometry' and not filename.startswith('dom_'):
                     code += 'from .geometry import Geometry\n'
                     bases += ', Geometry'
+                elif class_name == 'VolumeShader':
+                    code += 'from .shader import Shader\n'
+                    bases += ', Shader'
                 elif class_name in POINT_DOMAIN_CLASSES and filename.startswith('dom_'):
                     code += 'from .dom_point import Point\n'
                     bases += ', Point'

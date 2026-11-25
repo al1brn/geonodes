@@ -2,9 +2,15 @@
 
 $ DOC toc_max_depth = 1
 
-### Initialize a tree
+### Declare and build trees
 
-- <!GeoNodes> and <!ShaderNodes> : scripting nodes starts by instantianting a <!Tree>
+- `@modifier()`, `@group()` and `@tool()` declare Geometry Nodes builders.
+- `@shader()` and `@shader_group()` declare materials and shader groups.
+- Call `.build()` to construct a tree, or `.build(full=True)` to rebuild its dependencies.
+- Function parameters define input sockets; `.out()` defines Blender outputs.
+- Call a decorated group inside another builder to insert a Group node.
+- <!Package> organizes related builders in a class or registered collection.
+- <!GeoNodes> and <!ShaderNodes> remain available for explicit <!Tree> contexts.
 - <!Break> : exiting from a tree context can be done by raising this exception
 
 ### Create nodes
@@ -84,20 +90,11 @@ Geometries have specific <!Domain>:
 """
 
 import numpy as np
+import bpy
 
 pi     = np.pi
 tau    = 2*np.pi
-halfpi = np.pi/2
-d30    = np.pi/6
-d45    = np.pi/4
-d60    = np.pi/3
-d90    = halfpi
-d180   = pi
-d270   = np.pi*1.5
-d360   = tau
 e      = np.e
-
-import bpy
 
 COMPATIBLE_BLENDER_VERSION = (5, 2, 0)
 BLENDER_VERSION = bpy.app.version
@@ -113,97 +110,94 @@ else:
         print("CAUTION: impossible to load 'core_new' module")
 
 
-PRODUCTION = core_module.PRODUCTION
 __version__ = core_module.__version__
 blender_version = core_module.blender_version
 
-if PRODUCTION:
-    
-    Break = core_module.Break
-    blender = core_module.blender
+blender = core_module.blender
+Break = core_module.Break
 
-    Signature = core_module.Signature
+Signature = core_module.Signature
 
-    Attribute = core_module.Attribute
-    Socket = core_module.Socket
-    if hasattr(core_module, 'DEFAULT'):
-        DEFAULT = core_module.DEFAULT
-    else:
-        globals().pop('DEFAULT', None)
-    Input = core_module.Input
-    Boolean = core_module.Boolean
-    Float = core_module.Float
-    Integer = core_module.Integer
-    Vector = core_module.Vector
-    Rotation = core_module.Rotation
-    Matrix = core_module.Matrix
-    Color = core_module.Color
-    String = core_module.String
-    Texture = core_module.Texture
-    Collection = core_module.Collection
-    Object = core_module.Object
-    Image = core_module.Image
-    Material = core_module.Material
-    Font = core_module.Font
-    Menu = core_module.Menu
-    Geometry = core_module.Geometry
-    Domain = core_module.Domain
-    Point = core_module.Point
-    Vertex = core_module.Vertex
-    Face = core_module.Face
-    Edge = core_module.Edge
-    Corner = core_module.Corner
-    SplinePoint = core_module.SplinePoint
-    Spline = core_module.Spline
-    CloudPoint = core_module.CloudPoint
-    Instance = core_module.Instance
-    Layer = core_module.Layer
-    Mesh = core_module.Mesh
-    Curve = core_module.Curve
-    Cloud = core_module.Cloud
-    Instances = core_module.Instances
-    GreasePencil = core_module.GreasePencil
-    Volume = core_module.Volume
-    simulation = core_module.simulation
-    repeat = core_module.repeat
+Socket = core_module.Socket
+if hasattr(core_module, 'DEFAULT'):
+    DEFAULT = core_module.DEFAULT
+else:
+    globals().pop('DEFAULT', None)
 
-    Layout = core_module.Layout
-    Panel = core_module.Panel
-    Tree = core_module.Tree
-    Node = core_module.Node
-    Group = core_module.Group
-    G = core_module.G
-    ColorRamp = core_module.ColorRamp
-    Closure = core_module.Closure
-    Bundle = core_module.Bundle
+Input = core_module.Input
+Boolean = core_module.Boolean
+Float = core_module.Float
+Integer = core_module.Integer
+Vector = core_module.Vector
+Rotation = core_module.Rotation
+Matrix = core_module.Matrix
+Color = core_module.Color
+String = core_module.String
+Texture = core_module.Texture
+Collection = core_module.Collection
+Object = core_module.Object
+Image = core_module.Image
+Material = core_module.Material
+Font = core_module.Font
+Menu = core_module.Menu
+Geometry = core_module.Geometry
+Domain = core_module.Domain
+Point = core_module.Point
+Vertex = core_module.Vertex
+Face = core_module.Face
+Edge = core_module.Edge
+Corner = core_module.Corner
+SplinePoint = core_module.SplinePoint
+Spline = core_module.Spline
+CloudPoint = core_module.CloudPoint
+Instance = core_module.Instance
+Layer = core_module.Layer
+Mesh = core_module.Mesh
+Curve = core_module.Curve
+Cloud = core_module.Cloud
+Instances = core_module.Instances
+GreasePencil = core_module.GreasePencil
+Volume = core_module.Volume
+simulation = core_module.simulation
+repeat = core_module.repeat
 
-    GeoNodes = core_module.GeoNodes
-    Package = core_module.Package
-    group = core_module.group
-    modifier = core_module.modifier
-    tool = core_module.tool
-    shader_group = core_module.shader_group
-    shader = core_module.shader
+Layout = core_module.Layout
+Panel = core_module.Panel
+Tree = core_module.Tree
+Node = core_module.Node
+Group = core_module.Group
+G = core_module.G
+ColorRamp = core_module.ColorRamp
+Closure = core_module.Closure
+Bundle = core_module.Bundle
 
-    gnmath = core_module.gnmath
-    nd = core_module.nd
+GeoNodes = core_module.GeoNodes
+Package = core_module.Package
+group = core_module.group
+modifier = core_module.modifier
+tool = core_module.tool
+shader_group = core_module.shader_group
+shader = core_module.shader
 
-    # Shader
+gnmath = core_module.gnmath
+nd = core_module.nd
 
-    if hasattr(core_module, 'snd'):
-        snd = core_module.snd
-    else:
-        globals().pop('snd', None)
-    Shader = core_module.Shader
-    VolumeShader = core_module.VolumeShader
-    ShaderNodes = core_module.ShaderNodes
+# Shader
 
-    # Register
+if hasattr(core_module, 'snd'):
+    snd = core_module.snd
+else:
+    globals().pop('snd', None)
+Shader = core_module.Shader
+VolumeShader = core_module.VolumeShader
+ShaderNodes = core_module.ShaderNodes
 
-    treearrange = core_module.treearrange
-    treearrange.register()
+# Register
 
-    print(
-        f"geonodes {__version__}: Geometry Nodes with Python "
-        f"for Blender version {'.'.join(map(str, blender_version))}"
-    )
+treearrange = core_module.treearrange
+treearrange.register()
+
+print(
+    f"geonodes {__version__}: Geometry Nodes with Python "
+    f"for Blender version {'.'.join(map(str, blender_version))}"
+)

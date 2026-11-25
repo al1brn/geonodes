@@ -1,3 +1,3 @@
 # Float
 
-::: geonodes.core.sock_float.Float
+::: geonodes.core_new.geonodes.generated.float.Float

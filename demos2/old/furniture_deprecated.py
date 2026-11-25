@@ -38,10 +38,10 @@ furniture_deprecated.demo()
 
 import bpy
 
-from .. import ShaderNodes, Shader, snd
-from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, Break, Tree
-from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String, Matrix
-from .. import repeat
+from ... import ShaderNodes, Shader, snd
+from ... import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, Break, Tree
+from ... import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String, Matrix
+from ... import repeat
 
 
 DEBUG_NODES = True # Add debug output sockets

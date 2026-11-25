@@ -45,8 +45,8 @@ formula.demo()
 """
 
 import bpy
-from . import formula_data
-from . import formula_tree
+from .. import formula_data
+from .. import formula_tree
 
 from geonodes import *
 from geonodes import core_module

@@ -214,7 +214,7 @@ def demo(rebuild=False):
 
         for rep in repeat(pts.points.count, pts=pts, z=0.0):
             pts = Cloud(rep.pts)
-            pts.points[nd.index == rep.iteration].position = (0, 0, rep.z)
+            pts.points(nd.index == rep.iteration).position = (0, 0, rep.z)
             rep.pts = pts
             rep.z += pts.points.sample_index(Float("Length"))
 

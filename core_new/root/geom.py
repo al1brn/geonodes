@@ -95,40 +95,14 @@ class Geom:
     # ----------------------------------------------------------------------------------------------------
 
     def __call__(self, selection):
+        if isinstance(selection, tuple):
+            KO =  SocketType(selection[0]).type == 'STRING'
+        else:
+            KO =  SocketType(selection).type == 'STRING'
+        if KO:
+            raise NodeError(f"Domain(select) doesn't accept strings. Perhaps you want to write domain[{selection!r}].")
         self._selection = selection
         return self
-
-    def __getitem__(self, selection):
-
-        from ..import SOCKET_CLASSES
-
-        is_tuple = isinstance(selection, tuple)
-        item_name = selection[0] if is_tuple and selection else selection
-        if (isinstance(selection, slice) or (is_tuple and not selection)
-                or SocketType(item_name).type != 'STRING'):
-            logger.warning(
-                "Geometry[selection] is deprecated. Use Geometry(selection) instead.",
-                extra={'geonodes_origin': NodeError.stack_lines()},
-                stacklevel=2,
-            )
-            return self(selection)
-
-        if is_tuple:
-            if len(selection) != 2:
-                raise ValueError("Named attribute access expects (name, socket_type).")
-            socket_type = SocketType.from_type(selection[1]).type
-        else:
-            socket_type = 'VALUE'
-
-        klass = SOCKET_CLASSES.get(socket_type)
-        if klass is None:
-            raise AttributeError(f"Unknown class for named attribute {item_name!r}: {socket_type!r}.")
-
-        return klass.Named(item_name)
-
-    def __setitem__(self, name, value):
-        return self.store_named_attribute(name, value)
-
 
     # ----------------------------------------------------------------------------------------------------
     # Consume the selection

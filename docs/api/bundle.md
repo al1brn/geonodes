@@ -1,3 +1,3 @@
 # Bundle
 
-::: geonodes.core.sock_bundle.Bundle
+::: geonodes.core_new.geonodes.generated.bundle.Bundle

@@ -1,3 +1,3 @@
 # Menu
 
-::: geonodes.core.sock_menu.Menu
+::: geonodes.core_new.geonodes.generated.menu.Menu

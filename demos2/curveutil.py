@@ -23,9 +23,9 @@ def demo(rebuild=False):
         
         
         sel = nd.index == index
-        c[sel].position = pos
-        c[sel].left_handle_position = pos + left
-        c[sel].right_handle_position = pos + right
+        c(sel).position = pos
+        c(sel).left_handle_position = pos + left
+        c(sel).right_handle_position = pos + right
         
         c.out()
 
@@ -205,7 +205,7 @@ def demo(rebuild=False):
             p0 * (1 - t)**3 + p1 * (3*(1 - t)**2*t)
             + p2 * (3*(1 - t)*t*t) + p3 * t**3
         )
-        mesh = mesh.faces[fill_mesh.bnot()].delete(mode="Only Faces")
+        mesh = mesh.faces(fill_mesh.bnot()).delete(mode="Only Faces")
 
         with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geometry:
             line.out("Curve")

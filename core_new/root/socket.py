@@ -1001,6 +1001,41 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         return self._bsocket.display_shape == 'VOLUME_GRID'
     
     # ====================================================================================================
+    # Structure type / Shape
+    # ====================================================================================================
+
+    @property
+    def _structure_type(self):
+        if self._is_empty():
+            return 'AUTO'
+        return self._bsocket.inferred_structure_type
+
+    @property
+    def _shape(self):
+        return self._structure_type
+
+    @_shape.setter
+    def _shape(self, value):
+        if self._is_empty():
+            raise NodeError(f"Impossible to change shape of an empy Socket.")
+
+        value = constants.SOCKET_SHAPES.get(value, value)
+        
+        bnode = self.node._bnode
+        try:
+            bnode.structure_type = value
+        except (AttributeError, TypeError) as exc:
+            raise NodeError(
+                f"Impossible to set shape to {value!r} "
+                f"on node '{bnode.name}'.",
+                reason=str(exc),
+            ) from exc
+
+    def _set_shape(self, value):
+        self._shape = value
+        return self
+    
+    # ====================================================================================================
     # List
     # ====================================================================================================
 

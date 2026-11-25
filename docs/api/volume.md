@@ -1,3 +1,3 @@
 # Volume
 
-::: geonodes.core.geometries.Volume
+::: geonodes.core_new.geonodes.generated.volume.Volume

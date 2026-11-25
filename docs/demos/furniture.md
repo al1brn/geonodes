@@ -16,26 +16,28 @@ There is no separate ID field inside the block. New blocks are appended, and
 entries are never removed or reordered. Name lookup is centralized in
 **.Block Index**; references by ID read the list directly.
 
-To create the node groups and modifiers:
+The module registers its builders in a `Package("Furniture")` with no prefix.
+Tree and material names are explicit. With the current builder API, construct
+the collection through the package rather than passing `rebuild` to `.build()`:
 
 ```python
-from geonodes.demos import furniture
+from geonodes.demos.furniture import furniture
 
-furniture.demo()
+furniture.build(full=True)
 ```
-
-The module registers its builders in a `Package("Furniture")` with no prefix.
-All Blender tree and material names are explicit and retain their original
-capitalization and leading dots. `demo()` builds the package in declaration
-order and displays its statistics.
 
 To rebuild just one modifier:
 
 ```python
 from geonodes.demos.furniture import add_block
 
-add_block.build(rebuild=True)
+add_block.build()
 ```
+
+The module's historical `demo(rebuild=...)` wrapper predates the current
+`.build(full=False)` signature. Its `build(rebuild=...)` forwarding must be
+migrated before that wrapper is used with the current API. See
+[Migration](../getting_started/migration.md).
 
 Decorated groups can also be imported and called inside another tree, for
 example `create_plank(width=0.4)`. Existing built-in utilities such as `array`

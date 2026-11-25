@@ -29,7 +29,7 @@ updates
 """
 
 from geonodes import *
-from geonodes.demos.shaders import atom_shader, arrow_shader, formula_shader
+from geonodes.demos2.shaders import atom_shader, arrow_shader, formula_shader
 
 
 
